@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Bursa Live 3 – Simulasi Hidup & Investasi</title>
+<title>Life Simulator</title>
 <style>
 :root{--bg:#f2f0ea;--pn:#fff;--ink:#14232a;--mu:#64757a;--ln:#e5e0d3;--up:#0a8a5c;--dn:#d23b30;--ac:#2563a8;--ac2:#7c3aed;--sh:0 6px 22px rgba(20,40,50,.09);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b1317;--pn:#141f26;--ink:#e8f0ee;--mu:#8ba2a2;--ln:#243640;--up:#35d39a;--dn:#ff6b5e;--ac:#6aa9f0;--ac2:#a78bfa;--sh:0 6px 22px rgba(0,0,0,.35)}}
@@ -43,7 +43,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 .sv{font-size:12px}.sv.ok{color:#9ff0c8}.sv.warn{color:#ffd98a}
 </style></head><body><div class="w">
 <div class="hero">
- <div class="hb"><div class="av" id="av">🎒</div><div><div style="font:700 22px Georgia,serif">Bursa Live 3</div><div id="stg" class="mu"></div><div class="mu" id="clk"></div><span class="sv" id="svs">Menghubungkan ke server…</span></div></div>
+ <div class="hb"><div class="av" id="av">🎒</div><div><div style="font:700 22px Georgia,serif">Life Simulator</div><div id="stg" class="mu"></div><div class="mu" id="clk"></div><span class="sv" id="svs">Menghubungkan ke server…</span></div></div>
  <div id="pills"></div>
  <div style="text-align:right"><span class="mu" id="rank"></span><b class="nw" id="nw"></b><span class="mu" id="ret"></span><div><button class="pc" id="spd" style="margin-top:6px">⏩ Kecepatan ×1</button></div></div>
 </div>
@@ -143,22 +143,29 @@ const pack=()=>{const s=Object.assign({},S);delete s.h;return JSON.stringify(s)}
 const hpack=()=>{const o={};A.forEach(a=>{o[a.id]=(S.h[a.id]||[]).slice(-250).map(v=>+v.toPrecision(6))});return JSON.stringify(o)};
 function sv(){dirty=true;try{localStorage.setItem('bl7',pack())}catch(e){}}
 function cs(t,c){const e=$('svs');e.textContent=(c=='ok'?'☁️ ':'⚠️ ')+t;e.className='sv '+c}
-async function flush(h){if(!DOC||busy)return;busy=true;try{await DOC.set({s:pack(),t:Date.now(),day:S.day});if(h&&HDOC){await HDOC.set({h:hpack()});try{localStorage.setItem('bl7h',hpack())}catch(e){}}dirty=false;cs('Tersimpan di server ✓','ok')}catch(e){cs('Gagal menyimpan ke server, mencoba lagi…','warn')}busy=false}
+async function flush(h,ka){if(!DOC||busy)return;busy=true;dirty=false;try{await DOC.set({s:pack(),t:Date.now(),day:S.day},ka);if(h&&HDOC&&!ka){await HDOC.set({h:hpack()});try{localStorage.setItem('bl7h',hpack())}catch(e){}}cs('Tersimpan di server ✓ '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}),'ok')}catch(e){dirty=true;cs('Gagal menyimpan, mencoba lagi otomatis…','warn')}busy=false}
 setInterval(()=>{if(dirty&&DOC){hc++;flush(hc%10==0)}},8000);
-addEventListener('pagehide',()=>{if(DOC&&dirty)DOC.set({s:pack(),t:Date.now(),day:S.day}).catch(()=>{})});
-const SB_URL='https://qvjtdyoajpshijfnagys.supabase.co',SB_KEY='sb_publishable_YQwI_KTvImwIOgzYGb0dFw_ODEoHvBp'; /* isi dari Supabase: Project Settings > API */
-const rpc=async(f,b)=>{const r=await fetch(SB_URL+'/rest/v1/rpc/'+f,{method:'POST',headers:Object.assign({'Content-Type':'application/json',apikey:SB_KEY},SB_KEY.startsWith('sb_')?{}:{Authorization:'Bearer '+SB_KEY}),body:JSON.stringify(b)});if(!r.ok)throw new Error(await r.text());return r.json()};
+
+const SB_URL='',SB_KEY=''; /* isi dari Supabase: Project Settings > API */
+const rpc=async(f,b,ka)=>{const c=new AbortController(),t=setTimeout(()=>c.abort(),15000);try{const r=await fetch(SB_URL+'/rest/v1/rpc/'+f,{method:'POST',keepalive:!!ka,signal:c.signal,headers:Object.assign({'Content-Type':'application/json',apikey:SB_KEY},SB_KEY.startsWith('sb_')?{}:{Authorization:'Bearer '+SB_KEY}),body:JSON.stringify(b)});if(!r.ok)throw new Error(await r.text());return await r.json()}finally{clearTimeout(t)}};
 const sha=async t=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t)))].map(x=>x.toString(16).padStart(2,'0')).join('');
 function applyLoad(s,h){S=Object.assign(fresh(),JSON.parse(s));delete S.h;if(h){try{S.h=JSON.parse(h)}catch(e){}}initA();buildList();render();toast('Progres dimuat dari server (hari ke-'+S.day+')')}
+let conn=false,rt=0;
 async function cloud(){
- if(SB_URL&&SB_KEY){try{
+ if(!(SB_URL&&SB_KEY)){cs('Mode lokal (Supabase belum diisi)','warn');return}
+ if(conn)return;
+ try{
   let a=JSON.parse(localStorage.getItem('bl7acct')||'null');
   if(!a){const id=(prompt('Masuk atau buat akun game. Nama pengguna:')||'').trim().toLowerCase(),pin=prompt('PIN atau kata sandi (min. 4 karakter):')||'';if(!id||pin.length<4)throw new Error('login dibatalkan');a={id,h:await sha(id+':'+pin)}}
   const d=await rpc('load_save',{p_id:a.id,p_hash:a.h});localStorage.setItem('bl7acct',JSON.stringify(a));
   if(d&&d.s)applyLoad(d.s,d.h);
-  const w=o=>rpc('store_save',{p_id:a.id,p_hash:a.h,p_data:o});DOC={set:w};HDOC={set:w};dirty=true;cs('Akun '+a.id+' · tersimpan di server ✓','ok');
- }catch(e){cs('Gagal login/server: '+String(e.message).slice(0,70),'warn');if(/PIN salah/.test(e.message))localStorage.removeItem('bl7acct')}return}
- cs('Mode lokal (Supabase belum diisi)','warn')}
+  const w=(o,ka)=>rpc('store_save',{p_id:a.id,p_hash:a.h,p_data:o},ka);DOC={set:w};HDOC={set:w};conn=true;rt=0;dirty=true;cs('Akun '+a.id+' · tersimpan di server ✓','ok');
+ }catch(e){const m=String(e.message);
+  if(/PIN salah|dibatalkan/.test(m)){localStorage.removeItem('bl7acct');cs('Login gagal: '+m.slice(0,60)+'. Muat ulang atau klik Ganti akun.','warn');return}
+  rt=Math.min(rt+1,10);cs('Terputus dari server, mencoba lagi… ('+m.slice(0,50)+')','warn');setTimeout(cloud,Math.min(30000,3000*rt))}}
+document.addEventListener('visibilitychange',()=>{if(document.hidden){if(DOC&&dirty)flush(false,true)}else if(!conn)cloud()});
+addEventListener('pagehide',()=>{if(DOC&&dirty)flush(false,true)});
+addEventListener('online',()=>{if(!conn)cloud();else dirty=true});
 function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),3200);return false}
 /* ---- harga & riwayat ---- */
 function back(a){const o=[];let p=P[a.id];const v=a.t=='nav'?a.s:a.vol*.052,d=(a.t=='nav'?a.r:a.mu)/365;for(let i=0;i<365;i++){o.unshift(p);p=p/Math.exp(d+v*N())}return o}
@@ -305,7 +312,7 @@ function render(){
   const au=S.auto;$('auto').textContent=au&&au.id==cur?'Matikan investasi rutin':'Aktifkan investasi rutin';$('autot').textContent=au?'Aktif: '+rp(au.amt)+' ke '+au.id+' tiap bulan':'Beli otomatis tiap bulan game';
   $('cash').textContent=rp(S.cash);const g=Math.max(0,Math.min(100,w/GOAL*100));$('gl').style.width=g+'%';$('glt').textContent='Target dana impian '+rp(GOAL)+' ('+g.toFixed(0)+'%)';
   const cls={kas:Math.max(0,S.cash)};if(S.houseV)cls.prop=S.houseV;const bv=Object.keys(S.biz).reduce((t,k)=>t+S.biz[k].inv*.6,0);if(bv)cls.bz=bv;Object.keys(S.hold).forEach(k=>{const c=G(k).c;cls[c]=(cls[c]||0)+S.hold[k]*P[k]});
-  $('alloc').innerHTML=Object.keys(cls).map(k=>`<i style="width:${cls[k]/w*100}%;background:${CL[k][1]}"></i>`).join('');$('legend').textContent=Object.keys(cls).map(k=>CL[k][0]+' '+(cls[k]/w*100).toFixed(0)+'%').join(' · ');
+  $('alloc').innerHTML=Object.keys(cls).map(k=>`<i style="width:${cls[k]/(w||1)*100}%;background:${CL[k][1]}"></i>`).join('');$('legend').textContent=Object.keys(cls).map(k=>CL[k][0]+' '+(cls[k]/(w||1)*100).toFixed(0)+'%').join(' · ');
   $('hold').innerHTML=hk.map(k=>{const v=S.hold[k]*P[k],pl=S.hold[k]*(P[k]-S.cost[k]);return`<tr><td>${k}</td><td>${rp(v)}</td><td class="${pl>=0?'up':'dn'}">${sg(pl)}</td></tr>`}).join('')||'<tr><td colspan="3" style="text-align:center;color:var(--mu)">Belum ada aset.</td></tr>';
   setH($('log'),S.log.map(l=>'<div>'+l+'</div>').join('')||'<div>Belum ada transaksi.</div>');draw();
  }
