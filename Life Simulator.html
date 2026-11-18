@@ -71,7 +71,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
  <div id="pills" style="flex:1 1 200px;min-width:0"></div>
  <div class="hr"><span class="ttl" id="rank"></span><b class="nw" id="nw"></b><span class="mu" id="ret"></span><span class="mu" id="ccl" style="display:block;min-height:19px"></span><div class="row" style="justify-content:flex-end;margin-top:6px"><button class="pc" id="dly">🎁 Hadiah harian</button><button class="pc" id="spd">⏩ Kecepatan ×1</button><button class="pc" id="thm" title="Ganti tema">🌓</button></div></div>
 </div>
-<div class="tabs" id="tabs"><button class="tab" data-v="inv">📈 Investasi</button><button class="tab" data-v="car">💼 Karier</button><button class="tab" data-v="bank">🏦 Bank</button><button class="tab" data-v="biz">🏪 Bisnis</button><button class="tab" data-v="ofr">🤝 Tawaran</button><button class="tab" data-v="love">💕 Pasangan</button><button class="tab" data-v="life">🏡 Kehidupan</button><button class="tab" data-v="gar">🚗 Garasi</button><button class="tab" data-v="cty">🌏 Negara</button><button class="tab" data-v="prp">🏠 Properti</button><button class="tab" data-v="ach">🏅 Prestasi</button><button class="tab" data-v="lb">🥇 Leaderboard</button><button class="tab" data-v="rb">🔁 Rebirth</button><button class="tab" data-v="acc">👤 Akun</button></div>
+<div class="tabs" id="tabs"><button class="tab" data-v="inv">📈 Investasi</button><button class="tab" data-v="car">💼 Karier</button><button class="tab" data-v="bank">🏦 Bank</button><button class="tab" data-v="biz">🏪 Bisnis</button><button class="tab" data-v="ofr">🤝 Tawaran</button><button class="tab" data-v="love">💕 Pasangan</button><button class="tab" data-v="life">🏡 Kehidupan</button><button class="tab" data-v="gar">🚗 Garasi</button><button class="tab" data-v="cty">🌏 Negara</button><button class="tab" data-v="prp">🏠 Properti</button><button class="tab" data-v="ach">🏅 Prestasi</button><button class="tab" data-v="soc">🤝 Sosial</button><button class="tab" data-v="lb">🥇 Leaderboard</button><button class="tab" data-v="rb">🔁 Rebirth</button><button class="tab" data-v="acc">👤 Akun</button></div>
 <div class="pn mu" id="hl" style="margin-bottom:12px"></div>
 
 <div class="g" id="v-inv">
@@ -174,6 +174,15 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 <h2 style="margin-top:14px">🏙️ Pasar apartemen</h2><div class="mu">Apartemen dibeli sebagai investasi: sewa lebih tinggi (±5%/thn) tapi lebih sering kosong, ada IPL, dan harganya naik sedikit lebih pelan dari rumah. Pakai simulasi KPR dan filter kawasan di atas.</div><div class="g2" id="acat" style="margin-top:8px"></div>
 <div class="mu" style="margin-top:8px">Biaya pembelian 6% (BPHTB, notaris, administrasi) dan provisi bank 1% dari pinjaman. Cicilan anuitas dengan bunga fixed selama tenor: 8,5% mengikuti suku bunga BI saat akad (rumah subsidi 5%). Total cicilan maksimal 40% penghasilan. Kenaikan nilai rumah tergantung kawasan (±3% sampai ±8% per tahun), jual dikenai biaya 3%. Rumah di BSD City dan kawasan yang lebih elit memberi koneksi bisnis: bocoran prediksi saham tiap bulan dan izin mendirikan perusahaan sendiri (tab Bisnis). Makin elit kawasannya, makin akurat bocorannya dan makin banyak perusahaan yang boleh didirikan. Pelunasan dipercepat dikenai penalti 1% pada 3 tahun pertama. Kas minus 6 bulan berturut-turut membuat rumah disita bank dan dilelang 70% nilai pasar. Harga mengikuti inflasi.</div></section></div>
 <div id="v-ach" style="display:none"><section class="pn"><h2>🏅 Prestasi &amp; gelar</h2><div class="mu" id="achs"></div><div class="gl"><i id="achb"></i></div><label class="mu" for="ttsel">Gelar yang ditampilkan (muncul di leaderboard)</label><select id="ttsel"></select><div class="ag" id="achg"></div></section></div>
+<div id="v-soc" style="display:none"><div class="g2">
+<section class="pn"><h2>🔔 Notifikasi &amp; permintaan</h2><div class="mu" id="sst"></div><div id="sinb"></div><details><summary>Riwayat notifikasi</summary><div class="log" id="shist"></div></details></section>
+<section class="pn"><h2>🎁 Kirim uang</h2><div class="mu">Uang langsung dipotong dari kasmu dan penerima mendapat notifikasi. Penerima harus pernah membuka tab ini.</div><select id="sgto" aria-label="Penerima"></select><input type="number" id="sgam" placeholder="Jumlah (Rp)" min="1000"><input type="text" id="sgnt" maxlength="80" placeholder="Pesan (opsional)"><div class="row"><button class="pc" data-s="gift">🎁 Kirim</button></div></section>
+<section class="pn"><h2>🏭 Usaha patungan</h2><div class="mu">Bangun perusahaan bersama pemain lain. Laba dibagi sesuai porsi modal, tiap 5 menit nyata (±2% dari total modal, ada risiko krisis). Tiap karyawan di usaha menambah laba 8%. Keluar atau bubar = modal kembali 70%.</div>
+<h3>Dirikan usaha</h3><input type="text" id="svn" maxlength="24" placeholder="Nama usaha, mis. PT Maju Bersama"><select id="svf" aria-label="Bidang"></select><input type="number" id="svc" placeholder="Modal awalmu (min. Rp10.000.000)" min="10000000"><div class="row"><button class="pc" data-s="vnew">Dirikan</button></div>
+<h3>Ajak mitra</h3><select id="svv" aria-label="Usaha"></select><select id="svp" aria-label="Calon mitra"></select><input type="number" id="svcp" placeholder="Modal yang diminta dari mitra (Rp)" min="10000000"><div class="row"><button class="pc" data-s="vinv">Kirim undangan</button></div>
+<div id="svl"></div></section>
+<section class="pn"><h2>👔 Karyawan</h2><div class="mu">Kirim tawaran kerja ke pemain lain. Gaji baru berjalan kalau mereka menerima, dibayar dari kasmu tiap bulan game (atau bayar manual).</div><select id="shp" aria-label="Calon karyawan"></select><input type="text" id="shr" maxlength="30" placeholder="Jabatan, mis. Manajer"><input type="number" id="shs" placeholder="Gaji per bulan (min. Rp500.000)" min="500000"><select id="shv" aria-label="Usaha"></select><div class="row"><button class="pc" data-s="hire">Tawarkan pekerjaan</button></div><div id="sel"></div></section>
+</div></div>
 <div id="v-lb" style="display:none"><section class="pn"><h2>🥇 Leaderboard</h2><div class="mu" id="lbme"></div><div class="row"><button class="pc" id="lbr">🔄 Muat ulang</button></div><div id="lbt"></div><div class="mu" style="margin-top:8px">Peringkat berdasarkan kekayaan puncak yang pernah dicapai. Skor dikirim otomatis saat terhubung ke server. Klik nama pemain untuk melihat profil, status, dan portofolionya.</div></section></div>
 <div id="v-gar" style="display:none"><section class="pn"><h2>🚗 Garasi</h2><div id="garo"></div></section>
  <section class="pn" style="margin-top:12px"><h2>🏬 Showroom</h2>
@@ -495,7 +504,7 @@ function month(){divMonth();bankMonth();if(S.sch){schoolMonth();return}
  if(ed.cur){const e=EDU[ed.cur];ex+=tui(e);if(--ed.left<=0){ed.lv=e[1];ed.cur=null;lg('Lulus '+e[0]+'!')}}
  if(S.bc){ex+=S.bc.c;if(--S.bc.left<=0)bcDone()}
   const tx=tax(sal);S.cash+=sal+sp+ki-ex-tx;lg('Gajian: gaji '+sg(sal)+(sp?', pasangan '+sg(sp):'')+(ki?', bantuan anak '+sg(ki):'')+', pajak '+sg(-tx)+', pengeluaran '+sg(-ex));
- bizMonth();coMonth();loveMonth();kidsMonth();riskMonth();vehMonth();mortMonth();tipsMonth();exMonth();
+ bizMonth();coMonth();socMonth();loveMonth();kidsMonth();riskMonth();vehMonth();mortMonth();tipsMonth();exMonth();
  if(S.day%360==0){S.cash+=sal;lg('Tahun baru: THR '+sg(sal)+', inflasi 4%, kenaikan gaji umum 5%')}
  yearly();if(R()<.65)apply(rnd(EVT),'Berita');
  if(R()<.3){const e=rnd([['Kebutuhan mendadak (perabot, servis kecil)',-5e5],['Bonus kinerja',8e5],['Angpao dan hadiah',5e5]]);S.cash+=e[1];lg(e[0]+' '+sg(e[1]))}
@@ -574,7 +583,7 @@ function render(){
  A.forEach(a=>{const p=$('p-'+a.id);if(!p)return;p.textContent=fp(P[a.id]);const c=chg(a.id),e=$('c-'+a.id);e.textContent=(c>=0?'+':'')+c.toFixed(2)+'%';e.className=c>=0?'up':'dn'});
  document.querySelectorAll('.it').forEach(e=>e.classList.toggle('on',e.dataset.id==cur));
  document.querySelectorAll('#tabs .tab').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v==vw));
- ['inv','car','bank','biz','ofr','love','life','gar','cty','prp','ach','lb','acc','rb'].forEach(v=>$('v-'+v).style.display=vw==v?(v=='inv'?'grid':''):'none');
+ ['inv','car','bank','biz','ofr','love','life','gar','cty','prp','ach','lb','soc','acc','rb'].forEach(v=>$('v-'+v).style.display=vw==v?(v=='inv'?'grid':''):'none');
  const w=val(),jf=JB(S.job),jl=jf?lvl(jf.id):0,xp=S.xp[S.job]||0,sk=S.sk[S.job]||0,pay0=jf?Math.round(pay(jf)*pt()):0,ed=S.edu,tu=(ed.cur?tui(EDU[ed.cur]):0)+(S.bc?S.bc.c:0);
  const stage=S.sch?(S.sch=='pilih'?'Lulus SMP, pilih jalur':'Kelas '+S.sg+' '+SCH[S.sch][0]):ed.cur?'Kuliah '+EDU[ed.cur][0]:jf?title(jf,jl):'Lulusan '+ELV[ed.lv]+', siap kerja';
  $('av').textContent=S.sch?(S.sch=='sd'?'🎒':S.sch=='smp'?'📚':'🎓'):ed.cur?'🏛️':jf?(S.mar?'👨‍👩‍👧':'💼'):'🏠';$('stg').textContent=stage;
@@ -630,7 +639,7 @@ function render(){
   setH($('bizg'),BZ.map(d=>{const b=S.biz[d[0]],ok=S.edu.lv>=d[7]&&(S.meta.rb||0)>=(d[8]||0);return`<div class="card"><b>${d[2]} ${d[1]}</b><div class="mu">${b?'Level '+b.l+'/5 · laba rata-rata '+rp(bzP(d,b.l)*WG())+'/bln':'Modal '+rp(d[3])+' · laba awal ±'+rp(d[4])+'/bln'}<br>Volatilitas ${Math.round(d[5]*100)}%${d[7]?' · syarat '+ELV[d[7]]:''}${d[8]&&(S.meta.rb||0)<d[8]?' · 🔒 terbuka di rebirth ke-'+d[8]:''} · nilai terkait bidang ${JB(d[6]).n}</div><div class="row">${b?`<button class="pc" data-a="bu:${d[0]}" ${b.l>=5?'disabled':''}>${b.l>=5?'Level maks':'Upgrade '+rp(bzUp(d,b.l+1))}</button><button class="pc" data-a="bs:${d[0]}">Jual ${rp(b.inv*.6)}</button>`:`<button class="pc" data-a="bo:${d[0]}" ${ok&&!S.sch&&S.cash>=d[3]?'':'disabled'}>Buka usaha</button>`}</div></div>`}).join(''));
  }
  if(vw=='biz')renderCo();if(vw=='love'){ensurePt();renderLove()}
- if(vw=='ofr')renderOfr();if(vw=='gar')renderGar();if(vw=='prp')renderPrp();if(vw=='ach')renderAch();if(vw=='lb')renderLb();if(vw=='acc')renderAcc();if(vw=='rb')renderRb();if(vw=='bank')renderBank();
+ if(vw=='ofr')renderOfr();if(vw=='gar')renderGar();if(vw=='prp')renderPrp();if(vw=='ach')renderAch();if(vw=='lb')renderLb();if(vw=='soc')renderSoc();if(vw=='acc')renderAcc();if(vw=='rb')renderRb();if(vw=='bank')renderBank();
  if(vw=='life'){ensurePt();
   $('hap').textContent=Math.round(S.hap)+'/100 · XP ×'+prod().toFixed(2)+' · gaji ×'+hb().toFixed(2);$('hapb').style.width=S.hap+'%';
   [['home',S.home],['food',S.food],['lifes',S.life]].forEach(([e,v])=>{if($(e).value!=v)$(e).value=v;$(e).disabled=!!S.sch});
@@ -1281,4 +1290,52 @@ $('v-cty').addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(
 {const _r=render;render=function(){_r();ccRender()}}
 {const _m=month;month=function(){if(S.adp>0&&!S.sch)S.adp--;if(ab()&&S.home=='ortu')S.home='kos';_m()}}
 render();
+
+/* ---- sosial: kirim uang, usaha patungan, karyawan (butuh setup_sosial.sql) ---- */
+let SOC={inb:[],users:[],vents:[],emps:[],hist:[],err:''},socBusy=false;
+const sx=(f,b)=>ar(f,Object.assign({p_id:ACC,p_hash:ACCT&&ACCT.h},b));
+const SERR={PENERIMA_TIDAK_ADA:'Pemain itu belum pernah membuka tab Sosial.',JUMLAH:'Jumlah tidak valid.',BELUM:'Gaji baru bisa dibayar lagi sebentar lagi.',USAHA_BUBAR:'Usaha sudah tidak ada.',SUDAH:'Permintaan sudah diproses.',PENUH:'Batas usaha/mitra tercapai atau sudah jadi mitra.',BUKAN_PEMILIK:'Hanya pendiri/anggota usaha yang boleh.'};
+const sErr=e=>SERR[e.code]||(/function|PGRST202/.test(e.message||'')?'Jalankan setup_sosial.sql di Supabase dulu.':String(e.message).slice(0,120));
+const fnm=f=>((typeof JB=='function'&&JB(f))||{}).n||f;
+function socMsg(w){const d=w.data||{},f=w.from?'@'+w.from:'';return w.kind=='gift'?'🎁 '+f+' mengirim '+rp(d.amt)+(d.note?' — “'+d.note+'”':''):w.kind=='payout'?'💰 '+d.note+' '+rp(d.amt):w.kind=='salary'?'💼 '+d.note+' dari '+f+' '+rp(d.amt):w.kind=='refund'?'↩️ '+d.t+' '+rp(d.amt):'ℹ️ '+d.t}
+function socBadge(){const b=document.querySelector('#tabs [data-v=soc]');if(b)b.textContent='🤝 Sosial'+(SOC.inb.length?' 🔴'+SOC.inb.length:'')}
+async function socSync(){if(!conn||!ACCT||socBusy)return;socBusy=true;
+ try{const r=await sx('x_sync',{p_dn:S.dn||''}),t=await sx('x_take',{});
+  if(t.amt>0){S.cash+=t.amt;sv()}
+  (t.rows||[]).forEach(w=>{const m=socMsg(w);SOC.hist.unshift(m);lg(m);toast('🔔 '+m)});SOC.hist=SOC.hist.slice(0,25);if((t.rows||[]).length)sv();
+  SOC.inb=(r.inbox||[]).filter(m=>m.kind=='vinv'||m.kind=='job');SOC.users=r.users||[];SOC.vents=r.vents||[];SOC.emps=r.emps||[];SOC.err=''}
+ catch(e){SOC.err=sErr(e)}
+ socBusy=false;socBadge();render()}
+async function socMonth(){if(!conn)return;for(const m of SOC.emps.filter(m=>m.boss==ACC)){if(S.cash<m.sal){lg('⚠️ Kas kurang untuk gaji @'+m.worker);continue}try{await sx('x_pay_sal',{p_emp:m.id});S.cash-=m.sal;lg('💼 Gaji @'+m.worker+' '+sg(-m.sal));sv()}catch(e){}}}
+setInterval(()=>{if(conn)socSync()},20000);setTimeout(()=>{if(conn)socSync()},4000);
+document.addEventListener('click',async e=>{const t=e.target.closest('[data-s]');if(!t||t.disabled)return;const[a,x,y]=t.dataset.s.split(':');
+ if(!conn)return toast('Masuk ke akun dulu untuk fitur sosial.');
+ const num=i=>Math.round(+$(i).value),cash=n=>n<=S.cash||(toast('Kas kurang dari '+rp(n)),false);
+ try{
+  if(a=='gift'){const to=$('sgto').value,n=num('sgam');if(!to)return toast('Pilih penerima.');if(!(n>=1000))return toast('Minimal Rp1.000.');if(!cash(n))return;
+   await sx('x_gift',{p_to:to,p_amt:n,p_note:$('sgnt').value});S.cash-=n;lg('🎁 Kirim uang ke @'+to+' '+sg(-n));$('sgam').value='';$('sgnt').value='';toast('Terkirim ke @'+to+' — penerima mendapat notifikasi.')}
+  else if(a=='vnew'){const n=num('svc');if(!(n>=1e7))return toast('Modal minimal Rp10.000.000.');if(!cash(n))return;
+   await sx('x_vent_new',{p_name:$('svn').value||'Usaha Bersama',p_field:$('svf').value,p_cap:n});S.cash-=n;lg('🏭 Mendirikan usaha patungan '+sg(-n));toast('Usaha didirikan. Sekarang ajak mitra.')}
+  else if(a=='vinv'){const n=num('svcp');if(!$('svv').value||!$('svp').value)return toast('Pilih usaha dan calon mitra.');if(!(n>=1e7))return toast('Modal minimal Rp10.000.000.');
+   await sx('x_vent_invite',{p_vent:+$('svv').value,p_to:$('svp').value,p_cap:n});toast('Undangan terkirim ke @'+$('svp').value)}
+  else if(a=='hire'){const n=num('shs');if(!$('shp').value)return toast('Pilih calon karyawan.');if(!(n>=5e5))return toast('Gaji minimal Rp500.000.');
+   await sx('x_hire',{p_to:$('shp').value,p_role:$('shr').value||'Staf',p_sal:n,p_vent:$('shv').value?+$('shv').value:null});toast('Tawaran terkirim. Menunggu jawaban @'+$('shp').value)}
+  else if(a=='rsp'){const m=SOC.inb.find(z=>z.id==x),yes=y=='1';if(yes&&m.kind=='vinv'&&!cash(+m.data.cap))return;
+   await sx('x_respond',{p_msg:+x,p_yes:yes});if(yes&&m.kind=='vinv'){S.cash-=+m.data.cap;lg('🏭 Bergabung di '+m.data.name+' '+sg(-m.data.cap))}else if(yes)lg('👔 Menerima kerja dari @'+m.from);toast(yes?'Diterima ✓':'Ditolak.')}
+  else if(a=='pay'){const m=SOC.emps.find(z=>z.id==x);if(!cash(+m.sal))return;await sx('x_pay_sal',{p_emp:+x});S.cash-=m.sal;lg('💼 Gaji @'+m.worker+' '+sg(-m.sal));toast('Gaji dibayar.')}
+  else if(a=='quit'){if(!confirm('Akhiri hubungan kerja?'))return;await sx('x_quit',{p_emp:+x});toast('Hubungan kerja diakhiri.')}
+  else if(a=='lv'){if(!confirm('Keluar/bubarkan usaha? Modal kembali 70%.'))return;await sx('x_vent_leave',{p_vent:+x});toast('Selesai.')}
+  sv();await socSync()}catch(er){toast(sErr(er))}});
+function renderSoc(){const U=SOC.users,mine=SOC.vents.filter(v=>v.owner==ACC);
+ const uo='<option value="">— pilih pemain —</option>'+U.map(u=>'<option value="'+esc(u.id)+'">@'+esc(u.id)+(u.dn?' · '+esc(u.dn):'')+'</option>').join('');
+ ['sgto','svp','shp'].forEach(i=>setH($(i),uo));
+ if(!$('svf').options.length)$('svf').innerHTML=$('cofs').innerHTML;
+ setH($('svv'),mine.length?mine.map(v=>'<option value="'+v.id+'">'+esc(v.name)+'</option>').join(''):'<option value="">(belum punya usaha sendiri)</option>');
+ setH($('shv'),'<option value="">Tanpa usaha tertentu</option>'+SOC.vents.map(v=>'<option value="'+v.id+'">Untuk '+esc(v.name)+'</option>').join(''));
+ $('sst').textContent=!conn?'Masuk ke akun dulu.':SOC.err?'⚠️ '+SOC.err:U.length+' pemain lain terdaftar · sinkron tiap 20 detik';
+ setH($('sinb'),SOC.inb.map(m=>{const d=m.data;return'<div class="card" style="margin:6px 0"><b>'+(m.kind=='vinv'?'🏭 Undangan usaha dari @':'👔 Tawaran kerja dari @')+esc(m.from)+'</b><div class="mu">'+(m.kind=='vinv'?esc(d.name)+' ('+esc(fnm(d.field))+') · modalmu '+rp(d.cap)+' · laba dibagi sesuai porsi modal':esc(d.role)+(d.vname?' di '+esc(d.vname):'')+' · gaji '+rp(d.sal)+'/bln')+'</div><div class="row"><button class="pc" data-s="rsp:'+m.id+':1">✅ Terima</button><button class="pc" data-s="rsp:'+m.id+':0">❌ Tolak</button></div></div>'}).join('')||'<div class="mu" style="margin-top:6px">Tidak ada permintaan baru.</div>');
+ setH($('shist'),SOC.hist.map(h=>'<div>'+esc(h)+'</div>').join('')||'<div>Belum ada.</div>');
+ setH($('svl'),SOC.vents.map(v=>{const tot=v.partners.reduce((a,p)=>a+p.cap,0),me=v.partners.find(p=>p.id==ACC),w=SOC.emps.filter(z=>z.vent==v.id).length;
+  return'<div class="card" style="margin-top:8px"><b>🏭 '+esc(v.name)+(v.owner==ACC?' (pendiri)':'')+'</b><div class="mu">'+esc(fnm(v.field))+' · total modal '+rp(tot)+' · porsimu '+(me?(me.cap/tot*100).toFixed(1):0)+'% · '+w+' karyawan<br>Mitra: '+v.partners.map(p=>'@'+esc(p.id)+' '+(p.cap/tot*100).toFixed(0)+'%').join(', ')+'</div><div class="row"><button class="pc" data-s="lv:'+v.id+'">'+(v.owner==ACC?'Bubarkan':'Keluar')+'</button></div></div>'}).join(''));
+ setH($('sel'),SOC.emps.map(m=>{const b=m.boss==ACC;return'<div class="card" style="margin-top:8px"><b>'+(b?'Karyawanmu: @'+esc(m.worker):'Bosmu: @'+esc(m.boss))+'</b><div class="mu">'+esc(m.role)+' · '+rp(m.sal)+'/bln</div><div class="row">'+(b?'<button class="pc" data-s="pay:'+m.id+'">Bayar gaji</button>':'')+'<button class="pc" data-s="quit:'+m.id+'">'+(b?'Pecat':'Resign')+'</button></div></div>'}).join('')||'<div class="mu" style="margin-top:8px">Belum ada hubungan kerja.</div>')}
 </script></body></html>
