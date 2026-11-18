@@ -50,66 +50,13 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 .rcode{font:700 19px ui-monospace,Consolas,monospace;letter-spacing:1px;text-align:center;padding:12px;border:2px dashed var(--ac);border-radius:12px;margin:10px 0;user-select:all;word-break:break-all}
 @keyframes pls{0%,100%{box-shadow:0 0 0 0 rgba(10,138,92,.5)}50%{box-shadow:0 0 0 6px rgba(10,138,92,0)}}.pc.glow{animation:pls 1.6s infinite}
 .sv{font-size:12px}.sv.ok{color:#9ff0c8}.sv.warn{color:#ffd98a}
-
-/* ===== efek nama (username & nama tampilan) berdasarkan target kekayaan puncak ===== */
-.nt1{--gc:#12b886;--g:linear-gradient(90deg,#0fa57a,#5eead4,#0fa57a)}
-.nt2{--gc:#2f9bff;--g:linear-gradient(90deg,#2f7df6,#22d3ee,#8fd3ff,#22d3ee,#2f7df6)}
-.nt3{--gc:#ffb800;--g:linear-gradient(90deg,#d99100,#ffd54a,#fff2b0,#ffd54a,#d99100)}
-.nt4{--gc:#ff6a1f;--g:linear-gradient(90deg,#ff5a1f,#ffb300,#ff2d6f,#ffb300,#ff5a1f)}
-.nt5{--gc:#c15cff;--g:linear-gradient(90deg,#7c3aed,#ec4899,#06b6d4,#7c3aed)}
-.nt6{--gc:#ffffff;--g:linear-gradient(90deg,#ff3b3b,#ffb300,#2ee66b,#19b7ff,#a855f7,#ff3b3b)}
-.nm{display:inline-block;position:relative;font-weight:700;background-image:var(--g);background-size:200% 100%}
-@supports((-webkit-background-clip:text) or (background-clip:text)){.nm{-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}}
-small .nm{font-weight:600}
-.nm.nt1{background-size:100% 100%;animation:nmglow 2.6s ease-in-out infinite}
-.nm.nt2{animation:nmflow 3s linear infinite}
-.nm.nt3{animation:nmflow 3.2s linear infinite,nmglow 2.4s ease-in-out infinite}
-.nm.nt4{animation:nmflow 2.4s linear infinite,nmglow 1.8s ease-in-out infinite;padding-right:.6em}
-.nm.nt5{animation:nmflow 4s linear infinite,nmglow 2.2s ease-in-out infinite;padding-right:.6em}
-.nm.nt6{animation:nmflow 2s linear infinite,nmglow 1.4s ease-in-out infinite;padding:0 .6em}
-.nm.nt4::after,.nm.nt5::after,.nm.nt6::after,.nm.nt6::before{content:'✦';position:absolute;top:-.3em;font-size:.65em;color:var(--gc);-webkit-text-fill-color:var(--gc);animation:nmtw 1.8s ease-in-out infinite}
-.nm.nt4::after,.nm.nt5::after,.nm.nt6::after{right:0}.nm.nt6::before{content:'✧';left:0;animation-delay:.9s}
-@keyframes nmflow{to{background-position:200% 0}}
-@keyframes nmglow{0%,100%{filter:drop-shadow(0 0 1px var(--gc))}50%{filter:drop-shadow(0 0 6px var(--gc))}}
-@keyframes nmtw{0%,100%{opacity:.15;transform:scale(.5) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(45deg)}}
-.pfh{position:relative;padding-bottom:9px;margin-bottom:2px}
-.pfh[class*=nt]::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:3px;background:var(--g);background-size:200% 100%;animation:nmflow 3s linear infinite}
-.lbt tr.lt td:first-child{box-shadow:inset 3px 0 0 var(--gc)}
-.lbt tr.lt.nt4 td:first-child,.lbt tr.lt.nt5 td:first-child,.lbt tr.lt.nt6 td:first-child{animation:nmbar 1.8s ease-in-out infinite}
-@keyframes nmbar{0%,100%{box-shadow:inset 3px 0 0 var(--gc)}50%{box-shadow:inset 7px 0 0 var(--gc)}}
-#accn.pop{transform-origin:left center;animation:nmpop 1.1s ease 2}
-@keyframes nmpop{0%,100%{transform:scale(1)}35%{transform:scale(1.18)}}
-#cfx{position:fixed;inset:0;pointer-events:none;z-index:30;overflow:hidden}
-#cfx i{position:absolute;top:-14px;width:9px;height:14px;border-radius:2px;opacity:0;animation:cfall var(--d,2.4s) ease-in forwards}
-@keyframes cfall{0%{opacity:1;transform:translate(0,0) rotate(0)}85%{opacity:1}100%{opacity:0;transform:translate(var(--x),105vh) rotate(var(--r))}}
-.cbn{position:absolute;left:50%;top:20%;background:rgba(14,24,30,.94);color:#fff;border:2px solid var(--gc);border-radius:18px;padding:14px 24px;text-align:center;max-width:90vw;font-size:14px;box-shadow:0 10px 40px rgba(0,0,0,.45);animation:cban 3.8s ease forwards}
-@keyframes cban{0%{opacity:0;transform:translate(-50%,12px) scale(.6)}12%{opacity:1;transform:translate(-50%,0) scale(1.07)}20%{transform:translate(-50%,0) scale(1)}85%{opacity:1}100%{opacity:0;transform:translate(-50%,-12px) scale(.98)}}
-@media(prefers-reduced-motion:reduce){.nm,.nm::before,.nm::after,.pfh::after,.lbt tr.lt td:first-child,#accn.pop,#cfx i{animation:none!important}#cfx i{opacity:0}}
-/* ===== rekening bank: kotak saldo tidak lagi terpotong ===== */
-.g2>.pn,.pn{min-width:0}
-.bkb{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:8px;margin:6px 0}
-.bkb .box{min-width:0;overflow:hidden}
-.bkb .box b{font-size:16px;line-height:1.3;overflow-wrap:anywhere}
-.bkb .box b.lg{font-size:14.5px}.bkb .box b.xl{font-size:13px}
-.bkb .box small{overflow-wrap:anywhere}
-.tw{overflow-x:auto;-webkit-overflow-scrolling:touch}.dpt{min-width:540px}.dpt td:not(:last-child){white-space:nowrap}
-/* ===== event dialog ===== */
-#evd{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:25;padding:14px}
-#evd .ab{animation:evin .28s ease}
-@keyframes evin{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
-.evh{display:flex;gap:12px;align-items:center}.evh .ei{font-size:36px;line-height:1}
-.evo{display:grid;gap:8px;margin-top:12px}
-.evo button{text-align:left;border:1px solid var(--ln);background:var(--bg);color:var(--ink);border-radius:14px;padding:10px 12px;cursor:pointer;font:inherit}
-.evo button:hover:not(:disabled){border-color:var(--ac)}.evo button:disabled{opacity:.5;cursor:not-allowed}
-.evo b{display:block;font-size:14px}.evo small{display:block;color:var(--mu);margin-top:2px}
-@media(prefers-reduced-motion:reduce){#evd .ab{animation:none}}
 </style></head><body><div class="w">
 <div class="hero">
  <div class="hb"><div class="av" id="av">🎒</div><div><div style="font:700 22px Georgia,serif">Life Simulator</div><div id="stg" class="mu"></div><div class="acc" id="accn"></div><div class="mu" id="clk"></div><span class="sv" id="svs">Menghubungkan ke server…</span></div></div>
  <div id="pills"></div>
  <div style="text-align:right"><span class="ttl" id="rank"></span><b class="nw" id="nw"></b><span class="mu" id="ret"></span><div class="row" style="justify-content:flex-end;margin-top:6px"><button class="pc" id="dly">🎁 Hadiah harian</button><button class="pc" id="spd">⏩ Kecepatan ×1</button><button class="pc" id="thm" title="Ganti tema">🌓</button></div></div>
 </div>
-<div class="tabs" id="tabs"><button class="tab" data-v="inv">📈 Investasi</button><button class="tab" data-v="car">💼 Karier</button><button class="tab" data-v="bank">🏦 Bank</button><button class="tab" data-v="biz">🏪 Bisnis</button><button class="tab" data-v="love">💕 Pasangan</button><button class="tab" data-v="life">🏡 Kehidupan</button><button class="tab" data-v="gar">🚗 Garasi</button><button class="tab" data-v="prp">🏠 Properti</button><button class="tab" data-v="ach">🏅 Prestasi</button><button class="tab" data-v="lb">🥇 Leaderboard</button><button class="tab" data-v="rb">🔁 Rebirth</button><button class="tab" data-v="acc">👤 Akun</button></div>
+<div class="tabs" id="tabs"><button class="tab" data-v="inv">📈 Investasi</button><button class="tab" data-v="car">💼 Karier</button><button class="tab" data-v="bank">🏦 Bank</button><button class="tab" data-v="biz">🏪 Bisnis</button><button class="tab" data-v="ofr">🤝 Tawaran</button><button class="tab" data-v="love">💕 Pasangan</button><button class="tab" data-v="life">🏡 Kehidupan</button><button class="tab" data-v="gar">🚗 Garasi</button><button class="tab" data-v="prp">🏠 Properti</button><button class="tab" data-v="ach">🏅 Prestasi</button><button class="tab" data-v="lb">🥇 Leaderboard</button><button class="tab" data-v="rb">🔁 Rebirth</button><button class="tab" data-v="acc">👤 Akun</button></div>
 <div class="pn mu" id="hl" style="margin-bottom:12px"></div>
 
 <div class="g" id="v-inv">
@@ -139,6 +86,7 @@ small .nm{font-weight:600}
    <div class="gl"><i id="gl"></i></div><div class="mu" id="glt"></div>
    <table><thead><tr><th>Aset</th><th>Nilai</th><th>P/L</th></tr></thead><tbody id="hold"></tbody></table>
   </section>
+  <section class="pn" id="firesec"><h2>🔥 Kebebasan finansial (FIRE)</h2><div id="fire"></div></section>
   <section class="pn" id="tipsec" style="display:none"><h2>🕵️ Bocoran algoritma pasar</h2><div id="tiplist"></div></section>
   <section class="pn"><h2>Riwayat</h2><div class="log" id="log"></div>
    <p style="margin:8px 0 0"><button class="lk" id="reset">Mulai ulang dari kelas 1 SD</button> · <button class="lk" id="swa">Ganti akun</button></p></section>
@@ -154,10 +102,17 @@ small .nm{font-weight:600}
   <section class="pn"><h2>🎓 Bootcamp &amp; kursus lintas bidang</h2><div class="mu" style="margin-bottom:6px">Pilih bidang apa pun, tidak harus bidangmu sekarang. Selama bootcamp, gaji dan XP kerja jadi 80%. Setelah lulus: skill dan XP di bidang tujuan naik, dan sertifikat masuk CV. Sertifikat juga menggantikan satu jenjang pendidikan untuk jabatan awal (Trainee sampai Staf), jadi bidang yang minta D3/S1 bisa dimasuki lebih cepat.</div>
 <label class="mu" for="bcf">Bidang</label><select id="bcf"></select><label class="mu" for="bcp">Program</label><select id="bcp"></select>
 <div class="row"><button class="pc" id="bcgo" data-a="bcgo">Daftar bootcamp</button><button class="pc" id="bcx" data-a="bcx" style="display:none">Berhenti</button></div><div id="bci"></div></section>
+  <section class="pn"><h2>🤝 Negosiasi gaji</h2><div class="mu" id="ngi"></div>
+<label class="mu" for="ngt">Target kenaikan gaji</label><select id="ngt"><option value=".05">+5% (wajar)</option><option value=".1" selected>+10% (percaya diri)</option><option value=".2">+20% (ambisius)</option><option value=".35">+35% (sangat berani)</option></select>
+<label class="mu" style="display:block;margin:4px 0"><input type="checkbox" id="ngb" style="width:auto;display:inline;margin:0 6px 0 0">Bawa tawaran dari perusahaan lain (butuh CV kuat)</label>
+<div class="row"><button class="pc" id="ngbtn" data-a="ngo">Ajukan negosiasi</button></div><div class="mu" id="ngc"></div></section>
+  <section class="pn"><h2>📦 Risiko PHK</h2><div id="lor"></div></section>
   <section class="pn" style="grid-column:1/-1"><h2>Pendapatan bersih</h2><div id="netinc"></div></section>
   <section class="pn" style="grid-column:1/-1"><h2>📄 CV &amp; portofolio karier</h2><div id="cvb"></div></section>
  </div></div>
 
+<div id="v-ofr" style="display:none"><section class="pn"><h2>🤝 Tawaran investasi dari teman</h2><div class="mu" id="ofs"></div><div class="g2" id="ofq" style="margin-top:10px"></div></section>
+<section class="pn" style="margin-top:12px"><h2>Investasi &amp; kewajiban berjalan</h2><div class="g2" id="ofa"></div></section></div>
 <div id="v-bank" style="display:none"><div class="g2">
 <section class="pn"><h2>🏦 Rekening bank</h2><div id="bkinfo"></div>
 <label class="mu" for="bka">Nominal (Rp), minimal Rp10.000</label><input type="number" id="bka" min="10000" step="100000" value="1000000">
@@ -179,7 +134,7 @@ small .nm{font-weight:600}
 
 <div id="v-love" style="display:none"><section class="pn"><h2>💕 Pasangan</h2><div id="lovec"></div></section><section class="pn" style="margin-top:12px"><h2>👶 Keluarga &amp; anak</h2><div id="famc"></div></section></div>
 <div id="v-acc" style="display:none"><div class="g2">
-<section class="pn"><h2>👤 Profil</h2><div class="mu" id="acs"></div><div id="fxinfo"></div>
+<section class="pn"><h2>👤 Profil</h2><div class="mu" id="acs"></div>
 <label class="mu" for="dnm">Nama tampilan (muncul di header dan leaderboard)</label><input type="text" id="dnm" maxlength="20" placeholder="mis. Budi si Sultan">
 <label class="mu" style="display:block;margin:4px 0"><input type="checkbox" id="pubp" style="width:auto;display:inline;margin:0 6px 0 0">Tampilkan portofolio saham di profil publik (leaderboard)</label><div class="row"><button class="pc" id="dns">Simpan nama tampilan</button></div><hr class="sep">
 <label class="mu" for="nun">Username baru (3-20: huruf kecil, angka, _)</label><input type="text" id="nun" maxlength="20" autocomplete="off">
@@ -237,7 +192,6 @@ small .nm{font-weight:600}
 <button class="ac" id="acn" style="background:var(--up);width:100%">Lanjut main</button></div>
 </div></div>
 <div id="prof" role="dialog" aria-modal="true" aria-label="Profil pemain" style="position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:20;padding:14px"><div class="ab" style="max-width:580px"><div id="profb"></div><button class="ac" id="profx" style="background:var(--ac);width:100%;margin-top:12px">Tutup</button></div></div>
-<div id="evd" role="dialog" aria-modal="true" aria-label="Event"><div class="ab" style="max-width:520px"><div id="evb"></div></div></div>
 <div id="toast" role="status"></div>
 <script>
 const GOAL=5e8,DT=3,R=Math.random,$=i=>document.getElementById(i),dt=1/1095,sq=Math.sqrt(dt);
@@ -278,14 +232,7 @@ const G=id=>A.find(a=>a.id==id);
 const rp=n=>(n<0?'-':'')+'Rp'+Math.abs(n).toLocaleString('id-ID',{maximumFractionDigits:0});
 const fp=p=>p>=1000?rp(p):'Rp'+p.toLocaleString('id-ID',{maximumFractionDigits:2});
 const sg=n=>(n>=0?'+':'')+rp(n);
-/* jumlah saham beredar (lembar), perkiraan dan disederhanakan untuk simulasi */
-const SHO={BBCA:123.3e9,BBRI:151.5e9,BMRI:93.3e9,BBNI:37.3e9,BRIS:46.1e9,TLKM:99.1e9,EXCL:13.1e9,TOWR:51e9,ASII:40.5e9,UNVR:38.2e9,ICBP:11.7e9,INDF:8.8e9,AMRT:41.5e9,CPIN:16.4e9,KLBF:46.9e9,SMGR:6.8e9,ADRO:29.9e9,PGAS:24.2e9,ANTM:24e9,MDKA:24.1e9,ACES:17.2e9,MAPI:16.6e9,GOTO:1100e9,BUKA:103e9};
-const fmtN=n=>(+n||0).toLocaleString('id-ID',{maximumFractionDigits:0});
-const fmtPct=p=>{if(!(p>0))return '0%';const d=p>=1?2:p>=.01?3:Math.min(12,Math.ceil(-Math.log10(p))+1);return p.toLocaleString('id-ID',{minimumFractionDigits:d,maximumFractionDigits:d})+'%'};
-const shoTxt=n=>n>=1e12?(n/1e12).toLocaleString('id-ID',{maximumFractionDigits:2})+' triliun':(n/1e9).toLocaleString('id-ID',{maximumFractionDigits:1})+' miliar';
-const ownPct=id=>SHO[id]?(S.hold[id]||0)/SHO[id]*100:0;
-const ownTxt=id=>SHO[id]&&(S.hold[id]||0)>0?' Kepemilikanmu di '+id+': '+fmtPct(ownPct(id))+' dari saham beredar.':'';
-const fresh=()=>({cash:0,hold:{},cost:{},log:['H1 B1 T1: kamu kelas 1 SD. Terima uang jajan tiap bulan dan belajar berinvestasi sejak dini!'],day:0,sim:{},fv:{},auto:null,job:null,xp:{},home:'ortu',food:'hemat',life:'min',hap:50,owned:0,houseV:0,sch:'sd',sg:1,sy:0,sma:0,trn:'umum',mods:[],nws:[],cpi:1,wage:1,lv:{},sk:{},edu:{lv:0,cur:null,left:0},cool:0,mar:0,glow:null,vcd:0,biz:{},pt:null,cands:[],fcd:0,div:0,ins:{h:'none',v:0,r:0},kids:[],preg:0,veh:{own:[]},ach:{},ttl:null,tman:0,pk:0,nt:0,nv:0,mort:null,hn:'',hp:0,kl:0,fav:{},dr:'',ds:0,dn:'',hd:'',hg:.04,tips:[],cos:[],th:0,pubp:1,ev:{},bk:{sav:0,dep:[],int:0},cv:{t:[],c:[]},bc:null,meta:{rb:0,pts:0,earn:0,up:{},tal:[],bt:null,bd:'',achc:0}});
+const fresh=()=>({cash:0,hold:{},cost:{},log:['H1 B1 T1: kamu kelas 1 SD. Terima uang jajan tiap bulan dan belajar berinvestasi sejak dini!'],day:0,sim:{},fv:{},auto:null,job:null,xp:{},home:'ortu',food:'hemat',life:'min',hap:50,owned:0,houseV:0,sch:'sd',sg:1,sy:0,sma:0,trn:'umum',mods:[],nws:[],cpi:1,wage:1,lv:{},sk:{},edu:{lv:0,cur:null,left:0},cool:0,mar:0,glow:null,vcd:0,biz:{},pt:null,cands:[],fcd:0,div:0,ins:{h:'none',v:0,r:0},kids:[],preg:0,veh:{own:[]},ach:{},ttl:null,tman:0,pk:0,nt:0,nv:0,mort:null,hn:'',hp:0,kl:0,fav:{},dr:'',ds:0,dn:'',hd:'',hg:.04,tips:[],cos:[],th:0,pubp:1,bk:{sav:0,dep:[],int:0},cv:{t:[],c:[]},bc:null,of:{q:[],a:[],debt:0,dm:0,st:{ok:0,sc:0,rj:0,lost:0,gain:0}},rent:0,fi:{mo:0,best:0,ok:0},neg:{j:'',m:0,cd:0,fl:0,w:0},lo:{n:0,pend:null,jk:0,jv:0},meta:{rb:0,pts:0,earn:0,up:{},tal:[],bt:null,bd:'',achc:0,fire:0}});
 /* ---- penyimpanan: server (db) + cadangan lokal ---- */
 let ACC='',ACCT=null,S=fresh(),P={},B={},SER={},cur='RDPU',cat='all',tk=0,tf='H',vw='inv',SPD=1,DOC=null,HDOC=null,dirty=false,busy=false,hc=0,mpts=null,hv=-1;
 try{const s=JSON.parse(localStorage.getItem('bl7'));if(s&&s.cash!=null)S=Object.assign(fresh(),s);const h=JSON.parse(localStorage.getItem('bl7h'));if(h)S.h=h}catch(e){}
@@ -317,8 +264,7 @@ function step(){tk++;
  A.forEach(a=>{const s=SER[a.id];s.push(P[a.id]);if(s.length>240)s.shift();S.sim[a.id]=P[a.id]});
  if(tk%5==0){chkAch();sv()}
 }
-let EVC=null,EVQ=[];
-setInterval(()=>{for(let q=0;q<SPD&&!EVC;q++)step();render()},1000);
+setInterval(()=>{for(let q=0;q<SPD;q++)step();render()},1000);
 /* ---- karier ---- */
 const XT=[0,90,280,620,1200,2100,3500],SKR=[0,0,8,20,35,55,75],HR=[0,0,0,35,45,55,65],M=[1,1.7,2.8,4.5,7,10.5,16],TN=['Trainee','Junior','Staf','Senior','Supervisor','Manajer','Direktur'];
 const JOBS=`ret|Retail & Penjualan|Retail|2.5|0
@@ -347,8 +293,8 @@ const HOME={ortu:['Numpang orang tua',0],kos:['Kos',8e5],kontrak:['Kontrak rumah
 const act=()=>S.mods.filter(m=>m.until>S.day),nb=()=>Object.keys(S.biz).length+(S.cos||[]).length;
 const tgt=()=>Math.min(100,Math.max(0,40+Object.keys(LIFE).indexOf(S.life)*25+Object.keys(FOOD).indexOf(S.food)*5+Object.keys(HOME).indexOf(S.home)*3+vehHap()+(S.pt?pf().h:0)+(S.glow&&S.glow.until>S.day?S.glow.v:0)-Math.min(9,3*nb())+famHap()+netHap()));
 const prod=()=>.6+.6*S.hap/100,hb=()=>.85+.3*S.hap/100,pt=()=>(S.edu.cur?.6:1)*(S.bc?.8:1)*(1-.04*nb())*(1-.03*Math.min(3,S.kids.filter(k=>kAge(k)<6).length));
-const bills=()=>(HOME[S.home][1]*hMul()+FOOD[S.food][1]+LIFE[S.life][1]+(curVeh()?0:TRN.umum[1]))*S.cpi*(S.mar?1.35:1)*pf().b*act().reduce((p,m)=>p*(m.fx.b||1),1);
-const pay=f=>f.b*M[lvl(f.id)]*S.wage*(1+Math.min(100,S.sk[f.id]||0)*.004)*hb()*(1+relB(f.id))*act().reduce((p,m)=>p*(m.fx.s||1)*((m.fx.f&&m.fx.f[f.id])||1),1);
+const bills=()=>(HOME[S.home][1]*hMul()+FOOD[S.food][1]+LIFE[S.life][1]+(curVeh()?0:TRN.umum[1]))*S.cpi*(S.mar?1.35:1)*pf().b*(1-.04*((S.meta.up||{}).fir||0))*act().reduce((p,m)=>p*(m.fx.b||1),1);
+const pay=f=>f.b*M[lvl(f.id)]*S.wage*(1+negM(f.id))*(1+Math.min(100,S.sk[f.id]||0)*.004)*hb()*(1+relB(f.id))*act().reduce((p,m)=>p*(m.fx.s||1)*((m.fx.f&&m.fx.f[f.id])||1),1);
 const spouse=()=>S.mar&&S.pt?S.pt.inc*.6*S.wage/(S.pt.w||1):S.mar?3e6*S.wage:0,tax=g=>Math.round(Math.max(0,g-4.5e6)*.08+g*.02);
 /* ---- dividen, asuransi, keluarga ---- */
 const DIV={BBCA:.025,BBRI:.06,BMRI:.06,BBNI:.05,BRIS:.01,TLKM:.06,EXCL:.02,TOWR:.03,ASII:.07,UNVR:.06,ICBP:.03,INDF:.04,AMRT:.01,CPIN:.025,KLBF:.03,SMGR:.025,ADRO:.08,PGAS:.06,ANTM:.03,ACES:.03,MAPI:.01},DTAX=.1,dOff=id=>[...id].reduce((t,c)=>t+c.charCodeAt(0),0)%6;
@@ -432,10 +378,10 @@ function bankAct(a,x){const b=S.bk,amt=Math.floor(parseFloat($('bka').value)||0)
   lg('🏦 Buka deposito '+rp(m)+' tenor '+n+' bulan, bunga '+pc2(r)+'/thn'+(aro?' (ARO)':''));toast('Deposito dibuka: '+pc2(r)+' per tahun.')}
  if(a=='bkwd'){const d=b.dep[+x];if(!d)return;const pen=Math.round(d.p*BKPEN);if(!confirm('Cairkan deposito '+rp(d.p)+' sebelum jatuh tempo? Bunga hangus dan dikenai penalti '+rp(pen)+'. Dana masuk ke tabungan.'))return;b.sav+=d.p-pen;b.dep.splice(+x,1);lg('🏦 Deposito dicairkan lebih awal '+rp(d.p)+', penalti '+sg(-pen)+', bunga hangus')}
  if(a=='bkaro'){const d=b.dep[+x];if(d)d.aro=d.aro?0:1}}
-function renderBank(){const b=S.bk,dv=b.dep.reduce((t,d)=>t+d.p,0),bx=(l,v,s)=>'<div class="box"><span class="mu">'+l+'</span><b class="'+(v.length>=16?'xl':v.length>=13?'lg':'')+'">'+v+'</b><small>'+s+'</small></div>';
- setH($('bkinfo'),'<div class="bkb">'+bx('💵 Uang kas',rp(S.cash),'Dompet, tanpa bunga')+bx('🏦 Tabungan',rp(b.sav),'Bunga '+pc2(bkSav())+'/thn')+bx('📈 Deposito',rp(dv),b.dep.length+' aktif')+bx('💰 Total bunga',rp(b.int),'Diterima, setelah pajak')+'</div>');
+function renderBank(){const b=S.bk,dv=b.dep.reduce((t,d)=>t+d.p,0),bx=(l,v,s)=>'<div class="box"><span class="mu">'+l+'</span><b>'+v+'</b><small>'+s+'</small></div>';
+ setH($('bkinfo'),'<div class="split">'+bx('💵 Uang kas',rp(S.cash),'Dompet, tanpa bunga')+bx('🏦 Tabungan',rp(b.sav),'Bunga '+pc2(bkSav())+'/thn')+bx('📈 Deposito',rp(dv),b.dep.length+' aktif')+bx('💰 Total bunga',rp(b.int),'Diterima, setelah pajak')+'</div>');
  setH($('bkrates'),'Suku bunga acuan BI '+pc2(bkRate())+'. Bunga deposito per tahun: '+BKT.map(q=>q[0]+' bln <b>'+pc2(bkDep(q[0]))+'</b>').join(' · '));
- setH($('bkdeps'),b.dep.length?'<div class="tw"><table class="dpt"><thead><tr><th>Pokok</th><th>Bunga/thn</th><th>Sisa</th><th>Bunga bersih</th><th></th></tr></thead><tbody>'+b.dep.map((d,i)=>'<tr><td>'+rp(d.p)+'<br><small>tenor '+d.n+' bln'+(d.aro?' · ARO':'')+'</small></td><td>'+pc2(d.r)+'</td><td>'+d.left+' bln</td><td class="up">'+sg(bkNet(d.p,d.p*d.r*d.n/12))+'</td><td class="rt"><button class="pc" data-a="bkaro:'+i+'">'+(d.aro?'ARO aktif':'ARO mati')+'</button> <button class="pc" data-a="bkwd:'+i+'">Cairkan awal</button></td></tr>').join('')+'</tbody></table></div>':'<div class="mu">Belum ada deposito aktif. Buka satu di kotak sebelah.</div>')}
+ setH($('bkdeps'),b.dep.length?'<table><thead><tr><th>Pokok</th><th>Bunga/thn</th><th>Sisa</th><th>Bunga bersih</th><th></th></tr></thead><tbody>'+b.dep.map((d,i)=>'<tr><td>'+rp(d.p)+'<br><small>tenor '+d.n+' bln'+(d.aro?' · ARO':'')+'</small></td><td>'+pc2(d.r)+'</td><td>'+d.left+' bln</td><td class="up">'+sg(bkNet(d.p,d.p*d.r*d.n/12))+'</td><td class="rt"><button class="pc" data-a="bkaro:'+i+'">'+(d.aro?'ARO aktif':'ARO mati')+'</button> <button class="pc" data-a="bkwd:'+i+'">Cairkan awal</button></td></tr>').join('')+'</tbody></table>':'<div class="mu">Belum ada deposito aktif. Buka satu di kotak sebelah.</div>')}
 $('bkmc').onclick=()=>{$('bka').value=Math.floor(Math.max(0,S.cash))};$('bkms').onclick=()=>{$('bka').value=Math.floor(S.bk.sav)};
 /* bootcamp */
 const BCP=[['kilat','Kilat',1,3e6,10,40],['reg','Reguler',3,9e6,28,130],['int','Intensif',6,24e6,55,300]];
@@ -486,7 +432,7 @@ const BZ=[['kopi','Warung Kopi','☕',25e6,8e5,.25,'kul',0],['onl','Toko Online'
 const bzP=(d,L)=>d[4]*(1+.7*(L-1)),bzUp=(d,L)=>Math.round(d[3]*.6*L);
 function bizMonth(){let t=0;for(const id in S.biz){const b=S.biz[id],d=BZ.find(x=>x[0]==id);let p=bzP(d,b.l)*S.wage*(1+(R()*2-1)*d[5])*(.8+.4*S.hap/100)*act().reduce((q,m)=>q*((m.fx.f&&m.fx.f[d[6]])||1),1);if(R()<d[5]*.12){p=-bzP(d,b.l)*1.2;lg(d[1]+': insiden usaha, rugi')}t+=p}if(nb()){S.cash+=t;lg('Laba usaha bulan ini '+sg(t))}}
 /* ---- peristiwa ---- */
-const EVT=[['BI naikkan suku bunga','Imbal hasil pasar uang & obligasi naik, saham tertekan',{r:.015,d:-.0015,m:6}],['BI turunkan suku bunga','Saham menguat, imbal hasil pasar uang turun',{r:-.01,d:.0015,m:6}],['Harga BBM naik','Ongkos hidup naik',{b:1.08,m:4,h:-2}],['Harga pangan melonjak','Pengeluaran makan naik',{b:1.06,m:3,h:-3}],['Bantuan sosial cair','Kamu menerima Rp600.000',{c:6e5,h:2}],['Booming startup dan AI','Gaji IT, Data, Desain naik, saham teknologi menguat',{f:{it:1.15,dat:1.15,ux:1.1,sw:1.2},d:.001,m:6}],['Gelombang PHK pabrik','Gaji manufaktur dan logistik turun',{f:{mfg:.85,log:.92},d:-.001,m:4}],['Krisis ekonomi global','Saham jatuh dan harga barang naik',{d:-.004,b:1.04,m:3,h:-6}],['Pemulihan ekonomi','Saham rebound, suasana membaik',{d:.003,m:3,h:3}],['Pajak kendaraan dan PBB naik','Pengeluaran tambahan Rp500.000',{c:-5e5}],['Pelatihan Prakerja dibuka','Skill +10 dan insentif Rp200.000',{sk:10,c:2e5}],['Wabah flu musiman','Biaya berobat Rp700.000',{c:-7e5,h:-8}],['Libur panjang dan festival','Kuliner, retail, wisata ramai',{f:{kul:1.12,ret:1.1,wis:1.15},h:5,m:2}],['Kerja jarak jauh meluas','Gaji marketing, CS, data naik',{f:{mkt:1.08,cs:1.08,dat:1.05},h:4,m:6}],['Harga komoditas naik','Energi, agro, tambang untung',{f:{ene:1.15,tan:1.1},d:.001,m:6}],['Proyek infrastruktur','Konstruksi dan properti naik',{f:{ars:1.12,prp:1.1,mfg:1.05},m:6}],['Rumah sakit kekurangan tenaga','Gaji medis naik',{f:{kes:1.12},m:6}],['Reformasi birokrasi','Gaji ASN dan hukum naik',{f:{pns:1.1,hkm:1.06},m:6}]];
+const EVT=[['BI naikkan suku bunga','Imbal hasil pasar uang & obligasi naik, saham tertekan',{r:.015,d:-.0015,m:6}],['BI turunkan suku bunga','Saham menguat, imbal hasil pasar uang turun',{r:-.01,d:.0015,m:6}],['Harga BBM naik','Ongkos hidup naik',{b:1.08,m:4,h:-2}],['Harga pangan melonjak','Pengeluaran makan naik',{b:1.06,m:3,h:-3}],['Bantuan sosial cair','Kamu menerima Rp600.000',{c:6e5,h:2}],['Booming startup dan AI','Gaji IT, Data, Desain naik, saham teknologi menguat',{f:{it:1.15,dat:1.15,ux:1.1,sw:1.2},d:.001,m:6}],['Gelombang PHK pabrik','Gaji manufaktur dan logistik turun',{f:{mfg:.85,log:.92},d:-.001,m:4}],['Krisis ekonomi global','Saham jatuh dan harga barang naik',{d:-.004,b:1.04,m:3,h:-6}],['Pemulihan ekonomi','Saham rebound, suasana membaik',{d:.003,m:3,h:3}],['Pajak kendaraan dan PBB naik','Pengeluaran tambahan Rp500.000',{c:-5e5}],['Pelatihan Prakerja dibuka','Skill +10 dan insentif Rp200.000',{sk:10,c:2e5}],['Wabah flu musiman','Biaya berobat Rp700.000',{c:-7e5,h:-8}],['Libur panjang dan festival','Kuliner, retail, wisata ramai',{f:{kul:1.12,ret:1.1,wis:1.15},h:5,m:2}],['Kerja jarak jauh meluas','Gaji marketing, CS, data naik',{f:{mkt:1.08,cs:1.08,dat:1.05},h:4,m:6}],['Harga komoditas naik','Energi, agro, tambang untung',{f:{ene:1.15,tan:1.1},d:.001,m:6}],['Proyek infrastruktur','Konstruksi dan properti naik',{f:{ars:1.12,prp:1.1,mfg:1.05},m:6}],['Rumah sakit kekurangan tenaga','Gaji medis naik',{f:{kes:1.12},m:6}],['Reformasi birokrasi','Gaji ASN dan hukum naik',{f:{pns:1.1,hkm:1.06},m:6}],['Efisiensi besar-besaran di industri teknologi','Gaji IT, Data, Desain turun dan risiko PHK naik',{f:{it:.9,dat:.92,ux:.92},d:-.001,m:5}]];
 const POL=[['UMR naik 8%','Gaji dasar naik permanen',{w:1.08}],['PPN naik','Harga barang naik permanen',{cpi:1.04}],['Keringanan pajak penghasilan','Gaji bersih lebih besar setahun',{s:1.04,m:12}],['Pemilu dan ketidakpastian politik','Pasar saham bergejolak',{d:-.002,m:6,h:-3}],['Program makan bergizi dan subsidi','Biaya hidup turun setahun',{b:.95,m:12,h:4}]];
 const rnd=a=>a[Math.floor(R()*a.length)];
 function apply(e,k){const x=S.sch?{d:e[2].d,r:e[2].r,m:e[2].m}:e[2];S.nws.unshift({d:S.day,t:e[0],x:e[1],k});S.nws=S.nws.slice(0,15);lg(k+': '+e[0]);
@@ -518,7 +464,7 @@ function month(){divMonth();bankMonth();if(S.sch){schoolMonth();return}
  if(ed.cur){const e=EDU[ed.cur];ex+=tui(e);if(--ed.left<=0){ed.lv=e[1];ed.cur=null;lg('Lulus '+e[0]+'!')}}
  if(S.bc){ex+=S.bc.c;if(--S.bc.left<=0)bcDone()}
   const tx=tax(sal);S.cash+=sal+sp+ki-ex-tx;lg('Gajian: gaji '+sg(sal)+(sp?', pasangan '+sg(sp):'')+(ki?', bantuan anak '+sg(ki):'')+', pajak '+sg(-tx)+', pengeluaran '+sg(-ex));
- bizMonth();coMonth();loveMonth();kidsMonth();riskMonth();vehMonth();mortMonth();tipsMonth();evMonth();
+ bizMonth();coMonth();loveMonth();kidsMonth();riskMonth();vehMonth();mortMonth();tipsMonth();exMonth();
  if(S.day%360==0){S.cash+=sal;lg('Tahun baru: THR '+sg(sal)+', inflasi 4%, kenaikan gaji umum 5%')}
  yearly();if(R()<.65)apply(rnd(EVT),'Berita');
  if(R()<.3){const e=rnd([['Kebutuhan mendadak (perabot, servis kecil)',-5e5],['Bonus kinerja',8e5],['Angpao dan hadiah',5e5]]);S.cash+=e[1];lg(e[0]+' '+sg(e[1]))}
@@ -528,10 +474,10 @@ function month(){divMonth();bankMonth();if(S.sch){schoolMonth();return}
 function lg(t){S.log.unshift(fdS(S.day)+': '+t);S.log=S.log.slice(0,50)}
 /* ---- transaksi ---- */
 function buy(id,amt,auto){const a=G(id),p=P[id];if(!(amt>=1e4))return toast('Minimal pembelian Rp10.000.');if(amt>S.cash+1e-6)return toast('Kas tidak cukup. Sisa '+rp(S.cash)+'.');
- const q=amt*(1-a.fb*feeM())/p,h=S.hold[id]||0;S.cost[id]=(h*(S.cost[id]||0)+q*p)/(h+q);S.hold[id]=h+q;S.cash-=amt;S.nt=(S.nt||0)+1;lg((auto?'[Rutin] ':'')+'Beli '+id+' '+rp(amt)+' @ '+fp(p));sv();render();toast('Pembelian berhasil.'+ownTxt(id))}
+ const q=amt*(1-a.fb*feeM())/p,h=S.hold[id]||0;S.cost[id]=(h*(S.cost[id]||0)+q*p)/(h+q);S.hold[id]=h+q;S.cash-=amt;S.nt=(S.nt||0)+1;lg((auto?'[Rutin] ':'')+'Beli '+id+' '+rp(amt)+' @ '+fp(p));sv();render();toast('Pembelian berhasil.')}
 function sell(id,amt){const a=G(id),p=P[id],h=S.hold[id]||0;if(h<=0)return toast('Kamu belum punya '+id+'.');if(!(amt>0))return toast('Masukkan nominal yang valid.');
- amt=Math.min(amt,h*p);const q=amt/p,pl=q*(p-S.cost[id])-amt*a.fs*feeM();S.hold[id]=h-q;S.cash+=amt*(1-a.fs*feeM());S.nt=(S.nt||0)+1;if(S.hold[id]*p<1){delete S.hold[id];delete S.cost[id]}lg('Jual '+id+' '+rp(amt)+' @ '+fp(p)+' ('+sg(pl)+')');sv();render();toast('Penjualan berhasil.'+ownTxt(id))}
-const val=()=>S.cash+S.veh.own.reduce((t,v)=>t+vVal(v)-vBal(v),0)+(S.houseV||0)-(S.mort?S.mort.bal:0)+Object.keys(S.hold).reduce((t,k)=>t+S.hold[k]*P[k],0)+bzv()+bkv();
+ amt=Math.min(amt,h*p);const q=amt/p,pl=q*(p-S.cost[id])-amt*a.fs*feeM();S.hold[id]=h-q;S.cash+=amt*(1-a.fs*feeM());S.nt=(S.nt||0)+1;if(S.hold[id]*p<1){delete S.hold[id];delete S.cost[id]}lg('Jual '+id+' '+rp(amt)+' @ '+fp(p)+' ('+sg(pl)+')');sv();render();toast('Penjualan berhasil.')}
+const val=()=>S.cash+S.veh.own.reduce((t,v)=>t+vVal(v)-vBal(v),0)+(S.houseV||0)-(S.mort?S.mort.bal:0)+Object.keys(S.hold).reduce((t,k)=>t+S.hold[k]*P[k],0)+bzv()+bkv()+ofv();
 $('buy').onclick=()=>buy(cur,parseFloat($('amt').value));$('sell').onclick=()=>sell(cur,parseFloat($('amt').value));
 $('auto').onclick=()=>{const amt=parseFloat($('amt').value);if(S.auto&&S.auto.id==cur)S.auto=null;else if(amt>=1e4)S.auto={id:cur,amt};else return toast('Isi nominal minimal Rp10.000.');sv();render()};
 $('reset').onclick=()=>{if(confirm('Mulai ulang total? Semua progres, poin warisan, dan hitungan rebirth ikut dihapus (termasuk di server). Untuk lanjut dengan bonus, pakai tab Rebirth.')){S=fresh();initA();buildJobSel();sv();flush(true);buildList();render()}};
@@ -564,13 +510,13 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t
  if(a=='kq'){const k=S.kids[x];if(!k||kAge(k)>=22)return;const c=2.5e5*S.cpi;if(S.day<(k.qd||0))return toast('Quality time lagi dalam '+(k.qd-S.day)+' hari.');if(S.cash<c)return toast('Kas kurang dari '+rp(c));S.cash-=c;k.qd=S.day+7;k.ql=S.day;k.bd=Math.min(100,k.bd+6);S.hap=Math.min(100,S.hap+1.5);lg('Quality time dengan '+k.n+' '+sg(-c)+', kedekatan +6')}
  if(a=='iv'){if(S.sch||!curVeh())return;S.ins.v=S.ins.v?0:1;lg(S.ins.v?'Mengaktifkan asuransi kendaraan':'Menghentikan asuransi kendaraan')}
  if(a=='ir'){if(S.sch||!S.owned)return;S.ins.r=S.ins.r?0:1;lg(S.ins.r?'Mengaktifkan asuransi rumah':'Menghentikan asuransi rumah')}
- propAct(a,x);coAct(a,x);rbAct(a,x);bankAct(a,x);bcAct(a);if(a=='tp'&&G(x))cur=x;if(a=='hdist')hf=x;
+ propAct(a,x);coAct(a,x);rbAct(a,x);bankAct(a,x);bcAct(a);fxAct(a,x);if(a=='tp'&&G(x))cur=x;if(a=='hdist')hf=x;
  if(a=='bo'){const d=BZ.find(z=>z[0]==x),c=d[3];if(S.sch)return toast('Selesaikan sekolah dulu.');if((S.meta.rb||0)<(d[8]||0))return toast('Usaha ini terbuka di rebirth ke-'+d[8]+'.');if(S.edu.lv<d[7])return toast('Butuh pendidikan min. '+ELV[d[7]]);if(S.cash<c)return toast('Kas kurang dari '+rp(c));S.cash-=c;S.biz[x]={l:1,inv:c};lg('Membuka usaha '+d[1]+' '+sg(-c))}
  if(a=='bu'){const d=BZ.find(z=>z[0]==x),b=S.biz[x];if(b.l>=5)return;const c=bzUp(d,b.l+1);if(S.cash<c)return toast('Kas kurang dari '+rp(c));S.cash-=c;b.l++;b.inv+=c;lg(d[1]+' naik ke level '+b.l+' '+sg(-c))}
  if(a=='bs'){const d=BZ.find(z=>z[0]==x),v=S.biz[x].inv*.6;if(!confirm('Jual '+d[1]+' seharga '+rp(v)+'?'))return;S.cash+=v;delete S.biz[x];lg('Menjual usaha '+d[1]+' '+sg(v))}
  sv();render()});
 $('job').onchange=e=>{const f=JB(e.target.value);if(f&&S.edu.lv<reqEc(f,0)){e.target.value=S.job||'';return toast('Butuh pendidikan minimal '+ELV[reqEc(f,0)]+' untuk bidang ini.'+(S.edu.lv>=reqE(f,0)-1?' Ikut bootcamp bidang ini untuk membukanya.':''))}S.job=e.target.value||null;cvSwitch(S.job);lg(f?'Bekerja di bidang '+f.n+' sebagai '+title(f,lvl(f.id))+((S.xp[f.id]||0)>0||lvl(f.id)>0?' (melanjutkan progres bidang ini)':'')+relTxt(f.id).replace(' · ',', '):'Berhenti bekerja (progres tiap bidang tetap tersimpan di CV)');sv();render()};
-$('home').onchange=e=>{const v=e.target.value;if(v=='rumah'&&!S.owned){e.target.value=S.home;return toast('Beli rumah lewat tab Properti (tunai atau KPR).')}S.home=v;sv();render()};
+$('home').onchange=e=>{const v=e.target.value;if(v=='rumah'&&!S.owned){e.target.value=S.home;return toast('Beli rumah lewat tab Properti (tunai atau KPR).')}if(v=='rumah'&&S.rent){e.target.value=S.home;return toast('Rumah sedang disewakan. Hentikan sewa di tab Properti.')}S.home=v;sv();render()};
 $('insh').onchange=e=>{if(S.sch){e.target.value=S.ins.h;return}S.ins.h=e.target.value;lg('Asuransi kesehatan: '+INH[S.ins.h][0]);sv();render()};
 $('gdp').onchange=e=>{gdp=+e.target.value;render()};$('gtn').onchange=e=>{gtn=+e.target.value;render()};
 $('food').onchange=e=>{S.food=e.target.value;sv();render()};$('lifes').onchange=e=>{S.life=e.target.value;sv();render()};$('trn').onchange=e=>{S.trn=e.target.value;sv();render()};
@@ -597,12 +543,12 @@ function render(){
  A.forEach(a=>{const p=$('p-'+a.id);if(!p)return;p.textContent=fp(P[a.id]);const c=chg(a.id),e=$('c-'+a.id);e.textContent=(c>=0?'+':'')+c.toFixed(2)+'%';e.className=c>=0?'up':'dn'});
  document.querySelectorAll('.it').forEach(e=>e.classList.toggle('on',e.dataset.id==cur));
  document.querySelectorAll('#tabs .tab').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v==vw));
- ['inv','car','bank','biz','love','life','gar','prp','ach','lb','acc','rb'].forEach(v=>$('v-'+v).style.display=vw==v?(v=='inv'?'grid':''):'none');
+ ['inv','car','bank','biz','ofr','love','life','gar','prp','ach','lb','acc','rb'].forEach(v=>$('v-'+v).style.display=vw==v?(v=='inv'?'grid':''):'none');
  const w=val(),jf=JB(S.job),jl=jf?lvl(jf.id):0,xp=S.xp[S.job]||0,sk=S.sk[S.job]||0,pay0=jf?Math.round(pay(jf)*pt()):0,ed=S.edu,tu=(ed.cur?tui(EDU[ed.cur]):0)+(S.bc?S.bc.c:0);
  const stage=S.sch?(S.sch=='pilih'?'Lulus SMP, pilih jalur':'Kelas '+S.sg+' '+SCH[S.sch][0]):ed.cur?'Kuliah '+EDU[ed.cur][0]:jf?title(jf,jl):'Lulusan '+ELV[ed.lv]+', siap kerja';
  $('av').textContent=S.sch?(S.sch=='sd'?'🎒':S.sch=='smp'?'📚':'🎓'):ed.cur?'🏛️':jf?(S.mar?'👨‍👩‍👧':'💼'):'🏠';$('stg').textContent=stage;
  $('pills').innerHTML=[S.meta.rb?'<span class="pill">⭐ Rebirth ×'+S.meta.rb+'</span>':'',S.pt?'<span class="pill">'+(S.mar?'💍 Menikah':S.pt.st=='lamar'?'💍 Tunangan':S.pt.st=='pacaran'?'💕 Pacaran':'🙂 PDKT')+' · '+S.pt.n+'</span>':'',nb()?'<span class="pill">🏪 '+nb()+' usaha</span>':'',S.owned?'<span class="pill">🏠 Punya rumah</span>':'','<span class="pill">😊 '+Math.round(S.hap)+'/100</span>'].join('');
- $('nw').textContent=rp(w);$('rank').textContent='🏅 '+curTitle(w);setH($('accn'),'👤 '+(ACC?(S.dn?fxName(S.dn,S.pk)+' · '+fxName('@'+ACC,S.pk):fxName('@'+ACC,S.pk)):'Tamu (mode lokal) · klik untuk masuk'));{const t0=today(),ok=S.dr!==t0;$('dly').textContent=ok?'🎁 Ambil hadiah harian':'🎁 Beruntun '+(S.ds||0)+' hari';$('dly').classList.toggle('glow',ok)}
+ $('nw').textContent=rp(w);hdFx();$('rank').textContent='🏅 '+curTitle(w);$('accn').textContent='👤 '+(ACC?(S.dn?S.dn+' · @'+ACC:'@'+ACC):'Tamu (mode lokal) · klik untuk masuk');{const t0=today(),ok=S.dr!==t0;$('dly').textContent=ok?'🎁 Ambil hadiah harian':'🎁 Beruntun '+(S.ds||0)+' hari';$('dly').classList.toggle('glow',ok)}
  const hk=Object.keys(S.hold),ib=hk.reduce((t,k)=>t+S.hold[k]*S.cost[k],0),r=ib>0?(hk.reduce((t,k)=>t+S.hold[k]*P[k],0)/ib-1)*100:0;
  $('ret').innerHTML='Imbal hasil <b class="'+(r>=0?'up':'dn')+'" style="color:inherit">'+(r>=0?'+':'')+r.toFixed(2)+'%</b>';
  $('clk').textContent=fd(S.day)+' · '+(S.sch?'uang jajan':'gajian')+' dalam '+(30-S.day%30)+' hari';
@@ -614,7 +560,6 @@ function render(){
   $('rng').textContent=sr.length>1?({H:'Pergerakan live',M:'7 hari terakhir',B:'30 hari terakhir',T:'365 hari terakhir'})[tf]+' · tertinggi '+fp(Math.max(...sr))+' · terendah '+fp(Math.min(...sr)):'Mengumpulkan data…';
   $('chg').textContent=(c>=0?'+':'')+c.toFixed(2)+'%';$('chg').className=c>=0?'up':'dn';
   $('info').textContent='Risiko '+a.k+(a.t=='nav'?' · estimasi imbal hasil ±'+(a.r*100).toFixed(1)+'% per tahun':' · ekspektasi jangka panjang ±'+(a.mu*100).toFixed(0)+'% per tahun')+(a.fb?' · biaya beli '+(a.fb*feeM()*100).toFixed(2)+'%, jual '+(a.fs*feeM()*100).toFixed(2)+'%':' · tanpa biaya transaksi');
-  if(SHO[cur]){const h0=S.hold[cur]||0;$('info').textContent+=' · 📊 '+(h0>0?'Kepemilikanmu '+fmtPct(ownPct(cur))+' ('+fmtN(h0)+' lembar dari ±'+shoTxt(SHO[cur])+' lembar beredar)':'Saham beredar ±'+shoTxt(SHO[cur])+' lembar')+' · posisi min. Rp10 juta mendapat undangan RUPS'}
   if(DIV[cur])$('info').textContent+=' · dividen ±'+(DIV[cur]*100).toFixed(1)+'%/tahun, dibayar 2x setahun (pajak 10%, harga turun saat pembagian)';
   {const tp=S.tips.find(t=>t.id==cur&&!t.done&&t.until>S.day);if(tp)$('info').textContent+=' · 🕵️ Bocoran: diprediksi '+(tp.dir>0?'NAIK':'TURUN')+' (akurasi ±'+Math.round(tp.acc*100)+'%, '+(tp.until-S.day)+' hari lagi)'}
   const au=S.auto;$('auto').textContent=au&&au.id==cur?'Matikan investasi rutin':'Aktifkan investasi rutin';$('autot').textContent=au?'Aktif: '+rp(au.amt)+' ke '+au.id+' tiap bulan':'Beli otomatis tiap bulan game';
@@ -627,11 +572,11 @@ function render(){
   const g=Math.max(0,Math.min(100,w/GOAL*100));$('gl').style.width=g+'%';$('glt').textContent='Target dana impian '+rp(GOAL)+' ('+g.toFixed(0)+'%)';
   const cls={};if(S.houseV)cls.prop=S.houseV;{const vv0=S.veh.own.reduce((t,v)=>t+vVal(v),0);if(vv0)cls.veh=vv0}const bv=bzv();if(bv)cls.bz=bv;if(bkv())cls.bk=bkv();Object.keys(S.hold).forEach(k=>{const c=G(k).c;cls[c]=(cls[c]||0)+S.hold[k]*P[k]});
   const ct=Object.keys(cls).reduce((t,k)=>t+cls[k],0)||1;$('alloc').innerHTML=Object.keys(cls).map(k=>`<i style="width:${cls[k]/ct*100}%;background:${CL[k][1]}"></i>`).join('');$('legend').textContent=Object.keys(cls).length?Object.keys(cls).map(k=>CL[k][0]+' '+(cls[k]/ct*100).toFixed(0)+'%').join(' · '):'Belum ada aset di luar kas.';
-  $('hold').innerHTML=hk.map(k=>{const v=S.hold[k]*P[k],pl=S.hold[k]*(P[k]-S.cost[k]);return`<tr><td>${k}${SHO[k]?'<br><small>'+fmtPct(ownPct(k))+' saham</small>':''}</td><td>${rp(v)}</td><td class="${pl>=0?'up':'dn'}">${sg(pl)}</td></tr>`}).join('')||'<tr><td colspan="3" style="text-align:center;color:var(--mu)">Belum ada aset.</td></tr>';
-  setH($('log'),S.log.map(l=>'<div>'+l+'</div>').join('')||'<div>Belum ada transaksi.</div>');draw();renderTips();
+  $('hold').innerHTML=hk.map(k=>{const v=S.hold[k]*P[k],pl=S.hold[k]*(P[k]-S.cost[k]);return`<tr><td>${k}</td><td>${rp(v)}</td><td class="${pl>=0?'up':'dn'}">${sg(pl)}</td></tr>`}).join('')||'<tr><td colspan="3" style="text-align:center;color:var(--mu)">Belum ada aset.</td></tr>';
+  setH($('log'),S.log.map(l=>'<div>'+l+'</div>').join('')||'<div>Belum ada transaksi.</div>');draw();renderTips();renderFire();
  }
  if(vw=='car'){
-  renderBc();renderCv();$('pilih').style.display=S.sch=='pilih'?'':'none';
+  renderBc();renderCv();renderNg();$('pilih').style.display=S.sch=='pilih'?'':'none';
   $('jinfo').textContent=jf?title(jf,jl)+' · gaji '+rp(pay0)+'/bln · XP '+Math.floor(xp)+(jl<6?' / '+XT[jl+1]:' (puncak)')+' · skill '+Math.floor(sk)+relTxt(jf.id):S.sch?'Kamu masih sekolah. Fokus belajar dan kelola uang jajanmu!':'Pilih pekerjaan agar mendapat gaji tiap bulan.';
   $('xpb').style.width=(jf?(jl<6?Math.min(100,(xp-XT[jl])/(XT[jl+1]-XT[jl])*100):100):0)+'%';
   $('crs').textContent='Kursus ('+rp(crsCost(jl))+', +10 skill)';$('exm').textContent='Ujian promosi ('+rp(examCost(jl))+')';
@@ -654,7 +599,7 @@ function render(){
   setH($('bizg'),BZ.map(d=>{const b=S.biz[d[0]],ok=S.edu.lv>=d[7]&&(S.meta.rb||0)>=(d[8]||0);return`<div class="card"><b>${d[2]} ${d[1]}</b><div class="mu">${b?'Level '+b.l+'/5 · laba rata-rata '+rp(bzP(d,b.l)*S.wage)+'/bln':'Modal '+rp(d[3])+' · laba awal ±'+rp(d[4])+'/bln'}<br>Volatilitas ${Math.round(d[5]*100)}%${d[7]?' · syarat '+ELV[d[7]]:''}${d[8]&&(S.meta.rb||0)<d[8]?' · 🔒 terbuka di rebirth ke-'+d[8]:''} · nilai terkait bidang ${JB(d[6]).n}</div><div class="row">${b?`<button class="pc" data-a="bu:${d[0]}" ${b.l>=5?'disabled':''}>${b.l>=5?'Level maks':'Upgrade '+rp(bzUp(d,b.l+1))}</button><button class="pc" data-a="bs:${d[0]}">Jual ${rp(b.inv*.6)}</button>`:`<button class="pc" data-a="bo:${d[0]}" ${ok&&!S.sch&&S.cash>=d[3]?'':'disabled'}>Buka usaha</button>`}</div></div>`}).join(''));
  }
  if(vw=='biz')renderCo();if(vw=='love'){ensurePt();renderLove()}
- if(vw=='gar')renderGar();if(vw=='prp')renderPrp();if(vw=='ach')renderAch();if(vw=='lb')renderLb();if(vw=='acc')renderAcc();if(vw=='rb')renderRb();if(vw=='bank')renderBank();
+ if(vw=='ofr')renderOfr();if(vw=='gar')renderGar();if(vw=='prp')renderPrp();if(vw=='ach')renderAch();if(vw=='lb')renderLb();if(vw=='acc')renderAcc();if(vw=='rb')renderRb();if(vw=='bank')renderBank();
  if(vw=='life'){ensurePt();
   $('hap').textContent=Math.round(S.hap)+'/100 · XP ×'+prod().toFixed(2)+' · gaji ×'+hb().toFixed(2);$('hapb').style.width=S.hap+'%';
   [['home',S.home],['food',S.food],['lifes',S.life]].forEach(([e,v])=>{if($(e).value!=v)$(e).value=v;$(e).disabled=!!S.sch});
@@ -748,21 +693,6 @@ function renderLove(){const p=S.pt;let h='';
 /* ---- prestasi, gelar, leaderboard ---- */
 const esc=t=>String(t==null?'':t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
 const maxLv=()=>Math.max(0,...Object.values(S.lv||{})),hk0=()=>Object.keys(S.hold);
-const NFX=[[0,'',''],[1e7,'Rp10 juta','Hijau Berdenyut'],[1e8,'Rp100 juta','Biru Berkilau'],[5e8,'Rp500 juta','Emas Berpendar'],[1e9,'Rp1 miliar','Api Menyala'],[2e9,'Rp2 miliar','Aurora'],[1e10,'Rp10 miliar','Hologram Legenda']];
-function fxTier(pk){pk=+pk||0;let t=0;for(let i=1;i<NFX.length;i++)if(pk>=NFX[i][0])t=i;return t}
-function fxName(txt,pk){const t=fxTier(pk),s=esc(txt);return t?'<span class="nm nt'+t+'" title="Efek nama: '+NFX[t][2]+' (target '+NFX[t][1]+')">'+s+'</span>':s}
-function fxCheck(){const t=fxTier(S.pk);if(S.ft==null){S.ft=t;return}if(t>S.ft){S.ft=t;fxCelebrate(t)}}
-function fxCelebrate(t){const old=document.getElementById('cfx');if(old)old.remove();const c=document.createElement('div');c.id='cfx';c.className='nt'+t;
- const cols=['#ffd54a','#ff5a1f','#2f7df6','#12b886','#ec4899','#a855f7','#22d3ee'],n=28+t*8;let h='';
- for(let i=0;i<n;i++)h+='<i style="left:'+(Math.random()*100).toFixed(1)+'%;background:'+cols[i%cols.length]+';--x:'+Math.round(Math.random()*160-80)+'px;--r:'+Math.round(Math.random()*720-360)+'deg;--d:'+(1.8+Math.random()*1.6).toFixed(2)+'s;animation-delay:'+(Math.random()*.5).toFixed(2)+'s"></i>';
- h+='<div class="cbn">🎉 <b>Target tercapai: '+NFX[t][1]+'</b><div style="margin:6px 0;font:700 20px Georgia,serif">'+fxName((typeof dnm=='function'&&dnm())||'Kamu',NFX[t][0])+'</div><div style="opacity:.85">Efek nama baru: '+NFX[t][2]+'</div></div>';
- c.innerHTML=h;document.body.appendChild(c);const a=$('accn');a.classList.remove('pop');void a.offsetWidth;a.classList.add('pop');
- setTimeout(()=>{c.remove();a.classList.remove('pop')},4400)}
-function renderFx(){const t=fxTier(S.pk),pk=S.pk||0,nx=NFX[t+1],base=NFX[t][0];
- const me=(S.dn?fxName(S.dn,pk)+' <small>'+fxName('@'+(ACC||''),pk)+'</small>':fxName(dnm()||'Tamu',pk));
- const lad=NFX.slice(1).map((x,i)=>{const k=i+1,on=t>=k;return'<div style="display:flex;justify-content:space-between;gap:8px;align-items:center;padding:3px 0;border-bottom:1px dashed var(--ln)"><span style="opacity:'+(on?1:.5)+'">'+fxName(x[2],x[0])+'</span><span class="mu">'+(on?'✓ ':'🔒 ')+x[1]+'</span></div>'}).join('');
- const pct=nx?Math.max(0,Math.min(100,Math.floor((pk-base)/(nx[0]-base)*100))):100;
- setH($('fxinfo'),'<h3>✨ Efek nama</h3><div style="font:700 20px Georgia,serif;margin:4px 0">'+me+'</div><div class="mu">'+(t?'Efek aktif: '+NFX[t][2]+'. Tampil di header, profil, dan leaderboard.':'Belum ada efek. Capai kekayaan puncak '+NFX[1][1]+' untuk membuka efek pertama.')+'</div>'+(nx?'<div class="mu" style="margin-top:6px">Target berikutnya: <b>'+nx[1]+'</b> ('+nx[2]+') · '+pct+'%</div><div class="gl"><i style="width:'+pct+'%"></i></div>':'<div class="mu" style="margin-top:6px">Semua efek nama sudah terbuka 🎉</div>')+'<div style="margin-top:6px">'+lad+'</div><hr class="sep">')}
 const ACH=[
 ['buy','🌱','Langkah Pertama','Beli aset investasi pertamamu',()=>S.nt>=1,'Investor Pemula'],
 ['nw1','💰','Rp10 Juta','Kekayaan puncak Rp10.000.000',()=>S.pk>=1e7,'Penabung Rajin'],
@@ -803,18 +733,22 @@ const ACH=[
 ['gold','🥇','Pemburu Emas','Pegang emas',()=>(S.hold.EMAS||0)>0,'Kolektor Emas'],
 ['pl','📊','Cuan Besar','Untung portofolio min. Rp10 juta',()=>hk0().reduce((t,k)=>t+S.hold[k]*(P[k]-S.cost[k]),0)>=1e7,'Si Cuan'],
 ['tr100','🔁','Trader Aktif','Lakukan 100 transaksi',()=>S.nt>=100,'Day Trader'],
-['rups','🗳️','Pemegang Saham','Hadiri RUPS pertamamu',()=>(S.ev&&S.ev.nr>=1),'Pemegang Saham'],
-['fam5','👨‍👩‍👧','Keluarga Hangat','Ikuti 5 acara keluarga (liburan pasangan & acara sekolah anak)',()=>(S.ev&&S.ev.nf>=5),'Orang Tua Teladan'],
 ['hap','😊','Hidup Bahagia','Kebahagiaan min. 90',()=>S.hap>=90,'Si Bahagia'],
 ['ins','🛡️','Terlindungi','Pakai asuransi kesehatan swasta',()=>S.ins.h=='swasta','Si Waspada'],
 ['vac','✈️','Traveler','Liburan 5 kali',()=>S.nv>=5,'Traveler'],
 ['y10','⏳','Satu Dekade','Bertahan 10 tahun game',()=>S.day>=3600,'Veteran'],
-['y30','🕰️','Tiga Dekade','Bertahan 30 tahun game',()=>S.day>=10800,'Sesepuh']
+['y30','🕰️','Tiga Dekade','Bertahan 30 tahun game',()=>S.day>=10800,'Sesepuh'],
+['sc3','🛡️','Anti Tipu','Tolak 3 tawaran bodong dari teman',()=>S.of.st.rj>=3,'Melek Finansial'],
+['ang','😇','Angel Investor','Danai usaha asli milik temanmu',()=>S.of.st.ok>=1,'Angel Investor'],
+['fi25','🌱','Pasif 25%','Penghasilan pasif menutup 25% pengeluaran',()=>S.fi.best>=.25,'Penanam Pasif'],
+['fi100','🔥','Bebas Finansial','Pasif menutup pengeluaran 12 bulan berturut-turut',()=>!!S.fi.ok,'Merdeka Finansial'],
+['neg','🤝','Negosiator','Berhasil menegosiasikan kenaikan gaji',()=>S.neg.w>=1,'Negosiator Ulung'],
+['phk','💪','Tahan Banting','Terkena PHK lalu bekerja lagi',()=>S.lo.n>=1&&!!S.job,'Tahan Banting']
 ];
 const achN=()=>ACH.filter(a=>S.ach&&S.ach[a[0]]).length;
 const ttlOf=()=>{const a=S.ttl&&S.ach&&ACH.find(x=>x[0]==S.ttl&&S.ach[x[0]]);return a?a[5]:''};
 const curTitle=w=>ttlOf()||(S.sch?'Pelajar':rank(w!=null?w:val()));
-function chkAch(){if(!S.ach)S.ach={};const w=val();if(w>(S.pk||0))S.pk=w;fxCheck();{const d0=dis();if(d0&&(S.meta.bt==null||d0.tier>S.meta.bt)){S.meta.bt=d0.tier;S.meta.bd=d0.id}}
+function chkAch(){if(!S.ach)S.ach={};const w=val();if(w>(S.pk||0))S.pk=w;{const d0=dis();if(d0&&(S.meta.bt==null||d0.tier>S.meta.bt)){S.meta.bt=d0.tier;S.meta.bd=d0.id}}
  ACH.forEach(a=>{if(S.ach[a[0]])return;let ok=false;try{ok=a[4]()}catch(e){}
   if(ok){S.ach[a[0]]=S.day;if(!S.tman)S.ttl=a[0];lg('🏅 Prestasi: '+a[2]+', gelar “'+a[5]+'”');toast('🏅 Prestasi terbuka: '+a[2]+' · gelar “'+a[5]+'”')}})}
 function renderAch(){const n=achN();$('achs').textContent=n+' / '+ACH.length+' prestasi terbuka · Kekayaan puncak '+rp(S.pk||0);$('achb').style.width=(n/ACH.length*100)+'%';
@@ -831,74 +765,14 @@ async function loadLb(){if(lbBusy)return;lbBusy=true;lbT=Date.now();
 setInterval(()=>{if(conn)submitScore()},20000);
 $('lbr').onclick=()=>{lbT=0;loadLb()};
 function renderLb(){if(Date.now()-lbT>30000&&!lbBusy)loadLb();
- const w=Math.round(S.pk||0);$('lbme').innerHTML='👤 <b>'+fxName(dnm()||'Tamu',w)+'</b> · 🏅 '+esc(curTitle())+' · Kekayaan puncak <b>'+rp(w)+'</b> · '+achN()+' prestasi';
+ const w=Math.round(S.pk||0);$('lbme').innerHTML='👤 <b>'+esc(dnm()||'Tamu')+'</b> · 🏅 '+esc(curTitle())+' · Kekayaan puncak <b>'+rp(w)+'</b> · '+achN()+' prestasi';
  let h='';
  if(LBerr)h='<div class="mu dn">Leaderboard belum bisa dimuat. Pastikan SQL leaderboard sudah dijalankan di Supabase.<br><small>'+esc(LBerr.slice(0,160))+'</small></div>';
  else if(!LB)h='<div class="mu">Memuat…</div>';
  else if(!LB.length)h='<div class="mu">Belum ada pemain di leaderboard.</div>';
- else h='<table class="lbt"><thead><tr><th>#</th><th>Pemain</th><th>Gelar</th><th>Kekayaan puncak</th><th>Waktu</th><th>🏅</th></tr></thead><tbody>'+LB.map((r,i)=>'<tr class="'+(ACC&&r.id==ACC?'me':'')+(fxTier(r.nw)?' lt nt'+fxTier(r.nw):'')+'" data-pid="'+esc(r.id)+'" tabindex="0" style="cursor:pointer"><td>'+(['🥇','🥈','🥉'][i]||i+1)+'</td><td>'+fxName(r.name||r.id,r.nw)+(r.name&&r.name!=r.id?' <small>'+fxName('@'+r.id,r.nw)+'</small>':'')+(+r.rb?' <small>⭐'+(+r.rb)+'</small>':'')+'</td><td>'+esc(r.title||'-')+'</td><td>'+rp(+r.nw)+'</td><td>'+fdS(+r.day||0)+'</td><td>'+r.ach+'</td></tr>').join('')+'</tbody></table>';
+ else h='<table class="lbt"><thead><tr><th>#</th><th>Pemain</th><th>Gelar</th><th>Kekayaan puncak</th><th>Waktu</th><th>🏅</th></tr></thead><tbody>'+LB.map((r,i)=>'<tr class="'+(ACC&&r.id==ACC?'me':'')+'" data-pid="'+esc(r.id)+'" tabindex="0" style="cursor:pointer"><td>'+(['🥇','🥈','🥉'][i]||i+1)+'</td><td>'+esc(r.name||r.id)+(r.name&&r.name!=r.id?' <small>@'+esc(r.id)+'</small>':'')+(+r.rb?' <small>⭐'+(+r.rb)+'</small>':'')+'</td><td>'+esc(r.title||'-')+'</td><td>'+rp(+r.nw)+'</td><td>'+fdS(+r.day||0)+'</td><td>'+r.ach+'</td></tr>').join('')+'</tbody></table>';
  setH($('lbt'),h)}
 
-/* ---- event dialog: ajakan pasangan, acara sekolah anak, RUPS ---- */
-const RUPS_MIN=1e7;
-function evShock(id,pct){P[id]*=1+pct;if(S.fv[id])S.fv[id]*=1+pct;S.sim[id]=P[id]}
-function evPush(e){EVQ.push(e);evNext()}
-function evNext(){if(EVC||!EVQ.length)return;EVC=EVQ.shift();evDraw()}
-function evHead(e,sub){return'<div class="evh"><span class="ei">'+e.ic+'</span><div><div style="font:700 18px Georgia,serif">'+esc(e.t)+'</div><div class="mu">'+esc(sub)+'</div></div></div>'}
-function evDraw(){const e=EVC;$('evb').innerHTML=evHead(e,e.sub||'')+'<p style="margin:10px 0 0">'+e.tx+'</p>'+(e.extra||'')+'<div class="evo">'+e.o.map((o,i)=>{const dis=o.c&&S.cash<o.c;return'<button data-eo="'+i+'"'+(dis?' disabled':'')+'><b>'+esc(o.l)+'</b><small>'+esc(o.d||'')+(o.c?' · biaya '+rp(o.c):'')+(dis?' (kas kurang)':'')+'</small></button>'}).join('')+'</div>';$('evd').style.display='flex'}
-$('evb').onclick=e=>{
- if(e.target.closest('[data-evok]')){EVC=null;$('evd').style.display='none';chkAch();sv();render();evNext();return}
- const b=e.target.closest('[data-eo]');if(!b||!EVC||EVC.done)return;
- const ev=EVC,o=ev.o[+b.dataset.eo];if(!o||(o.c&&S.cash<o.c))return;
- ev.done=1;if(o.c)S.cash-=o.c;let res='';try{res=o.f?o.f():''}catch(x){res=''}
- lg(ev.ic+' '+ev.t+': '+o.l+(o.c?' ('+sg(-o.c)+')':'')+(res?' → '+res:''));sv();
- $('evb').innerHTML=evHead(ev,'Keputusanmu: '+o.l)+'<p style="margin:10px 0 0">'+esc(res||'Selesai.')+'</p><button class="ac" data-evok style="background:var(--ac);width:100%;margin-top:12px">Lanjut</button>'};
-function evMonth(){if(S.sch||EVC||EVQ.length)return;const E=S.ev||(S.ev={});if(!E.rp)E.rp={};
- const yr=Math.floor(S.day/360),mi=Math.floor(S.day/30)%12;
- const el=Object.keys(S.hold).filter(id=>SHO[id]&&P[id]&&S.hold[id]*P[id]>=RUPS_MIN);
- if(el.length){const due=el.filter(id=>E.rp[id]!==yr);
-  if(mi>=3&&mi<=6&&due.length&&R()<.4){const id=rnd(due);E.rp[id]=yr;return evRups(id,0)}
-  if(R()<.02)return evRups(rnd(el),1)}
- if(S.mar&&S.pt&&S.day-(E.lv==null?-999:E.lv)>=150&&R()<.14){E.lv=S.day;return evTrip()}
- const kk=kActive().filter(k=>{const a=kAge(k);return a>=4&&a<=18});
- if(kk.length&&S.day-(E.sc==null?-999:E.sc)>=75&&R()<.22){E.sc=S.day;return evSchool(rnd(kk))}}
-function evOvertime(pct){const f=JB(S.job);if(!f)return'';const g=Math.round(pay(f)*pt()*pct/1e4)*1e4;if(g<=0)return'';S.cash+=g;return' Kamu lembur dan dapat '+sg(g)+'.'}
-function evTrip(){const p=S.pt,E=S.ev,w=p.g=='f'?'istrimu':'suamimu',dest=rnd(['Bali','Yogyakarta','Lombok','Labuan Bajo','Bandung','Raja Ampat']);
- const c1=Math.round(4e6*S.cpi/1e5)*1e5,c2=Math.round(15e6*S.cpi/1e5)*1e5,c3=Math.round(5e5*S.cpi/1e5)*1e5;
- const trip=(hp,ch,gl)=>{const q=S.pt;S.hap=Math.min(100,S.hap+hp);if(q){q.chem=Math.min(100,q.chem+ch);q.last=S.day}S.glow={until:S.day+gl,v:hp/3};S.nv=(S.nv||0)+1;E.nf=(E.nf||0)+1};
- evPush({ic:'🏖️',t:'Ajakan liburan dari '+p.n,sub:'Pasangan · '+chemTxt(p.chem),tx:'<b>'+esc(p.n)+'</b>, '+w+', mengajak liburan ke <b>'+dest+'</b>: “Kita sudah lama nggak jalan berdua. Yuk ambil cuti!”',
- o:[{l:'Setuju, liburan hemat',d:'Kebahagiaan +12, kemistri +8, semangat 60 hari',c:c1,f:()=>{trip(12,8,60);return'Liburan ke '+dest+' seru dan hemat. Kebahagiaan +12.'}},
- {l:'Liburan mewah (resort)',d:'Kebahagiaan +25, kemistri +15, semangat 90 hari',c:c2,f:()=>{trip(25,15,90);return'Liburan mewah ke '+dest+'. Kebahagiaan +25, hubungan makin erat.'}},
- {l:'Usul staycation di rumah',d:'Kebahagiaan +6, kemistri +4',c:c3,f:()=>{S.hap=Math.min(100,S.hap+6);if(S.pt){S.pt.chem=Math.min(100,S.pt.chem+4);S.pt.last=S.day}E.nf=(E.nf||0)+1;return'Staycation santai, '+p.n+' tetap senang.'}},
- {l:'Tolak, lagi fokus kerja',d:'Kemistri turun, tapi ada uang lembur',f:()=>{S.hap=Math.max(0,S.hap-3);if(S.pt)S.pt.chem=Math.max(CMIN,S.pt.chem-6);return p.n+' sedikit kecewa (kebahagiaan -3, kemistri -6).'+evOvertime(.12)}}]})}
-function evSchool(k){const a=kAge(k),E=S.ev,ttl=rnd(a<6?['Pentas seni PAUD','Hari ayah-ibu di sekolah']:a<13?['Pembagian rapor','Pentas seni & bazar kelas','Lomba olahraga orang tua-anak','Rapat wali murid']:['Pengambilan rapor','Pentas seni sekolah','Pameran karya & expo','Rapat wali murid']);
- const cd=Math.round(1.5e6*S.cpi/1e5)*1e5,near=(n,hp)=>{k.bd=Math.min(100,k.bd+n);k.ql=S.day;S.hap=Math.min(100,S.hap+hp);E.nf=(E.nf||0)+1};
- evPush({ic:'🏫',t:'Acara sekolah: '+ttl,sub:k.n+' · usia '+a+' tahun',tx:'<b>'+esc(k.n)+'</b> mengundangmu ke acara <b>'+esc(ttl)+'</b> di sekolahnya: “Datang ya! Aku mau kamu lihat.”',
- o:[{l:'Hadir bersama keluarga',d:'Kedekatan anak +12, kebahagiaan +5',f:()=>{near(12,5);if(S.pt&&S.mar)S.pt.chem=Math.min(100,S.pt.chem+3);let t=k.n+' tampak bangga kamu datang.';if(R()<.25&&S.job){gain(S.job,25);t+=' Ngobrol dengan wali murid lain membuka koneksi kerja (XP +25).'}return t}},
- {l:'Hadir dan donasi untuk kelas',d:'Kedekatan anak +18, kebahagiaan +8',c:cd,f:()=>{near(18,8);return'Donasimu dipuji guru. '+k.n+' sangat senang.'}},
- {l:S.mar?'Titip ke pasangan':'Minta kerabat mewakili',d:'Kedekatan anak +3',f:()=>{k.bd=Math.min(100,k.bd+3);return k.n+' cukup senang ada yang menemani.'}},
- {l:'Tidak bisa hadir (ada pekerjaan)',d:'Kedekatan anak turun, ada uang lembur',f:()=>{k.bd=Math.max(Math.min(k.bd,KMIN),k.bd-8);S.hap=Math.max(0,S.hap-2);return k.n+' sedih kamu tidak datang.'+evOvertime(.1)}}]})}
-function evRups(id,type){const a=G(id),E=S.ev,h=S.hold[id],pos=h*P[id],pc=ownPct(id);
- const att=()=>{E.nr=(E.nr||0)+1;S.hap=Math.min(100,S.hap+1);if(R()<.5){const g=Math.round((1e5+R()*3e5)*S.cpi/1e4)*1e4;S.cash+=g;return' Bonus bingkisan/doorprize RUPS '+sg(g)+'.'}return''};
- const skip={l:'Tidak hadir, titip suara ke manajer investasi',d:'Tanpa manfaat, tanpa risiko',f:()=>'Kamu tidak hadir. Keputusan perseroan jalan tanpa suaramu.'};
- const extra='<div class="box" style="margin-top:10px"><span class="mu">Kepemilikanmu di '+id+'</span><b>'+fmtPct(pc)+'</b><small>'+fmtN(h)+' lembar · nilai '+rp(pos)+' · dari ±'+shoTxt(SHO[id])+' lembar beredar</small></div><div class="mu" style="margin-top:6px">Suaramu kecil dibanding pemegang saham besar, tapi hasil keputusan tetap memengaruhi harga dan dividen yang kamu terima.</div>';
- let ev;
- if(type==1){const c=Math.round(pos*.1/1e4)*1e4,g=Math.round(pos*.012/1e3)*1e3;
-  ev={ic:'🗳️',t:'RUPSLB '+id+': Rights issue',sub:a.n+' · Rapat Umum Pemegang Saham Luar Biasa',tx:'<b>'+esc(a.n)+'</b> akan menerbitkan saham baru lewat rights issue (HMETD) dengan harga tebus <b>diskon 15%</b>. Semua saham yang beredar akan terdilusi sekitar 3%.',extra,
-  o:[{l:'Tebus hak (ikut rights issue)',d:'Dapat saham diskon 15%, tambah kepemilikan',c,f:()=>{const p0=P[id],q=c/(p0*.85),h0=S.hold[id];S.cost[id]=(h0*(S.cost[id]||p0)+q*p0*.85)/(h0+q);S.hold[id]=h0+q;S.nt=(S.nt||0)+1;evShock(id,-.03);return'Kamu menebus '+fmtN(q)+' lembar. Kepemilikan jadi '+fmtPct(ownPct(id))+', harga turun 3% karena dilusi.'+att()}},
-  {l:'Jual hak (HMETD) ke pasar',d:'Uang tunai kecil, harga tetap terdilusi',f:()=>{S.cash+=g;evShock(id,-.03);return'Hak terjual '+sg(g)+'. Harga '+id+' turun 3% karena dilusi.'+att()}},
-  {l:'Biarkan hak hangus',d:'Tanpa biaya, kamu terdilusi',f:()=>{evShock(id,-.03);return'Hak hangus. Harga '+id+' turun 3% karena dilusi.'}}]}}
- else{const v=Math.floor(R()*3);
-  if(v==0)ev={ic:'🗳️',t:'RUPS Tahunan '+id+': Dividen',sub:a.n+' · Rapat Umum Pemegang Saham',tx:'Direksi <b>'+esc(a.n)+'</b> mengusulkan agenda penggunaan laba. Pemegang saham diminta memilih.',extra,
-   o:[{l:'Setuju bagi dividen besar',d:'Kas masuk sekarang, harga tidak naik',f:()=>{const g=pos*.012*(1-DTAX);S.cash+=g;S.div=(S.div||0)+g;return'Dividen khusus '+sg(g)+' (setelah pajak 10%).'+att()}},
-   {l:'Setuju tahan laba untuk ekspansi',d:'Peluang harga naik, tapi bisa meleset',f:()=>{if(R()<.62){evShock(id,.035);return'Ekspansi disambut pasar, harga '+id+' naik 3,5%.'+att()}evShock(id,-.015);return'Ekspansi dinilai berisiko, harga '+id+' turun 1,5%.'+att()}},skip]};
-  else if(v==1)ev={ic:'🗳️',t:'RUPS Tahunan '+id+': Buyback',sub:a.n+' · Rapat Umum Pemegang Saham',tx:'Direksi <b>'+esc(a.n)+'</b> meminta persetujuan membeli kembali sahamnya dari pasar (buyback).',extra,
-   o:[{l:'Setuju buyback saham',d:'Biasanya mendorong harga naik',f:()=>{if(R()<.85){evShock(id,.02);return'Buyback menopang harga, '+id+' naik 2%.'+att()}evShock(id,.005);return'Dampak buyback kecil, harga '+id+' naik 0,5%.'+att()}},
-   {l:'Tolak, minta dividen tambahan',d:'Kas kecil, tanpa efek harga',f:()=>{const g=pos*.008*(1-DTAX);S.cash+=g;S.div=(S.div||0)+g;return'Dividen tambahan '+sg(g)+' (setelah pajak 10%).'+att()}},skip]};
-  else ev={ic:'🗳️',t:'RUPS Tahunan '+id+': Susunan direksi',sub:a.n+' · Rapat Umum Pemegang Saham',tx:'Agenda: pengangkatan direksi. Ada calon lama yang stabil dan calon baru dari luar yang berani.',extra,
-   o:[{l:'Dukung direksi lama (stabil)',d:'Risiko rendah, hasil kecil',f:()=>{if(R()<.7){evShock(id,.015);return'Pasar tenang, harga '+id+' naik 1,5%.'+att()}evShock(id,-.005);return'Pasar menilai kurang inovatif, harga '+id+' turun 0,5%.'+att()}},
-   {l:'Dukung direksi baru (berani)',d:'Peluang besar, risiko besar',f:()=>{if(R()<.5){evShock(id,.05);return'Pasar menyambut manajemen baru, harga '+id+' naik 5%.'+att()}evShock(id,-.03);return'Pasar ragu pada manajemen baru, harga '+id+' turun 3%.'+att()}},skip]}}
- evPush(ev)}
 /* ---- properti & KPR ---- */
 /* ---- kawasan, koneksi, bocoran saham, perusahaan ---- */
 const CMIN=60,KMIN=60,CO_CAP=2.5e8;
@@ -968,14 +842,14 @@ function buildJobSel(){fo('bcp',BCP.map(q=>[q[0],q[1]+' ('+q[2]+' bulan)']));fo(
  fo('job',[['','Belum bekerja'],...L.map(j=>[j.id,j.n+' (mulai '+rp(j.b)+', min. '+ELV[reqE(j,0)]+')'])]);fo('jur',L.map(j=>[j.id,j.n]));fo('cofs',L.map(j=>[j.id,j.n+' (min. '+ELV[reqE(j,0)]+')']));fo('rbt',[['','Pilih bidang bakat'],...L.map(j=>[j.id,j.n])]);fo('bcf',L.map(j=>[j.id,j.n]));$('job').value=S.job||''}
 /* ---- rebirth ---- */
 const feeM=()=>1-.15*((S.meta.up||{}).inv||0);
-const UPD={mod:['Warisan Modal','+Rp5 jt modal awal tiap level, tersedia sejak lahir',5,l=>2*(l+1)],inv:['Kebijaksanaan Investor','Biaya beli/jual aset −15% tiap level',3,l=>3*(l+1)],kon:['Koneksi Keluarga','Bocoran saham bulanan dari kawasan elit terbaik yang pernah kamu huni (min. tingkat 2); level 3 memberi 2 bocoran',3,l=>4*(l+1)]};
+const UPD={fir:['Pola Hidup Hemat','Biaya hidup −4% tiap level, mempercepat FIRE',3,l=>3*(l+1)],mod:['Warisan Modal','+Rp5 jt modal awal tiap level, tersedia sejak lahir',5,l=>2*(l+1)],inv:['Kebijaksanaan Investor','Biaya beli/jual aset −15% tiap level',3,l=>3*(l+1)],kon:['Koneksi Keluarga','Bocoran saham bulanan dari kawasan elit terbaik yang pernah kamu huni (min. tingkat 2); level 3 memberi 2 bocoran',3,l=>4*(l+1)]};
 let RBK=-1;
-const rbOk=()=>!S.sch&&(val()>=1e9||S.day>=14400);
-const rbPts=()=>Math.max(1,Math.floor(Math.sqrt(Math.max(0,val())/1e7))+Math.floor(Math.max(0,achN()-(S.meta.achc||0))/2)+Math.min(3,S.kids.length)*2+Math.floor(S.day/3600));
+const rbOk=()=>!S.sch&&(val()>=1e9||S.day>=14400||S.fi.mo>=12);
+const rbPts=()=>Math.max(1,Math.floor(Math.sqrt(Math.max(0,val())/1e7))+Math.floor(Math.max(0,achN()-(S.meta.achc||0))/2)+Math.min(3,S.kids.length)*2+Math.floor(S.day/3600)+(S.fi.ok?3:S.fi.best>=.5?1:0));
 const heirAmt=k=>Math.min(5e8,Math.round(Math.max(0,val())*.06*k.bd/100/1e5)*1e5);
 function doRebirth(k){if(!rbOk())return;
  const m=JSON.parse(JSON.stringify(S.meta)),pts=rbPts(),heir=k?heirAmt(k):0,kn=k?k.n:'',keep={ach:S.ach,ttl:S.ttl,tman:S.tman,pk:S.pk,dn:S.dn,fav:S.fav,dr:S.dr,ds:S.ds,pubp:S.pubp,sim:S.sim,fv:S.fv},h=S.h;
- m.rb=(m.rb||0)+1;m.pts=(m.pts||0)+pts;m.earn=(m.earn||0)+pts;m.achc=achN();
+ m.rb=(m.rb||0)+1;if(S.fi.ok)m.fire=(m.fire||0)+1;m.pts=(m.pts||0)+pts;m.earn=(m.earn||0)+pts;m.achc=achN();
  S=Object.assign(fresh(),keep,{meta:m});S.h=h;S.cash=((m.up||{}).mod||0)*5e6+heir;
  (m.tal||[]).forEach(id=>{S.sk[id]=Math.min(100,(S.sk[id]||0)+15);S.xp[id]=(S.xp[id]||0)+40});
  S.log=['H1 B1 T1: kamu terlahir kembali (rebirth ke-'+m.rb+') di kelas 1 SD'+(k?' sebagai '+kn+', keturunan generasi sebelumnya, dengan warisan '+rp(heir):'')+'. +'+pts+' poin warisan.'];
@@ -984,7 +858,7 @@ function rbAct(a,x){const m=S.meta;
  if(a=='rbu'){const d=UPD[x];if(!d)return;const l=(m.up||(m.up={}))[x]||0;if(l>=d[2])return toast('Sudah level maksimal.');const c=d[3](l);if(m.pts<c)return toast('Poin warisan kurang (butuh '+c+').');m.pts-=c;m.up[x]=l+1;lg('⭐ Upgrade warisan: '+d[0]+' level '+(l+1))}
  if(a=='rbtal'){const id=$('rbt').value;if(!id||!JB(id))return toast('Pilih bidang bakat dulu.');if(m.tal.length>=4)return toast('Slot bakat penuh (maks. 4).');if(m.tal.includes(id))return toast('Bakat ini sudah dimiliki.');if(m.pts<3)return toast('Butuh 3 poin warisan.');m.pts-=3;m.tal.push(id);lg('⭐ Bakat bawaan baru: '+JB(id).n)}}
 function renderRb(){const m=S.meta,ok=rbOk(),ks=S.kids;if(RBK>=ks.length)RBK=-1;
- setH($('rbi'),'<div class="mu">Lahir kembali memulai hidup baru dari kelas 1 SD dengan bonus permanen. <b>Dibawa:</b> poin warisan, bonus yang dibeli, prestasi, gelar, kekayaan puncak (leaderboard), dan nama tampilan. <b>Direset:</b> uang, tabungan &amp; deposito, aset, rumah, usaha, keluarga, karier, dan CV.</div><div class="nbig" style="margin:8px 0">⭐ Rebirth ke-'+(m.rb||0)+'</div><div class="mu">Syarat: kekayaan bersih min. '+rp(1e9)+' (kini '+rp(val())+') atau umur game 40 tahun (kini '+(S.day/360).toFixed(1)+' th), dan sudah lulus sekolah.</div><div class="mu" style="margin-top:6px">Poin yang didapat sekarang: <b>'+rbPts()+'</b> (kekayaan bersih, prestasi baru, jumlah anak, dan lama bermain).</div>');
+ setH($('rbi'),'<div class="mu">Lahir kembali memulai hidup baru dari kelas 1 SD dengan bonus permanen. <b>Dibawa:</b> poin warisan, bonus yang dibeli, prestasi, gelar, kekayaan puncak (leaderboard), dan nama tampilan. <b>Direset:</b> uang, tabungan &amp; deposito, aset, rumah, usaha, keluarga, karier, dan CV.</div><div class="nbig" style="margin:8px 0">⭐ Rebirth ke-'+(m.rb||0)+'</div><div class="mu">Syarat: kekayaan bersih min. '+rp(1e9)+' (kini '+rp(val())+') atau umur game 40 tahun (kini '+(S.day/360).toFixed(1)+' th) atau 🔥 FIRE 12 bulan berturut-turut (kini '+S.fi.mo+'/12), dan sudah lulus sekolah.'+(m.fire?' FIRE pernah tercapai di '+m.fire+' kehidupan.':'')+'</div><div class="mu" style="margin-top:6px">Poin yang didapat sekarang: <b>'+rbPts()+'</b> (kekayaan bersih, prestasi baru, jumlah anak, lama bermain, dan +3 jika FIRE tercapai).</div>');
  setH($('rbh'),'<label class="mu" for="rbk">Lahir sebagai</label><select id="rbk"><option value="-1"'+(RBK<0?' selected':'')+'>Awal baru (tanpa warisan)</option>'+ks.map((k,i)=>'<option value="'+i+'"'+(RBK==i?' selected':'')+'>'+(k.g=='f'?'👧 ':'👦 ')+esc(k.n)+' (kedekatan '+Math.round(k.bd)+')</option>').join('')+'</select><div class="mu">'+(RBK>=0&&ks[RBK]?'Warisan ±'+rp(heirAmt(ks[RBK]))+' (6% kekayaan x kedekatan, maks. Rp500 jt).':'Pilih salah satu anakmu untuk lahir sebagai keturunannya dan menerima warisan.')+'</div>');
  $('rbg').disabled=!ok;
  setH($('rbs'),'<div class="nbig">'+(m.pts||0)+' <span class="mu">poin tersedia · '+(m.earn||0)+' total</span></div>');
@@ -1002,7 +876,7 @@ function buildProf(){const w=val(),hk=Object.keys(S.hold),o={v:1,rb:S.meta.rb||0
  return o}
 function profHtml(id,p){const n=x=>Math.round(+x)||0,t=(x,l)=>esc(String(x==null?'':x).slice(0,l||40)),ar2=Array.isArray,ach=ar2(p.ach)?p.ach:[],ai=ACH.filter(a=>ach.includes(a[0]));
  const dd=p.house&&DIM[p.house.d]?DIM[p.house.d]:null,box=(l,v)=>'<div class="box"><span class="mu">'+l+'</span><b>'+v+'</b></div>';
- const pk0=p.pk||p.nw,pt0=fxTier(pk0);let h='<div class="pfh'+(pt0?' nt'+pt0:'')+'" style="font:700 20px Georgia,serif">'+fxName(String(p.dn||id).slice(0,20),pk0)+' <small>'+fxName('@'+id,pk0)+'</small></div><div class="mu">🏅 '+t(p.tt)+(pt0?' · ✨ '+NFX[pt0][2]:'')+(n(p.rb)?' · ⭐ Rebirth ×'+n(p.rb):'')+'</div><div class="mu">'+t(p.st,60)+'</div>';
+ let h='<div style="font:700 20px Georgia,serif">'+t(p.dn||id,20)+' <small>@'+esc(id)+'</small></div><div class="mu">🏅 '+t(p.tt)+(n(p.rb)?' · ⭐ Rebirth ×'+n(p.rb):'')+'</div><div class="mu">'+t(p.st,60)+'</div>';
  h+='<div class="split">'+box('Kekayaan bersih',rp(n(p.nw)))+box('Kekayaan puncak',rp(n(p.pk)))+box('Kas',rp(n(p.cash)))+box('Usia permainan',(n(p.day)/360).toFixed(1)+' th')+'</div>';
  h+='<div class="mu">😊 Kebahagiaan '+n(p.hap)+'/100 · 🎓 '+t(p.edu)+(p.mar?' · 💕 '+t(p.mar)+(p.pn?' ('+t(p.pn,20)+')':''):'')+(n(p.kids)?' · 👶 '+n(p.kids)+' anak':'')+' · 💰 dividen '+rp(n(p.div))+' · 🕵️ bocoran benar '+n(p.th)+'x</div>';
  h+='<h3>Aset lain</h3><div class="mu">'+(p.house?'🏠 '+t(p.house.n,40)+' · '+rp(n(p.house.v))+(dd?' · '+dd.e+' '+t(dd.n,40):''):'🏠 Belum punya rumah')+'</div>';
@@ -1038,7 +912,7 @@ function mortMonth(){const m=S.mort;if(!m||!S.owned)return;
   if(m.miss==3){lg('⚠️ Cicilan KPR tertunggak 3 bulan, bank memberi peringatan');toast('⚠️ Kas minus 3 bulan, rumah terancam disita bank!')}
   if(m.miss>=6){const v=Math.round(S.houseV*.7),net=v-m.bal;S.cash+=net;S.owned=0;S.houseV=0;S.mort=null;S.ins.r=0;const hn=S.hn;S.hn='';S.hp=0;S.hd='';S.hg=.04;if(S.home=='rumah')S.home='kos';S.hap=Math.max(0,S.hap-20);lg('🏚️ '+hn+' disita bank karena cicilan macet. Lelang '+rp(v)+', pelunasan sisa pokok '+sg(-m.bal)+' → bersih '+sg(net));toast('🏚️ Rumahmu disita bank.')}}
  else m.miss=0}
-function propAct(a,x){
+function propAct(a,x){if(a=='hr'&&S.owned){if(S.rent){S.rent=0;lg('🔑 Berhenti menyewakan rumah. Kamu bisa menempatinya lagi di tab Kehidupan.')}else{S.rent=1;if(S.home=='rumah')S.home='kos';lg('🔑 Rumah disewakan, kamu pindah ke kos. Sewa masuk tiap bulan (±'+rp(S.houseV*.0034)+').')}return}
  if(a=='hb'||a=='hk'){const h=HSE.find(z=>z[0]==x);if(!h)return;if(DIM[h[5]].rb>(S.meta.rb||0))return toast('Kawasan ini terbuka di rebirth ke-'+DIM[h[5]].rb+'.');
   if(S.sch)return toast('Selesaikan sekolah dulu.');
   if(S.owned)return toast('Kamu sudah punya rumah. Jual dulu kalau mau pindah.');
@@ -1073,7 +947,7 @@ function renderPrp(){const m=S.mort;let h='';
  else{const mc=HOME.rumah[1]*S.cpi*hmv(),bal=m?m.bal:0;
   h='<div class="card"><b>🏠 '+esc(S.hn||'Rumah milik sendiri')+'</b><div class="mu">'+(S.hp?'Dibeli '+rp(S.hp)+' · ':'')+'Nilai sekarang ±'+rp(S.houseV)+' (naik ±'+Math.round((S.hg||.04)*100)+'%/tahun)<br>'+(dis()?dis().e+' '+esc(dis().n)+(netw().n?' · <b>'+esc(netw().n)+'</b>':'')+'<br>Keuntungan: '+perkTxt(netw())+'<br>':'')+'Perawatan &amp; PBB ±'+rp(mc)+'/bln · Ekuitas ±'+rp(S.houseV-bal)+'<br>'+
   (m?'KPR: sisa pokok '+rp(m.bal)+' · cicilan '+rp(mortPay())+'/bln · bunga fixed '+(m.r*100).toFixed(2)+'% · sisa tenor '+Math.floor(m.left/12)+' th '+(m.left%12)+' bln'+((m.miss||0)>0?'<br><b class="dn">⚠️ Kas minus, cicilan menunggak '+m.miss+' bulan (disita pada bulan ke-6)</b>':''):'Rumah lunas, tanpa cicilan.')+
-  '</div>'+(m?'<div class="gl"><i style="width:'+Math.max(0,Math.min(100,(1-m.bal/m.p0)*100))+'%"></i></div><div class="mu">Pokok terbayar '+Math.round((1-m.bal/m.p0)*100)+'%</div>':'')+'<div class="row"><button class="pc" data-a="hs">Jual rumah (±'+sg(Math.round(S.houseV*.97-bal))+' bersih)</button></div></div>'}
+  '</div>'+(m?'<div class="gl"><i style="width:'+Math.max(0,Math.min(100,(1-m.bal/m.p0)*100))+'%"></i></div><div class="mu">Pokok terbayar '+Math.round((1-m.bal/m.p0)*100)+'%</div>':'')+'<div class="row"><button class="pc" data-a="hr">'+(S.rent?'🏷️ Hentikan sewa':'🔑 Sewakan rumah (±'+rp(S.houseV*.0034)+'/bln)')+'</button><button class="pc" data-a="hs">Jual rumah (±'+sg(Math.round(S.houseV*.97-bal))+' bersih)</button></div></div>'}
  setH($('prpo'),h);$('kprctl').style.display=m?'':'none';
  if(m)$('kprn').textContent='Pelunasan sebagian memperpendek tenor (cicilan tetap). '+(S.day-(m.d||0)<1080?'Penalti 1% berlaku sampai '+Math.max(0,1080-(S.day-(m.d||0)))+' hari lagi.':'Tidak ada penalti.');
  setH($('hchips'),'<button class="chip" data-a="hdist:all" aria-pressed="'+(hf=='all')+'">Semua kawasan</button>'+DIS.map(d=>'<button class="chip" data-a="hdist:'+d[0]+'" aria-pressed="'+(hf==d[0])+'">'+d[2]+' '+esc(d[1].split(' (')[0])+'</button>').join(''));
@@ -1152,7 +1026,7 @@ async function cloud(){
   rt=Math.min(rt+1,10);cs('Terputus dari server, mencoba lagi… ('+String(e.message).slice(0,50)+')','warn');setTimeout(cloud,Math.min(30000,3000*rt))}}
 /* tab Akun */
 function needNew(){if(!conn||!ACCT){toast('Masuk ke akun dulu.');return false}if(MODE!='new'){toast('Fitur ini butuh pembaruan server: jalankan setup_akun.sql di Supabase.');return false}return true}
-function renderAcc(){const ok=conn&&ACCT;renderFx();$('pubp').checked=S.pubp!==0;
+function renderAcc(){const ok=conn&&ACCT;$('pubp').checked=S.pubp!==0;
  setH($('acs'),ok?'Masuk sebagai <b>@'+esc(ACC)+'</b> · '+(MODE=='new'?'server akun v2 ✓':'server lama (ganti PIN/username butuh setup_akun.sql)'):'Kamu belum masuk (mode lokal). <button class="lk" onclick="showAuth(\'in\')">Masuk / daftar</button>');
  if(document.activeElement!==$('dnm')&&$('dnm').value!==(S.dn||''))$('dnm').value=S.dn||'';
  $('rcs').textContent=ok&&MODE=='new'?(HASREC?'Kode pemulihan sudah dibuat. Membuat kode baru membatalkan kode lama.':'Akun ini belum punya kode pemulihan. Buat sekarang supaya bisa mereset PIN kalau lupa.'):''}
@@ -1184,5 +1058,101 @@ $('favb').onclick=()=>{if(!S.fav)S.fav={};if(S.fav[cur])delete S.fav[cur];else S
 const today=()=>new Date().toLocaleDateString('en-CA');
 $('dly').onclick=()=>{const t=today();if(S.dr===t)return toast('Hadiah hari ini sudah diambil. Kembali besok!');const y=new Date(Date.now()-864e5).toLocaleDateString('en-CA');
  S.ds=S.dr===y?(S.ds||0)+1:1;const amt=Math.round((S.sch?25e3:250e3)*(1+.25*(Math.min(S.ds,7)-1))*S.cpi/1e3)*1e3;S.cash+=amt;S.dr=t;lg('🎁 Hadiah harian (beruntun '+S.ds+' hari) '+sg(amt));toast('🎁 +'+rp(amt)+' · beruntun '+S.ds+' hari');chkAch();sv();render()};
+/* ---- tawaran teman, FIRE, negosiasi & PHK ---- */
+const clamp=(x,a,b)=>Math.max(a,Math.min(b,x)),hp_=x=>{S.hap=clamp(S.hap+x,0,100)},R0=n=>Math.round(n/1e6)*1e6||1e6;
+const negM=id=>S.neg&&S.neg.j==id?S.neg.m:0,ofv=()=>S.of.a.reduce((t,a)=>t+(a.inv||0),0)-S.of.debt;
+const FN=['Rendra','Dinda','Bagas','Tasya','Yoga','Mita','Fikri','Laras','Heri','Putri'],OA=['Kedai kopi susu','Laundry kiloan 2 cabang','Toko online perlengkapan bayi','Katering harian kantor','Bengkel motor matic','Studio desain & percetakan','Aplikasi booking lapangan futsal'],OP=['Arisan online “CuanCepat”','Robot trading AI “AutoProfit”','Koin kripto “MoonCoin” (member get member)','Dana talangan “BerkahInvest”','Pendana aplikasi pinjaman “DanaKilat”'];
+function genOffer(){const r=R(),f=rnd(FN),b=Math.max(5e6*S.cpi,val()*(.06+R()*.12)),amt=Math.min(2e9,R0(b)),o={u:'o'+S.day+Math.floor(R()*1e4),f,amt,exp:S.day+30*(1+Math.floor(R()*2)),ds:0};
+ if(r<.4){const st=R()<.55,pct=Math.round(5+R()*20),age=Math.round(6+R()*30);Object.assign(o,{k:'angel',n:rnd(OA),st,pct,mo:18+Math.floor(R()*19)});
+  o.pitch=st?'“Aku buka usaha ini dan cari 1 partner modal '+rp(amt)+' untuk '+pct+'% bagi hasil. Ada kontrak dan laporan bulanan, tapi namanya usaha, bisa untung bisa rugi.”':'“Usahanya baru jalan, prospek bagus banget! Modal '+rp(amt)+' dapat '+pct+'% bagi hasil. Kontrak nanti menyusul ya, percaya aja sama aku.”';
+  o.facts=st?[['✅','Punya NIB/izin usaha, sudah berjalan '+age+' bulan'],['✅','Laporan keuangan bulanan bisa kamu lihat'],['✅','Ada perjanjian tertulis, bagi hasil dari laba nyata'],['⚠️','Tidak ada jaminan: kalau usaha rugi, uangmu bisa hilang']]:[['⚠️','Usaha baru jalan 2 bulan, belum pernah untung stabil'],['⚠️','Perjanjian hanya lewat chat, belum ada kontrak'],['✅','Izin usaha ada dan bisnisnya memang nyata'],['⚠️','Proyeksi untung terlalu optimis, cek ulang angkanya']]}
+ else if(r<.78){const sub=R()<.35,rate=sub?3+Math.round(R()*2):8+Math.round(R()*7);Object.assign(o,{k:'ponzi',n:rnd(OP),rate,sub,c:3+Math.floor(R()*9)});
+  o.pitch=sub?'“Ikut '+o.n+' yuk. Return '+rate+'% per bulan, katanya sudah terdaftar dan member lama sudah cair. Ada testimoni.”':'“Bro, ikut '+o.n+'! Untung '+rate+'% per bulan, modal dijamin aman, slot tinggal sedikit. Temanku sudah cair semua!”';
+  o.facts=[['🚩','Janji untung '+rate+'%/bulan (≈'+rate*12+'%/tahun), deposito hanya ±'+(bkRate()*100).toFixed(1)+'%'],['🚩',sub?'Mengaku “terdaftar OJK”, tapi tidak ada di daftar entitas resmi':'Tidak punya izin OJK/Bappebti sama sekali'],['🚩','Untung dibayar dari setoran anggota baru, tidak ada usaha nyata'],['🚩','“Modal dijamin aman” dan slot terbatas: sengaja bikin kamu buru-buru']]}
+ else{const d=R0(Math.max(8e6*S.cpi,val()*.05)*(.8+R()*.6)),fee=Math.max(5e5,R0(d*.04));Object.assign(o,{k:'pinjol',n:'Pinjam KTP untuk aplikasi pinjaman',amt:d,fee});
+  o.pitch='“Tolong pinjam KTP-mu buat daftar aplikasi pinjaman. Kamu dapat fee '+rp(fee)+', cicilannya aku yang urus, cuma formalitas kok.”';
+  o.facts=[['🚩','Aplikasi pinjaman tidak terdaftar OJK'],['🚩','Kamu yang tercatat sebagai peminjam, bukan temanmu'],['🚩','Bunga dan denda harian sangat tinggi, data kontakmu bisa disebar'],['⚠️','Fee '+rp(fee)+' tidak sebanding dengan utang ±'+rp(d)]]}
+ return o}
+function ofMonth(){const O=S.of,st=O.st;O.q=O.q.filter(o=>o.exp>S.day);
+ if(!S.sch&&O.q.length<3&&R()<.4){const o=genOffer();O.q.push(o);lg('🤝 '+o.f+' menawarkan: '+o.n);toast('🤝 Tawaran baru dari '+o.f+'. Cek tab Tawaran.')}
+ O.a=O.a.filter(a=>{
+  if(a.k=='pinjol'){if(--a.t>0)return true;O.debt+=a.debt;O.dm=(O.dm||0)+a.debt*5;hp_(-10);lg('📱 Tagihan pinjol '+rp(a.debt)+' atas namamu datang, temanmu menghilang!');toast('📱 Tagihan pinjol datang atas namamu!');return false}
+  if(a.k=='ponzi'){a.m++;if(a.m>=a.c){st.lost+=a.inv;hp_(-10);lg('💥 “'+a.n+'” runtuh, admin kabur. Modal '+rp(a.inv)+' hilang (untung yang sempat cair '+rp(a.tot)+'). Untung tinggi dan “pasti” adalah ciri ponzi.');toast('💥 Skema bodong runtuh, modalmu hilang.');return false}
+   const p=a.inv*a.rate/100;S.cash+=p;a.tot+=p;a.last=p;lg('💸 Untung '+a.n+' cair '+sg(p));return true}
+  a.e++;const rt=a.out=='ok'?.018:a.out=='mid'?.006:.003;
+  if(a.out=='bad'&&a.e>=a.cl){const rc=a.inv*R()*.15;S.cash+=rc;st.lost+=a.inv-rc;lg('📉 Usaha '+a.n+' milik '+a.f+' tutup. Kembali '+rp(rc)+' dari modal '+rp(a.inv)+'. Investasi usaha memang berisiko, jangan taruh semua telur di satu keranjang.');toast('📉 Usaha temanmu tutup.');return false}
+  const p=a.inv*rt*(.4+R()*1.2);S.cash+=p;a.tot+=p;a.last=p;lg('🤝 Bagi hasil '+a.n+' '+sg(p));
+  if(a.e>=a.mo){const x=a.inv*(a.out=='ok'?1.6+R():.7+R()*.5);S.cash+=x;st.gain+=x+a.tot-a.inv;lg('🏁 Kontrak '+a.n+' selesai: stake dibeli kembali '+rp(x)+' (total bagi hasil '+rp(a.tot)+')');toast('🏁 Investasi '+a.n+' selesai.');return false}
+  return true});
+ if(O.debt>0){O.debt=Math.min(O.dm||1e12,Math.round(O.debt*1.15));hp_(-4);lg('📞 Teror penagihan pinjol: tagihan kini '+rp(O.debt))}}
+function rentMonth(){if(!S.owned)S.rent=0;if(!S.rent)return;if(R()<.08)return lg('🏚️ Rumah sewaan kosong bulan ini, tanpa pemasukan');const n=S.houseV*.0034*(.9+R()*.2);S.cash+=n;lg('🔑 Sewa rumah '+sg(n)+' (setelah perawatan, PBB, dan komisi agen)')}
+function passive(){const o={dv:0,bk:0,fx:0,rt:0,an:0};
+ Object.keys(S.hold).forEach(k=>{const a=G(k),v=S.hold[k]*P[k];if(DIV[k])o.dv+=v*DIV[k]*(1-DTAX)/12;else if(a&&(a.c=='pu'||a.c=='ob'))o.fx+=v*a.r*(1-DTAX)/12});
+ const b=S.bk;if(b.sav>0)o.bk+=bkNet(b.sav,b.sav*bkSav()/12);b.dep.forEach(d=>{o.bk+=bkNet(d.p,d.p*d.r/12)});
+ if(S.rent&&S.owned)o.rt=S.houseV*.0034*.92;S.of.a.forEach(a=>{if(a.k=='angel')o.an+=a.last||0});o.t=o.dv+o.bk+o.fx+o.rt+o.an;return o}
+function fireMonth(){if(S.sch)return;const F=S.fi,e=outgo(),r=e>0?passive().t/e:0;if(r>F.best)F.best=r;
+ if(r>=1){F.mo++;if(F.mo==1)lg('🔥 Penghasilan pasif sudah menutup pengeluaran! Pertahankan 12 bulan berturut-turut.');if(F.mo>=12&&!F.ok){F.ok=1;lg('🔥 FIRE tercapai! Pasif menutup pengeluaran 12 bulan berturut-turut. Rebirth terbuka, bonus +3 poin warisan.');toast('🔥 Bebas finansial tercapai!')}}else F.mo=0}
+/* PHK & negosiasi */
+function loRisk(){if(!S.job||S.sch)return{p:0,f:[]};const id=S.job,f=[],l=lvl(id);let p=.004;
+ act().forEach(m=>{const x=m.fx.f&&m.fx.f[id];if(x&&x<1){p+=(1-x)*.07;f.push('Industrimu sedang lesu: '+m.t)}if(m.fx.d<-.003){p+=.004;f.push('Ekonomi memburuk: '+m.t)}});
+ if(S.hap<35){p+=.006;f.push('Kebahagiaan rendah menurunkan kinerja')}
+ if((S.sk[id]||0)<SKR[l]){p+=.004;f.push('Skill di bawah standar jabatan')}else if((S.sk[id]||0)>=SKR[l]+15){p-=.002;f.push('Skill di atas standar (risiko turun)')}
+ if(S.neg.fl>0){p+=.008;f.push('Atasan kesal karena nego agresif yang gagal')}
+ return{p:clamp(p,.001,.06),f}}
+function loMonth(){const L=S.lo;if(L.pend)sevAct(0);
+ if(L.jk>0){const j=Math.round(L.jv*(L.jk>3?.45:.25));S.cash+=j;L.jk--;lg('🏛️ JKP BPJS Ketenagakerjaan '+sg(j))}
+ if(S.neg.fl>0)S.neg.fl--;if(!S.job||S.sch)return;
+ const o=S.cv.t.find(x=>x.e==null),ten=o?S.day-o.s:0;if(ten<90||R()>=loRisk().p)return;
+ const f=JB(S.job),sal=Math.round(pay(f)*pt()),y=ten/360,mo=Math.min(9,1+Math.floor(y))+Math.min(6,Math.floor(y/3));
+ L.pend={sev:sal*mo,sal,j:S.job,jk:y>=1,mo};L.n++;hp_(-12);lg('📦 PHK! Perusahaan memutus hubunganmu sebagai '+title(f,lvl(f.id))+'. Pesangon standar '+mo+' bulan gaji. Pilih terima atau negosiasi di tab Karier.');toast('📦 Kamu terkena PHK. Cek tab Karier.');
+ S.job=null;cvSwitch(null)}
+function sevAct(n){const L=S.lo,p=L.pend;if(!p)return;let a=p.sev;
+ if(n){const c=clamp(.35+cvScore(p.j)*.02+(S.sk[p.j]||0)*.002,.2,.75);if(R()<c){a*=1.4;lg('🤝 Nego pesangon berhasil ('+Math.round(c*100)+'%): +40%')}else{a*=.85;lg('Nego pesangon ditolak ('+Math.round(c*100)+'%), pesangon dipotong jadi 85%')}}
+ a=Math.round(a);S.cash+=a;if(p.jk){L.jk=6;L.jv=p.sal}L.pend=null;lg('📦 Pesangon diterima '+sg(a)+(p.jk?'. Klaim JKP aktif 6 bulan (45% gaji 3 bulan, lalu 25%)':'. Masa kerja < 1 tahun, tidak dapat JKP'))}
+function ngChance(t,o){const id=S.job;return clamp(.62-t*1.35+(S.sk[id]||0)*.003+(S.hap-50)*.002+Math.min(.1,cvScore(id)*.008)+(o?.12:0)-negM(id)*.5,.05,.9)}
+function negAct(){const id=S.job,N=S.neg;if(!id||S.sch)return toast('Kamu belum bekerja.');if(S.day<N.cd)return toast('Negosiasi lagi dalam '+(N.cd-S.day)+' hari.');
+ const t=+$('ngt').value,o=$('ngb').checked;if(o&&cvScore(id)<4)return toast('CV belum cukup kuat untuk punya tawaran kompetitor (skor CV min. 4).');const c=ngChance(t,o);
+ if(R()<c){N.m=Math.min(.6,(N.j==id?N.m:0)+t);N.j=id;N.w++;N.cd=S.day+120;hp_(4);lg('🤝 Negosiasi berhasil ('+Math.round(c*100)+'%): gaji +'+Math.round(t*100)+'% → '+rp(pay(JB(id))*pt())+'/bln');toast('🤝 Negosiasi berhasil! Gaji naik.')}
+ else{N.cd=S.day+90;if(t>=.2||o){N.fl=6;hp_(-5);lg('Negosiasi gagal ('+Math.round(c*100)+'%): atasan menilai kamu terlalu agresif, risiko PHK naik sementara.')}else{hp_(-2);lg('Negosiasi ditolak ('+Math.round(c*100)+'%). Coba lagi setelah kinerja lebih baik.')}toast('Negosiasi gagal.')}}
+function exMonth(){ofMonth();rentMonth();loMonth();fireMonth()}
+function fxAct(a,x){const O=S.of,o=O.q.find(z=>z.u==x),ac=O.a.find(z=>z.u==x);
+ if(a=='ofc'&&o){o.ds=1;toast('Hasil penelusuran terbuka. Baca baik-baik.')}
+ if(a=='ofn'&&o){O.q=O.q.filter(z=>z!=o);const bad=o.k!='angel';if(bad)O.st.rj++;lg('Menolak tawaran '+o.f+' ('+o.n+'). '+(bad?'Ternyata itu skema bodong, kamu selamat!':'Ternyata usahanya asli ('+(o.st?'dokumen lengkap':'dokumen lemah')+'), tapi tetap berisiko.'));toast(bad?'Keputusan tepat, itu bodong!':'Tawaran dilepas.')}
+ if(a=='ofy'&&o){
+  if(o.k=='pinjol'){S.cash+=o.fee;O.a.push({u:o.u,k:'pinjol',n:o.n,f:o.f,fee:o.fee,debt:o.amt,t:1+Math.floor(R()*2)});O.st.sc++;lg('📱 Meminjamkan KTP ke '+o.f+', menerima fee '+sg(o.fee))}
+  else{if(S.cash<o.amt)return toast('Kas kurang dari '+rp(o.amt));S.cash-=o.amt;
+   if(o.k=='angel'){const q=o.st?[.55,.85]:[.3,.65],r=R();O.a.push({u:o.u,k:'angel',n:o.n,f:o.f,inv:o.amt,e:0,mo:o.mo,out:r<q[0]?'ok':r<q[1]?'mid':'bad',cl:6+Math.floor(R()*18),tot:0,last:0});O.st.ok++}
+   else{O.a.push({u:o.u,k:'ponzi',n:o.n,f:o.f,inv:o.amt,rate:o.rate,c:o.c,m:0,tot:0,last:0});O.st.sc++}
+   lg('🤝 Ikut '+o.n+' milik '+o.f+', modal '+sg(-o.amt))}
+  O.q=O.q.filter(z=>z!=o);toast('Kamu ikut tawaran '+o.f+'.')}
+ if(a=='ofw'&&ac){if(ac.k=='angel'){S.cash+=ac.inv*.7;O.a=O.a.filter(z=>z!=ac);lg('Menjual stake '+ac.n+' lebih awal: kembali '+rp(ac.inv*.7)+' (diskon 30%, investasi usaha tidak likuid)')}
+  else if(R()<Math.max(.3,1-.1*ac.m)){S.cash+=ac.inv;O.a=O.a.filter(z=>z!=ac);lg('Berhasil menarik modal '+rp(ac.inv)+' dari '+ac.n+' sebelum runtuh. Beruntung, banyak korban tidak sempat.')}
+  else{lg('Penarikan '+ac.n+' “tertahan”: diminta top-up atau biaya admin dulu. Itu tanda bahaya!');toast('⚠️ Penarikan tertahan, diminta biaya tambahan!')}}
+ if(a=='ofl'&&O.debt>0){const p=Math.min(S.cash,O.debt);if(p<=0)return toast('Tidak ada kas untuk membayar.');S.cash-=p;O.debt=O.debt-p<1?0:O.debt-p;lg('Membayar tagihan pinjol '+sg(-p))}
+ if(a=='ngo')negAct();if(a=='lok')sevAct(0);if(a=='lon')sevAct(1)}
+/* tampilan */
+function hdFx(){const t=document.querySelector('#tabs [data-v=ofr]'),n=S.of.q.length;if(t)t.textContent='🤝 Tawaran'+(n?' ('+n+')':'');
+ if(!S.sch){const e=outgo(),r=e>0?passive().t/e:0;if(r>0)$('pills').insertAdjacentHTML('beforeend','<span class="pill">🔥 FIRE '+Math.round(r*100)+'%</span>')}}
+const FM=[[.1,'Tunas Pasif'],[.25,'Dapur Aman'],[.5,'Setengah Merdeka'],[1,'Bebas Finansial'],[1.5,'Fat FIRE']];
+function renderFire(){const F=S.fi;if(S.sch)return setH($('fire'),'<div class="mu">Meter FIRE aktif setelah lulus sekolah. Tujuannya: penghasilan pasif (dividen, bunga, sewa, bagi hasil) menutup pengeluaran bulananmu.</div>');
+ const p=passive(),e=outgo(),r=e>0?p.t/e:0,row=(l,v)=>'<tr><td>'+l+'</td><td>'+rp(v)+'</td></tr>';
+ setH($('fire'),'<div class="nbig '+(r>=1?'up':'')+'">'+Math.round(r*100)+'%<span class="mu"> pengeluaran tertutup pasif</span></div><div class="gl"><i style="width:'+Math.min(100,r*100)+'%"></i></div><div class="mu">Pasif '+rp(p.t)+'/bln vs pengeluaran '+rp(e)+'/bln'+(r<1?' · kurang '+rp(e-p.t)+'/bln':' · surplus '+rp(p.t-e)+'/bln')+'</div><table class="nett"><tbody>'+row('Dividen saham',p.dv)+row('Bunga (tabungan, deposito, SBN, reksa dana)',p.bk+p.fx)+row('Sewa rumah',p.rt)+row('Bagi hasil usaha teman',p.an)+'</tbody></table><div class="chips" style="margin-top:8px">'+FM.map(m=>'<span class="chip" aria-pressed="'+(Math.max(F.best,r)>=m[0])+'">'+(Math.max(F.best,r)>=m[0]?'✓ ':'')+Math.round(m[0]*100)+'% '+m[1]+'</span>').join('')+'</div><div class="mu">'+(F.ok?'🔥 FIRE tercapai! Rebirth terbuka dan kamu dapat +3 poin warisan.':'Bertahan di ≥100% selama 12 bulan berturut-turut: <b>'+F.mo+'/12</b>. Menutup 12 bulan membuka Rebirth walau kekayaan belum Rp1 miliar.')+' Perkiraan, bunga SBN/reksa dana dihitung dari imbal hasil tahunan.</div>')}
+function renderOfr(){const O=S.of,st=O.st,$s=[['✅','Usaha asli'],['🚩','Bodong']];
+ $('ofs').innerHTML='Teman sering menawarkan “peluang”. Ada usaha asli (kamu jadi angel investor), ada skema bodong (ponzi, pinjol). Tidak ada label di depan, nilai sendiri. Klik <b>🔍 Telusuri</b> untuk memeriksa izin, dokumen, dan sumber untung. Aturan emas: imbal hasil tinggi berarti risiko tinggi, “untung pasti” berarti waspada, cek izin OJK.<br>Bodong ditolak: <b>'+st.rj+'</b> · Ikut skema bodong: <b>'+st.sc+'</b> · Angel di usaha asli: <b>'+st.ok+'</b> · Total rugi <b class="dn">'+rp(st.lost)+'</b> · Untung bersih angel <b class="up">'+rp(st.gain)+'</b>';
+ setH($('ofq'),S.sch?'<div class="mu">Tawaran teman datang setelah kamu lulus sekolah.</div>':O.q.map(o=>{const bt=o.k=='pinjol'?'Pinjamkan KTP (fee '+rp(o.fee)+')':'Ikut '+rp(o.amt),dis=o.k!='pinjol'&&S.cash<o.amt;
+  return'<div class="card"><b>'+'💼'+' '+esc(o.n)+'</b><div class="mu">'+esc(o.f)+': '+esc(o.pitch)+'<br>'+(o.k=='pinjol'?'Pinjaman atas namamu':'Modal diminta')+' <b>'+rp(o.amt)+'</b>'+(o.k=='angel'?' · bagi hasil '+o.pct+'% laba':'')+' · berlaku '+(o.exp-S.day)+' hari lagi</div>'+(o.ds?'<div style="margin:6px 0;font-size:13px">'+o.facts.map(f=>'<div>'+f[0]+' '+esc(f[1])+'</div>').join('')+'</div>':'')+'<div class="row"><button class="pc" data-a="ofy:'+o.u+'" '+(dis?'disabled':'')+'>'+bt+'</button><button class="pc" data-a="ofc:'+o.u+'" '+(o.ds?'disabled':'')+'>🔍 Telusuri</button><button class="pc" data-a="ofn:'+o.u+'">Tolak</button></div></div>'}).join('')||'<div class="mu">Belum ada tawaran. Teman biasanya datang tiap beberapa bulan game.</div>');
+ setH($('ofa'),(O.debt>0?'<div class="card"><b class="dn">📞 Tagihan pinjol '+rp(O.debt)+'</b><div class="mu">Bunga dan denda ±15%/bulan, ada teror penagihan yang menurunkan kebahagiaan. Lunasi secepatnya.</div><div class="row"><button class="pc" data-a="ofl">Bayar '+rp(Math.min(S.cash,O.debt))+'</button></div></div>':'')+O.a.map(a=>{
+  if(a.k=='pinjol')return'<div class="card"><b>📱 '+esc(a.n)+'</b><div class="mu">Fee '+rp(a.fee)+' sudah kamu terima. Namamu tercatat sebagai peminjam, tagihan akan menyusul.</div></div>';
+  return'<div class="card"><b>'+'💼'+' '+esc(a.n)+'</b><div class="mu">'+(a.k=='angel'?'Angel di usaha '+esc(a.f)+' · bulan '+a.e+'/'+a.mo+'<br>Modal '+rp(a.inv)+' · bagi hasil diterima '+rp(a.tot)+' · bulan lalu '+rp(a.last):'Saldo tercatat '+rp(a.inv)+' · untung cair '+rp(a.tot)+' · bulan ke-'+a.m)+'</div><div class="row"><button class="pc" data-a="ofw:'+a.u+'">'+(a.k=='angel'?'Jual stake (70%)':'Tarik modal')+'</button></div></div>'}).join('')||(O.debt>0?'':'<div class="mu">Belum ada investasi teman yang berjalan.</div>'))}
+function renderNg(){const f=JB(S.job),N=S.neg,b=$('ngbtn'),L=S.lo;
+ if(!f||S.sch){$('ngi').textContent=S.sch?'Negosiasi dibuka setelah kamu bekerja.':'Belum bekerja. Pilih pekerjaan dulu, lalu kamu bisa menegosiasikan gaji.';$('ngc').textContent='';b.disabled=true}
+ else{const m=negM(f.id),t=+$('ngt').value,o=$('ngb').checked,c=ngChance(t,o);$('ngi').textContent='Gaji pasar '+title(f,lvl(f.id))+' ±'+rp(pay(f)/(1+m)*pt())+'. Gajimu '+rp(pay(f)*pt())+(m?' (premi nego +'+Math.round(m*100)+'%, hilang bila pindah bidang atau di-PHK)':'')+'. Berhasil '+N.w+'x.';
+  $('ngc').textContent=(S.day<N.cd?'Bisa nego lagi dalam '+(N.cd-S.day)+' hari. ':'')+'Peluang berhasil '+Math.round(c*100)+'%. Target kecil lebih aman; target besar atau bluffing yang gagal membuat atasan kesal dan menaikkan risiko PHK.';b.disabled=S.day<N.cd}
+ const r=loRisk(),e=outgo(),em=e>0?(S.cash+S.bk.sav)/e:0,p=L.pend;
+ setH($('lor'),(p?'<div class="card" style="margin-bottom:8px"><b>📦 Pesangon menunggu keputusan: '+rp(p.sev)+'</b><div class="mu">'+p.mo+' bulan gaji. Kalau tidak dipilih bulan ini, otomatis diterima standar.</div><div class="row"><button class="pc" data-a="lok">Terima '+rp(p.sev)+'</button><button class="pc" data-a="lon">Nego (+40% atau dipotong 15%)</button></div></div>':'')+
+  (S.job?'<div class="nbig '+(r.p>.02?'dn':'')+'">'+(r.p*100).toFixed(1)+'%<span class="mu"> per bulan (≈'+((1-Math.pow(1-r.p,12))*100).toFixed(0)+'% per tahun)</span></div><div class="mu">'+(r.f.join(' · ')||'Kondisi kerjamu stabil.')+'</div>':'<div class="mu">'+(L.n?'Kamu sedang tidak bekerja. Cari pekerjaan baru di panel Pekerjaan.':'Belum bekerja, tidak ada risiko PHK.')+'</div>')+
+  '<div class="mu" style="margin-top:6px">Dana darurat: <b class="'+(em<3?'dn':'up')+'">'+em.toFixed(1)+' bulan</b> pengeluaran (kas + tabungan). Ideal 6 bulan. Pesangon dan JKP (masa kerja ≥ 1 tahun) membantu, tapi tidak menggantikan dana darurat.'+(L.jk>0?' JKP berjalan, sisa '+L.jk+' bulan.':'')+(L.n?' PHK dialami: '+L.n+'x.':'')+'</div>')}
+$('ngt').onchange=$('ngb').onchange=()=>render();
+
 buildJobSel();mig();buildList();render();cloud();
 </script></body></html>
