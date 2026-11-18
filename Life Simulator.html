@@ -29,7 +29,7 @@ button:focus-visible,.it:focus-visible,select:focus-visible,input:focus-visible{
 .tg{color:#fff;font-size:11px;padding:1px 8px;border-radius:9px}
 .pr{font:700 30px Georgia,serif}
 canvas{width:100%;height:240px;display:block;margin:6px 0;border-radius:12px}
-input[type=number],select{width:100%;padding:9px;border:1px solid var(--ln);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;margin:3px 0 8px}
+input[type=number],input[type=text],input[type=password],select{width:100%;padding:9px;border:1px solid var(--ln);border-radius:10px;background:var(--bg);color:var(--ink);font:inherit;margin:3px 0 8px}
 .row{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
 .ac{flex:1;padding:11px;border:0;border-radius:12px;color:#fff;font:700 15px inherit;cursor:pointer}
 table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;padding:4px 3px;border-bottom:1px solid var(--ln)}th:first-child,td:first-child{text-align:left}th{color:var(--mu)}
@@ -45,20 +45,24 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 .acc{font-size:13px;font-weight:600;color:#fff;margin:2px 0}.ttl{font-size:13px;color:#ffe9a8}
 .ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;margin-top:10px}.ak{border:1px solid var(--ln);border-radius:14px;padding:10px 12px;background:var(--bg);display:flex;gap:10px;align-items:flex-start}.ak .ic{font-size:26px;line-height:1}.ak.lock{opacity:.5;filter:grayscale(1)}.ak b{display:block;font-size:14px}
 .lbt td,.lbt th{padding:7px 4px}.lbt tr.me td{background:color-mix(in srgb,var(--ac) 16%,transparent);font-weight:700}.lbt td:nth-child(2),.lbt th:nth-child(2),.lbt td:nth-child(3),.lbt th:nth-child(3){text-align:left}
+.acc{cursor:pointer}.acc:hover{text-decoration:underline}
+#auth{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;align-items:center;justify-content:center;z-index:20;padding:14px}.ab{background:var(--pn);border:1px solid var(--ln);border-radius:20px;padding:20px;max-width:420px;width:100%;box-shadow:var(--sh);max-height:92vh;overflow:auto}
+.rcode{font:700 19px ui-monospace,Consolas,monospace;letter-spacing:1px;text-align:center;padding:12px;border:2px dashed var(--ac);border-radius:12px;margin:10px 0;user-select:all;word-break:break-all}
+@keyframes pls{0%,100%{box-shadow:0 0 0 0 rgba(10,138,92,.5)}50%{box-shadow:0 0 0 6px rgba(10,138,92,0)}}.pc.glow{animation:pls 1.6s infinite}
 .sv{font-size:12px}.sv.ok{color:#9ff0c8}.sv.warn{color:#ffd98a}
 </style></head><body><div class="w">
 <div class="hero">
  <div class="hb"><div class="av" id="av">🎒</div><div><div style="font:700 22px Georgia,serif">Life Simulator</div><div id="stg" class="mu"></div><div class="acc" id="accn"></div><div class="mu" id="clk"></div><span class="sv" id="svs">Menghubungkan ke server…</span></div></div>
  <div id="pills"></div>
- <div style="text-align:right"><span class="ttl" id="rank"></span><b class="nw" id="nw"></b><span class="mu" id="ret"></span><div><button class="pc" id="spd" style="margin-top:6px">⏩ Kecepatan ×1</button></div></div>
+ <div style="text-align:right"><span class="ttl" id="rank"></span><b class="nw" id="nw"></b><span class="mu" id="ret"></span><div class="row" style="justify-content:flex-end;margin-top:6px"><button class="pc" id="dly">🎁 Hadiah harian</button><button class="pc" id="spd">⏩ Kecepatan ×1</button><button class="pc" id="thm" title="Ganti tema">🌓</button></div></div>
 </div>
-<div class="tabs" id="tabs"><button class="tab" data-v="inv">📈 Investasi</button><button class="tab" data-v="car">💼 Karier</button><button class="tab" data-v="biz">🏪 Bisnis</button><button class="tab" data-v="love">💕 Pasangan</button><button class="tab" data-v="life">🏡 Kehidupan</button><button class="tab" data-v="gar">🚗 Garasi</button><button class="tab" data-v="prp">🏠 Properti</button><button class="tab" data-v="ach">🏅 Prestasi</button><button class="tab" data-v="lb">🥇 Leaderboard</button></div>
+<div class="tabs" id="tabs"><button class="tab" data-v="inv">📈 Investasi</button><button class="tab" data-v="car">💼 Karier</button><button class="tab" data-v="biz">🏪 Bisnis</button><button class="tab" data-v="love">💕 Pasangan</button><button class="tab" data-v="life">🏡 Kehidupan</button><button class="tab" data-v="gar">🚗 Garasi</button><button class="tab" data-v="prp">🏠 Properti</button><button class="tab" data-v="ach">🏅 Prestasi</button><button class="tab" data-v="lb">🥇 Leaderboard</button><button class="tab" data-v="acc">👤 Akun</button></div>
 <div class="pn mu" id="hl" style="margin-bottom:12px"></div>
 
 <div class="g" id="v-inv">
  <section class="pn"><h2>Pasar</h2><div class="chips" id="chips"></div><div id="list"></div></section>
  <section class="pn">
-  <div><b id="dn" style="font:700 18px Georgia,serif"></b> <span class="tg" id="dtag">Simulasi</span></div>
+  <div><b id="dn" style="font:700 18px Georgia,serif"></b> <span class="tg" id="dtag">Simulasi</span> <button class="pc" id="favb" style="padding:2px 10px;margin-left:4px" aria-label="Favorit">☆</button></div>
   <div><span class="pr" id="pr"></span> <b id="chg"></b></div>
   <div class="mu" id="info"></div>
   <div class="chips" id="tfs" style="margin:8px 0 0"></div>
@@ -83,7 +87,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
    <table><thead><tr><th>Aset</th><th>Nilai</th><th>P/L</th></tr></thead><tbody id="hold"></tbody></table>
   </section>
   <section class="pn"><h2>Riwayat</h2><div class="log" id="log"></div>
-   <p style="margin:8px 0 0"><button class="lk" id="reset">Mulai ulang dari kelas 1 SD</button> · <button class="lk" onclick="localStorage.removeItem('bl7acct');location.reload()">Ganti akun</button></p></section>
+   <p style="margin:8px 0 0"><button class="lk" id="reset">Mulai ulang dari kelas 1 SD</button> · <button class="lk" id="swa">Ganti akun</button></p></section>
  </aside>
 </div>
 
@@ -99,6 +103,24 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 <div id="v-biz" style="display:none"><section class="pn"><h2>Buka usaha</h2><div class="mu" id="bizs" style="margin-bottom:8px"></div><div class="g2" id="bizg"></div></section></div>
 
 <div id="v-love" style="display:none"><section class="pn"><h2>💕 Pasangan</h2><div id="lovec"></div></section><section class="pn" style="margin-top:12px"><h2>👶 Keluarga &amp; anak</h2><div id="famc"></div></section></div>
+<div id="v-acc" style="display:none"><div class="g2">
+<section class="pn"><h2>👤 Profil</h2><div class="mu" id="acs"></div>
+<label class="mu" for="dnm">Nama tampilan (muncul di header dan leaderboard)</label><input type="text" id="dnm" maxlength="20" placeholder="mis. Budi si Sultan">
+<div class="row"><button class="pc" id="dns">Simpan nama tampilan</button></div><hr class="sep">
+<label class="mu" for="nun">Username baru (3-20: huruf kecil, angka, _)</label><input type="text" id="nun" maxlength="20" autocomplete="off">
+<label class="mu" for="nup">PIN saat ini</label><input type="password" id="nup" autocomplete="current-password">
+<div class="row"><button class="pc" id="nub">Ubah username</button></div><div class="mu">Mengubah username memindahkan seluruh progres dan skor leaderboard ke nama baru.</div></section>
+<section class="pn"><h2>🔐 PIN &amp; pemulihan</h2>
+<label class="mu" for="opn">PIN lama</label><input type="password" id="opn" autocomplete="current-password">
+<label class="mu" for="npn">PIN baru (min. 4 karakter)</label><input type="password" id="npn" autocomplete="new-password">
+<label class="mu" for="np2">Ulangi PIN baru</label><input type="password" id="np2" autocomplete="new-password">
+<div class="row"><button class="pc" id="npb">Ganti PIN</button></div><hr class="sep">
+<div class="mu" id="rcs"></div><label class="mu" for="rcp">PIN saat ini (untuk membuat kode baru)</label><input type="password" id="rcp" autocomplete="current-password">
+<div class="row"><button class="pc" id="rcb">Buat kode pemulihan baru</button></div></section>
+<section class="pn"><h2>💾 Cadangan &amp; sesi</h2><div class="mu">Unduh progresmu sebagai file, atau pulihkan dari file cadangan. Berguna kalau ingin pindah akun atau jaga-jaga.</div>
+<div class="row"><button class="pc" id="bkd">⬇️ Unduh cadangan</button><label class="pc" style="cursor:pointer">⬆️ Pulihkan dari file<input type="file" id="bku" accept=".json,application/json" hidden></label></div>
+<div class="row"><button class="pc" id="lgo">Keluar / ganti akun</button></div></section>
+</div></div>
 <div id="v-prp" style="display:none"><section class="pn"><h2>🏠 Rumah saya</h2><div id="prpo"></div>
 <div id="kprctl" style="display:none"><hr class="sep"><label class="mu" for="kprx">Pelunasan dipercepat (Rp), minimal Rp5.000.000</label><input type="number" id="kprx" min="5000000" step="1000000" value="10000000"><div class="row"><button class="pc" data-a="kx">Bayar sebagian</button><button class="pc" data-a="kl">Lunasi KPR</button></div><div class="mu" id="kprn"></div></div></section>
 <section class="pn" style="margin-top:12px"><h2>🏘️ Cari rumah &amp; simulasi KPR</h2><div class="row" style="align-items:center"><span class="mu">Simulasi KPR:</span><select id="hdp" style="width:auto"><option value="0.1">DP 10%</option><option value="0.2" selected>DP 20%</option><option value="0.3">DP 30%</option><option value="0.5">DP 50%</option></select><select id="htn" style="width:auto"><option value="120">10 tahun</option><option value="180">15 tahun</option><option value="240" selected>20 tahun</option><option value="300">25 tahun</option></select></div><div class="g2" id="hcat"></div>
@@ -120,7 +142,22 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 </div>
 <section class="pn" style="margin-top:12px"><h2>Berita &amp; kebijakan</h2><div class="mu" id="eff"></div><div class="log" id="nws" style="max-height:200px;margin-top:6px"></div></section></div>
 <p class="mu">Uang di game ini virtual, bukan saran investasi. Semua harga adalah simulasi (1 hari game = 3 detik). Data progres disimpan di server per akun.</p>
-</div><div id="toast" role="status"></div>
+</div><div id="auth" role="dialog" aria-modal="true" aria-label="Masuk"><div class="ab">
+<div style="font:700 20px Georgia,serif">🎮 Life Simulator</div><div class="mu" style="margin-bottom:8px">Masuk agar progres tersimpan di server dan tampil di leaderboard.</div>
+<div class="row" id="atabs"><button class="chip" data-m="in">Masuk</button><button class="chip" data-m="up">Daftar</button><button class="chip" data-m="fg">Lupa PIN</button></div>
+<div id="aform"><label class="mu" for="au">Username</label><input type="text" id="au" autocomplete="username" maxlength="40" autocapitalize="none">
+<div id="arw" style="display:none"><label class="mu" for="ar">Kode pemulihan</label><input type="text" id="ar" autocomplete="off" placeholder="XXXX-XXXX-XXXX-XXXX"></div>
+<label class="mu" for="ap" id="apl">PIN</label><input type="password" id="ap" autocomplete="current-password">
+<div id="ap2w" style="display:none"><label class="mu" for="ap2">Ulangi PIN</label><input type="password" id="ap2" autocomplete="new-password"></div>
+<div class="mu dn" id="amsg" role="alert"></div>
+<button class="ac" id="ago" style="background:var(--ac);width:100%;margin-top:6px">Masuk</button>
+<p style="margin:10px 0 0"><button class="lk" id="agst">Main sebagai tamu (progres hanya di perangkat ini)</button></p></div>
+<div id="acode" style="display:none"><b id="act" style="font:700 17px Georgia,serif"></b><div class="mu" id="acd"></div><div class="rcode" id="acv"></div>
+<div class="row"><button class="pc" id="acp">📋 Salin</button><button class="pc" id="acq">⬇️ Unduh .txt</button></div>
+<label class="mu" style="display:block;margin:8px 0"><input type="checkbox" id="ack" style="width:auto;display:inline;margin:0 6px 0 0">Saya sudah menyimpan kode ini</label>
+<button class="ac" id="acn" style="background:var(--up);width:100%">Lanjut main</button></div>
+</div></div>
+<div id="toast" role="status"></div>
 <script>
 const GOAL=5e8,DT=3,R=Math.random,$=i=>document.getElementById(i),dt=1/1095,sq=Math.sqrt(dt);
 const N=()=>{let u=0;for(let i=0;i<4;i++)u+=R();return(u-2)*1.732};
@@ -160,7 +197,7 @@ const G=id=>A.find(a=>a.id==id);
 const rp=n=>(n<0?'-':'')+'Rp'+Math.abs(n).toLocaleString('id-ID',{maximumFractionDigits:0});
 const fp=p=>p>=1000?rp(p):'Rp'+p.toLocaleString('id-ID',{maximumFractionDigits:2});
 const sg=n=>(n>=0?'+':'')+rp(n);
-const fresh=()=>({cash:0,hold:{},cost:{},log:['Hari 0: kamu kelas 1 SD. Terima uang jajan tiap bulan dan belajar berinvestasi sejak dini!'],day:0,sim:{},fv:{},auto:null,job:null,xp:{},home:'ortu',food:'hemat',life:'min',hap:50,owned:0,houseV:0,sch:'sd',sg:1,sy:0,sma:0,trn:'umum',mods:[],nws:[],cpi:1,wage:1,lv:{},sk:{},edu:{lv:0,cur:null,left:0},cool:0,mar:0,glow:null,vcd:0,biz:{},pt:null,cands:[],fcd:0,div:0,ins:{h:'none',v:0,r:0},kids:[],preg:0,veh:{own:[]},ach:{},ttl:null,tman:0,pk:0,nt:0,nv:0,mort:null,hn:'',hp:0,kl:0});
+const fresh=()=>({cash:0,hold:{},cost:{},log:['Hari 0: kamu kelas 1 SD. Terima uang jajan tiap bulan dan belajar berinvestasi sejak dini!'],day:0,sim:{},fv:{},auto:null,job:null,xp:{},home:'ortu',food:'hemat',life:'min',hap:50,owned:0,houseV:0,sch:'sd',sg:1,sy:0,sma:0,trn:'umum',mods:[],nws:[],cpi:1,wage:1,lv:{},sk:{},edu:{lv:0,cur:null,left:0},cool:0,mar:0,glow:null,vcd:0,biz:{},pt:null,cands:[],fcd:0,div:0,ins:{h:'none',v:0,r:0},kids:[],preg:0,veh:{own:[]},ach:{},ttl:null,tman:0,pk:0,nt:0,nv:0,mort:null,hn:'',hp:0,kl:0,fav:{},dr:'',ds:0,dn:''});
 /* ---- penyimpanan: server (db) + cadangan lokal ---- */
 let ACC='',ACCT=null,S=fresh(),P={},B={},SER={},cur='RDPU',cat='all',tk=0,tf='H',vw='inv',SPD=1,DOC=null,HDOC=null,dirty=false,busy=false,hc=0,mpts=null,hv=-1;
 try{const s=JSON.parse(localStorage.getItem('bl7'));if(s&&s.cash!=null)S=Object.assign(fresh(),s);const h=JSON.parse(localStorage.getItem('bl7h'));if(h)S.h=h}catch(e){}
@@ -168,7 +205,7 @@ const pack=()=>{const s=Object.assign({},S);delete s.h;return JSON.stringify(s)}
 const hpack=()=>{const o={};A.forEach(a=>{o[a.id]=(S.h[a.id]||[]).slice(-250).map(v=>+v.toPrecision(6))});return JSON.stringify(o)};
 function sv(){dirty=true;try{localStorage.setItem('bl7',pack())}catch(e){}}
 function cs(t,c){const e=$('svs');e.textContent=(c=='ok'?'☁️ ':'⚠️ ')+t;e.className='sv '+c}
-async function flush(h,ka){if(!DOC||busy)return;busy=true;dirty=false;try{await DOC.set({s:pack(),t:Date.now(),day:S.day},ka);if(h&&HDOC&&!ka){await HDOC.set({h:hpack()});try{localStorage.setItem('bl7h',hpack())}catch(e){}}cs('Tersimpan di server ✓ '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}),'ok')}catch(e){dirty=true;cs('Gagal menyimpan ('+(e.name=='AbortError'?'waktu habis':String(e.message).slice(0,90))+'), mencoba lagi…','warn')}busy=false}
+async function flush(h,ka){if(!DOC||busy)return;busy=true;dirty=false;try{await DOC.set({s:pack(),t:Date.now(),day:S.day},ka);if(h&&HDOC&&!ka){await HDOC.set({h:hpack()});try{localStorage.setItem('bl7h',hpack())}catch(e){}}cs('Tersimpan di server ✓ '+new Date().toLocaleTimeString('id-ID',{hour:'2-digit',minute:'2-digit'}),'ok')}catch(e){dirty=true;if(sessBad(e)){busy=false;return}cs('Gagal menyimpan ('+(e.name=='AbortError'?'waktu habis':String(e.message).slice(0,90))+'), mencoba lagi…','warn')}busy=false}
 setInterval(()=>{if(dirty&&DOC){hc++;flush(hc%10==0)}},8000);
 
 const SB_URL='https://qvjtdyoajpshijfnagys.supabase.co',SB_KEY='sb_publishable_YQwI_KTvImwIOgzYGb0dFw_ODEoHvBp'; /* isi dari Supabase: Project Settings > API */
@@ -176,18 +213,7 @@ const rpc=async(f,b,ka)=>{const c=new AbortController(),t=setTimeout(()=>c.abort
 const sha=async t=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t)))].map(x=>x.toString(16).padStart(2,'0')).join('');
 function applyLoad(s,h){S=Object.assign(fresh(),JSON.parse(s));delete S.h;if(h){try{S.h=JSON.parse(h)}catch(e){}}initA();buildList();render();toast('Progres dimuat dari server (hari ke-'+S.day+')')}
 let conn=false,rt=0;
-async function cloud(){
- if(!(SB_URL&&SB_KEY)){cs('Mode lokal (Supabase belum diisi)','warn');return}
- if(conn)return;
- try{
-  let a=JSON.parse(localStorage.getItem('bl7acct')||'null');
-  if(!a){const id=(prompt('Masuk atau buat akun game. Nama pengguna:')||'').trim().toLowerCase(),pin=prompt('PIN atau kata sandi (min. 4 karakter):')||'';if(!id||pin.length<4)throw new Error('login dibatalkan');a={id,h:await sha(id+':'+pin)}}
-  const d=await rpc('load_save',{p_id:a.id,p_hash:a.h});localStorage.setItem('bl7acct',JSON.stringify(a));ACC=a.id;ACCT=a;
-  if(d&&d.s)applyLoad(d.s,d.h);
-  const w=(o,ka)=>rpc('store_save',{p_id:a.id,p_hash:a.h,p_data:o},ka);DOC={set:w};HDOC={set:w};conn=true;rt=0;dirty=true;cs('Akun '+a.id+' · tersimpan di server ✓','ok');
- }catch(e){const m=String(e.message);
-  if(/PIN salah|dibatalkan/.test(m)){localStorage.removeItem('bl7acct');cs('Login gagal: '+m.slice(0,60)+'. Muat ulang atau klik Ganti akun.','warn');return}
-  rt=Math.min(rt+1,10);cs('Terputus dari server, mencoba lagi… ('+m.slice(0,50)+')','warn');setTimeout(cloud,Math.min(30000,3000*rt))}}
+/* cloud() ada di blok akun di bawah */
 document.addEventListener('visibilitychange',()=>{if(document.hidden){if(DOC&&dirty)flush(false,true)}else if(!conn)cloud()});
 addEventListener('pagehide',()=>{if(DOC&&dirty)flush(false,true)});
 addEventListener('online',()=>{if(!conn)cloud();else dirty=true});
@@ -392,15 +418,15 @@ $('exm').onclick=()=>{const id=S.job;if(!id||!elig(id))return;if(S.day<S.cool)re
  if(R()*100<c){S.lv[id]=l+1;S.hap=Math.min(100,S.hap+5);lg('Lulus ujian promosi ('+c+'%): '+title(f,l+1)+', gaji dasar '+rp(f.b*M[l+1])+'/bln');toast('Lulus! Kamu naik jabatan.')}else{S.cool=S.day+30;S.hap=Math.max(0,S.hap-8);lg('Gagal ujian promosi (peluang '+c+'%), '+sg(-c0));toast('Gagal. Ujian ulang 30 hari lagi; kursus menaikkan peluang.')}sv();render()};
 $('enr').onclick=()=>{const k=$('edus').value,e=EDU[k],ed=S.edu;if(ed.cur)return toast('Kamu masih kuliah.');if(e[1]<=ed.lv)return toast('Kamu sudah lulus jenjang ini atau lebih tinggi.');if(k=='s2'&&ed.lv<2)return toast('S2 butuh lulusan S1.');if(S.cash<tui(e))return toast('Kas kurang untuk biaya bulan pertama ('+rp(tui(e))+').');ed.cur=k;ed.left=e[3];lg('Mulai kuliah '+e[0]+' ('+e[3]+' bulan)');toast('Terdaftar. Selama kuliah gaji dan XP kerja jadi 60%.');sv();render()};
 $('gop').onclick=()=>{if(S.sch!='pilih')return;if($('trk').value=='smk'){const j=$('jur').value;S.sch='smk';S.sk[j]=Math.min(100,(S.sk[j]||0)+25);S.xp[j]=(S.xp[j]||0)+60;lg('Masuk SMK jurusan '+JB(j).n+': +25 skill, +60 XP')}else{S.sch='sma';S.sma=1;lg('Masuk SMA: diskon biaya kuliah 20%')}S.sg=1;sv();render()};
-$('spd').onclick=()=>{SPD=SPD==1?3:SPD==3?10:1;$('spd').textContent='⏩ Kecepatan ×'+SPD};
+$('spd').onclick=()=>{SPD=SPD==1?3:SPD==3?10:SPD==10?0:1;$('spd').textContent=SPD?'⏩ Kecepatan ×'+SPD:'⏸ Dijeda'};
 /* ---- tampilan ---- */
 const fo=(el,o)=>{$(el).innerHTML=o.map(([k,n,c])=>`<option value="${k}">${n}${c!=null?' ('+(c?rp(c)+'/bln':'gratis')+')':''}</option>`).join('')};
 fo('job',[['','Belum bekerja'],...JOBS.map(j=>[j.id,j.n+' (mulai '+rp(j.b)+', min. '+ELV[reqE(j,0)]+')'])]);fo('jur',JOBS.map(j=>[j.id,j.n]));
 fo('home',Object.entries(HOME).map(([k,v])=>[k,v[0],v[1]]));fo('food',Object.entries(FOOD).map(([k,v])=>[k,v[0],v[1]]));fo('lifes',Object.entries(LIFE).map(([k,v])=>[k,v[0],v[1]]));fo('trn',Object.entries(TRN).map(([k,v])=>[k,v[0],v[1]]));fo('edus',Object.entries(EDU).map(([k,v])=>[k,v[0]+', '+v[3]+' bulan',v[2]]));fo('insh',Object.entries(INH).map(([k,v])=>[k,v[0],v[1]]));
 const setH=(el,h)=>{if(el._h!==h){el.innerHTML=h;el._h=h}};
-['all',...Object.keys(CL).filter(k=>k!='kas'&&k!='prop'&&k!='bz')].forEach(k=>{const b=document.createElement('button');b.className='chip';b.dataset.k=k;b.textContent=k=='all'?'Semua':CL[k][0];b.onclick=()=>{cat=k;buildList()};$('chips').appendChild(b)});
+['all','fav',...Object.keys(CL).filter(k=>k!='kas'&&k!='prop'&&k!='bz')].forEach(k=>{const b=document.createElement('button');b.className='chip';b.dataset.k=k;b.textContent=k=='all'?'Semua':k=='fav'?'★ Favorit':CL[k][0];b.onclick=()=>{cat=k;buildList()};$('chips').appendChild(b)});
 [['H','Live'],['M','Minggu'],['B','Bulan'],['T','Tahun']].forEach(([k,n])=>{const b=document.createElement('button');b.className='chip';b.dataset.t=k;b.textContent=n;b.onclick=()=>{tf=k;render()};$('tfs').appendChild(b)});
-function buildList(){document.querySelectorAll('#chips .chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k==cat));$('list').innerHTML=A.filter(a=>cat=='all'||a.c==cat).map(a=>`<div class="it" data-id="${a.id}" role="button" tabindex="0"><div><b>${a.id}</b> <span class="tg" style="background:${CL[a.c][1]}">${CL[a.c][0]}</span><br><small>${a.n}</small></div><div class="rt"><span id="p-${a.id}"></span><br><small id="c-${a.id}"></small></div></div>`).join('')}
+function buildList(){document.querySelectorAll('#chips .chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.k==cat));$('list').innerHTML=(A.filter(a=>cat=='all'||(cat=='fav'?S.fav&&S.fav[a.id]:a.c==cat)).map(a=>`<div class="it" data-id="${a.id}" role="button" tabindex="0"><div><b>${a.id}${S.fav&&S.fav[a.id]?' ★':''}</b> <span class="tg" style="background:${CL[a.c][1]}">${CL[a.c][0]}</span><br><small>${a.n}</small></div><div class="rt"><span id="p-${a.id}"></span><br><small id="c-${a.id}"></small></div></div>`).join(''))||'<div class="mu" style="padding:8px">Belum ada favorit. Buka sebuah aset lalu tekan ☆.</div>'}
 const pick=e=>{const t=e.target.closest('.it');if(t){cur=t.dataset.id;render()}};$('list').onclick=pick;$('list').onkeydown=e=>{if(e.key=='Enter'||e.key==' '){e.preventDefault();pick(e)}};
 document.querySelectorAll('#tabs .tab').forEach(b=>b.onclick=()=>{vw=b.dataset.v;render()});
 const chg=id=>(P[id]/B[id]-1)*100;
@@ -410,19 +436,19 @@ function render(){
  A.forEach(a=>{const p=$('p-'+a.id);if(!p)return;p.textContent=fp(P[a.id]);const c=chg(a.id),e=$('c-'+a.id);e.textContent=(c>=0?'+':'')+c.toFixed(2)+'%';e.className=c>=0?'up':'dn'});
  document.querySelectorAll('.it').forEach(e=>e.classList.toggle('on',e.dataset.id==cur));
  document.querySelectorAll('#tabs .tab').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v==vw));
- ['inv','car','biz','love','life','gar','prp','ach','lb'].forEach(v=>$('v-'+v).style.display=vw==v?(v=='inv'?'grid':''):'none');
+ ['inv','car','biz','love','life','gar','prp','ach','lb','acc'].forEach(v=>$('v-'+v).style.display=vw==v?(v=='inv'?'grid':''):'none');
  const w=val(),jf=JB(S.job),jl=jf?lvl(jf.id):0,xp=S.xp[S.job]||0,sk=S.sk[S.job]||0,pay0=jf?Math.round(pay(jf)*pt()):0,ed=S.edu,tu=ed.cur?tui(EDU[ed.cur]):0;
  const stage=S.sch?(S.sch=='pilih'?'Lulus SMP, pilih jalur':'Kelas '+S.sg+' '+SCH[S.sch][0]):ed.cur?'Kuliah '+EDU[ed.cur][0]:jf?title(jf,jl):'Lulusan '+ELV[ed.lv]+', siap kerja';
  $('av').textContent=S.sch?(S.sch=='sd'?'🎒':S.sch=='smp'?'📚':'🎓'):ed.cur?'🏛️':jf?(S.mar?'👨‍👩‍👧':'💼'):'🏠';$('stg').textContent=stage;
  $('pills').innerHTML=[S.pt?'<span class="pill">'+(S.mar?'💍 Menikah':S.pt.st=='lamar'?'💍 Tunangan':S.pt.st=='pacaran'?'💕 Pacaran':'🙂 PDKT')+' · '+S.pt.n+'</span>':'',nb()?'<span class="pill">🏪 '+nb()+' usaha</span>':'',S.owned?'<span class="pill">🏠 Punya rumah</span>':'','<span class="pill">😊 '+Math.round(S.hap)+'/100</span>'].join('');
- $('nw').textContent=rp(w);$('rank').textContent='🏅 '+curTitle(w);$('accn').textContent='👤 '+(ACC||'Tamu (mode lokal)');
+ $('nw').textContent=rp(w);$('rank').textContent='🏅 '+curTitle(w);$('accn').textContent='👤 '+(ACC?(S.dn?S.dn+' · @'+ACC:'@'+ACC):'Tamu (mode lokal) · klik untuk masuk');{const t0=today(),ok=S.dr!==t0;$('dly').textContent=ok?'🎁 Ambil hadiah harian':'🎁 Beruntun '+(S.ds||0)+' hari';$('dly').classList.toggle('glow',ok)}
  const hk=Object.keys(S.hold),ib=hk.reduce((t,k)=>t+S.hold[k]*S.cost[k],0),r=ib>0?(hk.reduce((t,k)=>t+S.hold[k]*P[k],0)/ib-1)*100:0;
  $('ret').innerHTML='Imbal hasil <b class="'+(r>=0?'up':'dn')+'" style="color:inherit">'+(r>=0?'+':'')+r.toFixed(2)+'%</b>';
  $('clk').textContent='Hari ke-'+S.day+' · '+(S.sch?'uang jajan':'gajian')+' dalam '+(30-S.day%30)+' hari';
  const n0=S.nws[0];$('hl').innerHTML=n0?'<b>Berita terbaru:</b> '+n0.t+'. '+n0.x:'Belum ada berita. Pantau di sini tiap bulan game.';
  if(vw=='inv'){
   const a=G(cur),sr=ser(),c=sr.length>1?(sr[sr.length-1]/sr[0]-1)*100:0;
-  $('dn').textContent=a.n;$('pr').textContent=fp(P[cur]);$('dtag').style.background=CL[a.c][1];
+  $('dn').textContent=a.n;$('favb').textContent=S.fav&&S.fav[cur]?'★':'☆';$('pr').textContent=fp(P[cur]);$('dtag').style.background=CL[a.c][1];
   document.querySelectorAll('#tfs .chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t==tf));
   $('rng').textContent=sr.length>1?({H:'Pergerakan live',M:'7 hari terakhir',B:'30 hari terakhir',T:'365 hari terakhir'})[tf]+' · tertinggi '+fp(Math.max(...sr))+' · terendah '+fp(Math.min(...sr)):'Mengumpulkan data…';
   $('chg').textContent=(c>=0?'+':'')+c.toFixed(2)+'%';$('chg').className=c>=0?'up':'dn';
@@ -465,7 +491,7 @@ function render(){
   setH($('bizg'),BZ.map(d=>{const b=S.biz[d[0]],ok=S.edu.lv>=d[7];return`<div class="card"><b>${d[2]} ${d[1]}</b><div class="mu">${b?'Level '+b.l+'/5 · laba rata-rata '+rp(bzP(d,b.l)*S.wage)+'/bln':'Modal '+rp(d[3])+' · laba awal ±'+rp(d[4])+'/bln'}<br>Volatilitas ${Math.round(d[5]*100)}%${d[7]?' · syarat '+ELV[d[7]]:''} · nilai terkait bidang ${JB(d[6]).n}</div><div class="row">${b?`<button class="pc" data-a="bu:${d[0]}" ${b.l>=5?'disabled':''}>${b.l>=5?'Level maks':'Upgrade '+rp(bzUp(d,b.l+1))}</button><button class="pc" data-a="bs:${d[0]}">Jual ${rp(b.inv*.6)}</button>`:`<button class="pc" data-a="bo:${d[0]}" ${ok&&!S.sch&&S.cash>=d[3]?'':'disabled'}>Buka usaha</button>`}</div></div>`}).join(''));
  }
  if(vw=='love'){ensurePt();renderLove()}
- if(vw=='gar')renderGar();if(vw=='prp')renderPrp();if(vw=='ach')renderAch();if(vw=='lb')renderLb();
+ if(vw=='gar')renderGar();if(vw=='prp')renderPrp();if(vw=='ach')renderAch();if(vw=='lb')renderLb();if(vw=='acc')renderAcc();
  if(vw=='life'){ensurePt();
   $('hap').textContent=Math.round(S.hap)+'/100 · XP ×'+prod().toFixed(2)+' · gaji ×'+hb().toFixed(2);$('hapb').style.width=S.hap+'%';
   [['home',S.home],['food',S.food],['lifes',S.life]].forEach(([e,v])=>{if($(e).value!=v)$(e).value=v;$(e).disabled=!!S.sch});
@@ -583,6 +609,7 @@ const ACH=[
 ['house','🏠','Pemilik Rumah','Beli rumah sendiri',()=>!!S.owned,'Juragan Properti'],
 ['kpr','🏦','Bebas Cicilan','Lunasi KPR rumahmu',()=>(S.kl||0)>=1,'Bebas Hutang'],
 ['mans','🏰','Rumah Impian','Miliki rumah bernilai Rp1,5 miliar+',()=>(S.houseV||0)>=1.5e9,'Sultan Properti'],
+['dly','🎁','Rajin Login','Ambil hadiah harian 7 hari beruntun',()=>(S.ds||0)>=7,'Si Rajin'],
 ['car','🚗','Kendaraan Pertama','Beli kendaraan pertama',()=>S.veh.own.length>=1,'Pengendara'],
 ['gar','🏎️','Kolektor','Isi garasi dengan 6 kendaraan',()=>S.veh.own.length>=6,'Kolektor Otomotif'],
 ['p911','🏁','Sultan Garasi','Miliki Porsche 911',()=>S.veh.own.some(v=>v.id=='p911'),'Sultan Garasi'],
@@ -611,20 +638,20 @@ function renderAch(){const n=achN();$('achs').textContent=n+' / '+ACH.length+' p
  setH($('achg'),ACH.map(a=>{const d=S.ach[a[0]];return'<div class="ak '+(d?'':'lock')+'"><span class="ic">'+(d?a[1]:'🔒')+'</span><div><b>'+esc(a[2])+'</b><span class="mu">'+esc(a[3])+'</span><br><small>'+(d?'Gelar: '+esc(a[5])+' · hari ke-'+d:'Gelar: '+esc(a[5]))+'</small></div></div>'}).join(''))}
 $('ttsel').onchange=e=>{const v=e.target.value;if(v){S.ttl=v;S.tman=1}else{S.tman=0;const l=ACH.filter(a=>S.ach[a[0]]).sort((a,b)=>S.ach[b[0]]-S.ach[a[0]])[0];S.ttl=l?l[0]:null}sv();render();submitScore()};
 let LB=null,LBerr='',lbT=0,lbBusy=false,lastSub='';
-async function submitScore(){if(!conn||!ACCT)return;chkAch();const nw=Math.round(S.pk||0),key=nw+'|'+S.day+'|'+curTitle()+'|'+achN();if(key==lastSub)return;
- try{await rpc('submit_score',{p_id:ACCT.id,p_hash:ACCT.h,p_nw:nw,p_day:S.day,p_title:curTitle(),p_ach:achN()});lastSub=key}catch(e){}}
+async function submitScore(){if(!conn||!ACCT)return;chkAch();const nw=Math.round(S.pk||0),key=nw+'|'+S.day+'|'+curTitle()+'|'+achN()+'|'+(S.dn||'');if(key==lastSub)return;
+ try{const b={p_id:ACCT.id,p_hash:ACCT.h,p_nw:nw,p_day:S.day,p_title:curTitle(),p_ach:achN()};if(MODE=='new'){b.p_name=(S.dn||'').slice(0,20);await ar('submit_score',b)}else await rpc('submit_score',b);lastSub=key}catch(e){}}
 async function loadLb(){if(lbBusy)return;lbBusy=true;lbT=Date.now();
  try{if(!(SB_URL&&SB_KEY))throw new Error('mode lokal');await submitScore();LB=await rpc('get_leaderboard',{p_limit:50});LBerr=''}catch(e){LBerr=String(e.message)}
  lbBusy=false;if(vw=='lb')renderLb()}
 setInterval(()=>{if(conn)submitScore()},20000);
 $('lbr').onclick=()=>{lbT=0;loadLb()};
 function renderLb(){if(Date.now()-lbT>30000&&!lbBusy)loadLb();
- const w=Math.round(S.pk||0);$('lbme').innerHTML='👤 <b>'+esc(ACC||'Tamu')+'</b> · 🏅 '+esc(curTitle())+' · Kekayaan puncak <b>'+rp(w)+'</b> · '+achN()+' prestasi';
+ const w=Math.round(S.pk||0);$('lbme').innerHTML='👤 <b>'+esc(dnm()||'Tamu')+'</b> · 🏅 '+esc(curTitle())+' · Kekayaan puncak <b>'+rp(w)+'</b> · '+achN()+' prestasi';
  let h='';
  if(LBerr)h='<div class="mu dn">Leaderboard belum bisa dimuat. Pastikan SQL leaderboard sudah dijalankan di Supabase.<br><small>'+esc(LBerr.slice(0,160))+'</small></div>';
  else if(!LB)h='<div class="mu">Memuat…</div>';
  else if(!LB.length)h='<div class="mu">Belum ada pemain di leaderboard.</div>';
- else h='<table class="lbt"><thead><tr><th>#</th><th>Pemain</th><th>Gelar</th><th>Kekayaan puncak</th><th>Hari</th><th>🏅</th></tr></thead><tbody>'+LB.map((r,i)=>'<tr class="'+(ACC&&r.id==ACC?'me':'')+'"><td>'+(['🥇','🥈','🥉'][i]||i+1)+'</td><td>'+esc(r.id)+'</td><td>'+esc(r.title||'-')+'</td><td>'+rp(+r.nw)+'</td><td>'+r.day+'</td><td>'+r.ach+'</td></tr>').join('')+'</tbody></table>';
+ else h='<table class="lbt"><thead><tr><th>#</th><th>Pemain</th><th>Gelar</th><th>Kekayaan puncak</th><th>Hari</th><th>🏅</th></tr></thead><tbody>'+LB.map((r,i)=>'<tr class="'+(ACC&&r.id==ACC?'me':'')+'"><td>'+(['🥇','🥈','🥉'][i]||i+1)+'</td><td>'+esc(r.name||r.id)+(r.name&&r.name!=r.id?' <small>@'+esc(r.id)+'</small>':'')+'</td><td>'+esc(r.title||'-')+'</td><td>'+rp(+r.nw)+'</td><td>'+r.day+'</td><td>'+r.ach+'</td></tr>').join('')+'</tbody></table>';
  setH($('lbt'),h)}
 
 /* ---- properti & KPR ---- */
@@ -687,5 +714,106 @@ function renderPrp(){const m=S.mort;let h='';
  if(m)$('kprn').textContent='Pelunasan sebagian memperpendek tenor (cicilan tetap). '+(S.day-(m.d||0)<1080?'Penalti 1% berlaku sampai '+Math.max(0,1080-(S.day-(m.d||0)))+' hari lagi.':'Tidak ada penalti.');
  setH($('hcat'),HSE.map(h=>{const pr=hPrice(h),fee=Math.round(pr*.06),dp=Math.round(pr*hdp),ln=pr-dp,r=kprRate(h),inst=pmt(ln,r,htn),prov=Math.round(ln*.01),can=!S.sch&&!S.owned;
   return'<div class="card"><b>'+h[2]+' '+h[1]+'</b><div class="nbig" style="font-size:20px;margin:4px 0">'+rp(pr)+'</div><div class="mu">'+h[4]+'<br>Tunai: total '+rp(pr+fee)+' (termasuk biaya 6%)<br>KPR '+htn/12+' th · bunga '+(r*100).toFixed(2)+'%'+(h[0]=='sub'?' (subsidi)':'')+' · cicilan '+rp(inst)+'/bln<br>Biaya awal KPR '+rp(dp+fee+prov)+' · total bunga ±'+rp(inst*htn-ln)+'</div><div class="row"><button class="pc" data-a="hb:'+h[0]+'" '+(can?'':'disabled')+'>Beli tunai</button><button class="pc" data-a="hk:'+h[0]+'" '+(can?'':'disabled')+'>KPR · DP '+rp(dp)+'</button></div></div>'}).join(''))}
+
+/* ---- akun, PIN, pemulihan, fitur tambahan ---- */
+let amode='in',guest=false,authShown=false,MODE='new',HASREC=false;
+const ID_RE=/^[a-z0-9_]{3,20}$/,normId=t=>String(t||'').trim().toLowerCase(),dnm=()=>S.dn||ACC||'';
+const ERR={AKUN_TIDAK_ADA:'Akun tidak ditemukan. Cek username, atau daftar dulu.','PIN salah':'PIN salah.',TERKUNCI:'Terlalu banyak percobaan salah. Coba lagi sekitar 10 menit.',NAMA_DIPAKAI:'Username sudah dipakai orang lain.',FORMAT:'Format tidak valid (username 3-20 karakter: huruf kecil, angka, garis bawah).',KODE_SALAH:'Kode pemulihan salah.',TIDAK_ADA_KODE:'Akun ini belum punya kode pemulihan. Masuk dengan PIN, lalu buat kode di tab Akun.',TERLALU_BESAR:'Data terlalu besar.'};
+const isNoFn=e=>/PGRST202|Could not find the function/.test(String(e&&e.message));
+const errTxt=e=>ERR[e&&e.code]||(isNoFn(e)?'Server belum diperbarui. Jalankan setup_akun.sql di Supabase.':String(e&&e.message||'Gagal').slice(0,140));
+const ar=async(f,b,ka)=>{const r=await rpc(f,b,ka);if(r&&r.ok===false){const e=new Error(r.err||'gagal');e.code=r.err;throw e}return r};
+const genRec=()=>{const al='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',b=crypto.getRandomValues(new Uint8Array(16));let o='';for(let i=0;i<16;i++){o+=al[b[i]%32];if(i%4==3&&i<15)o+='-'}return o};
+const recHash=c=>sha('rec:'+String(c).toUpperCase().replace(/[^A-Z0-9]/g,''));
+const amsg=t=>{$('amsg').textContent=t||''};
+function dl(name,text,type){const u=URL.createObjectURL(new Blob([text],{type})),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1500)}
+function showAuth(m,msg){amode=m||amode;$('auth').style.display='flex';$('aform').style.display='';$('acode').style.display='none';
+ document.querySelectorAll('#atabs .chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.m==amode));
+ $('arw').style.display=amode=='fg'?'':'none';$('ap2w').style.display=amode=='in'?'none':'';
+ $('apl').textContent=amode=='fg'?'PIN baru':'PIN';$('ago').textContent=amode=='in'?'Masuk':amode=='up'?'Daftar akun baru':'Reset PIN';amsg(msg);
+ setTimeout(()=>{try{$('au').focus()}catch(e){}},50)}
+const closeAuth=()=>{$('auth').style.display='none'};
+function showCode(code,t,d){$('aform').style.display='none';$('acode').style.display='';$('act').textContent=t;$('acd').textContent=d;$('acv').textContent=code;$('ack').checked=false;$('auth').style.display='flex'}
+document.querySelectorAll('#atabs .chip').forEach(b=>b.onclick=()=>showAuth(b.dataset.m));
+$('acp').onclick=()=>{try{navigator.clipboard.writeText($('acv').textContent);toast('Kode disalin.')}catch(e){toast('Salin manual dari layar.')}};
+$('acq').onclick=()=>dl('kode-pemulihan-'+(ACC||'akun')+'.txt','Life Simulator\nUsername: '+(ACC||'')+'\nKode pemulihan: '+$('acv').textContent+'\nSimpan di tempat aman.\n','text/plain');
+$('acn').onclick=()=>{if(!$('ack').checked)return toast('Centang dulu bahwa kode sudah kamu simpan.');closeAuth()};
+$('agst').onclick=()=>{guest=true;closeAuth();cs('Mode tamu: progres hanya di perangkat ini','warn')};
+$('ago').onclick=()=>authGo();
+$('auth').onkeydown=e=>{if(e.key=='Enter'&&$('acode').style.display=='none'){e.preventDefault();authGo()}};
+$('accn').onclick=()=>{if(conn){vw='acc';render()}else showAuth('in')};
+const legacyLoad=async(id,h)=>{try{return await rpc('load_save',{p_id:id,p_hash:h})}catch(e){if(/PIN salah/.test(String(e.message))){const y=new Error('PIN salah');y.code='PIN salah';throw y}throw e}};
+async function loginWith(id,h){
+ try{const r=await ar('acct_login',{p_id:id,p_hash:h});return{d:r.d,mode:'new',rec:!!r.rec}}
+ catch(e){
+  if(e.code=='AKUN_TIDAK_ADA'){
+   const d=await legacyLoad(id,h);
+   if(d&&d.s){const code=genRec();await ar('acct_register',{p_id:id,p_hash:h,p_rec:await recHash(code),p_data:d});return{d,mode:'new',rec:true,newCode:code}}
+   throw e}
+  if(isNoFn(e))return{d:await legacyLoad(id,h),mode:'legacy',rec:false};
+  throw e}}
+async function enter(a,r){ACC=a.id;ACCT={id:a.id,h:a.h};MODE=r.mode;HASREC=!!r.rec;try{localStorage.setItem('bl7acct',JSON.stringify(ACCT))}catch(e){}
+ const d=r.d;if(d&&d.s)applyLoad(d.s,d.h);
+ const w=(o,ka)=>MODE=='new'?ar('acct_save',{p_id:ACCT.id,p_hash:ACCT.h,p_data:o},ka):rpc('store_save',{p_id:ACCT.id,p_hash:ACCT.h,p_data:o},ka);
+ DOC={set:w};HDOC={set:w};conn=true;rt=0;dirty=true;lastSub='';cs('Akun '+ACC+' · tersimpan di server ✓'+(MODE=='new'?'':' (server lama)'),'ok');render()}
+const CODEMSG='Kode ini satu-satunya cara mereset PIN kalau kamu lupa. Simpan di tempat aman.';
+async function authGo(){const mode=amode,id=normId($('au').value),pin=$('ap').value;amsg('');
+ if(!id)return amsg('Isi username.');
+ if(pin.length<4)return amsg('PIN minimal 4 karakter.');
+ if(mode=='up'&&!ID_RE.test(id))return amsg(ERR.FORMAT);
+ if(mode!='in'&&pin!==$('ap2').value)return amsg('Konfirmasi PIN tidak sama.');
+ if(mode=='fg'&&!$('ar').value.trim())return amsg('Isi kode pemulihan.');
+ $('ago').disabled=true;
+ try{
+  const h=await sha(id+':'+pin);
+  if(mode=='in'){const r=await loginWith(id,h);await enter({id,h},r);if(r.newCode)showCode(r.newCode,'Akunmu dipindahkan ke sistem baru ✅',CODEMSG);else closeAuth();toast('Masuk sebagai @'+id)}
+  else if(mode=='up'){const code=genRec();await ar('acct_register',{p_id:id,p_hash:h,p_rec:await recHash(code),p_data:null});await enter({id,h},{d:{},mode:'new',rec:true});showCode(code,'Akun dibuat! 🎉',CODEMSG)}
+  else{const nc=genRec();await ar('acct_reset_pin',{p_id:id,p_rec:await recHash($('ar').value),p_new_hash:h,p_new_rec:await recHash(nc)});const r=await ar('acct_login',{p_id:id,p_hash:h});await enter({id,h},{d:r.d,mode:'new',rec:true});showCode(nc,'PIN berhasil direset ✅','Kode lama sudah tidak berlaku. '+CODEMSG)}
+  $('ap').value='';$('ap2').value='';$('ar').value=''
+ }catch(e){amsg(mode=='up'&&isNoFn(e)?'Server belum mendukung pendaftaran baru. Jalankan setup_akun.sql, atau pakai tab Masuk.':errTxt(e))}
+ $('ago').disabled=false}
+function sessBad(e){if(e&&(e.code=='PIN salah'||e.code=='AKUN_TIDAK_ADA')){DOC=null;HDOC=null;conn=false;ACC='';ACCT=null;try{localStorage.removeItem('bl7acct')}catch(x){}cs('Sesi tidak valid, silakan masuk lagi','warn');showAuth('in','PIN akun berubah atau akun tidak ada. Silakan masuk lagi.');return true}return false}
+async function cloud(){
+ if(!(SB_URL&&SB_KEY)){cs('Mode lokal (Supabase belum diisi)','warn');return}
+ if(conn||guest)return;
+ let a=null;try{a=JSON.parse(localStorage.getItem('bl7acct')||'null')}catch(e){}
+ if(!a||!a.id||!a.h){cs('Belum masuk · progres hanya tersimpan di perangkat ini','warn');if(!authShown){authShown=true;showAuth('in')}return}
+ try{const r=await loginWith(a.id,a.h);await enter(a,r);if(r.newCode)showCode(r.newCode,'Akunmu dipindahkan ke sistem baru ✅',CODEMSG)}
+ catch(e){
+  if(e.code=='PIN salah'||e.code=='AKUN_TIDAK_ADA'){try{localStorage.removeItem('bl7acct')}catch(x){}cs('Sesi berakhir, silakan masuk lagi','warn');authShown=true;showAuth('in','Sesi berakhir. Silakan masuk lagi.');return}
+  rt=Math.min(rt+1,10);cs('Terputus dari server, mencoba lagi… ('+String(e.message).slice(0,50)+')','warn');setTimeout(cloud,Math.min(30000,3000*rt))}}
+/* tab Akun */
+function needNew(){if(!conn||!ACCT){toast('Masuk ke akun dulu.');return false}if(MODE!='new'){toast('Fitur ini butuh pembaruan server: jalankan setup_akun.sql di Supabase.');return false}return true}
+function renderAcc(){const ok=conn&&ACCT;
+ setH($('acs'),ok?'Masuk sebagai <b>@'+esc(ACC)+'</b> · '+(MODE=='new'?'server akun v2 ✓':'server lama (ganti PIN/username butuh setup_akun.sql)'):'Kamu belum masuk (mode lokal). <button class="lk" onclick="showAuth(\'in\')">Masuk / daftar</button>');
+ if(document.activeElement!==$('dnm')&&$('dnm').value!==(S.dn||''))$('dnm').value=S.dn||'';
+ $('rcs').textContent=ok&&MODE=='new'?(HASREC?'Kode pemulihan sudah dibuat. Membuat kode baru membatalkan kode lama.':'Akun ini belum punya kode pemulihan. Buat sekarang supaya bisa mereset PIN kalau lupa.'):''}
+$('dns').onclick=()=>{S.dn=($('dnm').value||'').trim().slice(0,20);sv();render();submitScore();toast(S.dn?'Nama tampilan disimpan.':'Nama tampilan dikosongkan.')};
+$('nub').onclick=async()=>{if(!needNew())return;const nid=normId($('nun').value),pin=$('nup').value;
+ if(!ID_RE.test(nid))return toast(ERR.FORMAT);if(nid==ACCT.id)return toast('Username sama dengan yang sekarang.');
+ if(await sha(ACCT.id+':'+pin)!==ACCT.h)return toast('PIN saat ini salah.');
+ const nh=await sha(nid+':'+pin);
+ try{await ar('acct_rename',{p_id:ACCT.id,p_hash:ACCT.h,p_new_id:nid,p_new_hash:nh});ACC=nid;ACCT={id:nid,h:nh};try{localStorage.setItem('bl7acct',JSON.stringify(ACCT))}catch(e){}$('nun').value='';$('nup').value='';lg('Username diubah menjadi @'+nid);lastSub='';sv();render();toast('Username diubah menjadi @'+nid)}catch(e){toast(errTxt(e))}};
+$('npb').onclick=async()=>{if(!needNew())return;const op=$('opn').value,np=$('npn').value;
+ if(np.length<4)return toast('PIN baru minimal 4 karakter.');if(np!==$('np2').value)return toast('Konfirmasi PIN baru tidak sama.');
+ if(await sha(ACCT.id+':'+op)!==ACCT.h)return toast('PIN lama salah.');
+ const nh=await sha(ACCT.id+':'+np);
+ try{await ar('acct_change_pin',{p_id:ACCT.id,p_hash:ACCT.h,p_new:nh});ACCT.h=nh;try{localStorage.setItem('bl7acct',JSON.stringify(ACCT))}catch(e){}$('opn').value='';$('npn').value='';$('np2').value='';toast('PIN berhasil diganti.')}catch(e){toast(errTxt(e))}};
+$('rcb').onclick=async()=>{if(!needNew())return;if(await sha(ACCT.id+':'+$('rcp').value)!==ACCT.h)return toast('PIN salah.');
+ const code=genRec();try{await ar('acct_set_rec',{p_id:ACCT.id,p_hash:ACCT.h,p_rec:await recHash(code)});HASREC=true;$('rcp').value='';showCode(code,'Kode pemulihan baru',CODEMSG)}catch(e){toast(errTxt(e))}};
+$('bkd').onclick=()=>{chkAch();dl('life-simulator-'+(ACC||'tamu')+'-hari'+S.day+'.json',JSON.stringify({v:4,acc:ACC,t:Date.now(),s:pack(),h:hpack()}),'application/json');toast('Cadangan diunduh.')};
+$('bku').onchange=e=>{const f=e.target.files&&e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result),x=JSON.parse(o.s);if(typeof x.cash!='number')throw 0;if(!confirm('Timpa progres saat ini dengan cadangan (hari ke-'+x.day+')?'))return;applyLoad(o.s,o.h||null);sv();flush(true);toast('Cadangan dipulihkan.')}catch(err){toast('File cadangan tidak valid.')}};r.readAsText(f);e.target.value=''};
+async function switchAcct(){if(!ACC){guest=false;authShown=true;showAuth('in');return}
+ if(!confirm('Keluar dari akun @'+ACC+'? Progres sudah tersimpan di server.'))return;
+ try{if(DOC&&dirty)await flush(true)}catch(e){}
+ ['bl7acct','bl7','bl7h'].forEach(k=>{try{localStorage.removeItem(k)}catch(e){}});location.reload()}
+$('swa').onclick=switchAcct;$('lgo').onclick=switchAcct;
+/* tema, favorit, hadiah harian */
+const THM=['auto','light','dark'];let th='auto';try{th=localStorage.getItem('bl7theme')||'auto'}catch(e){}
+const applyTh=()=>{const r=document.documentElement;if(th=='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',th);$('thm').textContent=th=='auto'?'🌓':th=='light'?'☀️':'🌙'};
+$('thm').onclick=()=>{th=THM[(THM.indexOf(th)+1)%3];try{localStorage.setItem('bl7theme',th)}catch(e){}applyTh();render()};applyTh();
+$('favb').onclick=()=>{if(!S.fav)S.fav={};if(S.fav[cur])delete S.fav[cur];else S.fav[cur]=1;buildList();sv();render()};
+const today=()=>new Date().toLocaleDateString('en-CA');
+$('dly').onclick=()=>{const t=today();if(S.dr===t)return toast('Hadiah hari ini sudah diambil. Kembali besok!');const y=new Date(Date.now()-864e5).toLocaleDateString('en-CA');
+ S.ds=S.dr===y?(S.ds||0)+1:1;const amt=Math.round((S.sch?25e3:250e3)*(1+.25*(Math.min(S.ds,7)-1))*S.cpi/1e3)*1e3;S.cash+=amt;S.dr=t;lg('🎁 Hadiah harian (beruntun '+S.ds+' hari) '+sg(amt));toast('🎁 +'+rp(amt)+' · beruntun '+S.ds+' hari');chkAch();sv();render()};
 buildList();render();cloud();
 </script></body></html>
