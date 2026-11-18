@@ -38,6 +38,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 .log{max-height:150px;overflow:auto;font-size:12px;color:var(--mu)}.log div{padding:3px 0;border-bottom:1px dashed var(--ln)}
 .lk{background:none;border:0;color:var(--mu);text-decoration:underline;cursor:pointer;font:inherit;padding:0}
 .split{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:6px 0}.box{border:1px solid var(--ln);border-radius:12px;padding:8px 10px;background:var(--bg)}.box b{display:block;font:700 16px Georgia,serif}.box small{display:block}.sep{border:0;border-top:1px dashed var(--ln);margin:10px 0}.nett td,.nett th{padding:5px 3px}.nett tr.sum td{font-weight:700;border-top:2px solid var(--ln)}.nbig{font:700 26px Georgia,serif}
+.spc td{padding:2px 3px;font-size:12px}details summary{cursor:pointer;color:var(--ac);font-size:13px;margin:6px 0}
 .card{border:1px solid var(--ln);border-radius:14px;padding:12px;background:var(--bg)}.card b{display:block}
 .lad div{display:flex;justify-content:space-between;font-size:13px;padding:3px 6px;border-radius:8px}.lad .cur{background:color-mix(in srgb,var(--ac) 16%,transparent);font-weight:700}.lad .done{color:var(--mu)}
 #toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:#14232a;color:#fff;padding:10px 18px;border-radius:14px;font-size:14px;opacity:0;pointer-events:none;transition:opacity .25s;max-width:92vw;z-index:9}#toast.on{opacity:1}
@@ -48,7 +49,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
  <div id="pills"></div>
  <div style="text-align:right"><span class="mu" id="rank"></span><b class="nw" id="nw"></b><span class="mu" id="ret"></span><div><button class="pc" id="spd" style="margin-top:6px">⏩ Kecepatan ×1</button></div></div>
 </div>
-<div class="tabs" id="tabs"><button class="tab" data-v="inv">📈 Investasi</button><button class="tab" data-v="car">💼 Karier</button><button class="tab" data-v="biz">🏪 Bisnis</button><button class="tab" data-v="love">💕 Pasangan</button><button class="tab" data-v="life">🏡 Kehidupan</button></div>
+<div class="tabs" id="tabs"><button class="tab" data-v="inv">📈 Investasi</button><button class="tab" data-v="car">💼 Karier</button><button class="tab" data-v="biz">🏪 Bisnis</button><button class="tab" data-v="love">💕 Pasangan</button><button class="tab" data-v="life">🏡 Kehidupan</button><button class="tab" data-v="gar">🚗 Garasi</button></div>
 <div class="pn mu" id="hl" style="margin-bottom:12px"></div>
 
 <div class="g" id="v-inv">
@@ -95,6 +96,12 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 <div id="v-biz" style="display:none"><section class="pn"><h2>Buka usaha</h2><div class="mu" id="bizs" style="margin-bottom:8px"></div><div class="g2" id="bizg"></div></section></div>
 
 <div id="v-love" style="display:none"><section class="pn"><h2>💕 Pasangan</h2><div id="lovec"></div></section><section class="pn" style="margin-top:12px"><h2>👶 Keluarga &amp; anak</h2><div id="famc"></div></section></div>
+<div id="v-gar" style="display:none"><section class="pn"><h2>🚗 Garasi</h2><div id="garo"></div></section>
+ <section class="pn" style="margin-top:12px"><h2>🏬 Showroom</h2>
+  <div class="row" style="align-items:center"><span class="mu">Simulasi kredit:</span><select id="gdp" style="width:auto"><option value="0.2">DP 20%</option><option value="0.3">DP 30%</option><option value="0.5">DP 50%</option></select><select id="gtn" style="width:auto"><option value="12">12 bulan</option><option value="24">24 bulan</option><option value="36" selected>36 bulan</option><option value="48">48 bulan</option><option value="60">60 bulan</option></select></div>
+  <div class="chips" id="gchips"><button class="chip" data-a="vf:all">Semua</button><button class="chip" data-a="vf:motor">🏍️ Motor</button><button class="chip" data-a="vf:mobil">🚗 Mobil</button><button class="chip" data-a="vf:ev">⚡ Listrik &amp; hybrid</button></div>
+  <div class="g2" id="gars"></div>
+  <div class="mu" style="margin-top:8px">Harga mengikuti inflasi. Pembelian dikenai biaya STNK/admin 2%. Kredit: bunga flat 9% per tahun (motor) atau 6% (mobil), butuh pekerjaan, dan total cicilan maksimal 50% penghasilan. Nilai jual turun tiap tahun. Harga dan spesifikasi disederhanakan untuk simulasi.</div></section></div>
 <div id="v-life" style="display:none"><div class="g2">
  <section class="pn"><h2>Gaya hidup</h2><label class="mu" for="home">Tempat tinggal</label><select id="home"></select><label class="mu" for="food">Makanan</label><select id="food"></select><label class="mu" for="lifes">Gaya hidup</label><select id="lifes"></select><label class="mu" for="trn">Transportasi</label><select id="trn"></select><div class="mu" id="bill"></div></section>
  <section class="pn"><h2>🛡️ Asuransi</h2><label class="mu" for="insh">Kesehatan (untuk seluruh keluarga)</label><select id="insh"></select><div class="row"><button class="pc" data-a="iv" id="ivb"></button><button class="pc" data-a="ir" id="irb"></button></div><div class="mu" id="insi"></div></section>
@@ -108,7 +115,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 <script>
 const GOAL=5e8,DT=3,R=Math.random,$=i=>document.getElementById(i),dt=1/1095,sq=Math.sqrt(dt);
 const N=()=>{let u=0;for(let i=0;i<4;i++)u+=R();return(u-2)*1.732};
-const CL={pu:['Pasar Uang','#3b8ea5'],ob:['Obligasi','#8a6fb5'],sa:['Saham','#e08a1e'],em:['Emas','#c9a227'],cr:['Crypto','#e05d44'],kas:['Kas','#7f8c8d'],prop:['Properti','#8d6e63'],bz:['Bisnis','#2a9d8f']};
+const CL={veh:['Kendaraan','#6c7a89'],pu:['Pasar Uang','#3b8ea5'],ob:['Obligasi','#8a6fb5'],sa:['Saham','#e08a1e'],em:['Emas','#c9a227'],cr:['Crypto','#e05d44'],kas:['Kas','#7f8c8d'],prop:['Properti','#8d6e63'],bz:['Bisnis','#2a9d8f']};
 const A=[];
 const nav=(id,n,c,p,r,s,k)=>A.push({id,n,c,t:'nav',p,r,s,k,fb:0,fs:0});
 const stk=(id,n,c,p,mu,vol,b,fb,fs)=>A.push({id,n,c,t:'stk',p,mu,vol,b,k:vol<.2?'Sedang':vol<.3?'Tinggi':'Sangat tinggi',fb,fs});
@@ -144,7 +151,7 @@ const G=id=>A.find(a=>a.id==id);
 const rp=n=>(n<0?'-':'')+'Rp'+Math.abs(n).toLocaleString('id-ID',{maximumFractionDigits:0});
 const fp=p=>p>=1000?rp(p):'Rp'+p.toLocaleString('id-ID',{maximumFractionDigits:2});
 const sg=n=>(n>=0?'+':'')+rp(n);
-const fresh=()=>({cash:0,hold:{},cost:{},log:['Hari 0: kamu kelas 1 SD. Terima uang jajan tiap bulan dan belajar berinvestasi sejak dini!'],day:0,sim:{},fv:{},auto:null,job:null,xp:{},home:'ortu',food:'hemat',life:'min',hap:50,owned:0,houseV:0,sch:'sd',sg:1,sy:0,sma:0,trn:'umum',mods:[],nws:[],cpi:1,wage:1,lv:{},sk:{},edu:{lv:0,cur:null,left:0},cool:0,mar:0,glow:null,vcd:0,biz:{},pt:null,cands:[],fcd:0,div:0,ins:{h:'none',v:0,r:0},kids:[],preg:0});
+const fresh=()=>({cash:0,hold:{},cost:{},log:['Hari 0: kamu kelas 1 SD. Terima uang jajan tiap bulan dan belajar berinvestasi sejak dini!'],day:0,sim:{},fv:{},auto:null,job:null,xp:{},home:'ortu',food:'hemat',life:'min',hap:50,owned:0,houseV:0,sch:'sd',sg:1,sy:0,sma:0,trn:'umum',mods:[],nws:[],cpi:1,wage:1,lv:{},sk:{},edu:{lv:0,cur:null,left:0},cool:0,mar:0,glow:null,vcd:0,biz:{},pt:null,cands:[],fcd:0,div:0,ins:{h:'none',v:0,r:0},kids:[],preg:0,veh:{own:[]}});
 /* ---- penyimpanan: server (db) + cadangan lokal ---- */
 let S=fresh(),P={},B={},SER={},cur='RDPU',cat='all',tk=0,tf='H',vw='inv',SPD=1,DOC=null,HDOC=null,dirty=false,busy=false,hc=0,mpts=null,hv=-1;
 try{const s=JSON.parse(localStorage.getItem('bl7'));if(s&&s.cash!=null)S=Object.assign(fresh(),s);const h=JSON.parse(localStorage.getItem('bl7h'));if(h)S.h=h}catch(e){}
@@ -214,9 +221,9 @@ const ELV=['SMA/SMK','D3','S1','S2'],EDU={d3:['Diploma 3',1,15e5,6],s1:['Sarjana
 const JB=id=>JOBS.find(j=>j.id==id),reqE=(f,l)=>Math.min(3,f.e+(l>=3?1:0)+(l>=5&&f.e>=1?1:0)),lvl=id=>S.lv[id]||0,title=(f,l)=>TN[l]+' '+f.r;
 const HOME={ortu:['Numpang orang tua',0],kos:['Kos',8e5],kontrak:['Kontrak rumah',2e6],rumah:['Rumah milik sendiri (beli Rp200 jt)',15e4]},FOOD={hemat:['Masak sendiri',9e5],warung:['Makan di warung',15e5],resto:['Restoran & kafe',3e6]},LIFE={min:['Minimalis',0],std:['Standar (hiburan, pulsa)',5e5],mewah:['Mewah (gadget, hobi)',2e6]},TRN={umum:['Angkutan umum / jalan kaki',3e5,0],motor:['Motor (cicilan + bensin)',7e5,2],mobil:['Mobil (cicilan + bensin)',3e6,6]};
 const act=()=>S.mods.filter(m=>m.until>S.day),nb=()=>Object.keys(S.biz).length;
-const tgt=()=>Math.min(100,Math.max(0,40+Object.keys(LIFE).indexOf(S.life)*25+Object.keys(FOOD).indexOf(S.food)*5+Object.keys(HOME).indexOf(S.home)*3+TRN[S.trn][2]+(S.pt?pf().h:0)+(S.glow&&S.glow.until>S.day?S.glow.v:0)-Math.min(9,3*nb())+famHap()));
+const tgt=()=>Math.min(100,Math.max(0,40+Object.keys(LIFE).indexOf(S.life)*25+Object.keys(FOOD).indexOf(S.food)*5+Object.keys(HOME).indexOf(S.home)*3+vehHap()+(S.pt?pf().h:0)+(S.glow&&S.glow.until>S.day?S.glow.v:0)-Math.min(9,3*nb())+famHap()));
 const prod=()=>.6+.6*S.hap/100,hb=()=>.85+.3*S.hap/100,pt=()=>(S.edu.cur?.6:1)*(1-.04*nb())*(1-.03*Math.min(3,S.kids.filter(k=>kAge(k)<6).length));
-const bills=()=>(HOME[S.home][1]+FOOD[S.food][1]+LIFE[S.life][1]+TRN[S.trn][1])*S.cpi*(S.mar?1.35:1)*pf().b*act().reduce((p,m)=>p*(m.fx.b||1),1);
+const bills=()=>(HOME[S.home][1]+FOOD[S.food][1]+LIFE[S.life][1]+(curVeh()?0:TRN.umum[1]))*S.cpi*(S.mar?1.35:1)*pf().b*act().reduce((p,m)=>p*(m.fx.b||1),1);
 const pay=f=>f.b*M[lvl(f.id)]*S.wage*(1+Math.min(100,S.sk[f.id]||0)*.004)*hb()*act().reduce((p,m)=>p*(m.fx.s||1)*((m.fx.f&&m.fx.f[f.id])||1),1);
 const spouse=()=>S.mar&&S.pt?S.pt.inc*.6*S.wage/(S.pt.w||1):S.mar?3e6*S.wage:0,tax=g=>Math.round(Math.max(0,g-4.5e6)*.08+g*.02);
 /* ---- dividen, asuransi, keluarga ---- */
@@ -228,8 +235,48 @@ const kCost=k=>{const a=kAge(k);return a>=22?0:(a<6?1.2e6:a<13?1.8e6:a<16?2.4e6:
 const kidCost=()=>S.sch?0:kActive().reduce((t,k)=>t+kCost(k),0)+(S.preg?3e5*S.cpi:0);
 const kidsInc=()=>S.sch?0:S.kids.filter(k=>kAge(k)>=22&&k.bd>=60).reduce((t,k)=>t+1.5e6*S.cpi*k.bd/100,0);
 const famHap=()=>Math.min(8,3*kActive().length)+(S.ins.h=='swasta'?2:0);
-const insParts=()=>{if(S.sch)return{h:0,v:0,r:0};return{h:INH[S.ins.h][1]*(1+.7*(fsz()-1))*S.cpi,v:S.ins.v&&S.trn!='umum'?(S.trn=='mobil'?4.5e5:8e4)*S.cpi:0,r:S.ins.r&&S.owned?(S.houseV||2e8)*.002/12:0}},insP=()=>{const o=insParts();return o.h+o.v+o.r};
-const outgo=()=>bills()+insP()+kidCost();
+const insParts=()=>{if(S.sch)return{h:0,v:0,r:0};return{h:INH[S.ins.h][1]*(1+.7*(fsz()-1))*S.cpi,v:S.ins.v&&curVeh()?vIns(curVeh()):0,r:S.ins.r&&S.owned?(S.houseV||2e8)*.002/12:0}},insP=()=>{const o=insParts();return o.h+o.v+o.r};
+/* ---- kendaraan ---- */
+const FUEL={ron90:['Pertalite (RON 90)',1e4],ron92:['Pertamax (RON 92)',12500],ron98:['Pertamax Turbo (RON 98)',14000],dex:['Dexlite (solar)',13000],ev:['Listrik (charging rumah, per kWh)',2000]};
+const VEH=[
+['beat','motor','Honda','BeAT',19e6,'Skutik entry-level','110 cc, 1 silinder, SOHC, injeksi',9,9.3,'CVT otomatis','ron90',55,4,2,93,1,'Ringan, irit, dan mudah dikendarai untuk mobilitas harian'],
+['vario125','motor','Honda','Vario 125',24e6,'Skutik keluarga','125 cc, 1 silinder, SOHC, injeksi',11.2,10.8,'CVT otomatis','ron90',50,5.5,2,112,2,'Bagasi lega dan nyaman untuk harian'],
+['aerox','motor','Yamaha','Aerox 155',31e6,'Skutik sporty','155 cc, 1 silinder, SOHC, VVA',15.1,13.9,'CVT otomatis','ron92',42,5.5,2,126,3,'Desain sporty dengan mesin VVA yang responsif'],
+['nmax','motor','Yamaha','NMAX 155',33e6,'Skutik premium','155 cc, 1 silinder, SOHC, VVA',15.1,14.4,'CVT otomatis','ron92',42,7.1,2,131,3,'Nyaman untuk jarak jauh dengan bagasi besar'],
+['pcx','motor','Honda','PCX 160',37e6,'Skutik premium','157 cc, 1 silinder, SOHC, injeksi',15.8,14.7,'CVT otomatis','ron92',40,8.1,2,133,3,'Kenyamanan tinggi dan bagasi luas'],
+['adv','motor','Honda','ADV 160',38e6,'Skutik adventure','157 cc, 1 silinder, SOHC, injeksi',15.8,14.7,'CVT otomatis','ron92',38,8.1,2,134,3,'Ground clearance tinggi, tangguh di jalan rusak'],
+['cb150r','motor','Honda','CB150R',36e6,'Naked sport','149 cc, 1 silinder, DOHC, injeksi',16.3,13.1,'Manual 6-percepatan','ron92',35,12,2,131,4,'Gaya naked sport dengan handling lincah'],
+['crf150l','motor','Honda','CRF150L',36e6,'Trail','149 cc, 1 silinder, DOHC',12.4,12.4,'Manual 5-percepatan','ron92',40,7.8,2,119,3,'Suspensi panjang, siap medan berat'],
+['ninja250','motor','Kawasaki','Ninja 250',70e6,'Sport 250 cc','249 cc, 2 silinder paralel, DOHC',37,23,'Manual 6-percepatan + slipper clutch','ron92',25,14,2,168,5,'Performa tinggi dengan fairing penuh'],
+['mt25','motor','Yamaha','MT-25',67e6,'Naked sport 250 cc','249 cc, 2 silinder paralel, DOHC',35.5,23,'Manual 6-percepatan','ron92',27,14,2,166,5,'Naked bike agresif dan responsif'],
+['primavera','motor','Vespa','Primavera 150',58e6,'Skutik klasik Eropa','155 cc, 1 silinder, SOHC, i-Get',12.7,12.8,'CVT otomatis','ron92',40,7,2,133,5,'Bodi besi klasik dengan gengsi tinggi'],
+['re350','motor','Royal Enfield','Classic 350',85e6,'Motor klasik','349 cc, 1 silinder, SOHC, J-Series',20.2,27,'Manual 5-percepatan','ron92',32,13,2,195,6,'Gaya retro dengan torsi besar di putaran rendah'],
+['cbr250rr','motor','Honda','CBR250RR',95e6,'Supersport 250 cc','249 cc, 2 silinder paralel, DOHC',41,25,'Manual 6-percepatan + slipper clutch','ron92',24,11,2,168,6,'Supersport kencang untuk jalan raya maupun lintasan'],
+['gesits','motor','Gesits','G1',31e6,'Motor listrik','Motor listrik hub, daya puncak 5 kW',6.8,90,'Otomatis (tanpa gigi)','ev',33,3,2,100,2,'Tanpa BBM, senyap, biaya operasional murah'],
+['ayla','mobil','Daihatsu','Ayla 1.0',145e6,'City car','998 cc, 3 silinder, DOHC',67,91,'Manual 5-percepatan / CVT','ron90',20,33,5,840,3,'Murah, irit, dan mudah parkir'],
+['agya','mobil','Toyota','Agya 1.2',175e6,'City car','1.197 cc, 3 silinder, DOHC',88,113,'CVT','ron90',21,33,5,910,3,'Irit, nyaman, dan perawatan murah'],
+['brio','mobil','Honda','Brio RS',255e6,'City car','1.199 cc, 4 silinder, DOHC i-VTEC',90,110,'CVT','ron90',19,35,5,930,4,'Lincah dengan kabin lega untuk kelasnya'],
+['ertiga','mobil','Suzuki','Ertiga Hybrid',270e6,'MPV 7 kursi','1.462 cc, 4 silinder, DOHC, mild hybrid',103,138,'4-AT / 5-MT','ron90',16,45,7,1130,4,'Kabin luas untuk keluarga dan hemat BBM'],
+['avanza','mobil','Toyota','Avanza 1.5',285e6,'MPV 7 kursi','1.496 cc, 4 silinder, DOHC, Dual VVT-i',106,138,'CVT / Manual 5-percepatan','ron90',15,43,7,1085,4,'MPV paling laris, mudah dirawat, nilai jual stabil'],
+['xpander','mobil','Mitsubishi','Xpander',305e6,'MPV 7 kursi','1.499 cc, 4 silinder, DOHC, MIVEC',105,141,'4-AT / 5-MT','ron90',15,45,7,1230,5,'Ground clearance tinggi dengan suspensi nyaman'],
+['hrv','mobil','Honda','HR-V 1.5',420e6,'Compact SUV','1.498 cc, 4 silinder, DOHC i-VTEC',121,145,'CVT','ron92',14.5,40,5,1250,6,'SUV kompak bergaya dengan fitur keselamatan lengkap'],
+['civic','mobil','Honda','Civic RS Turbo',640e6,'Sedan sport','1.498 cc turbo, 4 silinder, DOHC',178,240,'CVT','ron92',13,47,5,1320,8,'Sedan sporty bertenaga dengan kabin premium'],
+['wuling','mobil','Wuling','Air EV',195e6,'City car listrik','Motor listrik 30 kW, penggerak roda belakang',41,110,'Otomatis (1-speed)','ev',11.6,17.3,4,950,3,'Kecil dan murah operasional, cocok untuk dalam kota'],
+['atto3','mobil','BYD','Atto 3',515e6,'SUV listrik','Motor listrik 150 kW, penggerak roda depan',204,310,'Otomatis (1-speed)','ev',7,60.5,5,1750,7,'Baterai Blade, akselerasi cepat, fitur lengkap'],
+['ioniq5','mobil','Hyundai','Ioniq 5',750e6,'SUV listrik','Motor listrik 160 kW, penggerak roda belakang',217,350,'Otomatis (1-speed)','ev',6.2,72.6,5,1990,9,'Pengisian cepat arsitektur 800V dan interior lega'],
+['zenix','mobil','Toyota','Innova Zenix Hybrid',590e6,'MPV hybrid 7 kursi','1.987 cc + motor listrik (hybrid)',186,188,'e-CVT','ron92',20,52,7,1700,8,'MPV keluarga hybrid yang irit dan senyap'],
+['fortuner','mobil','Toyota','Fortuner 2.8 VRZ',720e6,'SUV diesel 7 kursi','2.755 cc turbo diesel, 4 silinder',204,500,'6-AT','dex',10.5,80,7,2050,9,'SUV tangguh dengan torsi besar dan nilai jual tinggi'],
+['alphard','mobil','Toyota','Alphard 2.5',14e8,'Minivan mewah','2.487 cc, 4 silinder, DOHC',182,235,'CVT','ron92',10,75,7,2000,12,'Kabin mewah ala lounge dengan pintu geser elektrik'],
+['bmw320','mobil','BMW','320i M Sport',1e9,'Sedan premium','1.998 cc turbo, 4 silinder',184,300,'8-AT Steptronic','ron98',13,59,5,1540,11,'Handling presisi dengan kabin premium'],
+['p911','mobil','Porsche','911 Carrera',36e8,'Sport car','2.981 cc twin-turbo, flat-6',385,450,'8-speed PDK','ron98',9.5,64,4,1505,15,'Ikon sport car dengan performa dan gengsi tertinggi']
+].map(a=>({id:a[0],type:a[1],brand:a[2],model:a[3],price:a[4],kelas:a[5],mesin:a[6],hp:a[7],tq:a[8],trans:a[9],fuel:a[10],eff:a[11],tank:a[12],seats:a[13],kg:a[14],hap:a[15],fitur:a[16]})),VM={};VEH.forEach(v=>VM[v.id]=v);
+const KMM={motor:700,mobil:1000},vn=v=>VM[v.id].brand+' '+VM[v.id].model,vAge=v=>Math.max(0,(S.day-v.day)/360),vVal=v=>v.paid*Math.max(.15,Math.pow(v.type=='motor'?.86:.88,vAge(v))),vBal=v=>v.loan?v.loan.p0*v.loan.left/v.loan.tot:0,vIns=v=>v.paid*(v.type=='mobil'?.025:.02)/12;
+const bm=()=>act().reduce((p,m)=>p*(m.fx.b||1),1),vFuel=c=>KMM[c.type]/c.eff*FUEL[c.fuel][1]*S.cpi*bm(),vTaxM=(c,pr)=>pr*(c.type=='motor'?.012:.018)*(c.fuel=='ev'?.1:1)/12,vServ=(c,pr,age)=>(c.type=='motor'?7e4:3e5)*(1+.1*age)*S.cpi*(c.fuel=='ev'?.6:1)*(pr>1e9?3:pr>5e8?1.8:1);
+const curVeh=()=>S.veh.own.find(v=>v.u==S.trn)||null,vehHap=()=>{const v=curVeh();return v?VM[v.id].hap:0};
+const vRun=()=>S.veh.own.reduce((t,v)=>{const c=VM[v.id],a=S.trn==v.u;return t+vTaxM(c,v.paid)+(a?vFuel(c)+vServ(c,v.paid,vAge(v)):0)},0),loanPay=()=>S.veh.own.reduce((t,v)=>t+(v.loan?v.loan.inst:0),0);
+const vcr=(c,pr,dp,n)=>Math.round((pr-dp)*(1+(c.type=='motor'?.09:.06)*n/12)/n);
+let gdp=.2,gtn=36,gf='all';
+const outgo=()=>bills()+insP()+kidCost()+vRun()+loanPay();
 function need(id){const f=JB(id),l=lvl(id),n=l+1,o=[];if(l>=6)return o;const x=S.xp[id]||0;if(x<XT[n])o.push('XP '+Math.floor(x)+'/'+XT[n]);if(S.edu.lv<reqE(f,n))o.push('pendidikan '+ELV[reqE(f,n)]);if((S.sk[id]||0)<SKR[n])o.push('skill '+Math.floor(S.sk[id]||0)+'/'+SKR[n]);if(S.hap<HR[n])o.push('kebahagiaan min. '+HR[n]);return o}
 const elig=id=>lvl(id)<6&&!need(id).length;
 const chance=id=>{const l=lvl(id),n=XT[l+1],x=S.xp[id]||0;return Math.round(Math.max(15,Math.min(95,35+30*Math.min(1,(x-n)/n)+(S.sk[id]||0)*.4-l*2)))};
@@ -265,17 +312,18 @@ function kidsMonth(){if(S.sch)return;
  S.kids.forEach(k=>{const a=kAge(k);if(S.day>k.b&&(S.day-k.b)%360==0){S.hap=Math.min(100,S.hap+2);lg('🎂 '+k.n+' berulang tahun ke-'+a+(a==6?', mulai SD':a==13?', masuk SMP':a==16?', masuk SMA':a==19?', mulai kuliah':a==22?', lulus dan mandiri':''))}
   if(a<22)k.bd=Math.max(0,k.bd-(S.day-(k.ql||0)>30?3:1))});
  const ak=kActive();if(ak.length&&R()<.18){const k=rnd(ak),a=kAge(k),e=rnd(a<6?[[k.n+' mulai belajar jalan dan bicara, lucu sekali!',0,3],[k.n+' butuh popok dan susu ekstra',-4e5,0]]:[[k.n+' juara kelas, traktir keluarga',-3e5,3],[k.n+' ikut study tour sekolah',-6e5,1],[k.n+' dapat piala lomba, bangga!',0,4],[k.n+' butuh perlengkapan sekolah baru',-4e5,0]]),c=e[1]*S.cpi;S.cash+=c;S.hap=Math.min(100,S.hap+e[2]);lg(e[0]+(c?' '+sg(c):''))}}
+function vehMonth(){S.veh.own.forEach(v=>{if(v.loan){v.loan.left--;if(v.loan.left<=0){v.loan=null;lg('🎉 Kredit '+vn(v)+' lunas!')}}})}
 function riskMonth(){if(S.sch)return;const fs=fsz(),cv=insH()[2],f=S.cpi;
  const bear=(c,cov,t)=>{const mine=c*(1-cov);S.cash-=mine;lg(t+' '+sg(-mine)+(cov?' (asuransi menanggung '+rp(c-mine)+')':''));return mine};
  if(R()<Math.min(.4,.07*fs)){bear(1.5e6*f*(.6+R()*.8),cv,rnd(['Sakit, biaya dokter','Demam dan rawat jalan','Sakit gigi, ke dokter']));S.hap=Math.max(0,S.hap-2)}
  if(R()<.008*fs){bear(4e7*f*(.5+R()),cv,'🏥 Rawat inap/operasi');S.hap=Math.max(0,S.hap-6);toast('🏥 Ada anggota keluarga dirawat inap'+(cv?', asuransi membantu.':', tanpa asuransi!'))}
- if(S.trn!='umum'){const big=S.trn=='mobil',cvv=S.ins.v?.8:0;if(R()<.06)bear((big?4e6:1e6)*f*(.5+R()),cvv,big?'Mobil rusak, servis':'Motor mogok, servis');if(R()<.008){bear((big?7e7:12e6)*f*(.5+R()),cvv,'🚨 Kecelakaan kendaraan');S.hap=Math.max(0,S.hap-4)}}
+ {const cv0=curVeh();if(cv0){const big=cv0.type=='mobil',cvv=S.ins.v?.8:0,rf=Math.max(.6,Math.min(6,cv0.paid/(big?2.5e8:2.5e7))),nm=vn(cv0);if(R()<.06)bear((big?4e6:1e6)*f*rf*(.5+R()),cvv,nm+' rusak, servis');if(R()<.008){bear((big?7e7:12e6)*f*rf*(.5+R()),cvv,'🚨 Kecelakaan '+nm);S.hap=Math.max(0,S.hap-4)}}}
  if(S.owned&&R()<.004){bear(S.houseV*.25*(.5+R()),S.ins.r?.9:0,'🔥 Rumah kena kebakaran/banjir');S.hap=Math.max(0,S.hap-5)}}
 function month(){divMonth();if(S.sch){schoolMonth();return}
  const f=JB(S.job),sal=f?Math.round(pay(f)*pt()):0,sp=spouse(),ki=kidsInc();let ex=outgo();const ed=S.edu;
  if(ed.cur){const e=EDU[ed.cur];ex+=tui(e);if(--ed.left<=0){ed.lv=e[1];ed.cur=null;lg('Lulus '+e[0]+'!')}}
  const tx=tax(sal);S.cash+=sal+sp+ki-ex-tx;lg('Bulan ke-'+S.day/30+': gaji '+sg(sal)+(sp?', pasangan '+sg(sp):'')+(ki?', bantuan anak '+sg(ki):'')+', pajak '+sg(-tx)+', pengeluaran '+sg(-ex));
- bizMonth();loveMonth();kidsMonth();riskMonth();
+ bizMonth();loveMonth();kidsMonth();riskMonth();vehMonth();
  if(S.day%360==0){S.cash+=sal;lg('Tahun baru: THR '+sg(sal)+', inflasi 4%, kenaikan gaji umum 5%')}
  yearly();if(R()<.65)apply(rnd(EVT),'Berita');
  if(R()<.3){const e=rnd([['Kebutuhan mendadak (perabot, servis kecil)',-5e5],['Bonus kinerja',8e5],['Angpao dan hadiah',5e5]]);S.cash+=e[1];lg(e[0]+' '+sg(e[1]))}
@@ -287,7 +335,7 @@ function buy(id,amt,auto){const a=G(id),p=P[id];if(!(amt>=1e4))return toast('Min
  const q=amt*(1-a.fb)/p,h=S.hold[id]||0;S.cost[id]=(h*(S.cost[id]||0)+q*p)/(h+q);S.hold[id]=h+q;S.cash-=amt;lg((auto?'[Rutin] ':'')+'Beli '+id+' '+rp(amt)+' @ '+fp(p));sv();render();toast('Pembelian berhasil.')}
 function sell(id,amt){const a=G(id),p=P[id],h=S.hold[id]||0;if(h<=0)return toast('Kamu belum punya '+id+'.');if(!(amt>0))return toast('Masukkan nominal yang valid.');
  amt=Math.min(amt,h*p);const q=amt/p,pl=q*(p-S.cost[id])-amt*a.fs;S.hold[id]=h-q;S.cash+=amt*(1-a.fs);if(S.hold[id]*p<1){delete S.hold[id];delete S.cost[id]}lg('Jual '+id+' '+rp(amt)+' @ '+fp(p)+' ('+sg(pl)+')');sv();render();toast('Penjualan berhasil.')}
-const val=()=>S.cash+(S.houseV||0)+Object.keys(S.hold).reduce((t,k)=>t+S.hold[k]*P[k],0)+Object.keys(S.biz).reduce((t,k)=>t+S.biz[k].inv*.6,0);
+const val=()=>S.cash+S.veh.own.reduce((t,v)=>t+vVal(v)-vBal(v),0)+(S.houseV||0)+Object.keys(S.hold).reduce((t,k)=>t+S.hold[k]*P[k],0)+Object.keys(S.biz).reduce((t,k)=>t+S.biz[k].inv*.6,0);
 $('buy').onclick=()=>buy(cur,parseFloat($('amt').value));$('sell').onclick=()=>sell(cur,parseFloat($('amt').value));
 $('auto').onclick=()=>{const amt=parseFloat($('amt').value);if(S.auto&&S.auto.id==cur)S.auto=null;else if(amt>=1e4)S.auto={id:cur,amt};else return toast('Isi nominal minimal Rp10.000.');sv();render()};
 $('reset').onclick=()=>{if(confirm('Mulai ulang? Semua progres (termasuk di server) dihapus.')){S=fresh();initA();sv();flush(true);buildList();render()}};
@@ -307,9 +355,18 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t
  if(a=='lm'&&p&&p.st=='pacaran'){const c=15e6*S.cpi;if(S.day-p.since<90)return toast('Pacaran minimal 90 hari (baru '+(S.day-p.since)+').');if(p.chem<65)return toast('Kemistri min. 65 untuk melamar.');if(S.cash<c)return toast('Butuh dana cincin '+rp(c));S.cash-=c;if(R()*100<p.chem+10){p.st='lamar';S.hap=Math.min(100,S.hap+8);lg(p.n+' menerima lamaranmu! Cincin '+sg(-c));toast('Lamaran diterima! 💍')}else{p.chem=Math.max(0,p.chem-15);S.hap=Math.max(0,S.hap-10);lg('Lamaran ditolak '+p.n+', cincin '+sg(-c));toast('Lamaran ditolak. Perkuat kemistri dulu.')}}
  if(a=='pt'&&p&&p.st!='menikah'){if(!confirm('Putus dengan '+p.n+'?'))return;if(p.st!='dekat')S.hap=Math.max(0,S.hap-8);lg('Berpisah dengan '+p.n);S.pt=null;DLG=null}
  if(a=='wed'&&p&&p.st=='lamar'){const c=6e7*S.cpi;if(S.sch)return;if(!S.job)return toast('Syarat menikah: sudah punya pekerjaan.');if(S.hap<55)return toast('Syarat menikah: kebahagiaan min. 55.');if(S.cash<c)return toast('Butuh dana pernikahan '+rp(c));S.cash-=c;S.mar=1;p.st='menikah';S.hap=Math.min(100,S.hap+15);S.glow={until:S.day+240,v:15};lg('Menikah dengan '+p.n+'! Biaya '+sg(-c)+'. Penghasilan pasangan menambah pemasukan, pengeluaran rumah tangga +35%.');toast('Selamat menikah! 💍')}
+ if(a=='vf')gf=x;
+ if(a=='vb'||a=='vk'){const c=VM[x];if(!c)return;if(S.sch)return toast('Selesaikan sekolah dulu.');if(S.veh.own.length>=6)return toast('Garasi penuh (maks. 6 kendaraan).');
+  const pr=Math.round(c.price*S.cpi/1e3)*1e3,fee=Math.round(pr*.02);let loan=null,dp=pr;
+  if(a=='vk'){if(!S.job)return toast('Kredit butuh pekerjaan tetap.');dp=Math.round(pr*gdp);const inst=vcr(c,pr,dp,gtn),inc=pay(JB(S.job))*pt()+spouse();if(loanPay()+inst>inc*.5)return toast('Cicilan total melebihi 50% penghasilan ('+rp(inst)+'/bln untuk kendaraan ini).');loan={inst,left:gtn,tot:gtn,p0:pr-dp}}
+  const need=dp+fee;if(S.cash<need)return toast('Kas kurang. Butuh '+rp(need)+(a=='vk'?' (DP + biaya STNK/admin 2%).':' (harga + biaya STNK/admin 2%).'));
+  S.cash-=need;const u='v'+S.day+'_'+Math.floor(R()*1e4);S.veh.own.push({u,id:x,type:c.type,paid:pr,day:S.day,loan});if(!curVeh())S.trn=u;S.hap=Math.min(100,S.hap+4);
+  lg((c.type=='motor'?'🏍️ ':'🚗 ')+'Membeli '+c.brand+' '+c.model+' '+rp(pr)+(loan?' (kredit '+gtn+' bln, DP '+rp(dp)+', cicilan '+rp(loan.inst)+'/bln)':' tunai')+', biaya STNK/admin '+sg(-fee));toast('Selamat, kamu membeli '+c.brand+' '+c.model+'!')}
+ if(a=='vu'){const v=S.veh.own.find(z=>z.u==x);if(v){S.trn=v.u;lg('Kini memakai '+vn(v)+' untuk harian')}}
+ if(a=='vs'){const v=S.veh.own.find(z=>z.u==x);if(!v)return;const vv=Math.round(vVal(v)),bal=Math.round(vBal(v)),net=vv-bal;if(S.cash+net<0)return toast('Kas kurang untuk melunasi sisa kredit '+rp(bal)+' (nilai jual '+rp(vv)+').');if(!confirm('Jual '+vn(v)+' seharga '+rp(vv)+(bal?', lunasi sisa kredit '+rp(bal):'')+'? Kas berubah '+sg(net)+'.'))return;S.cash+=net;S.veh.own=S.veh.own.filter(z=>z.u!=x);if(S.trn==x)S.trn='umum';lg('Menjual '+vn(v)+' '+rp(vv)+(bal?', pelunasan kredit '+sg(-bal):'')+' → bersih '+sg(net))}
  if(a=='pr'){if(!S.mar||S.preg||S.sch)return;if(kActive().length>=3)return toast('Maksimal 3 anak.');S.preg=S.day+270;S.hap=Math.min(100,S.hap+5);lg('🤰 '+(S.pt?S.pt.n:'Pasanganmu')+' hamil! Lahiran sekitar 9 bulan lagi');toast('Kabar bahagia, kalian akan punya anak! 🤰')}
  if(a=='kq'){const k=S.kids[x];if(!k||kAge(k)>=22)return;const c=2.5e5*S.cpi;if(S.day<(k.qd||0))return toast('Quality time lagi dalam '+(k.qd-S.day)+' hari.');if(S.cash<c)return toast('Kas kurang dari '+rp(c));S.cash-=c;k.qd=S.day+7;k.ql=S.day;k.bd=Math.min(100,k.bd+6);S.hap=Math.min(100,S.hap+1.5);lg('Quality time dengan '+k.n+' '+sg(-c)+', kedekatan +6')}
- if(a=='iv'){if(S.sch||S.trn=='umum')return;S.ins.v=S.ins.v?0:1;lg(S.ins.v?'Mengaktifkan asuransi kendaraan':'Menghentikan asuransi kendaraan')}
+ if(a=='iv'){if(S.sch||!curVeh())return;S.ins.v=S.ins.v?0:1;lg(S.ins.v?'Mengaktifkan asuransi kendaraan':'Menghentikan asuransi kendaraan')}
  if(a=='ir'){if(S.sch||!S.owned)return;S.ins.r=S.ins.r?0:1;lg(S.ins.r?'Mengaktifkan asuransi rumah':'Menghentikan asuransi rumah')}
  if(a=='bo'){const d=BZ.find(z=>z[0]==x),c=d[3];if(S.sch)return toast('Selesaikan sekolah dulu.');if(S.edu.lv<d[7])return toast('Butuh pendidikan min. '+ELV[d[7]]);if(S.cash<c)return toast('Kas kurang dari '+rp(c));S.cash-=c;S.biz[x]={l:1,inv:c};lg('Membuka usaha '+d[1]+' '+sg(-c))}
  if(a=='bu'){const d=BZ.find(z=>z[0]==x),b=S.biz[x];if(b.l>=5)return;const c=bzUp(d,b.l+1);if(S.cash<c)return toast('Kas kurang dari '+rp(c));S.cash-=c;b.l++;b.inv+=c;lg(d[1]+' naik ke level '+b.l+' '+sg(-c))}
@@ -318,6 +375,7 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t
 $('job').onchange=e=>{const f=JB(e.target.value);if(f&&S.edu.lv<reqE(f,0)){e.target.value=S.job||'';return toast('Butuh pendidikan minimal '+ELV[reqE(f,0)]+' untuk bidang ini.')}S.job=e.target.value||null;lg(f?'Bekerja di bidang '+f.n+' sebagai '+title(f,lvl(f.id)):'Berhenti bekerja');sv();render()};
 $('home').onchange=e=>{const v=e.target.value;if(v=='rumah'&&!S.owned){if(S.cash<2e8){e.target.value=S.home;return toast('Butuh kas Rp200.000.000 untuk membeli rumah.')}S.cash-=2e8;S.owned=1;S.houseV=2e8;lg('Beli rumah Rp200.000.000')}S.home=v;sv();render()};
 $('insh').onchange=e=>{if(S.sch){e.target.value=S.ins.h;return}S.ins.h=e.target.value;lg('Asuransi kesehatan: '+INH[S.ins.h][0]);sv();render()};
+$('gdp').onchange=e=>{gdp=+e.target.value;render()};$('gtn').onchange=e=>{gtn=+e.target.value;render()};
 $('food').onchange=e=>{S.food=e.target.value;sv();render()};$('lifes').onchange=e=>{S.life=e.target.value;sv();render()};$('trn').onchange=e=>{S.trn=e.target.value;sv();render()};
 $('crs').onclick=()=>{if(!S.job)return toast('Pilih pekerjaan dulu.');const c=crsCost(lvl(S.job));if(S.cash<c)return toast('Kas kurang dari '+rp(c));S.cash-=c;S.sk[S.job]=Math.min(100,(S.sk[S.job]||0)+10);lg('Ikut kursus: '+sg(-c)+', +10 skill');sv();render()};
 $('exm').onclick=()=>{const id=S.job;if(!id||!elig(id))return;if(S.day<S.cool)return toast('Ujian ulang dalam '+(S.cool-S.day)+' hari.');const l=lvl(id),c0=examCost(l);if(S.cash<c0)return toast('Kas kurang dari '+rp(c0)+' untuk biaya ujian.');S.cash-=c0;const c=chance(id),f=JB(id);
@@ -342,7 +400,7 @@ function render(){
  A.forEach(a=>{const p=$('p-'+a.id);if(!p)return;p.textContent=fp(P[a.id]);const c=chg(a.id),e=$('c-'+a.id);e.textContent=(c>=0?'+':'')+c.toFixed(2)+'%';e.className=c>=0?'up':'dn'});
  document.querySelectorAll('.it').forEach(e=>e.classList.toggle('on',e.dataset.id==cur));
  document.querySelectorAll('#tabs .tab').forEach(b=>b.setAttribute('aria-pressed',b.dataset.v==vw));
- ['inv','car','biz','love','life'].forEach(v=>$('v-'+v).style.display=vw==v?(v=='inv'?'grid':''):'none');
+ ['inv','car','biz','love','life','gar'].forEach(v=>$('v-'+v).style.display=vw==v?(v=='inv'?'grid':''):'none');
  const w=val(),jf=JB(S.job),jl=jf?lvl(jf.id):0,xp=S.xp[S.job]||0,sk=S.sk[S.job]||0,pay0=jf?Math.round(pay(jf)*pt()):0,ed=S.edu,tu=ed.cur?tui(EDU[ed.cur]):0;
  const stage=S.sch?(S.sch=='pilih'?'Lulus SMP, pilih jalur':'Kelas '+S.sg+' '+SCH[S.sch][0]):ed.cur?'Kuliah '+EDU[ed.cur][0]:jf?title(jf,jl):'Lulusan '+ELV[ed.lv]+', siap kerja';
  $('av').textContent=S.sch?(S.sch=='sd'?'🎒':S.sch=='smp'?'📚':'🎓'):ed.cur?'🏛️':jf?(S.mar?'👨‍👩‍👧':'💼'):'🏠';$('stg').textContent=stage;
@@ -362,13 +420,13 @@ function render(){
   if(DIV[cur])$('info').textContent+=' · dividen ±'+(DIV[cur]*100).toFixed(1)+'%/tahun, dibayar 2x setahun (pajak 10%, harga turun saat pembagian)';
   const au=S.auto;$('auto').textContent=au&&au.id==cur?'Matikan investasi rutin':'Aktifkan investasi rutin';$('autot').textContent=au?'Aktif: '+rp(au.amt)+' ke '+au.id+' tiap bulan':'Beli otomatis tiap bulan game';
   $('cash').textContent=rp(S.cash);$('cash').className=S.cash<0?'dn':'';
-  const pvv=hk.reduce((t,k)=>t+S.hold[k]*P[k],0),pcb=hk.reduce((t,k)=>t+S.hold[k]*S.cost[k],0),ppl=pvv-pcb,hv2=S.houseV||0,bv2=Object.keys(S.biz).reduce((t,k)=>t+S.biz[k].inv*.6,0);
+  const pvv=hk.reduce((t,k)=>t+S.hold[k]*P[k],0),pcb=hk.reduce((t,k)=>t+S.hold[k]*S.cost[k],0),ppl=pvv-pcb,hv2=S.houseV||0,bv2=Object.keys(S.biz).reduce((t,k)=>t+S.biz[k].inv*.6,0),vv2=S.veh.own.reduce((t,v)=>t+vVal(v),0),vd2=S.veh.own.reduce((t,v)=>t+vBal(v),0);
   $('pv').textContent=rp(pvv);$('pvp').className='mu '+(ppl>=0?'up':'dn');$('pvp').textContent=hk.length?'P/L '+sg(ppl)+' ('+(pcb>0?(ppl/pcb*100).toFixed(2):'0.00')+'%)':'Belum ada aset';
-  $('oth').textContent=(hv2||bv2)?'Aset lain: '+(hv2?'rumah '+rp(hv2):'')+(hv2&&bv2?' · ':'')+(bv2?'usaha '+rp(bv2):'')+' (tidak termasuk portofolio)':'';
+  $('oth').textContent=(hv2||bv2||vv2)?'Aset lain: '+[hv2?'rumah '+rp(hv2):'',bv2?'usaha '+rp(bv2):'',vv2?'kendaraan '+rp(vv2):''].filter(Boolean).join(' · ')+(vd2?' · utang kendaraan '+rp(-vd2):'')+' (tidak termasuk portofolio)':'';
   $('tot').textContent=rp(w);
   {const ey=hk.reduce((t,k)=>t+S.hold[k]*P[k]*(DIV[k]||0),0)*(1-DTAX);$('divl').textContent=(S.div||ey)?'💰 Dividen diterima: '+rp(S.div||0)+(ey>0?' · estimasi '+rp(ey)+'/tahun':'')+' (di luar P/L)':''}
   const g=Math.max(0,Math.min(100,w/GOAL*100));$('gl').style.width=g+'%';$('glt').textContent='Target dana impian '+rp(GOAL)+' ('+g.toFixed(0)+'%)';
-  const cls={};if(S.houseV)cls.prop=S.houseV;const bv=Object.keys(S.biz).reduce((t,k)=>t+S.biz[k].inv*.6,0);if(bv)cls.bz=bv;Object.keys(S.hold).forEach(k=>{const c=G(k).c;cls[c]=(cls[c]||0)+S.hold[k]*P[k]});
+  const cls={};if(S.houseV)cls.prop=S.houseV;{const vv0=S.veh.own.reduce((t,v)=>t+vVal(v),0);if(vv0)cls.veh=vv0}const bv=Object.keys(S.biz).reduce((t,k)=>t+S.biz[k].inv*.6,0);if(bv)cls.bz=bv;Object.keys(S.hold).forEach(k=>{const c=G(k).c;cls[c]=(cls[c]||0)+S.hold[k]*P[k]});
   const ct=Object.keys(cls).reduce((t,k)=>t+cls[k],0)||1;$('alloc').innerHTML=Object.keys(cls).map(k=>`<i style="width:${cls[k]/ct*100}%;background:${CL[k][1]}"></i>`).join('');$('legend').textContent=Object.keys(cls).length?Object.keys(cls).map(k=>CL[k][0]+' '+(cls[k]/ct*100).toFixed(0)+'%').join(' · '):'Belum ada aset di luar kas.';
   $('hold').innerHTML=hk.map(k=>{const v=S.hold[k]*P[k],pl=S.hold[k]*(P[k]-S.cost[k]);return`<tr><td>${k}</td><td>${rp(v)}</td><td class="${pl>=0?'up':'dn'}">${sg(pl)}</td></tr>`}).join('')||'<tr><td colspan="3" style="text-align:center;color:var(--mu)">Belum ada aset.</td></tr>';
   setH($('log'),S.log.map(l=>'<div>'+l+'</div>').join('')||'<div>Belum ada transaksi.</div>');draw();
@@ -379,12 +437,12 @@ function render(){
   $('xpb').style.width=(jf?(jl<6?Math.min(100,(xp-XT[jl])/(XT[jl+1]-XT[jl])*100):100):0)+'%';
   $('crs').textContent='Kursus ('+rp(crsCost(jl))+', +10 skill)';$('exm').textContent='Ujian promosi ('+rp(examCost(jl))+')';
   $('crs').disabled=!!S.sch;$('exm').disabled=!jf||!elig(jf.id)||S.day<S.cool||!!S.sch;
-  {const sp0=S.sch?0:spouse(),tx0=S.sch?0:tax(pay0),bil=S.sch?0:bills(),ip=S.sch?0:insP(),kc=S.sch?0:kidCost(),ki=S.sch?0:kidsInc(),net=S.sch?alw():pay0+sp0+ki-tx0,left=net-bil-ip-kc-tu,R2=(l,v,c)=>'<tr><td>'+l+'</td><td class="'+(c||'')+'">'+v+'</td></tr>';
+  {const sp0=S.sch?0:spouse(),tx0=S.sch?0:tax(pay0),bil=S.sch?0:bills(),ip=S.sch?0:insP(),kc=S.sch?0:kidCost(),vr=S.sch?0:vRun(),lp=S.sch?0:loanPay(),ki=S.sch?0:kidsInc(),net=S.sch?alw():pay0+sp0+ki-tx0,left=net-bil-ip-kc-vr-lp-tu,R2=(l,v,c)=>'<tr><td>'+l+'</td><td class="'+(c||'')+'">'+v+'</td></tr>';
    $('netinc').innerHTML=S.sch?'<div class="nbig">'+rp(alw())+'<span class="mu"> / bulan</span></div><div class="mu">Uang jajan. Biaya hidup dan sekolah ditanggung orang tua.</div>':
    '<div class="nbig '+(left>=0?'up':'dn')+'">'+rp(left)+'<span class="mu"> sisa bersih / bulan</span></div><table class="nett"><tbody>'+
    R2('Gaji kotor',rp(pay0))+(S.mar?R2('Gaji pasangan','+'+rp(sp0)):'')+(ki?R2('Bantuan anak dewasa','+'+rp(ki)):'')+R2('Pajak penghasilan','-'+rp(tx0),'dn')+
    '<tr class="sum"><td>Pendapatan bersih (take-home)</td><td>'+rp(net)+'</td></tr>'+
-   R2('Pengeluaran hidup','-'+rp(bil),'dn')+(ip?R2('Premi asuransi','-'+rp(ip),'dn'):'')+(kc?R2('Biaya anak'+(S.preg?' (termasuk kehamilan)':''),'-'+rp(kc),'dn'):'')+(tu?R2('Biaya kuliah','-'+rp(tu),'dn'):'')+
+   R2('Pengeluaran hidup','-'+rp(bil),'dn')+(ip?R2('Premi asuransi','-'+rp(ip),'dn'):'')+(vr?R2('Kendaraan (BBM, pajak, servis)','-'+rp(vr),'dn'):'')+(lp?R2('Cicilan kendaraan','-'+rp(lp),'dn'):'')+(kc?R2('Biaya anak'+(S.preg?' (termasuk kehamilan)':''),'-'+rp(kc),'dn'):'')+(tu?R2('Biaya kuliah','-'+rp(tu),'dn'):'')+
    '<tr class="sum"><td>Sisa bersih per bulan</td><td class="'+(left>=0?'up':'dn')+'">'+sg(left)+'</td></tr></tbody></table><div class="mu" style="margin-top:6px">Belum termasuk THR tahunan, laba usaha, dividen, bunga, dan kejadian acak (sakit, kerusakan, dll).</div>'}
   const nd=jf&&jl<6?need(jf.id):[];
   $('exmt').textContent=!jf?'':jl>=6?'Kamu sudah di jabatan tertinggi.':nd.length?'Syarat naik ke '+title(jf,jl+1)+': '+nd.join(', '):'Peluang lulus ujian '+chance(jf.id)+'%'+(S.day<S.cool?' · ujian ulang '+(S.cool-S.day)+' hari lagi':'');
@@ -397,12 +455,14 @@ function render(){
   setH($('bizg'),BZ.map(d=>{const b=S.biz[d[0]],ok=S.edu.lv>=d[7];return`<div class="card"><b>${d[2]} ${d[1]}</b><div class="mu">${b?'Level '+b.l+'/5 · laba rata-rata '+rp(bzP(d,b.l)*S.wage)+'/bln':'Modal '+rp(d[3])+' · laba awal ±'+rp(d[4])+'/bln'}<br>Volatilitas ${Math.round(d[5]*100)}%${d[7]?' · syarat '+ELV[d[7]]:''} · nilai terkait bidang ${JB(d[6]).n}</div><div class="row">${b?`<button class="pc" data-a="bu:${d[0]}" ${b.l>=5?'disabled':''}>${b.l>=5?'Level maks':'Upgrade '+rp(bzUp(d,b.l+1))}</button><button class="pc" data-a="bs:${d[0]}">Jual ${rp(b.inv*.6)}</button>`:`<button class="pc" data-a="bo:${d[0]}" ${ok&&!S.sch&&S.cash>=d[3]?'':'disabled'}>Buka usaha</button>`}</div></div>`}).join(''));
  }
  if(vw=='love'){ensurePt();renderLove()}
+ if(vw=='gar')renderGar();
  if(vw=='life'){ensurePt();
   $('hap').textContent=Math.round(S.hap)+'/100 · XP ×'+prod().toFixed(2)+' · gaji ×'+hb().toFixed(2);$('hapb').style.width=S.hap+'%';
-  [['home',S.home],['food',S.food],['lifes',S.life],['trn',S.trn]].forEach(([e,v])=>{if($(e).value!=v)$(e).value=v;$(e).disabled=!!S.sch});
+  [['home',S.home],['food',S.food],['lifes',S.life]].forEach(([e,v])=>{if($(e).value!=v)$(e).value=v;$(e).disabled=!!S.sch});
+  setH($('trn'),'<option value="umum">Angkutan umum / jalan kaki ('+rp(3e5*S.cpi)+'/bln)</option>'+S.veh.own.map(v=>'<option value="'+v.u+'">'+vn(v)+'</option>').join(''));{const tv=curVeh()?S.trn:'umum';if($('trn').value!=tv)$('trn').value=tv;$('trn').disabled=!!S.sch}
   $('bill').textContent=S.sch?'Biaya hidup ditanggung orang tua. Uang jajan '+rp(alw())+' per bulan.':'Gaji '+rp(pay0)+(S.mar?' + pasangan '+rp(spouse()):'')+' − pajak '+rp(tax(pay0))+' − pengeluaran '+rp(outgo()+tu)+(kidsInc()?' + bantuan anak '+rp(kidsInc()):'')+' = '+sg(pay0+spouse()+kidsInc()-tax(pay0)-outgo()-tu)+' per bulan (pengeluaran termasuk premi asuransi dan biaya anak)';
   if($('insh').value!=S.ins.h)$('insh').value=S.ins.h;$('insh').disabled=!!S.sch;
-  $('ivb').textContent=(S.ins.v&&S.trn!='umum'?'✅ ':'⬜ ')+'Asuransi kendaraan'+(S.trn=='umum'?' (butuh motor/mobil)':' ('+rp((S.trn=='mobil'?4.5e5:8e4)*S.cpi)+'/bln)');$('ivb').disabled=!!S.sch||S.trn=='umum';
+  {const cv1=curVeh();$('ivb').textContent=(S.ins.v&&cv1?'✅ ':'⬜ ')+'Asuransi kendaraan'+(cv1?' ('+rp(vIns(cv1))+'/bln)':' (beli dan pakai kendaraan dulu)');$('ivb').disabled=!!S.sch||!cv1}
   $('irb').textContent=(S.ins.r&&S.owned?'✅ ':'⬜ ')+'Asuransi rumah'+(S.owned?' ('+rp((S.houseV||2e8)*.002/12)+'/bln)':' (butuh rumah milik sendiri)');$('irb').disabled=!!S.sch||!S.owned;
   $('insi').textContent=S.sch?'Biaya ditanggung orang tua.':'Premi total '+rp(insP())+'/bln (premi kesehatan naik sesuai jumlah keluarga, '+fsz()+' orang). Kesehatan menanggung '+Math.round(insH()[2]*100)+'% biaya sakit dan persalinan, kendaraan 80%, rumah 90%. Tanpa asuransi, musibah ditanggung sendiri dan bisa menguras kas.';
   $('mar').textContent=S.pt?S.pt.n+' · '+ST[S.pt.st]+' · kemistri '+Math.round(S.pt.chem)+'/100. Buka tab Pasangan.':'Belum punya pasangan. Buka tab Pasangan untuk mencari.';
@@ -458,6 +518,15 @@ function avatar(v,z){const{sk,hc,sh,hs,g,ac}=v;let b='',f='';
  +(g=='f'?'<circle cx="36" cy="54" r="4" fill="#ff8a8a" opacity=".35"/><circle cx="64" cy="54" r="4" fill="#ff8a8a" opacity=".35"/>':'')
  +(ac?'<circle cx="42" cy="47" r="6.5" fill="none" stroke="#333" stroke-width="1.5"/><circle cx="58" cy="47" r="6.5" fill="none" stroke="#333" stroke-width="1.5"/><path d="M48.5 47H51.5" stroke="#333" stroke-width="1.5"/>':'')+f+'</svg>'}
 const chemTxt=c=>c<25?'Masih canggung':c<50?'Mulai akrab':c<75?'Cocok':c<90?'Sangat cocok':'Belahan jiwa';
+function specTbl(c){const ev=c.fuel=='ev';return'<table class="spc"><tbody>'+[['Mesin / penggerak',c.mesin],['Tenaga',c.hp+' PS'],['Torsi',c.tq+' Nm'],['Transmisi',c.trans],['Bahan bakar',FUEL[c.fuel][0]],['Konsumsi',c.eff+(ev?' km/kWh':' km/L')],[ev?'Baterai':'Tangki',c.tank+(ev?' kWh':' L')],['Jangkauan penuh','±'+Math.round(c.tank*c.eff)+' km'],['Kapasitas',c.seats+' penumpang'],['Bobot','±'+c.kg+' kg'],['Kebahagiaan','+'+c.hap]].map(r=>'<tr><td>'+r[0]+'</td><td>'+r[1]+'</td></tr>').join('')+'</tbody></table>'}
+function renderGar(){
+ document.querySelectorAll('#gchips .chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.a=='vf:'+gf));
+ const cv=curVeh(),n=S.veh.own.length;
+ let h='<div class="mu">Kendaraan harian: <b>'+(cv?vn(cv):'Angkutan umum')+'</b> · Biaya kendaraan '+rp(vRun())+'/bln (BBM, pajak, servis)'+(loanPay()?' + cicilan '+rp(loanPay())+'/bln':'')+'. Ganti kendaraan harian di tab Kehidupan atau lewat tombol Pakai.</div>';
+ h+=n?'<div class="g2" style="margin-top:8px">'+S.veh.own.map(v=>{const c=VM[v.id],a=S.trn==v.u,run=vTaxM(c,v.paid)+(a?vFuel(c)+vServ(c,v.paid,vAge(v)):0);return'<div class="card"><b>'+(v.type=='motor'?'🏍️ ':'🚗 ')+vn(v)+(a?' <span class="tg" style="background:var(--up)">Dipakai harian</span>':'')+'</b><div class="mu">'+c.kelas+' · '+c.hp+' PS · '+c.trans+' · '+c.eff+(c.fuel=='ev'?' km/kWh':' km/L')+'<br>Dibeli '+rp(v.paid)+' · umur '+vAge(v).toFixed(1)+' th · nilai jual ±'+rp(vVal(v))+'<br>Biaya bulanan ±'+rp(run)+(a?'':' (pajak saja)')+'<br>'+(v.loan?'Cicilan '+rp(v.loan.inst)+'/bln · sisa '+v.loan.left+' bln · sisa pokok ±'+rp(vBal(v)):'Lunas')+'</div><div class="row"><button class="pc" data-a="vu:'+v.u+'" '+(a?'disabled':'')+'>Pakai</button><button class="pc" data-a="vs:'+v.u+'">Jual</button></div></div>'}).join('')+'</div>':'<div class="mu" style="margin-top:6px">Belum punya kendaraan. Kamu memakai angkutan umum ('+rp(3e5*S.cpi)+'/bln). Pilih di showroom di bawah.</div>';
+ setH($('garo'),h);
+ setH($('gars'),VEH.filter(c=>gf=='all'||(gf=='ev'?(c.fuel=='ev'||c.id=='zenix'):c.type==gf)).map(c=>{const pr=Math.round(c.price*S.cpi/1e3)*1e3,dp=Math.round(pr*gdp),run=vFuel(c)+vTaxM(c,pr)+vServ(c,pr,0);
+  return'<div class="card"><b>'+(c.type=='motor'?'🏍️ ':'🚗 ')+c.brand+' '+c.model+'</b><span class="tg" style="background:var(--ac2)">'+c.kelas+'</span><div class="nbig" style="font-size:20px;margin:4px 0">'+rp(pr)+'</div><div class="mu">'+c.hp+' PS · '+c.trans.split(' / ')[0]+' · '+c.eff+(c.fuel=='ev'?' km/kWh':' km/L')+' · '+c.seats+' kursi<br>'+c.fitur+'<br>Biaya jalan ±'+rp(run)+'/bln (BBM, pajak, servis)</div><details><summary>Spesifikasi lengkap</summary>'+specTbl(c)+'</details><div class="row"><button class="pc" data-a="vb:'+c.id+'">Beli tunai</button><button class="pc" data-a="vk:'+c.id+'">Kredit · DP '+rp(dp)+' · '+rp(vcr(c,pr,dp,gtn))+'/bln</button></div></div>'}).join(''))}
 function renderFam(){let h='';const ak=kActive();
  if(!S.mar)h='<div class="mu">Fitur keluarga terbuka setelah kamu menikah. Anak membawa kebahagiaan, tapi biayanya besar, jadi dana darurat dan asuransi kesehatan jadi penting.</div>';
  else{const bc=18e6*S.cpi*(1-insH()[2]);
