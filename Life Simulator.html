@@ -86,6 +86,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
    <div class="gl"><i id="gl"></i></div><div class="mu" id="glt"></div>
    <table><thead><tr><th>Aset</th><th>Nilai</th><th>P/L</th></tr></thead><tbody id="hold"></tbody></table>
   </section>
+  <section class="pn" id="tipsec" style="display:none"><h2>🕵️ Bocoran algoritma pasar</h2><div id="tiplist"></div></section>
   <section class="pn"><h2>Riwayat</h2><div class="log" id="log"></div>
    <p style="margin:8px 0 0"><button class="lk" id="reset">Mulai ulang dari kelas 1 SD</button> · <button class="lk" id="swa">Ganti akun</button></p></section>
  </aside>
@@ -100,7 +101,10 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
   <section class="pn" style="grid-column:1/-1"><h2>Pendapatan bersih</h2><div id="netinc"></div></section>
  </div></div>
 
-<div id="v-biz" style="display:none"><section class="pn"><h2>Buka usaha</h2><div class="mu" id="bizs" style="margin-bottom:8px"></div><div class="g2" id="bizg"></div></section></div>
+<div id="v-biz" style="display:none"><section class="pn"><h2>Buka usaha</h2><div class="mu" id="bizs" style="margin-bottom:8px"></div><div class="g2" id="bizg"></div></section>
+<section class="pn" style="margin-top:12px"><h2>🏢 Perusahaan sendiri (PT)</h2><div class="mu" id="coinfo" style="margin-bottom:8px"></div>
+<div class="row" style="align-items:center"><input type="text" id="con" maxlength="24" placeholder="Nama perusahaan, mis. PT Maju Jaya" style="flex:2;min-width:180px;margin:0"><select id="cofs" style="flex:2;min-width:180px;margin:0" aria-label="Bidang perusahaan"></select><button class="pc" id="cob" data-a="cof">Dirikan perusahaan</button></div>
+<div class="g2" id="cog" style="margin-top:10px"></div></section></div>
 
 <div id="v-love" style="display:none"><section class="pn"><h2>💕 Pasangan</h2><div id="lovec"></div></section><section class="pn" style="margin-top:12px"><h2>👶 Keluarga &amp; anak</h2><div id="famc"></div></section></div>
 <div id="v-acc" style="display:none"><div class="g2">
@@ -123,8 +127,8 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 </div></div>
 <div id="v-prp" style="display:none"><section class="pn"><h2>🏠 Rumah saya</h2><div id="prpo"></div>
 <div id="kprctl" style="display:none"><hr class="sep"><label class="mu" for="kprx">Pelunasan dipercepat (Rp), minimal Rp5.000.000</label><input type="number" id="kprx" min="5000000" step="1000000" value="10000000"><div class="row"><button class="pc" data-a="kx">Bayar sebagian</button><button class="pc" data-a="kl">Lunasi KPR</button></div><div class="mu" id="kprn"></div></div></section>
-<section class="pn" style="margin-top:12px"><h2>🏘️ Cari rumah &amp; simulasi KPR</h2><div class="row" style="align-items:center"><span class="mu">Simulasi KPR:</span><select id="hdp" style="width:auto"><option value="0.1">DP 10%</option><option value="0.2" selected>DP 20%</option><option value="0.3">DP 30%</option><option value="0.5">DP 50%</option></select><select id="htn" style="width:auto"><option value="120">10 tahun</option><option value="180">15 tahun</option><option value="240" selected>20 tahun</option><option value="300">25 tahun</option></select></div><div class="g2" id="hcat"></div>
-<div class="mu" style="margin-top:8px">Biaya pembelian 6% (BPHTB, notaris, administrasi) dan provisi bank 1% dari pinjaman. Cicilan anuitas dengan bunga fixed selama tenor: 8,5% mengikuti suku bunga BI saat akad (rumah subsidi 5%). Total cicilan maksimal 40% penghasilan. Nilai rumah naik ±4% per tahun, jual dikenai biaya 3%. Pelunasan dipercepat dikenai penalti 1% pada 3 tahun pertama. Kas minus 6 bulan berturut-turut membuat rumah disita bank dan dilelang 70% nilai pasar. Harga mengikuti inflasi.</div></section></div>
+<section class="pn" style="margin-top:12px"><h2>🏘️ Cari rumah &amp; simulasi KPR</h2><div class="row" style="align-items:center"><span class="mu">Simulasi KPR:</span><select id="hdp" style="width:auto"><option value="0.1">DP 10%</option><option value="0.2" selected>DP 20%</option><option value="0.3">DP 30%</option><option value="0.5">DP 50%</option></select><select id="htn" style="width:auto"><option value="120">10 tahun</option><option value="180">15 tahun</option><option value="240" selected>20 tahun</option><option value="300">25 tahun</option></select></div><div class="chips" id="hchips" style="margin-top:8px"></div><div class="g2" id="hcat"></div>
+<div class="mu" style="margin-top:8px">Biaya pembelian 6% (BPHTB, notaris, administrasi) dan provisi bank 1% dari pinjaman. Cicilan anuitas dengan bunga fixed selama tenor: 8,5% mengikuti suku bunga BI saat akad (rumah subsidi 5%). Total cicilan maksimal 40% penghasilan. Kenaikan nilai rumah tergantung kawasan (±3% sampai ±8% per tahun), jual dikenai biaya 3%. Rumah di BSD City dan kawasan yang lebih elit memberi koneksi bisnis: bocoran prediksi saham tiap bulan dan izin mendirikan perusahaan sendiri (tab Bisnis). Makin elit kawasannya, makin akurat bocorannya dan makin banyak perusahaan yang boleh didirikan. Pelunasan dipercepat dikenai penalti 1% pada 3 tahun pertama. Kas minus 6 bulan berturut-turut membuat rumah disita bank dan dilelang 70% nilai pasar. Harga mengikuti inflasi.</div></section></div>
 <div id="v-ach" style="display:none"><section class="pn"><h2>🏅 Prestasi &amp; gelar</h2><div class="mu" id="achs"></div><div class="gl"><i id="achb"></i></div><label class="mu" for="ttsel">Gelar yang ditampilkan (muncul di leaderboard)</label><select id="ttsel"></select><div class="ag" id="achg"></div></section></div>
 <div id="v-lb" style="display:none"><section class="pn"><h2>🥇 Leaderboard</h2><div class="mu" id="lbme"></div><div class="row"><button class="pc" id="lbr">🔄 Muat ulang</button></div><div id="lbt"></div><div class="mu" style="margin-top:8px">Peringkat berdasarkan kekayaan puncak yang pernah dicapai. Skor dikirim otomatis saat terhubung ke server.</div></section></div>
 <div id="v-gar" style="display:none"><section class="pn"><h2>🚗 Garasi</h2><div id="garo"></div></section>
@@ -197,7 +201,7 @@ const G=id=>A.find(a=>a.id==id);
 const rp=n=>(n<0?'-':'')+'Rp'+Math.abs(n).toLocaleString('id-ID',{maximumFractionDigits:0});
 const fp=p=>p>=1000?rp(p):'Rp'+p.toLocaleString('id-ID',{maximumFractionDigits:2});
 const sg=n=>(n>=0?'+':'')+rp(n);
-const fresh=()=>({cash:0,hold:{},cost:{},log:['Hari 0: kamu kelas 1 SD. Terima uang jajan tiap bulan dan belajar berinvestasi sejak dini!'],day:0,sim:{},fv:{},auto:null,job:null,xp:{},home:'ortu',food:'hemat',life:'min',hap:50,owned:0,houseV:0,sch:'sd',sg:1,sy:0,sma:0,trn:'umum',mods:[],nws:[],cpi:1,wage:1,lv:{},sk:{},edu:{lv:0,cur:null,left:0},cool:0,mar:0,glow:null,vcd:0,biz:{},pt:null,cands:[],fcd:0,div:0,ins:{h:'none',v:0,r:0},kids:[],preg:0,veh:{own:[]},ach:{},ttl:null,tman:0,pk:0,nt:0,nv:0,mort:null,hn:'',hp:0,kl:0,fav:{},dr:'',ds:0,dn:''});
+const fresh=()=>({cash:0,hold:{},cost:{},log:['Hari 0: kamu kelas 1 SD. Terima uang jajan tiap bulan dan belajar berinvestasi sejak dini!'],day:0,sim:{},fv:{},auto:null,job:null,xp:{},home:'ortu',food:'hemat',life:'min',hap:50,owned:0,houseV:0,sch:'sd',sg:1,sy:0,sma:0,trn:'umum',mods:[],nws:[],cpi:1,wage:1,lv:{},sk:{},edu:{lv:0,cur:null,left:0},cool:0,mar:0,glow:null,vcd:0,biz:{},pt:null,cands:[],fcd:0,div:0,ins:{h:'none',v:0,r:0},kids:[],preg:0,veh:{own:[]},ach:{},ttl:null,tman:0,pk:0,nt:0,nv:0,mort:null,hn:'',hp:0,kl:0,fav:{},dr:'',ds:0,dn:'',hd:'',hg:.04,tips:[],cos:[],th:0});
 /* ---- penyimpanan: server (db) + cadangan lokal ---- */
 let ACC='',ACCT=null,S=fresh(),P={},B={},SER={},cur='RDPU',cat='all',tk=0,tf='H',vw='inv',SPD=1,DOC=null,HDOC=null,dirty=false,busy=false,hc=0,mpts=null,hv=-1;
 try{const s=JSON.parse(localStorage.getItem('bl7'));if(s&&s.cash!=null)S=Object.assign(fresh(),s);const h=JSON.parse(localStorage.getItem('bl7h'));if(h)S.h=h}catch(e){}
@@ -223,8 +227,8 @@ function back(a){const o=[];let p=P[a.id];const v=a.t=='nav'?a.s:a.vol*.052,d=(a
 function initA(){P={};B={};SER={};if(!S.fv)S.fv={};A.forEach(a=>{P[a.id]=S.sim[a.id]||a.p;B[a.id]=P[a.id];SER[a.id]=[]});if(!S.h)S.h={};A.forEach(a=>{if(!S.h[a.id]||S.h[a.id].length<30)S.h[a.id]=back(a)})}
 initA();
 function step(){tk++;
- const mk=N()*.14*sq,dd=act().reduce((t,x)=>t+(x.fx.d||0),0)*.3/DT;
- A.forEach(a=>{if(a.t=='stk'){const F=S.fv[a.id]=(S.fv[a.id]||P[a.id])*(1+a.mu*dt);P[a.id]=Math.max(a.p*.03,P[a.id]*(1+a.mu*dt+a.b*(mk+dd)+a.vol*sq*.8*N()+.0015*(F/P[a.id]-1)))}});
+ const mk=N()*.14*sq,dd=act().reduce((t,x)=>t+(x.fx.d||0),0)*.3/DT,TP={};S.tips.forEach(t=>{if(t.until>S.day)TP[t.id]=(TP[t.id]||0)+t.act*.0012});
+ A.forEach(a=>{if(a.t=='stk'){const F=S.fv[a.id]=(S.fv[a.id]||P[a.id])*(1+a.mu*dt);P[a.id]=Math.max(a.p*.03,P[a.id]*(1+a.mu*dt+a.b*(mk+dd)+a.vol*sq*.8*N()+(TP[a.id]||0)+.0015*(F/P[a.id]-1)))}});
  if(tk%DT==0)day();
  A.forEach(a=>{const s=SER[a.id];s.push(P[a.id]);if(s.length>240)s.shift();S.sim[a.id]=P[a.id]});
  if(tk%5==0){chkAch();sv()}
@@ -255,8 +259,8 @@ pns|Pemerintahan (ASN)|ASN|3|2`.split('\n').map(l=>{const[id,n,r,b,e]=l.split('|
 const ELV=['SMA/SMK','D3','S1','S2'],EDU={d3:['Diploma 3',1,15e5,6],s1:['Sarjana (S1)',2,25e5,8],s2:['Magister (S2)',3,4e6,5]};
 const JB=id=>JOBS.find(j=>j.id==id),reqE=(f,l)=>Math.min(3,f.e+(l>=3?1:0)+(l>=5&&f.e>=1?1:0)),lvl=id=>S.lv[id]||0,title=(f,l)=>TN[l]+' '+f.r;
 const HOME={ortu:['Numpang orang tua',0],kos:['Kos',8e5],kontrak:['Kontrak rumah',2e6],rumah:['Rumah milik sendiri (beli di tab Properti)',15e4]},FOOD={hemat:['Masak sendiri',9e5],warung:['Makan di warung',15e5],resto:['Restoran & kafe',3e6]},LIFE={min:['Minimalis',0],std:['Standar (hiburan, pulsa)',5e5],mewah:['Mewah (gadget, hobi)',2e6]},TRN={umum:['Angkutan umum / jalan kaki',3e5,0],motor:['Motor (cicilan + bensin)',7e5,2],mobil:['Mobil (cicilan + bensin)',3e6,6]};
-const act=()=>S.mods.filter(m=>m.until>S.day),nb=()=>Object.keys(S.biz).length;
-const tgt=()=>Math.min(100,Math.max(0,40+Object.keys(LIFE).indexOf(S.life)*25+Object.keys(FOOD).indexOf(S.food)*5+Object.keys(HOME).indexOf(S.home)*3+vehHap()+(S.pt?pf().h:0)+(S.glow&&S.glow.until>S.day?S.glow.v:0)-Math.min(9,3*nb())+famHap()));
+const act=()=>S.mods.filter(m=>m.until>S.day),nb=()=>Object.keys(S.biz).length+(S.cos||[]).length;
+const tgt=()=>Math.min(100,Math.max(0,40+Object.keys(LIFE).indexOf(S.life)*25+Object.keys(FOOD).indexOf(S.food)*5+Object.keys(HOME).indexOf(S.home)*3+vehHap()+(S.pt?pf().h:0)+(S.glow&&S.glow.until>S.day?S.glow.v:0)-Math.min(9,3*nb())+famHap()+netHap()));
 const prod=()=>.6+.6*S.hap/100,hb=()=>.85+.3*S.hap/100,pt=()=>(S.edu.cur?.6:1)*(1-.04*nb())*(1-.03*Math.min(3,S.kids.filter(k=>kAge(k)<6).length));
 const bills=()=>(HOME[S.home][1]*hMul()+FOOD[S.food][1]+LIFE[S.life][1]+(curVeh()?0:TRN.umum[1]))*S.cpi*(S.mar?1.35:1)*pf().b*act().reduce((p,m)=>p*(m.fx.b||1),1);
 const pay=f=>f.b*M[lvl(f.id)]*S.wage*(1+Math.min(100,S.sk[f.id]||0)*.004)*hb()*act().reduce((p,m)=>p*(m.fx.s||1)*((m.fx.f&&m.fx.f[f.id])||1),1);
@@ -268,7 +272,7 @@ const KN={m:['Raka','Dimas','Bayu','Arga','Fajar','Rizky','Naufal','Alif'],f:['A
 const insH=()=>INH[S.ins.h]||INH.none,kAge=k=>Math.floor((S.day-k.b)/360),kActive=()=>S.kids.filter(k=>kAge(k)<22),fsz=()=>1+(S.mar?1:0)+kActive().length;
 const kCost=k=>{const a=kAge(k);return a>=22?0:(a<6?1.2e6:a<13?1.8e6:a<16?2.4e6:a<19?3e6:4e6)*S.cpi};
 const kidCost=()=>S.sch?0:kActive().reduce((t,k)=>t+kCost(k),0)+(S.preg?3e5*S.cpi:0);
-const kidsInc=()=>S.sch?0:S.kids.filter(k=>kAge(k)>=22&&k.bd>=60).reduce((t,k)=>t+1.5e6*S.cpi*k.bd/100,0);
+const kidsInc=()=>S.sch?0:S.kids.filter(k=>kAge(k)>=22&&k.bd>=80).reduce((t,k)=>t+1.5e6*S.cpi*k.bd/100,0);
 const famHap=()=>Math.min(8,3*kActive().length)+(S.ins.h=='swasta'?2:0);
 const insParts=()=>{if(S.sch)return{h:0,v:0,r:0};return{h:INH[S.ins.h][1]*(1+.7*(fsz()-1))*S.cpi,v:S.ins.v&&curVeh()?vIns(curVeh()):0,r:S.ins.r&&S.owned?(S.houseV||2e8)*.002/12:0}},insP=()=>{const o=insParts();return o.h+o.v+o.r};
 /* ---- kendaraan ---- */
@@ -336,7 +340,7 @@ function apply(e,k){const x=S.sch?{d:e[2].d,r:e[2].r,m:e[2].m}:e[2];S.nws.unshif
 function yearly(){if(S.day%360==0){S.cpi*=1.04;S.wage*=1.05;apply(rnd(POL),'Kebijakan')}S.mods=S.mods.filter(m=>m.until>S.day)}
 function day(){S.day++;
  A.forEach(a=>{if(a.t=='nav')P[a.id]*=1+(a.r+act().reduce((t,m)=>t+(m.fx.r||0),0))/365+(R()-.5)*a.s*2;const h=S.h[a.id];h.push(P[a.id]);if(h.length>400)h.shift()});
- if(S.houseV)S.houseV*=1+.04/365;if(S.job)gain(S.job,prod()*pt()*(1+pf().x));S.hap+=(tgt()-S.hap)*.1;S.hap=Math.max(0,Math.min(100,S.hap));if(S.day%30==0)month()}
+ if(S.houseV)S.houseV*=1+(S.hg||.04)/365;if(S.job)gain(S.job,prod()*pt()*(1+pf().x));S.hap+=(tgt()-S.hap)*.1;S.hap=Math.max(0,Math.min(100,S.hap));if(S.day%30==0)month()}
 function divMonth(){const m=S.day/30;let tot=0,nm=[];
  A.forEach(a=>{const y=DIV[a.id];if(!y||m%6!=dOff(a.id))return;const per=y/2,ps=P[a.id]*per,h=S.hold[a.id]||0;
   if(h>0){tot+=h*ps*(1-DTAX);nm.push(a.id)}
@@ -345,7 +349,7 @@ function divMonth(){const m=S.day/30;let tot=0,nm=[];
 function kidsMonth(){if(S.sch)return;
  if(S.preg&&S.day>=S.preg){S.preg=0;const g=R()<.5?'m':'f',n=rnd(KN[g]),c=18e6*S.cpi*(1-insH()[2]);S.cash-=c;S.kids.push({n,g,b:S.day,bd:60,ql:S.day,qd:0});S.hap=Math.min(100,S.hap+12);lg('👶 '+n+' lahir! Biaya persalinan '+sg(-c)+(insH()[2]?' (setelah asuransi)':''));toast('Selamat, '+n+' lahir! 👶')}
  S.kids.forEach(k=>{const a=kAge(k);if(S.day>k.b&&(S.day-k.b)%360==0){S.hap=Math.min(100,S.hap+2);lg('🎂 '+k.n+' berulang tahun ke-'+a+(a==6?', mulai SD':a==13?', masuk SMP':a==16?', masuk SMA':a==19?', mulai kuliah':a==22?', lulus dan mandiri':''))}
-  if(a<22)k.bd=Math.max(0,k.bd-(S.day-(k.ql||0)>30?3:1))});
+  if(a<22)k.bd=Math.max(Math.min(k.bd,KMIN),k.bd-(S.day-(k.ql||0)>30?3:1))});
  const ak=kActive();if(ak.length&&R()<.18){const k=rnd(ak),a=kAge(k),e=rnd(a<6?[[k.n+' mulai belajar jalan dan bicara, lucu sekali!',0,3],[k.n+' butuh popok dan susu ekstra',-4e5,0]]:[[k.n+' juara kelas, traktir keluarga',-3e5,3],[k.n+' ikut study tour sekolah',-6e5,1],[k.n+' dapat piala lomba, bangga!',0,4],[k.n+' butuh perlengkapan sekolah baru',-4e5,0]]),c=e[1]*S.cpi;S.cash+=c;S.hap=Math.min(100,S.hap+e[2]);lg(e[0]+(c?' '+sg(c):''))}}
 function vehMonth(){S.veh.own.forEach(v=>{if(v.loan){v.loan.left--;if(v.loan.left<=0){v.loan=null;lg('🎉 Kredit '+vn(v)+' lunas!')}}})}
 function riskMonth(){if(S.sch)return;const fs=fsz(),cv=insH()[2],f=S.cpi;
@@ -358,7 +362,7 @@ function month(){divMonth();if(S.sch){schoolMonth();return}
  const f=JB(S.job),sal=f?Math.round(pay(f)*pt()):0,sp=spouse(),ki=kidsInc();let ex=outgo();const ed=S.edu;
  if(ed.cur){const e=EDU[ed.cur];ex+=tui(e);if(--ed.left<=0){ed.lv=e[1];ed.cur=null;lg('Lulus '+e[0]+'!')}}
  const tx=tax(sal);S.cash+=sal+sp+ki-ex-tx;lg('Bulan ke-'+S.day/30+': gaji '+sg(sal)+(sp?', pasangan '+sg(sp):'')+(ki?', bantuan anak '+sg(ki):'')+', pajak '+sg(-tx)+', pengeluaran '+sg(-ex));
- bizMonth();loveMonth();kidsMonth();riskMonth();vehMonth();mortMonth();
+ bizMonth();coMonth();loveMonth();kidsMonth();riskMonth();vehMonth();mortMonth();tipsMonth();
  if(S.day%360==0){S.cash+=sal;lg('Tahun baru: THR '+sg(sal)+', inflasi 4%, kenaikan gaji umum 5%')}
  yearly();if(R()<.65)apply(rnd(EVT),'Berita');
  if(R()<.3){const e=rnd([['Kebutuhan mendadak (perabot, servis kecil)',-5e5],['Bonus kinerja',8e5],['Angpao dan hadiah',5e5]]);S.cash+=e[1];lg(e[0]+' '+sg(e[1]))}
@@ -370,7 +374,7 @@ function buy(id,amt,auto){const a=G(id),p=P[id];if(!(amt>=1e4))return toast('Min
  const q=amt*(1-a.fb)/p,h=S.hold[id]||0;S.cost[id]=(h*(S.cost[id]||0)+q*p)/(h+q);S.hold[id]=h+q;S.cash-=amt;S.nt=(S.nt||0)+1;lg((auto?'[Rutin] ':'')+'Beli '+id+' '+rp(amt)+' @ '+fp(p));sv();render();toast('Pembelian berhasil.')}
 function sell(id,amt){const a=G(id),p=P[id],h=S.hold[id]||0;if(h<=0)return toast('Kamu belum punya '+id+'.');if(!(amt>0))return toast('Masukkan nominal yang valid.');
  amt=Math.min(amt,h*p);const q=amt/p,pl=q*(p-S.cost[id])-amt*a.fs;S.hold[id]=h-q;S.cash+=amt*(1-a.fs);S.nt=(S.nt||0)+1;if(S.hold[id]*p<1){delete S.hold[id];delete S.cost[id]}lg('Jual '+id+' '+rp(amt)+' @ '+fp(p)+' ('+sg(pl)+')');sv();render();toast('Penjualan berhasil.')}
-const val=()=>S.cash+S.veh.own.reduce((t,v)=>t+vVal(v)-vBal(v),0)+(S.houseV||0)-(S.mort?S.mort.bal:0)+Object.keys(S.hold).reduce((t,k)=>t+S.hold[k]*P[k],0)+Object.keys(S.biz).reduce((t,k)=>t+S.biz[k].inv*.6,0);
+const val=()=>S.cash+S.veh.own.reduce((t,v)=>t+vVal(v)-vBal(v),0)+(S.houseV||0)-(S.mort?S.mort.bal:0)+Object.keys(S.hold).reduce((t,k)=>t+S.hold[k]*P[k],0)+bzv();
 $('buy').onclick=()=>buy(cur,parseFloat($('amt').value));$('sell').onclick=()=>sell(cur,parseFloat($('amt').value));
 $('auto').onclick=()=>{const amt=parseFloat($('amt').value);if(S.auto&&S.auto.id==cur)S.auto=null;else if(amt>=1e4)S.auto={id:cur,amt};else return toast('Isi nominal minimal Rp10.000.');sv();render()};
 $('reset').onclick=()=>{if(confirm('Mulai ulang? Semua progres (termasuk di server) dihapus.')){S=fresh();initA();sv();flush(true);buildList();render()}};
@@ -384,12 +388,12 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t
  if(a=='fc'){if(S.sch)return;if(S.day<S.fcd)return toast('Cari lagi dalam '+(S.fcd-S.day)+' hari.');S.cands=[genCand(),genCand(),genCand()];S.fcd=S.day+14;lg('Mencari pasangan: bertemu 3 kandidat')}
  if(a=='pk'){const c=S.cands[x];if(!c||S.pt)return;S.pt=Object.assign({},c,{st:'dekat',chem:15+Math.floor(R()*20),since:S.day,last:S.day,dates:0,cd:0,w:S.wage});S.cands=[];lg('Berkenalan dengan '+c.n+' ('+c.job+')');toast('Kamu berkenalan dengan '+c.n+'.')}
  if(a=='kc'&&p){const c=3e5*S.cpi;if(S.day<(p.cd||0))return toast('Kencan lagi dalam '+(p.cd-S.day)+' hari.');if(S.cash<c)return toast('Kas kurang dari '+rp(c));S.cash-=c;p.cd=S.day+5;DLG={i:Math.floor(R()*DL.length),res:null};lg('Kencan dengan '+p.n+' '+sg(-c))}
- if(a=='ans'&&p&&DLG&&!DLG.res){const tag=DL[DLG.i][1][x][1];let d,t;if(likes(p).includes(tag)){d=9+Math.round(R()*3);t=rnd(['tersenyum lebar: “Aku suka caramu itu!”','tertawa kecil: “Kamu benar-benar paham aku.”'])}else if(dislikes(p).includes(tag)){d=-7;t=rnd(['terdiam sebentar: “Hmm... kurang cocok denganku.”','tersenyum tipis: “Oh... begitu ya.”'])}else{d=3;t='mengangguk: “Oke, boleh juga.”'}p.chem=Math.max(0,Math.min(100,p.chem+d));p.last=S.day;p.dates++;S.hap=Math.min(100,S.hap+1);DLG.res={d,t:p.n+' '+t};lg('Dialog kencan dengan '+p.n+': kemistri '+(d>=0?'+':'')+d)}
+ if(a=='ans'&&p&&DLG&&!DLG.res){const tag=DL[DLG.i][1][x][1];let d,t;if(likes(p).includes(tag)){d=9+Math.round(R()*3);t=rnd(['tersenyum lebar: “Aku suka caramu itu!”','tertawa kecil: “Kamu benar-benar paham aku.”'])}else if(dislikes(p).includes(tag)){d=-7;t=rnd(['terdiam sebentar: “Hmm... kurang cocok denganku.”','tersenyum tipis: “Oh... begitu ya.”'])}else{d=3;t='mengangguk: “Oke, boleh juga.”'}p.chem=Math.max(p.st=='menikah'?CMIN:0,Math.min(100,p.chem+d));p.last=S.day;p.dates++;S.hap=Math.min(100,S.hap+1);DLG.res={d,t:p.n+' '+t};lg('Dialog kencan dengan '+p.n+': kemistri '+(d>=0?'+':'')+d)}
  if(a=='cl')DLG=null;
  if(a=='tm'&&p&&p.st=='dekat'){if(p.chem<40)return toast('Kemistri belum cukup (min. 40).');if(R()*100<p.chem+15){p.st='pacaran';p.since=S.day;S.hap=Math.min(100,S.hap+6);lg('Resmi berpacaran dengan '+p.n+'!');toast(p.n+' menerima cintamu! 💕')}else{p.chem=Math.max(0,p.chem-10);S.hap=Math.max(0,S.hap-5);lg(p.n+' belum siap berpacaran (kemistri -10)');toast(p.n+' belum siap. Dekati lagi lewat kencan.')}}
  if(a=='lm'&&p&&p.st=='pacaran'){const c=15e6*S.cpi;if(S.day-p.since<90)return toast('Pacaran minimal 90 hari (baru '+(S.day-p.since)+').');if(p.chem<65)return toast('Kemistri min. 65 untuk melamar.');if(S.cash<c)return toast('Butuh dana cincin '+rp(c));S.cash-=c;if(R()*100<p.chem+10){p.st='lamar';S.hap=Math.min(100,S.hap+8);lg(p.n+' menerima lamaranmu! Cincin '+sg(-c));toast('Lamaran diterima! 💍')}else{p.chem=Math.max(0,p.chem-15);S.hap=Math.max(0,S.hap-10);lg('Lamaran ditolak '+p.n+', cincin '+sg(-c));toast('Lamaran ditolak. Perkuat kemistri dulu.')}}
  if(a=='pt'&&p&&p.st!='menikah'){if(!confirm('Putus dengan '+p.n+'?'))return;if(p.st!='dekat')S.hap=Math.max(0,S.hap-8);lg('Berpisah dengan '+p.n);S.pt=null;DLG=null}
- if(a=='wed'&&p&&p.st=='lamar'){const c=6e7*S.cpi;if(S.sch)return;if(!S.job)return toast('Syarat menikah: sudah punya pekerjaan.');if(S.hap<55)return toast('Syarat menikah: kebahagiaan min. 55.');if(S.cash<c)return toast('Butuh dana pernikahan '+rp(c));S.cash-=c;S.mar=1;p.st='menikah';S.hap=Math.min(100,S.hap+15);S.glow={until:S.day+240,v:15};lg('Menikah dengan '+p.n+'! Biaya '+sg(-c)+'. Penghasilan pasangan menambah pemasukan, pengeluaran rumah tangga +35%.');toast('Selamat menikah! 💍')}
+ if(a=='wed'&&p&&p.st=='lamar'){const c=6e7*S.cpi;if(S.sch)return;if(!S.job)return toast('Syarat menikah: sudah punya pekerjaan.');if(S.hap<55)return toast('Syarat menikah: kebahagiaan min. 55.');if(S.cash<c)return toast('Butuh dana pernikahan '+rp(c));S.cash-=c;S.mar=1;p.st='menikah';p.chem=Math.max(CMIN,p.chem);S.hap=Math.min(100,S.hap+15);S.glow={until:S.day+240,v:15};lg('Menikah dengan '+p.n+'! Biaya '+sg(-c)+'. Penghasilan pasangan menambah pemasukan, pengeluaran rumah tangga +35%.');toast('Selamat menikah! 💍')}
  if(a=='vf')gf=x;
  if(a=='vb'||a=='vk'){const c=VM[x];if(!c)return;if(S.sch)return toast('Selesaikan sekolah dulu.');if(S.veh.own.length>=6)return toast('Garasi penuh (maks. 6 kendaraan).');
   const pr=Math.round(c.price*S.cpi/1e3)*1e3,fee=Math.round(pr*.02);let loan=null,dp=pr;
@@ -399,11 +403,11 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t
   lg((c.type=='motor'?'🏍️ ':'🚗 ')+'Membeli '+c.brand+' '+c.model+' '+rp(pr)+(loan?' (kredit '+gtn+' bln, DP '+rp(dp)+', cicilan '+rp(loan.inst)+'/bln)':' tunai')+', biaya STNK/admin '+sg(-fee));toast('Selamat, kamu membeli '+c.brand+' '+c.model+'!')}
  if(a=='vu'){const v=S.veh.own.find(z=>z.u==x);if(v){S.trn=v.u;lg('Kini memakai '+vn(v)+' untuk harian')}}
  if(a=='vs'){const v=S.veh.own.find(z=>z.u==x);if(!v)return;const vv=Math.round(vVal(v)),bal=Math.round(vBal(v)),net=vv-bal;if(S.cash+net<0)return toast('Kas kurang untuk melunasi sisa kredit '+rp(bal)+' (nilai jual '+rp(vv)+').');if(!confirm('Jual '+vn(v)+' seharga '+rp(vv)+(bal?', lunasi sisa kredit '+rp(bal):'')+'? Kas berubah '+sg(net)+'.'))return;S.cash+=net;S.veh.own=S.veh.own.filter(z=>z.u!=x);if(S.trn==x)S.trn='umum';lg('Menjual '+vn(v)+' '+rp(vv)+(bal?', pelunasan kredit '+sg(-bal):'')+' → bersih '+sg(net))}
- if(a=='pr'){if(!S.mar||S.preg||S.sch)return;if(kActive().length>=3)return toast('Maksimal 3 anak.');S.preg=S.day+270;S.hap=Math.min(100,S.hap+5);lg('🤰 '+(S.pt?S.pt.n:'Pasanganmu')+' hamil! Lahiran sekitar 9 bulan lagi');toast('Kabar bahagia, kalian akan punya anak! 🤰')}
+ if(a=='pr'){if(!S.mar||S.preg||S.sch)return;if(kActive().length>=3)return toast('Maksimal 3 anak.');ensurePt();const pc0=S.pt?S.pt.chem:0;if(pc0<CMIN)return toast('Tidak bisa hamil: kemistri pasangan harus min. '+CMIN+' (sekarang '+Math.round(pc0)+'). Perbanyak kencan.');const lowK=kActive().find(k=>k.bd<KMIN);if(lowK)return toast('Tidak bisa menambah anak: kedekatan dengan '+lowK.n+' harus min. '+KMIN+'. Luangkan quality time.');S.preg=S.day+270;S.hap=Math.min(100,S.hap+5);lg('🤰 '+(S.pt?S.pt.n:'Pasanganmu')+' hamil! Lahiran sekitar 9 bulan lagi');toast('Kabar bahagia, kalian akan punya anak! 🤰')}
  if(a=='kq'){const k=S.kids[x];if(!k||kAge(k)>=22)return;const c=2.5e5*S.cpi;if(S.day<(k.qd||0))return toast('Quality time lagi dalam '+(k.qd-S.day)+' hari.');if(S.cash<c)return toast('Kas kurang dari '+rp(c));S.cash-=c;k.qd=S.day+7;k.ql=S.day;k.bd=Math.min(100,k.bd+6);S.hap=Math.min(100,S.hap+1.5);lg('Quality time dengan '+k.n+' '+sg(-c)+', kedekatan +6')}
  if(a=='iv'){if(S.sch||!curVeh())return;S.ins.v=S.ins.v?0:1;lg(S.ins.v?'Mengaktifkan asuransi kendaraan':'Menghentikan asuransi kendaraan')}
  if(a=='ir'){if(S.sch||!S.owned)return;S.ins.r=S.ins.r?0:1;lg(S.ins.r?'Mengaktifkan asuransi rumah':'Menghentikan asuransi rumah')}
- propAct(a,x);
+ propAct(a,x);coAct(a,x);if(a=='tp'&&G(x))cur=x;if(a=='hdist')hf=x;
  if(a=='bo'){const d=BZ.find(z=>z[0]==x),c=d[3];if(S.sch)return toast('Selesaikan sekolah dulu.');if(S.edu.lv<d[7])return toast('Butuh pendidikan min. '+ELV[d[7]]);if(S.cash<c)return toast('Kas kurang dari '+rp(c));S.cash-=c;S.biz[x]={l:1,inv:c};lg('Membuka usaha '+d[1]+' '+sg(-c))}
  if(a=='bu'){const d=BZ.find(z=>z[0]==x),b=S.biz[x];if(b.l>=5)return;const c=bzUp(d,b.l+1);if(S.cash<c)return toast('Kas kurang dari '+rp(c));S.cash-=c;b.l++;b.inv+=c;lg(d[1]+' naik ke level '+b.l+' '+sg(-c))}
  if(a=='bs'){const d=BZ.find(z=>z[0]==x),v=S.biz[x].inv*.6;if(!confirm('Jual '+d[1]+' seharga '+rp(v)+'?'))return;S.cash+=v;delete S.biz[x];lg('Menjual usaha '+d[1]+' '+sg(v))}
@@ -454,18 +458,19 @@ function render(){
   $('chg').textContent=(c>=0?'+':'')+c.toFixed(2)+'%';$('chg').className=c>=0?'up':'dn';
   $('info').textContent='Risiko '+a.k+(a.t=='nav'?' · estimasi imbal hasil ±'+(a.r*100).toFixed(1)+'% per tahun':' · ekspektasi jangka panjang ±'+(a.mu*100).toFixed(0)+'% per tahun')+(a.fb?' · biaya beli '+(a.fb*100).toFixed(2)+'%, jual '+(a.fs*100).toFixed(2)+'%':' · tanpa biaya transaksi');
   if(DIV[cur])$('info').textContent+=' · dividen ±'+(DIV[cur]*100).toFixed(1)+'%/tahun, dibayar 2x setahun (pajak 10%, harga turun saat pembagian)';
+  {const tp=S.tips.find(t=>t.id==cur&&!t.done&&t.until>S.day);if(tp)$('info').textContent+=' · 🕵️ Bocoran: diprediksi '+(tp.dir>0?'NAIK':'TURUN')+' (akurasi ±'+Math.round(tp.acc*100)+'%, '+(tp.until-S.day)+' hari lagi)'}
   const au=S.auto;$('auto').textContent=au&&au.id==cur?'Matikan investasi rutin':'Aktifkan investasi rutin';$('autot').textContent=au?'Aktif: '+rp(au.amt)+' ke '+au.id+' tiap bulan':'Beli otomatis tiap bulan game';
   $('cash').textContent=rp(S.cash);$('cash').className=S.cash<0?'dn':'';
-  const pvv=hk.reduce((t,k)=>t+S.hold[k]*P[k],0),pcb=hk.reduce((t,k)=>t+S.hold[k]*S.cost[k],0),ppl=pvv-pcb,hv2=S.houseV||0,bv2=Object.keys(S.biz).reduce((t,k)=>t+S.biz[k].inv*.6,0),vv2=S.veh.own.reduce((t,v)=>t+vVal(v),0),vd2=S.veh.own.reduce((t,v)=>t+vBal(v),0);
+  const pvv=hk.reduce((t,k)=>t+S.hold[k]*P[k],0),pcb=hk.reduce((t,k)=>t+S.hold[k]*S.cost[k],0),ppl=pvv-pcb,hv2=S.houseV||0,bv2=bzv(),vv2=S.veh.own.reduce((t,v)=>t+vVal(v),0),vd2=S.veh.own.reduce((t,v)=>t+vBal(v),0);
   $('pv').textContent=rp(pvv);$('pvp').className='mu '+(ppl>=0?'up':'dn');$('pvp').textContent=hk.length?'P/L '+sg(ppl)+' ('+(pcb>0?(ppl/pcb*100).toFixed(2):'0.00')+'%)':'Belum ada aset';
   $('oth').textContent=(hv2||bv2||vv2)?'Aset lain: '+[hv2?'rumah '+rp(hv2):'',bv2?'usaha '+rp(bv2):'',vv2?'kendaraan '+rp(vv2):''].filter(Boolean).join(' · ')+(vd2?' · utang kendaraan '+rp(-vd2):'')+(S.mort?' · utang KPR '+rp(-S.mort.bal):'')+' (tidak termasuk portofolio)':'';
   $('tot').textContent=rp(w);
   {const ey=hk.reduce((t,k)=>t+S.hold[k]*P[k]*(DIV[k]||0),0)*(1-DTAX);$('divl').textContent=(S.div||ey)?'💰 Dividen diterima: '+rp(S.div||0)+(ey>0?' · estimasi '+rp(ey)+'/tahun':'')+' (di luar P/L)':''}
   const g=Math.max(0,Math.min(100,w/GOAL*100));$('gl').style.width=g+'%';$('glt').textContent='Target dana impian '+rp(GOAL)+' ('+g.toFixed(0)+'%)';
-  const cls={};if(S.houseV)cls.prop=S.houseV;{const vv0=S.veh.own.reduce((t,v)=>t+vVal(v),0);if(vv0)cls.veh=vv0}const bv=Object.keys(S.biz).reduce((t,k)=>t+S.biz[k].inv*.6,0);if(bv)cls.bz=bv;Object.keys(S.hold).forEach(k=>{const c=G(k).c;cls[c]=(cls[c]||0)+S.hold[k]*P[k]});
+  const cls={};if(S.houseV)cls.prop=S.houseV;{const vv0=S.veh.own.reduce((t,v)=>t+vVal(v),0);if(vv0)cls.veh=vv0}const bv=bzv();if(bv)cls.bz=bv;Object.keys(S.hold).forEach(k=>{const c=G(k).c;cls[c]=(cls[c]||0)+S.hold[k]*P[k]});
   const ct=Object.keys(cls).reduce((t,k)=>t+cls[k],0)||1;$('alloc').innerHTML=Object.keys(cls).map(k=>`<i style="width:${cls[k]/ct*100}%;background:${CL[k][1]}"></i>`).join('');$('legend').textContent=Object.keys(cls).length?Object.keys(cls).map(k=>CL[k][0]+' '+(cls[k]/ct*100).toFixed(0)+'%').join(' · '):'Belum ada aset di luar kas.';
   $('hold').innerHTML=hk.map(k=>{const v=S.hold[k]*P[k],pl=S.hold[k]*(P[k]-S.cost[k]);return`<tr><td>${k}</td><td>${rp(v)}</td><td class="${pl>=0?'up':'dn'}">${sg(pl)}</td></tr>`}).join('')||'<tr><td colspan="3" style="text-align:center;color:var(--mu)">Belum ada aset.</td></tr>';
-  setH($('log'),S.log.map(l=>'<div>'+l+'</div>').join('')||'<div>Belum ada transaksi.</div>');draw();
+  setH($('log'),S.log.map(l=>'<div>'+l+'</div>').join('')||'<div>Belum ada transaksi.</div>');draw();renderTips();
  }
  if(vw=='car'){
   $('pilih').style.display=S.sch=='pilih'?'':'none';
@@ -490,7 +495,7 @@ function render(){
   $('bizs').textContent='Usaha membutuhkan modal dan sebagian waktumu (tiap usaha mengurangi XP kerja 4% dan kebahagiaan sedikit). Laba bulanan berfluktuasi, dan ada risiko rugi. Dijual kembali 60% dari total modal.';
   setH($('bizg'),BZ.map(d=>{const b=S.biz[d[0]],ok=S.edu.lv>=d[7];return`<div class="card"><b>${d[2]} ${d[1]}</b><div class="mu">${b?'Level '+b.l+'/5 · laba rata-rata '+rp(bzP(d,b.l)*S.wage)+'/bln':'Modal '+rp(d[3])+' · laba awal ±'+rp(d[4])+'/bln'}<br>Volatilitas ${Math.round(d[5]*100)}%${d[7]?' · syarat '+ELV[d[7]]:''} · nilai terkait bidang ${JB(d[6]).n}</div><div class="row">${b?`<button class="pc" data-a="bu:${d[0]}" ${b.l>=5?'disabled':''}>${b.l>=5?'Level maks':'Upgrade '+rp(bzUp(d,b.l+1))}</button><button class="pc" data-a="bs:${d[0]}">Jual ${rp(b.inv*.6)}</button>`:`<button class="pc" data-a="bo:${d[0]}" ${ok&&!S.sch&&S.cash>=d[3]?'':'disabled'}>Buka usaha</button>`}</div></div>`}).join(''));
  }
- if(vw=='love'){ensurePt();renderLove()}
+ if(vw=='biz')renderCo();if(vw=='love'){ensurePt();renderLove()}
  if(vw=='gar')renderGar();if(vw=='prp')renderPrp();if(vw=='ach')renderAch();if(vw=='lb')renderLb();if(vw=='acc')renderAcc();
  if(vw=='life'){ensurePt();
   $('hap').textContent=Math.round(S.hap)+'/100 · XP ×'+prod().toFixed(2)+' · gaji ×'+hb().toFixed(2);$('hapb').style.width=S.hap+'%';
@@ -543,7 +548,7 @@ function genCand(){const g=R()<.5?'m':'f',f=rnd(JOBS),l=Math.floor(R()*R()*4),tr
  return{n:rnd(g=='m'?NMM:NMF),g,job:title(f,l),inc:Math.round(f.b*M[l]*(.9+R()*.2)*S.wage/1e5)*1e5,w:S.wage,tr,hb:rnd(HB),av:{sk:rnd(SK),hc:rnd(HC),sh:rnd(SC),hs:g=='m'?rnd(['pendek','pendek','kuncir']):rnd(['panjang','kuncir','hijab','panjang']),g,ac:R()<.3?1:0}}}
 function ensurePt(){if(S.mar&&!S.pt)S.pt=Object.assign(genCand(),{st:'menikah',chem:60,since:S.day-200,last:S.day,dates:0,cd:0,w:S.wage})}
 function pf(){const p=S.pt,o={h:0,x:0,b:1};if(!p)return o;const k=p.st=='menikah'?1:p.st=='dekat'?0:.5;p.tr.forEach(t=>{const e=TF[t]||{};o.h+=(e.h||0)*k;o.x+=(e.x||0)*k;if(p.st=='menikah')o.b*=e.b||1});o.h+=(LV[p.st]||0)+p.chem/25;return o}
-function loveMonth(){const p=S.pt;if(!p)return;const gap=S.day-(p.last||0);if(p.st=='menikah'){p.chem=Math.max(10,p.chem-(gap>60?3:1));return}if(gap>30){p.chem-=6;lg(p.n+' merasa kurang diperhatikan (kemistri -6)')}if(p.chem<=5){lg(p.n+' memutuskan menjauh darimu...');S.hap=Math.max(0,S.hap-10);S.pt=null;DLG=null}}
+function loveMonth(){const p=S.pt;if(!p)return;const gap=S.day-(p.last||0);if(p.st=='menikah'){p.chem=Math.max(CMIN,p.chem-(gap>60?3:1));return}if(gap>30){p.chem-=6;lg(p.n+' merasa kurang diperhatikan (kemistri -6)')}if(p.chem<=5){lg(p.n+' memutuskan menjauh darimu...');S.hap=Math.max(0,S.hap-10);S.pt=null;DLG=null}}
 function avatar(v,z){const{sk,hc,sh,hs,g,ac}=v;let b='',f='';
  if(hs=='panjang')b='<path d="M21 44Q18 92 26 100H74Q82 92 79 44Z" fill="'+hc+'"/>';
  if(hs=='hijab')b='<path d="M16 50Q16 6 50 6Q84 6 84 50L88 100H12Z" fill="'+sh+'"/>';
@@ -567,10 +572,10 @@ function renderFam(){let h='';const ak=kActive();
  if(!S.mar)h='<div class="mu">Fitur keluarga terbuka setelah kamu menikah. Anak membawa kebahagiaan, tapi biayanya besar, jadi dana darurat dan asuransi kesehatan jadi penting.</div>';
  else{const bc=18e6*S.cpi*(1-insH()[2]);
   h='<div class="mu">Anggota keluarga: '+fsz()+' orang · Biaya anak: '+rp(kidCost())+'/bln · Kebahagiaan dari keluarga +'+famHap()+(S.kids.some(k=>kAge(k)<6)?' · Balita membuat waktu kerja berkurang (gaji dan XP −3% per anak)':'')+'</div>';
-  h+=S.preg?'<div class="card" style="margin:8px 0">🤰 '+(S.pt?S.pt.n:'Pasanganmu')+' sedang hamil. Lahiran dalam '+Math.max(0,S.preg-S.day)+' hari. Biaya persalinan ±'+rp(bc)+(insH()[2]?' setelah asuransi':', belum ada asuransi kesehatan')+'.</div>':'<div class="row"><button class="pc" data-a="pr" '+(ak.length>=3||S.sch?'disabled':'')+'>🤰 Program hamil</button></div><div class="mu">Maksimal 3 anak. Biaya persalinan ±'+rp(bc)+(insH()[2]?' (setelah asuransi)':' (tanpa asuransi kesehatan)')+'.</div>';
-  h+='<div class="g2" style="margin-top:8px">'+S.kids.map((k,i)=>{const a=kAge(k),ad=a>=22,st=a<6?'Balita':a<13?'SD':a<16?'SMP':a<19?'SMA':a<22?'Kuliah':'Mandiri';return'<div class="card"><b>'+(k.g=='f'?'👧':'👦')+' '+k.n+'</b><div class="mu">Usia '+a+' tahun · '+st+'<br>'+(ad?(k.bd>=60?'Mengirim bantuan '+rp(1.5e6*S.cpi*k.bd/100)+'/bln':'Hidup mandiri, jarang memberi kabar'):'Biaya '+rp(kCost(k))+'/bln')+'<br>❤ Kedekatan '+Math.round(k.bd)+'/100</div><div class="gl"><i style="width:'+k.bd+'%"></i></div>'+(ad?'':'<button class="pc" data-a="kq:'+i+'" '+(S.day<(k.qd||0)?'disabled':'')+'>🎈 Quality time ('+rp(2.5e5*S.cpi)+')'+(S.day<(k.qd||0)?' · '+(k.qd-S.day)+' hari':'')+'</button>')+'</div>'}).join('')+'</div>';
+  h+=S.preg?'<div class="card" style="margin:8px 0">🤰 '+(S.pt?S.pt.n:'Pasanganmu')+' sedang hamil. Lahiran dalam '+Math.max(0,S.preg-S.day)+' hari. Biaya persalinan ±'+rp(bc)+(insH()[2]?' setelah asuransi':', belum ada asuransi kesehatan')+'.</div>':'<div class="row"><button class="pc" data-a="pr" '+(ak.length>=3||S.sch?'disabled':'')+'>🤰 Program hamil</button></div><div class="mu">Maksimal 3 anak. Syarat hamil: kemistri pasangan min. '+CMIN+' (kini '+Math.round(S.pt?S.pt.chem:0)+') dan kedekatan tiap anak min. '+KMIN+'. Biaya persalinan ±'+rp(bc)+(insH()[2]?' (setelah asuransi)':' (tanpa asuransi kesehatan)')+'.</div>';
+  h+='<div class="g2" style="margin-top:8px">'+S.kids.map((k,i)=>{const a=kAge(k),ad=a>=22,st=a<6?'Balita':a<13?'SD':a<16?'SMP':a<19?'SMA':a<22?'Kuliah':'Mandiri';return'<div class="card"><b>'+(k.g=='f'?'👧':'👦')+' '+k.n+'</b><div class="mu">Usia '+a+' tahun · '+st+'<br>'+(ad?(k.bd>=80?'Mengirim bantuan '+rp(1.5e6*S.cpi*k.bd/100)+'/bln':'Hidup mandiri, jarang memberi kabar'):'Biaya '+rp(kCost(k))+'/bln')+'<br>❤ Kedekatan '+Math.round(k.bd)+'/100</div><div class="gl"><i style="width:'+k.bd+'%"></i></div>'+(ad?'':'<button class="pc" data-a="kq:'+i+'" '+(S.day<(k.qd||0)?'disabled':'')+'>🎈 Quality time ('+rp(2.5e5*S.cpi)+')'+(S.day<(k.qd||0)?' · '+(k.qd-S.day)+' hari':'')+'</button>')+'</div>'}).join('')+'</div>';
   if(!S.kids.length&&!S.preg)h+='<div class="mu" style="margin-top:6px">Belum punya anak.</div>';
-  h+='<div class="mu" style="margin-top:6px">Kedekatan menurun kalau jarang quality time. Anak yang dekat (min. 60) dan sudah mandiri di usia 22 akan mengirim uang bakti tiap bulan.</div>'}
+  h+='<div class="mu" style="margin-top:6px">Kedekatan menurun kalau jarang quality time, tapi tidak akan turun di bawah 60 (syarat punya anak lagi). Anak yang sangat dekat (min. 80) dan sudah mandiri di usia 22 akan mengirim uang bakti tiap bulan.</div>'}
  setH($('famc'),h)}
 function renderLove(){const p=S.pt;let h='';
  if(!p){h='<div class="mu">'+(S.sch?'Fokus sekolah dulu. Kamu bisa mencari pasangan setelah lulus.':'Cari pasangan, kenali sifatnya lewat dialog kencan, lalu lanjut pacaran, lamaran, dan menikah. Kemistri yang tinggi memberi bonus kebahagiaan, XP, dan penghasilan rumah tangga.')+'</div><div class="row"><button class="pc" data-a="fc" '+(S.sch||S.day<S.fcd?'disabled':'')+'>🔍 Cari pasangan'+(S.day<S.fcd&&!S.sch?' (lagi '+(S.fcd-S.day)+' hari)':'')+'</button></div><div class="g2">'+S.cands.map((c,i)=>'<div class="card" style="text-align:center">'+avatar(c.av,110)+'<b>'+c.n+'</b><div class="mu">'+c.job+'<br>Penghasilan ±'+rp(c.inc)+'/bln<br>Sifat: '+c.tr.join(', ')+'<br>Hobi: '+c.hb+'</div><button class="pc" data-a="pk:'+i+'">Kenalan</button></div>').join('')+'</div>'}
@@ -578,7 +583,7 @@ function renderLove(){const p=S.pt;let h='';
   h='<div class="card" style="display:flex;gap:14px;flex-wrap:wrap;align-items:center">'+avatar(p.av,130)+'<div style="flex:1;min-width:220px"><b style="font:700 18px Georgia,serif">'+p.n+' · '+ST[p.st]+'</b><div class="mu">'+p.job+' · penghasilan ±'+rp(p.inc*S.wage/(p.w||1))+'/bln<br>Sifat: '+p.tr.map(t=>'<span class="tg" style="background:var(--ac2)">'+t+'</span>').join(' ')+' · Hobi: '+p.hb+'</div><div class="gl"><i style="width:'+p.chem+'%"></i></div><div class="mu">❤ Kemistri '+Math.round(p.chem)+'/100 · '+chemTxt(p.chem)+' · '+p.dates+'x kencan</div><div class="mu">Efek: kebahagiaan +'+e.h.toFixed(1)+', XP ×'+(1+e.x).toFixed(2)+', pengeluaran ×'+e.b.toFixed(2)+(p.st=='menikah'?', pemasukan pasangan '+rp(spouse())+'/bln':'')+'</div></div></div>';
   h+='<div class="row"><button class="pc" data-a="kc" '+(DLG||cd?'disabled':'')+'>🍽️ Kencan / ngobrol ('+rp(3e5*S.cpi)+')'+(cd?' · '+(p.cd-S.day)+' hari':'')+'</button>'
   +(p.st=='dekat'?'<button class="pc" data-a="tm">💘 Tembak (pacaran)</button>':'')+(p.st=='pacaran'?'<button class="pc" data-a="lm">💍 Lamar ('+rp(15e6*S.cpi)+')</button>':'')+(p.st=='lamar'?'<button class="pc" data-a="wed">👰 Menikah ('+rp(6e7*S.cpi)+')</button>':'')+(p.st!='menikah'?'<button class="pc" data-a="pt">Putus</button>':'')+'</div>';
-  h+='<div class="mu">'+(p.st=='dekat'?'Syarat pacaran: kemistri min. 40.':p.st=='pacaran'?'Syarat lamaran: pacaran min. 90 hari ('+Math.max(0,90-(S.day-p.since))+' hari lagi), kemistri min. 65, dana cincin.':p.st=='lamar'?'Syarat menikah: punya pekerjaan, kebahagiaan min. 55, dana pernikahan.':'Tetap sering kencan agar kemistri terjaga.')+' Jangan terlalu lama tidak bertemu, kemistri turun.</div>';
+  h+='<div class="mu">'+(p.st=='dekat'?'Syarat pacaran: kemistri min. 40.':p.st=='pacaran'?'Syarat lamaran: pacaran min. 90 hari ('+Math.max(0,90-(S.day-p.since))+' hari lagi), kemistri min. 65, dana cincin.':p.st=='lamar'?'Syarat menikah: punya pekerjaan, kebahagiaan min. 55, dana pernikahan.':'Setelah menikah, kemistri tidak bisa turun di bawah '+CMIN+' (syarat untuk hamil).')+(p.st=='menikah'?'':' Jangan terlalu lama tidak bertemu, kemistri turun.')+'</div>';
   if(DLG){const d=DL[DLG.i];h+='<div class="card" style="margin-top:10px"><b>'+d[0].replace('{n}',p.n)+'</b>'+(DLG.res?'<div style="margin:8px 0">'+DLG.res.t+'<br><b class="'+(DLG.res.d>=0?'up':'dn')+'">Kemistri '+(DLG.res.d>=0?'+':'')+DLG.res.d+'</b></div><button class="pc" data-a="cl">Tutup</button>':'<div class="row">'+d[1].map((o,j)=>'<button class="pc" data-a="ans:'+j+'">'+o[0]+'</button>').join('')+'</div>')+'</div>'}}
  setH($('lovec'),h);renderFam()}
 
@@ -609,6 +614,9 @@ const ACH=[
 ['house','🏠','Pemilik Rumah','Beli rumah sendiri',()=>!!S.owned,'Juragan Properti'],
 ['kpr','🏦','Bebas Cicilan','Lunasi KPR rumahmu',()=>(S.kl||0)>=1,'Bebas Hutang'],
 ['mans','🏰','Rumah Impian','Miliki rumah bernilai Rp1,5 miliar+',()=>(S.houseV||0)>=1.5e9,'Sultan Properti'],
+['conn','🤝','Koneksi Konglo','Punya rumah di kawasan elit (PIK, Menteng, dll)',()=>!!S.owned&&tierN()>=4,'Orang Dalam'],
+['tip5','🕵️','Informan Handal','Bocoran saham terbukti benar 5 kali',()=>(S.th||0)>=5,'Pembaca Pasar'],
+['co1','🏢','Founder','Dirikan perusahaan sendiri',()=>(S.cos||[]).length>=1,'Founder'],
 ['dly','🎁','Rajin Login','Ambil hadiah harian 7 hari beruntun',()=>(S.ds||0)>=7,'Si Rajin'],
 ['car','🚗','Kendaraan Pertama','Beli kendaraan pertama',()=>S.veh.own.length>=1,'Pengendara'],
 ['gar','🏎️','Kolektor','Isi garasi dengan 6 kendaraan',()=>S.veh.own.length>=6,'Kolektor Otomotif'],
@@ -655,14 +663,69 @@ function renderLb(){if(Date.now()-lbT>30000&&!lbBusy)loadLb();
  setH($('lbt'),h)}
 
 /* ---- properti & KPR ---- */
-const HSE=[['sub','Rumah Subsidi Tipe 30','🏘️',1.6e8,'LB 30 m² / LT 60 m², pinggir kota. Bunga subsidi 5% fixed, khusus penghasilan maks. Rp8 jt/bln'],
-['t36','Rumah Tipe 36','🏠',2.5e8,'LB 36 m² / LT 72 m², perumahan kota satelit'],
-['t70','Rumah Tipe 70 Cluster','🏡',6e8,'LB 70 m² / LT 105 m², cluster dengan keamanan 24 jam'],
-['t120','Rumah 2 Lantai Mewah','🏢',1.5e9,'LB 120 m² / LT 150 m², kawasan elit'],
-['vila','Rumah Premium Kawasan Elit','🏰',4e9,'LB 300 m² / LT 400 m², kolam renang dan taman']];
-let hdp=.2,htn=240;
+/* ---- kawasan, koneksi, bocoran saham, perusahaan ---- */
+const CMIN=60,KMIN=60,CO_CAP=2.5e8;
+const NETW=[{n:'',tips:0,acc:0,co:0,hap:0},{n:'Warga Perumahan',tips:0,acc:0,co:0,hap:1},{n:'Koneksi Pengusaha Lokal',tips:1,acc:.6,co:1,hap:2},{n:'Koneksi Konglo Menengah',tips:1,acc:.7,co:2,hap:3},{n:'Koneksi Konglo',tips:2,acc:.8,co:3,hap:4},{n:'Lingkaran Dalam Konglomerat',tips:3,acc:.9,co:4,hap:5}];
+const DIS=[
+['sub','Kawasan KPR Subsidi (Bekasi & Bogor pinggiran)','🏘️',0,.03,'Perumahan subsidi pemerintah yang jauh dari pusat kota. Termurah, tapi harga naik pelan.',[]],
+['sat','Kota Satelit (Cikarang, Tambun, Depok)','🏙️',1,.04,'Perumahan keluarga dekat kawasan industri dan stasiun KRL.',[]],
+['bsd','BSD City & Bintaro','🌆',2,.05,'Kota mandiri dengan kampus, mal, dan kantor. Mulai bergaul dengan pengusaha lokal.',['TLKM','EXCL','TOWR','GOTO','BUKA','ACES']],
+['pi','Pondok Indah & Kemang','🌳',3,.06,'Kawasan mapan Jakarta Selatan. Tetangganya pengusaha besar dan eksekutif.',['BBRI','BMRI','BBNI','ASII','KLBF','UNVR','MAPI']],
+['pik','PIK (Pantai Indah Kapuk)','🏝️',4,.07,'Kawasan elit pesisir Jakarta Utara, pusat bisnis konglomerat properti dan ritel.',['BBCA','AMRT','ICBP','INDF','CPIN','ASII','MAPI']],
+['mnt','Menteng & Pakubuwono','🏛️',5,.08,'Alamat paling bergengsi di Jakarta. Lingkaran dalam konglomerat dan pejabat.',['BBCA','BMRI','ADRO','ANTM','MDKA','TLKM','ASII','BTC','EMAS']]];
+const DIM={};DIS.forEach(d=>DIM[d[0]]={id:d[0],n:d[1],e:d[2],tier:d[3],g:d[4],ds:d[5],pool:d[6]});
+const HSE=[['sub','Rumah Subsidi Tipe 30','🏘️',1.6e8,'LB 30 m² / LT 60 m². Bunga subsidi 5% fixed, khusus penghasilan maks. Rp8 jt/bln','sub'],
+['t36','Rumah Tipe 36','🏠',2.5e8,'LB 36 m² / LT 72 m², perumahan klaster','sat'],
+['t45','Rumah Tipe 45 + Carport','🏠',4.2e8,'LB 45 m² / LT 90 m², dekat stasiun KRL','sat'],
+['t70','Rumah Cluster Tipe 70','🏡',9e8,'LB 70 m² / LT 105 m², cluster keamanan 24 jam','bsd'],
+['t90','Rumah 2 Lantai Tipe 90','🏡',1.8e9,'LB 90 m² / LT 120 m², dekat kampus dan mal','bsd'],
+['t120','Rumah 2 Lantai Mewah','🏢',5e9,'LB 120 m² / LT 150 m², kawasan mapan','pi'],
+['kmg','Rumah Kemang Modern','🏢',8e9,'LB 200 m² / LT 250 m², taman belakang luas','pi'],
+['pik1','Townhouse PIK','🏙️',4.5e9,'LB 180 m² / LT 120 m², dekat pantai dan pusat kuliner','pik'],
+['pik2','Rumah Golf Island PIK','⛳',12e9,'LB 350 m² / LT 450 m², tepi lapangan golf dan kanal','pik'],
+['mnt1','Rumah Menteng Heritage','🏛️',25e9,'LB 400 m² / LT 600 m², arsitektur kolonial, jalan rindang','mnt'],
+['vila','Mansion Pakubuwono','🏰',4e10,'LB 800 m² / LT 1.200 m², kolam renang, lift pribadi','mnt']];
+let hdp=.2,htn=240,hf='all';
+const dis=()=>S.owned&&S.hd?DIM[S.hd]||null:null,tierN=()=>dis()?dis().tier:-1,netw=()=>NETW[Math.max(0,tierN())],netHap=()=>dis()?netw().hap:0;
+const perkTxt=w=>[w.hap?'kebahagiaan +'+w.hap:'',w.tips?'bocoran saham '+w.tips+'x/bln (akurasi ±'+Math.round(w.acc*100)+'%)':'',w.co?'boleh dirikan hingga '+w.co+' PT':''].filter(Boolean).join(' · ')||'tidak ada';
+const bzv=()=>Object.keys(S.biz).reduce((t,k)=>t+S.biz[k].inv*.6,0)+(S.cos||[]).reduce((t,c)=>t+c.inv*.7,0);
+/* bocoran algoritma pasar */
+function tipsMonth(){
+ S.tips.forEach(t=>{if(!t.done&&t.until<=S.day){t.done=1;const c=(P[t.id]/t.p0-1)*100,hit=(c>0)==(t.dir>0);t.res=hit?1:0;if(hit)S.th=(S.th||0)+1;lg('🕵️ Bocoran '+t.id+' ('+(t.dir>0?'naik':'turun')+') '+(hit?'terbukti benar':'meleset')+', harga '+(c>=0?'+':'')+c.toFixed(1)+'%')}});
+ S.tips=S.tips.filter(t=>!t.done||t.until>S.day-90).slice(0,14);
+ const d=dis(),w=netw();if(!d||!w.tips||!d.pool.length)return;
+ const used=new Set(S.tips.filter(t=>!t.done).map(t=>t.id)),pool=d.pool.filter(i=>G(i)&&!used.has(i));let n=0;
+ for(let i=0;i<w.tips&&pool.length;i++){const id=pool.splice(Math.floor(R()*pool.length),1)[0],dir=R()<.55?1:-1,act=R()<w.acc?dir:-dir;S.tips.unshift({id,dir,act,from:S.day,until:S.day+30,p0:P[id],acc:w.acc});n++;lg('🕵️ Bocoran konglo: '+id+' diprediksi '+(dir>0?'NAIK':'TURUN')+' dalam 30 hari (akurasi ±'+Math.round(w.acc*100)+'%)')}
+ if(n)toast('🕵️ '+n+' bocoran saham baru dari koneksimu. Cek tab Investasi.')}
+function renderTips(){const w=netw(),d=dis(),on=S.tips.filter(t=>!t.done&&t.until>S.day),hist=S.tips.filter(t=>t.done).slice(0,5),show=(d&&w.tips)||on.length||hist.length;
+ $('tipsec').style.display=show?'':'none';if(!show)return;
+ let h=d&&w.tips?'<div class="mu">'+d.e+' <b>'+esc(w.n)+'</b> · '+w.tips+' bocoran/bulan · akurasi ±'+Math.round(w.acc*100)+'%<br>Saham grup: '+d.pool.join(', ')+'<br>Bocoran terbukti benar: '+(S.th||0)+'x. Berlaku 30 hari; algoritma pasar condong ke arah itu, tapi bisa meleset.</div>':'<div class="mu">Koneksi tidak aktif. Bocoran yang masih berjalan tetap berlaku.</div>';
+ h+=on.map(t=>'<div class="row" style="justify-content:space-between;align-items:center"><span><b>'+t.id+'</b> <span class="'+(t.dir>0?'up':'dn')+'">'+(t.dir>0?'▲ naik':'▼ turun')+'</span><br><small>'+(t.until-S.day)+' hari lagi · akurasi ±'+Math.round(t.acc*100)+'%</small></span><button class="pc" data-a="tp:'+t.id+'">Lihat</button></div>').join('')||'<div class="mu" style="margin-top:6px">Belum ada bocoran aktif. Datang tiap bulan game.</div>';
+ if(hist.length)h+='<div class="mu" style="margin-top:6px">Riwayat: '+hist.map(t=>t.id+' '+(t.res?'✅':'❌')).join(' · ')+'</div>';
+ setH($('tiplist'),h)}
+/* perusahaan sendiri */
+const coUp=l=>Math.round(CO_CAP*.6*l);
+const coProfit=c=>{const f=JB(c.f);return f.b*4*(1+.7*(c.l-1))*(1+.12*Math.max(0,c.t-2))*(S.job==c.f?1.15:1)*S.wage};
+function coMonth(){if(!(S.cos||[]).length)return;let t=0;
+ S.cos.forEach(c=>{let p=coProfit(c)*(1+(R()*2-1)*.3)*(.8+.4*S.hap/100)*act().reduce((q,m)=>q*((m.fx.f&&m.fx.f[c.f])||1),1);
+  if(R()<.04){p=-coProfit(c)*1.2;lg(c.n+': krisis perusahaan, rugi')}else p*=.89;t+=p});
+ S.cash+=t;lg('Laba perusahaan bulan ini '+sg(t)+' (setelah pajak badan 11%)')}
+function coAct(a,x){
+ if(a=='cof'){const f=JB($('cofs').value),t=tierN(),w=netw();if(!f)return;if(S.sch)return toast('Selesaikan sekolah dulu.');
+  if(t<2)return toast('Butuh rumah di BSD City atau kawasan yang lebih elit untuk koneksi mendirikan PT.');
+  if(S.cos.length>=w.co)return toast('Batas perusahaan dari koneksimu: '+w.co+'. Pindah ke kawasan lebih elit untuk menambah.');
+  if(S.edu.lv<reqE(f,0))return toast('Bidang '+f.n+' butuh pendidikan min. '+ELV[reqE(f,0)]+'.');
+  if(S.cash<CO_CAP)return toast('Kas kurang dari '+rp(CO_CAP)+' untuk modal.');
+  const nm=($('con').value||'').trim().slice(0,24)||('PT '+f.r+' Nusantara');S.cash-=CO_CAP;S.cos.push({u:'c'+S.day+'_'+Math.floor(R()*1e4),n:nm,f:f.id,l:1,inv:CO_CAP,t,d:S.day});$('con').value='';lg('🏢 Mendirikan '+nm+' (bidang '+f.n+') '+sg(-CO_CAP));toast('🏢 '+nm+' resmi berdiri!')}
+ if(a=='cou'){const c=S.cos.find(z=>z.u==x);if(!c||c.l>=5)return;const k=coUp(c.l+1);if(S.cash<k)return toast('Kas kurang dari '+rp(k));S.cash-=k;c.l++;c.inv+=k;lg(c.n+' naik ke level '+c.l+' '+sg(-k))}
+ if(a=='cos'){const c=S.cos.find(z=>z.u==x);if(!c)return;const v=c.inv*.7;if(!confirm('Jual '+c.n+' seharga '+rp(v)+'?'))return;S.cash+=v;S.cos=S.cos.filter(z=>z.u!=x);lg('Menjual '+c.n+' '+sg(v))}}
+function renderCo(){const w=netw(),t=tierN(),n=S.cos.length;
+ $('coinfo').textContent=t>=2?'Koneksi '+w.n+' ('+dis().n+') mengizinkan hingga '+w.co+' perusahaan ('+n+' berdiri). Modal '+rp(CO_CAP)+'. Pendiri harus punya pendidikan sesuai bidang. Laba mengikuti gaji bidang dan tingkat koneksi, bonus 15% jika kamu bekerja di bidang yang sama, pajak badan 11%, ada risiko krisis. Dijual 70% dari modal.':'Mendirikan perusahaan butuh koneksi: miliki rumah di BSD City atau kawasan yang lebih elit (tab Properti).'+(n?' Perusahaan yang sudah berdiri tetap berjalan.':'');
+ $('cob').disabled=!(t>=2&&n<w.co&&!S.sch);
+ setH($('cog'),S.cos.map(c=>{const f=JB(c.f);return'<div class="card"><b>🏢 '+esc(c.n)+'</b><div class="mu">Bidang '+esc(f.n)+' · Level '+c.l+'/5 · koneksi tingkat '+c.t+'<br>Laba rata-rata ±'+rp(coProfit(c)*.89)+'/bln (setelah pajak) · nilai '+rp(c.inv*.7)+(S.job==c.f?'<br>Bonus sinergi dengan pekerjaanmu +15%':'')+'</div><div class="row"><button class="pc" data-a="cou:'+c.u+'" '+(c.l>=5?'disabled':'')+'>'+(c.l>=5?'Level maks':'Upgrade '+rp(coUp(c.l+1)))+'</button><button class="pc" data-a="cos:'+c.u+'">Jual '+rp(c.inv*.7)+'</button></div></div>'}).join('')||'<div class="mu">Belum ada perusahaan.</div>')}
+fo('cofs',JOBS.map(j=>[j.id,j.n+' (min. '+ELV[reqE(j,0)]+')']));
 const hPrice=h=>Math.round(h[3]*S.cpi/1e6)*1e6;
-const hmv=()=>Math.min(12,Math.max(.5,(S.houseV||2e8)/2e8)),hMul=()=>S.home=='rumah'?hmv():1;
+const hmv=()=>Math.min(40,Math.max(.5,(S.houseV||2e8)/2e8)),hMul=()=>S.home=='rumah'?hmv():1;
 const mortPay=()=>S.mort?Math.min(S.mort.inst,S.mort.bal*(1+S.mort.r/12)):0;
 const kprRate=h=>h[0]=='sub'?.05:Math.max(.06,Math.min(.14,.085+act().reduce((t,m)=>t+(m.fx.r||0),0)));
 const pmt=(P,r,n)=>{const i=r/12;return Math.round(P*i/(1-Math.pow(1+i,-n)))};
@@ -672,7 +735,7 @@ function mortMonth(){const m=S.mort;if(!m||!S.owned)return;
  if(m.left<=0)m.left=1;
  if(S.cash<0){m.miss=(m.miss||0)+1;
   if(m.miss==3){lg('⚠️ Cicilan KPR tertunggak 3 bulan, bank memberi peringatan');toast('⚠️ Kas minus 3 bulan, rumah terancam disita bank!')}
-  if(m.miss>=6){const v=Math.round(S.houseV*.7),net=v-m.bal;S.cash+=net;S.owned=0;S.houseV=0;S.mort=null;S.ins.r=0;const hn=S.hn;S.hn='';S.hp=0;if(S.home=='rumah')S.home='kos';S.hap=Math.max(0,S.hap-20);lg('🏚️ '+hn+' disita bank karena cicilan macet. Lelang '+rp(v)+', pelunasan sisa pokok '+sg(-m.bal)+' → bersih '+sg(net));toast('🏚️ Rumahmu disita bank.')}}
+  if(m.miss>=6){const v=Math.round(S.houseV*.7),net=v-m.bal;S.cash+=net;S.owned=0;S.houseV=0;S.mort=null;S.ins.r=0;const hn=S.hn;S.hn='';S.hp=0;S.hd='';S.hg=.04;if(S.home=='rumah')S.home='kos';S.hap=Math.max(0,S.hap-20);lg('🏚️ '+hn+' disita bank karena cicilan macet. Lelang '+rp(v)+', pelunasan sisa pokok '+sg(-m.bal)+' → bersih '+sg(net));toast('🏚️ Rumahmu disita bank.')}}
  else m.miss=0}
 function propAct(a,x){
  if(a=='hb'||a=='hk'){const h=HSE.find(z=>z[0]==x);if(!h)return;
@@ -689,12 +752,12 @@ function propAct(a,x){
    desc='KPR '+htn/12+' th, DP '+rp(dp)+', bunga '+(r*100).toFixed(2)+'%, cicilan '+rp(inst)+'/bln';
   }
   if(S.cash<out)return toast('Kas kurang. Butuh '+rp(out)+(a=='hk'?' (DP + biaya 6% + provisi 1%).':' (harga + biaya 6%).'));
-  S.cash-=out;S.owned=1;S.houseV=pr;S.hp=pr;S.hn=h[1];S.mort=loan;S.home='rumah';S.hap=Math.min(100,S.hap+6);
-  lg('🏠 Membeli '+h[1]+' '+rp(pr)+' ('+desc+'), biaya awal '+sg(-out));toast('Selamat, kamu punya rumah baru! 🏠');return}
+  S.cash-=out;S.owned=1;S.houseV=pr;S.hp=pr;S.hn=h[1];S.mort=loan;S.home='rumah';S.hd=h[5];S.hg=DIM[h[5]].g;S.hap=Math.min(100,S.hap+6);
+  lg('🏠 Membeli '+h[1]+' '+rp(pr)+' ('+desc+'), biaya awal '+sg(-out));{const w=NETW[DIM[h[5]].tier];if(w.n)lg('🤝 Pindah ke '+DIM[h[5]].n+': '+w.n+(w.tips?' (bocoran saham '+w.tips+'x/bulan)':'')+(w.co?', bisa mendirikan perusahaan':''))}toast('Selamat, kamu punya rumah baru! 🏠');return}
  if(a=='hs'){if(!S.owned)return;const v=Math.round(S.houseV*.97),bal=Math.round(S.mort?S.mort.bal:0),net=v-bal;
   if(S.cash+net<0)return toast('Kas kurang untuk melunasi sisa KPR '+rp(bal)+'.');
   if(!confirm('Jual '+(S.hn||'rumah')+' seharga '+rp(v)+' (setelah biaya 3%)'+(bal?', lunasi sisa KPR '+rp(bal):'')+'? Kas berubah '+sg(net)+'.'))return;
-  S.cash+=net;S.owned=0;S.houseV=0;S.mort=null;S.ins.r=0;const hn=S.hn;S.hn='';S.hp=0;if(S.home=='rumah')S.home='kos';
+  S.cash+=net;S.owned=0;S.houseV=0;S.mort=null;S.ins.r=0;const hn=S.hn;S.hn='';S.hp=0;S.hd='';S.hg=.04;if(S.home=='rumah')S.home='kos';
   lg('Menjual '+(hn||'rumah')+' '+rp(v)+(bal?', pelunasan KPR '+sg(-bal):'')+' → bersih '+sg(net)+'. Pindah ke kos.');return}
  if(a=='kx'||a=='kl'){const m=S.mort;if(!m)return;let amt=a=='kl'?m.bal:parseFloat($('kprx').value);
   if(a=='kx'&&!(amt>=5e6))return toast('Minimal pelunasan sebagian Rp5.000.000.');
@@ -707,13 +770,18 @@ $('hdp').onchange=e=>{hdp=+e.target.value;render()};$('htn').onchange=e=>{htn=+e
 function renderPrp(){const m=S.mort;let h='';
  if(!S.owned)h='<div class="mu">Kamu belum punya rumah sendiri'+(S.home=='ortu'?' (numpang orang tua)':'')+'. Pilih rumah di bawah, beli tunai atau lewat KPR.</div>';
  else{const mc=HOME.rumah[1]*S.cpi*hmv(),bal=m?m.bal:0;
-  h='<div class="card"><b>🏠 '+esc(S.hn||'Rumah milik sendiri')+'</b><div class="mu">'+(S.hp?'Dibeli '+rp(S.hp)+' · ':'')+'Nilai sekarang ±'+rp(S.houseV)+' (naik ±4%/tahun)<br>Perawatan &amp; PBB ±'+rp(mc)+'/bln · Ekuitas ±'+rp(S.houseV-bal)+'<br>'+
+  h='<div class="card"><b>🏠 '+esc(S.hn||'Rumah milik sendiri')+'</b><div class="mu">'+(S.hp?'Dibeli '+rp(S.hp)+' · ':'')+'Nilai sekarang ±'+rp(S.houseV)+' (naik ±'+Math.round((S.hg||.04)*100)+'%/tahun)<br>'+(dis()?dis().e+' '+esc(dis().n)+(netw().n?' · <b>'+esc(netw().n)+'</b>':'')+'<br>Keuntungan: '+perkTxt(netw())+'<br>':'')+'Perawatan &amp; PBB ±'+rp(mc)+'/bln · Ekuitas ±'+rp(S.houseV-bal)+'<br>'+
   (m?'KPR: sisa pokok '+rp(m.bal)+' · cicilan '+rp(mortPay())+'/bln · bunga fixed '+(m.r*100).toFixed(2)+'% · sisa tenor '+Math.floor(m.left/12)+' th '+(m.left%12)+' bln'+((m.miss||0)>0?'<br><b class="dn">⚠️ Kas minus, cicilan menunggak '+m.miss+' bulan (disita pada bulan ke-6)</b>':''):'Rumah lunas, tanpa cicilan.')+
   '</div>'+(m?'<div class="gl"><i style="width:'+Math.max(0,Math.min(100,(1-m.bal/m.p0)*100))+'%"></i></div><div class="mu">Pokok terbayar '+Math.round((1-m.bal/m.p0)*100)+'%</div>':'')+'<div class="row"><button class="pc" data-a="hs">Jual rumah (±'+sg(Math.round(S.houseV*.97-bal))+' bersih)</button></div></div>'}
  setH($('prpo'),h);$('kprctl').style.display=m?'':'none';
  if(m)$('kprn').textContent='Pelunasan sebagian memperpendek tenor (cicilan tetap). '+(S.day-(m.d||0)<1080?'Penalti 1% berlaku sampai '+Math.max(0,1080-(S.day-(m.d||0)))+' hari lagi.':'Tidak ada penalti.');
- setH($('hcat'),HSE.map(h=>{const pr=hPrice(h),fee=Math.round(pr*.06),dp=Math.round(pr*hdp),ln=pr-dp,r=kprRate(h),inst=pmt(ln,r,htn),prov=Math.round(ln*.01),can=!S.sch&&!S.owned;
-  return'<div class="card"><b>'+h[2]+' '+h[1]+'</b><div class="nbig" style="font-size:20px;margin:4px 0">'+rp(pr)+'</div><div class="mu">'+h[4]+'<br>Tunai: total '+rp(pr+fee)+' (termasuk biaya 6%)<br>KPR '+htn/12+' th · bunga '+(r*100).toFixed(2)+'%'+(h[0]=='sub'?' (subsidi)':'')+' · cicilan '+rp(inst)+'/bln<br>Biaya awal KPR '+rp(dp+fee+prov)+' · total bunga ±'+rp(inst*htn-ln)+'</div><div class="row"><button class="pc" data-a="hb:'+h[0]+'" '+(can?'':'disabled')+'>Beli tunai</button><button class="pc" data-a="hk:'+h[0]+'" '+(can?'':'disabled')+'>KPR · DP '+rp(dp)+'</button></div></div>'}).join(''))}
+ setH($('hchips'),'<button class="chip" data-a="hdist:all" aria-pressed="'+(hf=='all')+'">Semua kawasan</button>'+DIS.map(d=>'<button class="chip" data-a="hdist:'+d[0]+'" aria-pressed="'+(hf==d[0])+'">'+d[2]+' '+esc(d[1].split(' (')[0])+'</button>').join(''));
+ let o='';
+ DIS.forEach(d=>{if(hf!='all'&&hf!=d[0])return;const D=DIM[d[0]],w=NETW[D.tier];
+  o+='<div style="grid-column:1/-1"><h3 style="margin:8px 0 2px">'+D.e+' '+esc(D.n)+'</h3><div class="mu">'+esc(D.ds)+'<br>Harga naik ±'+Math.round(D.g*100)+'%/tahun · '+(w.n?'<b>'+esc(w.n)+'</b> · ':'')+'Keuntungan: '+perkTxt(w)+(w.tips&&D.pool.length?'<br>Saham grup yang bisa dibocorkan: '+D.pool.join(', '):'')+'</div></div>';
+  o+=HSE.filter(z=>z[5]==d[0]).map(h=>{const pr=hPrice(h),fee=Math.round(pr*.06),dp=Math.round(pr*hdp),ln=pr-dp,r=kprRate(h),inst=pmt(ln,r,htn),prov=Math.round(ln*.01),can=!S.sch&&!S.owned;
+   return'<div class="card"><b>'+h[2]+' '+h[1]+'</b><div class="nbig" style="font-size:20px;margin:4px 0">'+rp(pr)+'</div><div class="mu">'+h[4]+'<br>Tunai: total '+rp(pr+fee)+' (termasuk biaya 6%)<br>KPR '+htn/12+' th · bunga '+(r*100).toFixed(2)+'%'+(h[0]=='sub'?' (subsidi)':'')+' · cicilan '+rp(inst)+'/bln<br>Biaya awal KPR '+rp(dp+fee+prov)+' · total bunga ±'+rp(inst*htn-ln)+'</div><div class="row"><button class="pc" data-a="hb:'+h[0]+'" '+(can?'':'disabled')+'>Beli tunai</button><button class="pc" data-a="hk:'+h[0]+'" '+(can?'':'disabled')+'>KPR · DP '+rp(dp)+'</button></div></div>'}).join('')});
+ setH($('hcat'),o)}
 
 /* ---- akun, PIN, pemulihan, fitur tambahan ---- */
 let amode='in',guest=false,authShown=false,MODE='new',HASREC=false;
