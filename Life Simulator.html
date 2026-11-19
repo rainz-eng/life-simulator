@@ -312,7 +312,7 @@ function step(){tk++;
  if(tk%5==0){if(!CU){chkAch();sv()}}
 }
 /* ---- mode AFK: waktu tetap berjalan saat tab tidak aktif atau browser ditutup ---- */
-let AFKH=8,AR=null;try{const v=localStorage.getItem('blafk');if(v!=null&&!isNaN(+v))AFKH=+v}catch(e){}
+let AFKH=24,AR=null;try{const v=localStorage.getItem('blafk24');if(v!=null&&!isNaN(+v))AFKH=+v}catch(e){}
 const BOOT0=Date.now();
 const afkWait=()=>{try{return !conn&&!guest&&Date.now()-BOOT0<8000&&!!localStorage.getItem('bl7acct')}catch(e){return false}};
 const durTxt=ms=>{const m=Math.round(ms/6e4),h=Math.floor(m/60);return h?h+' jam '+(m%60)+' menit':m+' menit'};
@@ -349,7 +349,7 @@ setInterval(()=>{
  if(away>4500){if(S.cash<0){if(away>6e4)toast('Mode AFK tidak berjalan karena kas minus. Perbaiki keuanganmu dulu.');S.ls=now}
   else{const cap=AFKH*36e5,n=Math.floor(Math.min(away,cap)/1000);if(n>=3){runCatch(n,away,away>cap);return}}}
  for(let q=0;q<SPD;q++)step();S.ls=now;render()},1000);
-{const a=$('afkh'),n=$('afkn'),u=()=>{n.textContent=AFKH>0?'Aktif: maksimal '+AFKH+' jam waktu nyata ≈ '+daysTxt(AFKH*1200)+' waktu game per sesi.':'Nonaktif: waktu hanya berjalan saat game terbuka dan terlihat.'};a.value=String(AFKH);u();a.onchange=()=>{AFKH=+a.value;try{localStorage.setItem('blafk',AFKH)}catch(e){}u();toast(AFKH>0?'Mode AFK aktif (maks. '+AFKH+' jam).':'Mode AFK dinonaktifkan.')}}
+{const a=$('afkh'),n=$('afkn'),u=()=>{n.textContent=AFKH>0?'Aktif: maksimal '+AFKH+' jam waktu nyata ≈ '+daysTxt(AFKH*1200)+' waktu game per sesi.':'Nonaktif: waktu hanya berjalan saat game terbuka dan terlihat.'};a.value=String(AFKH);u();a.onchange=()=>{AFKH=+a.value;try{localStorage.setItem('blafk24',AFKH)}catch(e){}u();toast(AFKH>0?'Mode AFK aktif (maks. '+AFKH+' jam).':'Mode AFK dinonaktifkan.')}}
 /* ---- karier ---- */
 const XT=[0,90,280,620,1200,2100,3500],SKR=[0,0,8,20,35,55,75],HR=[0,0,0,35,45,55,65],M=[1,1.7,2.8,4.5,7,10.5,16],TN=['Trainee','Junior','Staf','Senior','Supervisor','Manajer','Direktur'];
 const JOBS=`ret|Retail & Penjualan|Retail|2.5|0
