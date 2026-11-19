@@ -69,7 +69,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 <div class="hero">
  <div class="hb"><div class="av" id="av">🎒</div><div><div style="font:700 22px Georgia,serif">Life Simulator</div><div id="stg" class="mu"></div><div class="acc" id="accn"></div><div class="mu" id="clk"></div><span class="sv" id="svs">Menghubungkan ke server…</span></div></div>
  <div id="pills" style="flex:1 1 200px;min-width:0"></div>
- <div class="hr"><span class="ttl" id="rank"></span><b class="nw" id="nw"></b><span class="mu" id="ret"></span><span class="mu" id="ccl" style="display:block;min-height:19px"></span><div class="row" style="justify-content:flex-end;margin-top:6px"><button class="pc" id="dly">🎁 Hadiah harian</button><button class="pc" id="spd">⏩ Kecepatan ×1</button><button class="pc" id="thm" title="Ganti tema">🌓</button></div></div>
+ <div class="hr"><span class="ttl" id="rank"></span><b class="nw" id="nw"></b><span class="mu" id="ret"></span><span class="mu" id="ccl" style="display:block;min-height:19px"></span><div class="row" style="justify-content:flex-end;margin-top:6px"><button class="pc" id="dly">🎁 Hadiah harian</button><button class="pc" id="spd">⏩ Kecepatan ×1</button><button class="pc" id="abr" title="Singkat angka besar">🔢 Angka</button><button class="pc" id="thm" title="Ganti tema">🌓</button></div></div>
 </div>
 <div class="tabs" id="tabs"><button class="tab" data-v="inv">📈 Investasi</button><button class="tab" data-v="car">💼 Karier</button><button class="tab" data-v="bank">🏦 Bank</button><button class="tab" data-v="biz">🏪 Bisnis</button><button class="tab" data-v="ofr">🤝 Tawaran</button><button class="tab" data-v="love">💕 Pasangan</button><button class="tab" data-v="life">🏡 Kehidupan</button><button class="tab" data-v="gar">🚗 Garasi</button><button class="tab" data-v="cty">🌏 Negara</button><button class="tab" data-v="prp">🏠 Properti</button><button class="tab" data-v="ach">🏅 Prestasi</button><button class="tab" data-v="soc">🤝 Sosial</button><button class="tab" data-v="lb">🥇 Leaderboard</button><button class="tab" data-v="rb">🔁 Rebirth</button><button class="tab" data-v="acc">👤 Akun</button></div>
 <div class="pn mu" id="hl" style="margin-bottom:12px"></div>
@@ -172,10 +172,11 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 <section class="pn" style="margin-top:12px"><h2>🏘️ Properti sewa saya</h2><div id="invo"></div><div class="mu" style="margin-top:8px">Kamu boleh punya banyak rumah dan apartemen sekaligus (maks. 30). Tiap unit punya KPR, nilai, dan status sewa sendiri. Sewa sudah bersih dari PBB, IPL, dan komisi agen, tapi unit bisa kosong sewaktu-waktu (rumah ±8%, apartemen ±12% waktu) dan ada perbaikan acak. Unit yang tidak disewakan tetap kena biaya tahan. Jual dikenai biaya 3%. Cicilan semua KPR masuk batas 40% penghasilan, dan unit disita bank kalau cicilannya menunggak 6 bulan.</div></section>
 <section class="pn" style="margin-top:12px"><h2>🏘️ Cari rumah &amp; simulasi KPR</h2><div class="row" style="align-items:center"><span class="mu">Beli sebagai:</span><select id="hmode" style="width:auto"><option value="live">Hunian sendiri</option><option value="inv">Investasi (disewakan)</option></select><span class="mu">Simulasi KPR:</span><select id="hdp" style="width:auto"><option value="0.1">DP 10%</option><option value="0.2" selected>DP 20%</option><option value="0.3">DP 30%</option><option value="0.5">DP 50%</option></select><select id="htn" style="width:auto"><option value="120">10 tahun</option><option value="180">15 tahun</option><option value="240" selected>20 tahun</option><option value="300">25 tahun</option></select></div><div class="chips" id="hchips" style="margin-top:8px"></div><div class="g2" id="hcat"></div>
 <h2 style="margin-top:14px">🏙️ Pasar apartemen</h2><div class="mu">Apartemen dibeli sebagai investasi: sewa lebih tinggi (±5%/thn) tapi lebih sering kosong, ada IPL, dan harganya naik sedikit lebih pelan dari rumah. Pakai simulasi KPR dan filter kawasan di atas.</div><div class="g2" id="acat" style="margin-top:8px"></div>
-<div class="mu" style="margin-top:8px">Biaya pembelian 6% (BPHTB, notaris, administrasi) dan provisi bank 1% dari pinjaman. Cicilan anuitas dengan bunga fixed selama tenor: 8,5% mengikuti suku bunga BI saat akad (rumah subsidi 5%). Total cicilan maksimal 40% penghasilan. Kenaikan nilai rumah tergantung kawasan (±3% sampai ±8% per tahun), jual dikenai biaya 3%. Rumah di BSD City dan kawasan yang lebih elit memberi koneksi bisnis: bocoran prediksi saham tiap bulan dan izin mendirikan perusahaan sendiri (tab Bisnis). Makin elit kawasannya, makin akurat bocorannya dan makin banyak perusahaan yang boleh didirikan. Pelunasan dipercepat dikenai penalti 1% pada 3 tahun pertama. Kas minus 6 bulan berturut-turut membuat rumah disita bank dan dilelang 70% nilai pasar. Harga mengikuti inflasi.</div></section></div>
+<div class="mu" style="margin-top:8px">Biaya pembelian 6% (pajak, notaris, administrasi) dan provisi bank 1% dari pinjaman. Cicilan anuitas dengan bunga fixed selama tenor: di Indonesia 8,5% mengikuti suku bunga BI saat akad, di negara lain mengikuti suku bunga lokal (rumah subsidi 5%). Total cicilan maksimal 40% penghasilan. Kenaikan nilai rumah tergantung kawasan (±3% sampai ±8% per tahun), jual dikenai biaya 3%. Rumah di kota mandiri dan kawasan yang lebih elit memberi koneksi bisnis: bocoran prediksi saham tiap bulan dan izin mendirikan perusahaan sendiri (tab Bisnis). Makin elit kawasannya, makin akurat bocorannya dan makin banyak perusahaan yang boleh didirikan. Pelunasan dipercepat dikenai penalti 1% pada 3 tahun pertama. Kas minus 6 bulan berturut-turut membuat rumah disita bank dan dilelang 70% nilai pasar. Harga mengikuti inflasi dan tingkat harga properti negara tempatmu tinggal.</div></section></div>
 <div id="v-ach" style="display:none"><section class="pn"><h2>🏅 Prestasi &amp; gelar</h2><div class="mu" id="achs"></div><div class="gl"><i id="achb"></i></div><label class="mu" for="ttsel">Gelar yang ditampilkan (muncul di leaderboard)</label><select id="ttsel"></select><div class="ag" id="achg"></div></section></div>
 <div id="v-soc" style="display:none"><div class="g2">
 <section class="pn"><h2>🔔 Notifikasi &amp; permintaan</h2><div class="mu" id="sst"></div><div id="sinb"></div><details><summary>Riwayat notifikasi</summary><div class="log" id="shist"></div></details></section>
+<section class="pn"><h2>👥 Teman</h2><div class="mu">Tambah teman lewat username (pemain harus pernah membuka tab ini). Teman tampil di urutan teratas (⭐) pada semua daftar pemain.</div><div class="row" style="align-items:center"><input type="text" id="sfa" maxlength="30" placeholder="Username teman" style="flex:1;margin:0"><button class="pc" data-s="fadd">➕ Tambah</button></div><div id="sfl"></div></section>
 <section class="pn"><h2>🎁 Kirim uang</h2><div class="mu">Uang langsung dipotong dari kasmu dan penerima mendapat notifikasi. Penerima harus pernah membuka tab ini.</div><select id="sgto" aria-label="Penerima"></select><input type="number" id="sgam" placeholder="Jumlah (Rp)" min="1000"><input type="text" id="sgnt" maxlength="80" placeholder="Pesan (opsional)"><div class="row"><button class="pc" data-s="gift">🎁 Kirim</button></div></section>
 <section class="pn"><h2>🏭 Usaha patungan</h2><div class="mu">Bangun perusahaan bersama pemain lain. Laba dibagi sesuai porsi modal, tiap 5 menit nyata (±2% dari total modal, ada risiko krisis). Tiap karyawan di usaha menambah laba 8%. Keluar atau bubar = modal kembali 70%.</div>
 <h3>Dirikan usaha</h3><input type="text" id="svn" maxlength="24" placeholder="Nama usaha, mis. PT Maju Bersama"><select id="svf" aria-label="Bidang"></select><input type="number" id="svc" placeholder="Modal awalmu (min. Rp10.000.000)" min="10000000"><div class="row"><button class="pc" data-s="vnew">Dirikan</button></div>
@@ -256,7 +257,13 @@ BUKA|Bukalapak|200|.06|.5|1.3`.split('\n').forEach(l=>{const[i,n,p,m,v,b]=l.spli
 stk('EMAS','Emas (per gram)','em',2.2e6,.07,.14,0,.0025,.0025);
 [['BTC','Bitcoin',1.5e9,.15,.55],['ETH','Ethereum',5.3e7,.15,.7],['SOL','Solana',2.5e6,.15,.85],['BNB','BNB',1.5e7,.12,.6],['XRP','XRP',38000,.1,.8]].forEach(([i,n,p,m,v])=>stk(i,n,'cr',p,m,v,1,.001,.001));
 const G=id=>A.find(a=>a.id==id);
-const rp=n=>(n<0?'-':'')+'Rp'+Math.abs(n).toLocaleString('id-ID',{maximumFractionDigits:0});
+let ABR=1e6;try{const a=localStorage.getItem('bl7abr');if(a!==null)ABR=+a}catch(e){}
+const SFX=['','K','M','B','T','Qa','Qi','Sx','Sp','Oc','No','Dc'];
+const sh=n=>{let a=Math.abs(n),i=0;if(!(ABR>0)||a<ABR||!isFinite(a))return Math.round(a).toLocaleString('id-ID',{maximumFractionDigits:0});
+ let v=a/1e3;i=1;while(v>=1e3&&i<SFX.length-1){v/=1e3;i++}
+ let r=Math.round(v*100)/100;if(r>=1e3&&i<SFX.length-1){r=Math.round(r/10)/100;i++}
+ return r.toLocaleString('id-ID',{maximumFractionDigits:2})+SFX[i]};
+const rp=n=>(n<0?'-':'')+'Rp'+sh(n);
 const fp=p=>p>=1000?rp(p):'Rp'+p.toLocaleString('id-ID',{maximumFractionDigits:2});
 const sg=n=>(n>=0?'+':'')+rp(n);
 const fresh=()=>({cash:0,hold:{},cost:{},log:['H1 B1 T1: kamu kelas 1 SD. Terima uang jajan tiap bulan dan belajar berinvestasi sejak dini!'],day:0,sim:{},fv:{},auto:null,job:null,xp:{},home:'ortu',food:'hemat',life:'min',hap:50,owned:0,houseV:0,sch:'sd',sg:1,sy:0,sma:0,trn:'umum',mods:[],nws:[],cpi:1,wage:1,cc:'ID',adp:0,lv:{},sk:{},edu:{lv:0,cur:null,left:0},cool:0,mar:0,glow:null,vcd:0,biz:{},pt:null,cands:[],fcd:0,div:0,ins:{h:'none',v:0,r:0},kids:[],preg:0,veh:{own:[]},ach:{},ttl:null,tman:0,pk:0,nt:0,nv:0,mort:null,hn:'',hp:0,kl:0,fav:{},dr:'',ds:0,dn:'',hd:'',hg:.04,tips:[],cos:[],th:0,pubp:1,bk:{sav:0,dep:[],int:0},cv:{t:[],c:[]},bc:null,of:{q:[],a:[],debt:0,dm:0,st:{ok:0,sc:0,rj:0,lost:0,gain:0}},rent:0,inv:[],iid:0,fi:{mo:0,best:0,ok:0},neg:{j:'',m:0,cd:0,fl:0,w:0},lo:{n:0,pend:null,jk:0,jv:0},meta:{rb:0,pts:0,earn:0,up:{},tal:[],bt:null,bd:'',achc:0,fire:0}});
@@ -265,14 +272,14 @@ const PT={rumah:{y:.0034,vac:.08,hold:.0006,gm:1,l:'Rumah'},apart:{y:.0043,vac:.
 let ACC='',ACCT=null,S=fresh(),P={},B={},SER={},cur='RDPU',cat='all',tk=0,tf='H',vw='inv',SPD=1,DOC=null,HDOC=null,dirty=false,busy=false,hc=0,mpts=null,hv=-1;
 
 /* ---- negara tempat tinggal ---- */
-const CT={ID:{n:'Indonesia',f:'🇮🇩',w:1,p:1,t:0,h:0,cu:'Rp',x:1,e:0,l:0,c:15e6},
-MY:{n:'Malaysia',f:'🇲🇾',w:2.3,p:1.5,t:.09,h:0,cu:'RM',x:3600,e:0,l:0,c:12e6},
-SG:{n:'Singapura',f:'🇸🇬',w:5,p:3.2,t:.08,h:1,cu:'S$',x:12200,e:1,l:1,c:20e6},
-JP:{n:'Jepang',f:'🇯🇵',w:4,p:2.5,t:.14,h:0,cu:'¥',x:105,e:2,l:1,c:35e6},
-AE:{n:'Uni Emirat Arab',f:'🇦🇪',w:5.2,p:2.8,t:0,h:0,cu:'AED',x:4400,e:2,l:2,c:4e7},
-NL:{n:'Belanda',f:'🇳🇱',w:5.8,p:3.4,t:.24,h:2,cu:'€',x:18500,e:2,l:2,c:5e7},
-AU:{n:'Australia',f:'🇦🇺',w:6.5,p:3.8,t:.2,h:2,cu:'A$',x:10500,e:2,l:2,c:45e6},
-US:{n:'Amerika Serikat',f:'🇺🇸',w:7.5,p:4,t:.19,h:0,cu:'$',x:16000,e:3,l:3,c:6e7}};
+const CT={ID:{n:'Indonesia',f:'🇮🇩',hp:1,mr:0.085,w:1,p:1,t:0,h:0,cu:'Rp',x:1,e:0,l:0,c:15e6},
+MY:{n:'Malaysia',f:'🇲🇾',hp:1.6,mr:0.045,w:2.3,p:1.5,t:.09,h:0,cu:'RM',x:3600,e:0,l:0,c:12e6},
+SG:{n:'Singapura',f:'🇸🇬',hp:4.2,mr:0.035,w:5,p:3.2,t:.08,h:1,cu:'S$',x:12200,e:1,l:1,c:20e6},
+JP:{n:'Jepang',f:'🇯🇵',hp:2.6,mr:0.02,w:4,p:2.5,t:.14,h:0,cu:'¥',x:105,e:2,l:1,c:35e6},
+AE:{n:'Uni Emirat Arab',f:'🇦🇪',hp:3,mr:0.045,w:5.2,p:2.8,t:0,h:0,cu:'AED',x:4400,e:2,l:2,c:4e7},
+NL:{n:'Belanda',f:'🇳🇱',hp:4.6,mr:0.04,w:5.8,p:3.4,t:.24,h:2,cu:'€',x:18500,e:2,l:2,c:5e7},
+AU:{n:'Australia',f:'🇦🇺',hp:5,mr:0.06,w:6.5,p:3.8,t:.2,h:2,cu:'A$',x:10500,e:2,l:2,c:45e6},
+US:{n:'Amerika Serikat',f:'🇺🇸',hp:5.2,mr:0.065,w:7.5,p:4,t:.19,h:0,cu:'$',x:16000,e:3,l:3,c:6e7}};
 const cc=()=>CT[S.cc]||CT.ID,ab=()=>!!S.cc&&S.cc!='ID',CPI=()=>S.cpi*cc().p,WG=()=>S.wage*cc().w;
 try{const s=JSON.parse(localStorage.getItem('bl7'));if(s&&s.cash!=null)S=Object.assign(fresh(),s);const h=JSON.parse(localStorage.getItem('bl7h'));if(h)S.h=h}catch(e){}
 const pack=()=>{const s=Object.assign({},S);delete s.h;return JSON.stringify(s)};
@@ -565,6 +572,8 @@ $('exm').onclick=()=>{const id=S.job;if(!id||!elig(id))return;if(S.day<S.cool)re
  if(R()*100<c){S.lv[id]=l+1;S.hap=Math.min(100,S.hap+5);lg('Lulus ujian promosi ('+c+'%): '+title(f,l+1)+', gaji dasar '+rp(f.b*M[l+1])+'/bln');toast('Lulus! Kamu naik jabatan.')}else{S.cool=S.day+30;S.hap=Math.max(0,S.hap-8);lg('Gagal ujian promosi (peluang '+c+'%), '+sg(-c0));toast('Gagal. Ujian ulang 30 hari lagi; kursus menaikkan peluang.')}sv();render()};
 $('enr').onclick=()=>{const k=$('edus').value,e=EDU[k],ed=S.edu;if(ed.cur)return toast('Kamu masih kuliah.');if(e[1]<=ed.lv)return toast('Kamu sudah lulus jenjang ini atau lebih tinggi.');if(k=='s2'&&ed.lv<2)return toast('S2 butuh lulusan S1.');if(S.cash<tui(e))return toast('Kas kurang untuk biaya bulan pertama ('+rp(tui(e))+').');ed.cur=k;ed.left=e[3];lg('Mulai kuliah '+e[0]+' ('+e[3]+' bulan)');toast('Terdaftar. Selama kuliah gaji dan XP kerja jadi 60%.');sv();render()};
 $('gop').onclick=()=>{if(S.sch!='pilih')return;if($('trk').value=='smk'){const j=$('jur').value;S.sch='smk';S.sk[j]=Math.min(100,(S.sk[j]||0)+25);S.xp[j]=(S.xp[j]||0)+60;lg('Masuk SMK jurusan '+JB(j).n+': +25 skill, +60 XP')}else{S.sch='sma';S.sma=1;lg('Masuk SMA: diskon biaya kuliah 20%')}S.sg=1;sv();render()};
+const ABT=()=>{$('abr').textContent='🔢 Angka: '+(ABR==1e6?'≥1M':ABR==1e9?'≥1B':'Penuh')};
+$('abr').onclick=()=>{ABR=ABR==1e6?1e9:ABR==1e9?0:1e6;try{localStorage.setItem('bl7abr',ABR)}catch(e){}ABT();buildList();render()};ABT();
 $('spd').onclick=()=>{SPD=SPD==1?3:SPD==3?10:SPD==10?0:1;$('spd').textContent=SPD?'⏩ Kecepatan ×'+SPD:'⏸ Dijeda'};
 /* ---- tampilan ---- */
 const fo=(el,o)=>{$(el).innerHTML=o.map(([k,n,c])=>`<option value="${k}">${n}${c!=null?' ('+(c?rp(c)+'/bln':'gratis')+')':''}</option>`).join('')};
@@ -662,7 +671,7 @@ function draw(){const cv=$('cv'),d=ser(),dp=devicePixelRatio||1,W=cv.clientWidth
  let mn=Math.min(...d),mx=Math.max(...d);if(mn==mx){mn*=.999;mx*=1.001}const pd=(mx-mn)*.12;mn-=pd;mx+=pd;
  const st=getComputedStyle(document.documentElement),cu=st.getPropertyValue('--up').trim(),cd=st.getPropertyValue('--dn').trim(),ln=st.getPropertyValue('--ln').trim(),mu=st.getPropertyValue('--mu').trim(),L=d[d.length-1]>=d[0]?cu:cd,CW=W-70;
  const X=i=>i/(d.length-1)*CW,Y=v=>H-6-(v-mn)/(mx-mn)*(H-12);mpts=d.map((v,i)=>[X(i),v]);
- x.font='11px sans-serif';for(let i=0;i<4;i++){const v=mn+(mx-mn)*i/3,y=Y(v);x.strokeStyle=ln;x.beginPath();x.moveTo(0,y);x.lineTo(CW,y);x.stroke();x.fillStyle=mu;x.fillText(v>=1000?Math.round(v).toLocaleString('id-ID'):v.toFixed(2),CW+4,y+4)}
+ x.font='11px sans-serif';for(let i=0;i<4;i++){const v=mn+(mx-mn)*i/3,y=Y(v);x.strokeStyle=ln;x.beginPath();x.moveTo(0,y);x.lineTo(CW,y);x.stroke();x.fillStyle=mu;x.fillText(v>=1000?sh(v):v.toFixed(2),CW+4,y+4)}
  const gr=x.createLinearGradient(0,0,0,H);gr.addColorStop(0,L+'55');gr.addColorStop(1,L+'00');
  x.beginPath();d.forEach((v,i)=>i?x.lineTo(X(i),Y(v)):x.moveTo(X(i),Y(v)));x.strokeStyle=L;x.lineWidth=2.2;x.lineJoin='round';x.stroke();x.lineTo(CW,H);x.lineTo(0,H);x.closePath();x.fillStyle=gr;x.fill();
  const k=S.cost[cur];if(k&&k>mn&&k<mx){x.setLineDash([5,4]);x.strokeStyle=st.getPropertyValue('--ac');x.lineWidth=1;x.beginPath();x.moveTo(0,Y(k));x.lineTo(CW,Y(k));x.stroke();x.setLineDash([]);x.fillStyle=x.strokeStyle;x.fillText('modal',4,Y(k)-3)}
@@ -913,7 +922,7 @@ $('rbh').onchange=e=>{if(e.target.id=='rbk'){RBK=+e.target.value;render()}};
 /* ---- profil publik ---- */
 const stageTxt=()=>{const jf=JB(S.job),ed=S.edu;return S.sch?(S.sch=='pilih'?'Lulus SMP, pilih jalur':'Kelas '+S.sg+' '+SCH[S.sch][0]):ed.cur?'Kuliah '+EDU[ed.cur][0]:jf?title(jf,lvl(jf.id)):'Lulusan '+ELV[ed.lv]+', siap kerja'};
 function buildProf(){const w=val(),hk=Object.keys(S.hold),o={v:1,rb:S.meta.rb||0,dn:S.dn||'',tt:curTitle(),day:S.day,nw:Math.round(w),pk:Math.round(S.pk||0),st:stageTxt(),hap:Math.round(S.hap),cash:Math.round(S.cash),edu:ELV[S.edu.lv],mar:S.pt?ST[S.pt.st]:'',pn:S.pt?S.pt.n:'',kids:S.kids.length,div:Math.round(S.div||0),th:S.th||0,ach:Object.keys(S.ach||{}),
- house:S.owned?{n:S.hn,v:Math.round(S.houseV),d:S.hd||''}:null,inv:(S.inv||[]).map(p=>({n:p.n,v:Math.round(p.v),t:p.t})),veh:S.veh.own.map(v=>({n:vn(v),v:Math.round(vVal(v))})),biz:Object.keys(S.biz).map(k=>({n:BZ.find(z=>z[0]==k)[1],l:S.biz[k].l})).concat(S.cos.map(c=>({n:c.n,l:c.l,f:JB(c.f).n})))};
+ house:S.owned?{n:S.hn,v:Math.round(S.houseV),d:S.hd||'',dn:dis()?String(dis().n).slice(0,60):''}:null,inv:(S.inv||[]).map(p=>({n:p.n,v:Math.round(p.v),t:p.t})),veh:S.veh.own.map(v=>({n:vn(v),v:Math.round(vVal(v))})),biz:Object.keys(S.biz).map(k=>({n:BZ.find(z=>z[0]==k)[1],l:S.biz[k].l})).concat(S.cos.map(c=>({n:c.n,l:c.l,f:JB(c.f).n})))};
  if(S.pubp!==0)o.hold=hk.map(k=>({i:k,v:Math.round(S.hold[k]*P[k]),p:Math.round((P[k]/S.cost[k]-1)*1000)/10})).sort((a,b)=>b.v-a.v).slice(0,15);else o.priv=1;
  o.cv=cvPub();
  return o}
@@ -922,7 +931,7 @@ function profHtml(id,p){const n=x=>Math.round(+x)||0,t=(x,l)=>esc(String(x==null
  let h='<div style="font:700 20px Georgia,serif">'+t(p.dn||id,20)+' <small>@'+esc(id)+'</small></div><div class="mu">🏅 '+t(p.tt)+(n(p.rb)?' · ⭐ Rebirth ×'+n(p.rb):'')+'</div><div class="mu">'+t(p.st,60)+'</div>';
  h+='<div class="split">'+box('Kekayaan bersih',rp(n(p.nw)))+box('Kekayaan puncak',rp(n(p.pk)))+box('Kas',rp(n(p.cash)))+box('Usia permainan',(n(p.day)/360).toFixed(1)+' th')+'</div>';
  h+='<div class="mu">😊 Kebahagiaan '+n(p.hap)+'/100 · 🎓 '+t(p.edu)+(p.mar?' · 💕 '+t(p.mar)+(p.pn?' ('+t(p.pn,20)+')':''):'')+(n(p.kids)?' · 👶 '+n(p.kids)+' anak':'')+' · 💰 dividen '+rp(n(p.div))+' · 🕵️ bocoran benar '+n(p.th)+'x</div>';
- h+='<h3>Aset lain</h3><div class="mu">'+(p.house?'🏠 '+t(p.house.n,40)+' · '+rp(n(p.house.v))+(dd?' · '+dd.e+' '+t(dd.n,40):''):'🏠 Belum punya rumah')+'</div>';
+ h+='<h3>Aset lain</h3><div class="mu">'+(p.house?'🏠 '+t(p.house.n,40)+' · '+rp(n(p.house.v))+(dd?' · '+dd.e+' '+t(p.house.dn||dd.n,40):''):'🏠 Belum punya rumah')+'</div>';
  if(ar2(p.inv)&&p.inv.length)h+='<div class="mu">🏘️ Properti sewa: '+p.inv.slice(0,8).map(x=>t(x.n,30)+' ('+rp(n(x.v))+')').join(', ')+'</div>';
  if(ar2(p.veh)&&p.veh.length)h+='<div class="mu">🚗 '+p.veh.slice(0,6).map(v=>t(v.n,30)+' ('+rp(n(v.v))+')').join(', ')+'</div>';
  if(ar2(p.biz)&&p.biz.length)h+='<div class="mu">🏪 '+p.biz.slice(0,10).map(b=>t(b.n,30)+(b.f?' ['+t(b.f,24)+']':'')+' lv'+n(b.l)).join(', ')+'</div>';
@@ -943,10 +952,10 @@ $('profx').onclick=()=>{$('prof').style.display='none'};$('prof').onclick=e=>{if
 document.addEventListener('keydown',e=>{if(e.key=='Escape')$('prof').style.display='none'});
 $('pubp').onchange=e=>{S.pubp=e.target.checked?1:0;sv();lastSub='';submitScore();toast(S.pubp?'Portofolio tampil di profil publik.':'Portofolio disembunyikan dari profil publik.')};
 rbAct.dummy=0;buildJobSel();
-const hPrice=h=>Math.round(h[3]*CPI()/1e6)*1e6;
+const hPrice=h=>Math.round(h[3]*S.cpi*cc().hp/1e6)*1e6;
 const hmv=()=>Math.min(40,Math.max(.5,(S.houseV||2e8)/2e8)),hMul=()=>S.home=='rumah'?hmv():1;
 const mortPay=()=>S.mort?Math.min(S.mort.inst,S.mort.bal*(1+S.mort.r/12)):0;
-const kprRate=h=>h[0]=='sub'?.05:Math.max(.06,Math.min(.14,.085+act().reduce((t,m)=>t+(m.fx.r||0),0)));
+const kprRate=h=>{const b=cc().mr;return h[0]=='sub'?.05:Math.max(b-.025,Math.min(b+.055,b+act().reduce((t,m)=>t+(m.fx.r||0),0)))};
 const pmt=(P,r,n)=>{const i=r/12;return Math.round(P*i/(1-Math.pow(1+i,-n)))};
 function mortMonth(){const m=S.mort;if(!m||!S.owned)return;
  const i=m.r/12,py=Math.min(m.inst,m.bal*(1+i));m.bal=Math.max(0,m.bal-(py-m.bal*i));m.left--;
@@ -960,7 +969,7 @@ function propAct(a,x){if(invAct(a,x))return;if(a=='hr'&&S.owned){if(S.rent){S.re
  if(a=='hb'||a=='hk'){const h=HSE.find(z=>z[0]==x);if(!h)return;if(DIM[h[5]].rb>(S.meta.rb||0))return toast('Kawasan ini terbuka di rebirth ke-'+DIM[h[5]].rb+'.');
   if(S.sch)return toast('Selesaikan sekolah dulu.');
   if(S.owned||hmode=='inv')return invBuy(h,a=='hk');
-  if(ab())return toast('Pasar properti di sini hanya melayani rumah di Indonesia. Pulanglah untuk membeli rumah.');const pr=hPrice(h),fee=Math.round(pr*.06);let loan=null,out=pr+fee,desc='tunai';
+  const pr=hPrice(h),fee=Math.round(pr*.06);let loan=null,out=pr+fee,desc='tunai';
   if(a=='hk'){
    if(!S.job)return toast('KPR butuh pekerjaan tetap.');
    const inc=pay(JB(S.job))*pt()+spouse();
@@ -997,11 +1006,833 @@ const APT=[
 ['as6','Apartemen 3BR Sudirman-SCBD','🏙️',6e9,'LB 120 m², di jantung CBD, penyewa eksekutif dan korporat','pi'],
 ['as7','Apartemen Menteng Residences','🏛️',1.4e10,'LB 180 m², privat, lift langsung ke unit, penyewa diplomat','mnt'],
 ['as8','Penthouse Pakubuwono Sky','🌆',3.5e10,'LB 450 m², dua lantai, kolam renang pribadi dan pemandangan kota','mnt']];
+
+/* ---- katalog properti per negara (nama, deskripsi); harga mengikuti faktor hp, bunga KPR mengikuti mr ---- */
+const DIS0=DIS.map(a=>a.slice()),HSE0=HSE.map(a=>a.slice()),APT0=APT.map(a=>a.slice());
+const CTH={
+"MY": {
+"d": [
+[
+"Kawasan Rumah Mampu Milik PR1MA (Rawang & Semenyih)",
+"Perumahan mampu milik bersubsidi kerajaan di pinggiran Lembah Klang. Termurah, tapi harga naik pelan."
+],
+[
+"Kota Satelit (Cheras, Kajang, Puchong)",
+"Perumahan keluarga dekat jalur MRT dan kawasan industri."
+],
+[
+"Petaling Jaya & Subang Jaya",
+"Kota mandiri dengan kampus, mal, dan kantor. Mulai bergaul dengan pengusaha lokal."
+],
+[
+"Bangsar & Mont Kiara",
+"Kawasan mapan Kuala Lumpur. Tetangganya pengusaha besar dan eksekutif."
+],
+[
+"Sri Hartamas & Desa ParkCity",
+"Enklave elit Kuala Lumpur, pusat bisnis konglomerat properti dan ritel."
+],
+[
+"KLCC & Damansara Heights",
+"Alamat paling bergengsi di Kuala Lumpur. Lingkaran dalam konglomerat dan pejabat."
+],
+[
+"Pulau Pribadi (Kepulauan Langkawi)",
+"Pulau milik pribadi untuk elite sejati. Hanya terbuka bagi jiwa yang sudah lahir kembali tiga kali."
+]
+],
+"h": [
+[
+"Rumah PR1MA Tipe Kecil",
+"LB 40 m² / LT 60 m². Bunga subsidi 5% fixed, khusus penghasilan terbatas"
+],
+[
+"Rumah Teres Setingkat",
+"LB 70 m² / LT 120 m², teres satu lantai di perumahan berpagar"
+],
+[
+"Rumah Teres Dua Tingkat",
+"LB 110 m² / LT 130 m², dekat stasiun MRT"
+],
+[
+"Rumah Cluster Gated & Guarded",
+"LB 160 m² / LT 200 m², keamanan 24 jam"
+],
+[
+"Rumah Semi-D Dua Lantai",
+"LB 220 m² / LT 280 m², dekat kampus dan mal"
+],
+[
+"Bungalow Mewah Dua Lantai",
+"LB 350 m² / LT 500 m², kawasan mapan"
+],
+[
+"Bungalow Modern Bangsar",
+"LB 450 m² / LT 600 m², taman belakang luas"
+],
+[
+"Townhouse Desa ParkCity",
+"LB 300 m² / LT 200 m², dekat taman danau dan pusat kuliner"
+],
+[
+"Bungalow Tepi Lapangan Golf",
+"LB 600 m² / LT 900 m², tepi lapangan golf"
+],
+[
+"Bungalow Heritage Damansara Heights",
+"LB 700 m² / LT 1.100 m², jalan rindang dan arsitektur klasik"
+],
+[
+"Mansion KLCC Hills",
+"LB 1.200 m² / LT 2.000 m², kolam renang, lift pribadi"
+],
+[
+"Vila Pulau Pribadi Langkawi",
+"Pulau 5 hektar, dermaga, helipad, vila 1.500 m²"
+]
+],
+"a": [
+[
+"Studio Apartemen Dekat LRT Cheras",
+"LB 25 m², dekat LRT dan kawasan industri, cocok untuk pekerja"
+],
+[
+"Apartemen 1BR Dekat Universiti",
+"LB 40 m², dekat kampus dan stasiun, pasar sewa mahasiswa"
+],
+[
+"Kondominium 2BR Petaling Jaya",
+"LB 85 m², dekat mal, kampus, dan perkantoran, ada kolam renang"
+],
+[
+"Kondominium 2BR Mont Kiara",
+"LB 110 m², fasilitas lengkap, penyewa ekspatriat dan eksekutif"
+],
+[
+"Studio Tepi Danau Desa ParkCity",
+"LB 45 m², pemandangan danau, dekat pusat kuliner"
+],
+[
+"Kondominium 3BR Bukit Bintang",
+"LB 150 m², di jantung CBD, penyewa eksekutif dan korporat"
+],
+[
+"Residensi Damansara Heights",
+"LB 220 m², privat, lift langsung ke unit, penyewa diplomat"
+],
+[
+"Penthouse KLCC Sky",
+"LB 500 m², dua lantai, kolam renang pribadi dan pemandangan kota"
+]
+]
+},
+"SG": {
+"d": [
+[
+"Flat HDB Baru (Punggol & Sengkang)",
+"Flat HDB bersubsidi pemerintah di kota baru. Termurah, tapi harga naik pelan."
+],
+[
+"Kota Satelit (Woodlands, Tampines, Jurong)",
+"Kawasan perumahan keluarga dekat stasiun MRT dan kawasan industri."
+],
+[
+"Bishan & Toa Payoh",
+"Kota mandiri dengan sekolah unggulan, mal, dan kantor. Mulai bergaul dengan pengusaha lokal."
+],
+[
+"Holland Village & Novena",
+"Kawasan mapan Singapura. Tetangganya pengusaha besar dan eksekutif."
+],
+[
+"East Coast & Marina Bay",
+"Kawasan elit pesisir, pusat bisnis konglomerat properti dan ritel."
+],
+[
+"Orchard & Nassim Road",
+"Alamat paling bergengsi di Singapura. Lingkaran dalam konglomerat dan pejabat."
+],
+[
+"Pulau Pribadi (Selatan Sentosa)",
+"Pulau milik pribadi untuk elite sejati. Hanya terbuka bagi jiwa yang sudah lahir kembali tiga kali."
+]
+],
+"h": [
+[
+"Flat HDB 3 Kamar",
+"LB 65 m², flat bersubsidi (BTO). Bunga subsidi 5% fixed, khusus penghasilan terbatas"
+],
+[
+"Flat HDB 4 Kamar",
+"LB 90 m², dekat stasiun MRT dan pusat jajan hawker"
+],
+[
+"Flat HDB 5 Kamar Premium",
+"LB 110 m², lantai tinggi, dekat MRT dan taman kota"
+],
+[
+"Kondominium Cluster 3 Kamar",
+"LB 100 m², keamanan 24 jam, kolam renang dan gym"
+],
+[
+"Kondominium 4 Kamar Dekat Sekolah",
+"LB 140 m², dekat kampus dan mal"
+],
+[
+"Rumah Teres Mewah Dua Lantai",
+"LB 250 m² / LT 200 m², kawasan mapan"
+],
+[
+"Rumah Semi-D Holland Modern",
+"LB 350 m² / LT 300 m², taman belakang dan kolam kecil"
+],
+[
+"Townhouse East Coast",
+"LB 250 m² / LT 150 m², dekat pantai dan pusat kuliner"
+],
+[
+"Bungalow Marina Bay Waterfront",
+"LB 450 m² / LT 500 m², pemandangan teluk dan dermaga"
+],
+[
+"Good Class Bungalow Nassim",
+"LB 600 m² / LT 1.400 m², jalan rindang, lahan sangat terbatas"
+],
+[
+"Mansion Orchard Estate",
+"LB 1.000 m² / LT 2.000 m², kolam renang, lift pribadi"
+],
+[
+"Vila Pulau Pribadi Selatan Sentosa",
+"Pulau 5 hektar, dermaga, helipad, vila 1.500 m²"
+]
+],
+"a": [
+[
+"Studio Apartemen Dekat MRT Woodlands",
+"LB 25 m², dekat stasiun MRT dan kawasan industri, cocok untuk pekerja"
+],
+[
+"Apartemen 1BR Dekat NUS",
+"LB 35 m², dekat kampus dan stasiun, pasar sewa mahasiswa"
+],
+[
+"Kondominium 2BR Bishan",
+"LB 75 m², dekat mal, sekolah, dan perkantoran, ada kolam renang"
+],
+[
+"Kondominium 2BR Holland Village",
+"LB 90 m², fasilitas lengkap, penyewa ekspatriat dan eksekutif"
+],
+[
+"Studio Seaview Marina Bay",
+"LB 40 m², pemandangan laut, dekat pusat kuliner"
+],
+[
+"Kondominium 3BR CBD Raffles Place",
+"LB 140 m², di jantung CBD, penyewa eksekutif dan korporat"
+],
+[
+"Residensi Orchard Boulevard",
+"LB 220 m², privat, lift langsung ke unit, penyewa diplomat"
+],
+[
+"Penthouse Nassim Sky",
+"LB 480 m², dua lantai, kolam renang pribadi dan pemandangan kota"
+]
+]
+},
+"JP": {
+"d": [
+[
+"Perumahan Murah (Saitama & Chiba Pinggiran)",
+"Perumahan terjangkau di pinggiran Tokyo. Termurah, tapi harga naik pelan."
+],
+[
+"Kota Satelit (Kawasaki, Yokohama, Chiba)",
+"Perumahan keluarga dekat stasiun JR dan kawasan industri."
+],
+[
+"Kichijoji & Futako-Tamagawa",
+"Kota mandiri dengan kampus, mal, dan kantor. Mulai bergaul dengan pengusaha lokal."
+],
+[
+"Meguro & Setagaya",
+"Kawasan mapan Tokyo. Tetangganya pengusaha besar dan eksekutif."
+],
+[
+"Odaiba & Toyosu",
+"Kawasan elit tepi teluk, pusat bisnis konglomerat properti dan ritel."
+],
+[
+"Azabu & Minato",
+"Alamat paling bergengsi di Tokyo. Lingkaran dalam konglomerat dan pejabat."
+],
+[
+"Pulau Pribadi (Kepulauan Izu)",
+"Pulau milik pribadi untuk elite sejati. Hanya terbuka bagi jiwa yang sudah lahir kembali tiga kali."
+]
+],
+"h": [
+[
+"Rumah Kecil 1LDK",
+"LB 35 m² / LT 60 m². Bunga subsidi 5% fixed, khusus penghasilan terbatas"
+],
+[
+"Rumah Mungil 2LDK",
+"LB 70 m² / LT 80 m², perumahan klaster dekat stasiun"
+],
+[
+"Rumah Dua Lantai 3LDK + Parkir",
+"LB 90 m² / LT 100 m², dekat stasiun JR"
+],
+[
+"Rumah Cluster 4LDK",
+"LB 110 m² / LT 130 m², keamanan 24 jam"
+],
+[
+"Rumah Dua Lantai Modern 4LDK",
+"LB 130 m² / LT 150 m², dekat kampus dan mal"
+],
+[
+"Rumah Mewah Dua Lantai",
+"LB 200 m² / LT 250 m², kawasan mapan"
+],
+[
+"Rumah Modern Setagaya",
+"LB 250 m² / LT 300 m², taman gaya Jepang"
+],
+[
+"Townhouse Toyosu",
+"LB 180 m² / LT 120 m², dekat teluk dan pusat kuliner"
+],
+[
+"Rumah Tepi Teluk Odaiba",
+"LB 350 m² / LT 450 m², pemandangan Rainbow Bridge"
+],
+[
+"Rumah Heritage Azabu",
+"LB 400 m² / LT 600 m², arsitektur klasik, jalan rindang"
+],
+[
+"Mansion Minato Premium",
+"LB 800 m² / LT 1.200 m², kolam renang, lift pribadi"
+],
+[
+"Vila Pulau Pribadi Izu",
+"Pulau 5 hektar, dermaga, helipad, vila 1.500 m²"
+]
+],
+"a": [
+[
+"Studio Mansion Dekat Stasiun Kawasaki",
+"LB 20 m², dekat stasiun JR dan kawasan industri, cocok untuk pekerja"
+],
+[
+"Apartemen 1LDK Dekat Kampus Kichijoji",
+"LB 32 m², dekat kampus dan stasiun, pasar sewa mahasiswa"
+],
+[
+"Mansion 2LDK Futako-Tamagawa",
+"LB 60 m², dekat mal dan perkantoran, ada ruang fasilitas"
+],
+[
+"Mansion 2LDK Meguro",
+"LB 70 m², fasilitas lengkap, penyewa ekspatriat dan eksekutif"
+],
+[
+"Studio Seaview Toyosu",
+"LB 40 m², pemandangan teluk, dekat pusat kuliner"
+],
+[
+"Mansion 3LDK Marunouchi",
+"LB 100 m², di jantung CBD, penyewa eksekutif dan korporat"
+],
+[
+"Residensi Azabu",
+"LB 150 m², privat, lift langsung ke unit, penyewa diplomat"
+],
+[
+"Penthouse Roppongi Sky",
+"LB 350 m², dua lantai, kolam renang pribadi dan pemandangan kota"
+]
+]
+},
+"AE": {
+"d": [
+[
+"Perumahan Terjangkau (Dubai South & Al Furjan)",
+"Perumahan terjangkau di pinggiran Dubai. Termurah, tapi harga naik pelan."
+],
+[
+"Kota Satelit (Sharjah, Ajman, JVC)",
+"Perumahan keluarga dekat kawasan industri dan jalur metro."
+],
+[
+"Dubai Marina & JLT",
+"Kota mandiri dengan kampus, mal, dan kantor. Mulai bergaul dengan pengusaha lokal."
+],
+[
+"Dubai Hills & Arabian Ranches",
+"Kawasan mapan Dubai. Tetangganya pengusaha besar dan eksekutif."
+],
+[
+"Palm Jumeirah",
+"Kawasan elit pesisir, pusat bisnis konglomerat properti dan ritel."
+],
+[
+"Emirates Hills & Downtown Dubai",
+"Alamat paling bergengsi di Dubai. Lingkaran dalam konglomerat dan pejabat."
+],
+[
+"Pulau Pribadi (The World Islands)",
+"Pulau milik pribadi untuk elite sejati. Hanya terbuka bagi jiwa yang sudah lahir kembali tiga kali."
+]
+],
+"h": [
+[
+"Townhouse Kecil 2 Kamar",
+"LB 90 m² / LT 120 m². Bunga subsidi 5% fixed, khusus penghasilan terbatas"
+],
+[
+"Townhouse 3 Kamar",
+"LB 130 m² / LT 150 m², komunitas berpagar"
+],
+[
+"Villa 3 Kamar + Garasi",
+"LB 180 m² / LT 250 m², dekat stasiun metro"
+],
+[
+"Villa Cluster 4 Kamar",
+"LB 250 m² / LT 350 m², keamanan 24 jam dan kolam renang bersama"
+],
+[
+"Villa Dua Lantai 5 Kamar",
+"LB 320 m² / LT 450 m², dekat kampus dan mal"
+],
+[
+"Villa Mewah Dubai Hills",
+"LB 500 m² / LT 700 m², kawasan mapan"
+],
+[
+"Villa Modern Arabian Ranches",
+"LB 650 m² / LT 900 m², taman luas dan kolam renang"
+],
+[
+"Townhouse Palm Jumeirah",
+"LB 350 m² / LT 250 m², dekat pantai dan pusat kuliner"
+],
+[
+"Villa Frond Palm Jumeirah",
+"LB 800 m² / LT 1.000 m², tepi laut dengan dermaga pribadi"
+],
+[
+"Villa Emirates Hills",
+"LB 1.200 m² / LT 1.800 m², tepi lapangan golf, taman dan kolam"
+],
+[
+"Mansion Signature Emirates Hills",
+"LB 2.000 m² / LT 3.000 m², kolam renang, bioskop, lift pribadi"
+],
+[
+"Vila Pulau Pribadi World Islands",
+"Pulau 5 hektar, dermaga, helipad, vila 1.500 m²"
+]
+],
+"a": [
+[
+"Studio Apartemen Dekat Metro Al Furjan",
+"LB 30 m², dekat stasiun metro dan kawasan industri, cocok untuk pekerja"
+],
+[
+"Apartemen 1BR Dubai Silicon Oasis",
+"LB 45 m², dekat kampus dan stasiun, pasar sewa mahasiswa"
+],
+[
+"Apartemen 2BR Dubai Marina",
+"LB 100 m², dekat mal dan perkantoran, ada kolam renang"
+],
+[
+"Apartemen 2BR Dubai Hills",
+"LB 120 m², fasilitas lengkap, penyewa ekspatriat dan eksekutif"
+],
+[
+"Studio Seaview Palm Jumeirah",
+"LB 50 m², pemandangan laut, dekat pusat kuliner"
+],
+[
+"Apartemen 3BR Business Bay",
+"LB 180 m², di jantung CBD, penyewa eksekutif dan korporat"
+],
+[
+"Residensi Downtown Dubai",
+"LB 250 m², privat, lift langsung ke unit, penyewa diplomat"
+],
+[
+"Penthouse Downtown Sky",
+"LB 600 m², dua lantai, kolam renang pribadi dan pemandangan kota"
+]
+]
+},
+"NL": {
+"d": [
+[
+"Rumah Starter Bersubsidi (Almere & Lelystad)",
+"Perumahan terjangkau di kota baru. Termurah, tapi harga naik pelan."
+],
+[
+"Kota Satelit (Utrecht, Amersfoort, Zaandam)",
+"Perumahan keluarga dekat stasiun kereta dan kawasan industri."
+],
+[
+"Amstelveen & Haarlem",
+"Kota mandiri dengan kampus, mal, dan kantor. Mulai bergaul dengan pengusaha lokal."
+],
+[
+"Het Gooi & Bloemendaal",
+"Kawasan mapan Randstad. Tetangganya pengusaha besar dan eksekutif."
+],
+[
+"IJburg & Houthavens",
+"Kawasan elit tepi air Amsterdam, pusat bisnis konglomerat properti dan ritel."
+],
+[
+"Grachtengordel & Museumkwartier",
+"Alamat paling bergengsi di Amsterdam. Lingkaran dalam konglomerat dan pejabat."
+],
+[
+"Pulau Pribadi (Kepulauan Wadden)",
+"Pulau milik pribadi untuk elite sejati. Hanya terbuka bagi jiwa yang sudah lahir kembali tiga kali."
+]
+],
+"h": [
+[
+"Rumah Starter Tipe Kecil",
+"LB 50 m² / LT 70 m². Bunga subsidi 5% fixed, khusus penghasilan terbatas"
+],
+[
+"Rumah Deret Tussenwoning",
+"LB 100 m² / LT 120 m², deret klaster dekat stasiun"
+],
+[
+"Rumah Hoekwoning + Garasi",
+"LB 120 m² / LT 150 m², rumah sudut dekat stasiun kereta"
+],
+[
+"Rumah Twee-onder-een-kap",
+"LB 140 m² / LT 200 m², rumah berkembar, lingkungan aman"
+],
+[
+"Rumah Vrijstaand Dua Lantai",
+"LB 180 m² / LT 280 m², dekat kampus dan pusat kota"
+],
+[
+"Villa Mewah Dua Lantai",
+"LB 280 m² / LT 600 m², kawasan mapan"
+],
+[
+"Villa Modern Bloemendaal",
+"LB 350 m² / LT 800 m², taman belakang luas dan kolam"
+],
+[
+"Townhouse IJburg",
+"LB 200 m² / LT 100 m², tepi air dan dekat pusat kuliner"
+],
+[
+"Rumah Kanal Houthavens",
+"LB 350 m² / LT 300 m², dermaga perahu pribadi di depan rumah"
+],
+[
+"Rumah Kanal Heritage Grachtengordel",
+"LB 450 m² / LT 200 m², rumah kanal abad ke-17"
+],
+[
+"Mansion Museumkwartier",
+"LB 800 m² / LT 1.200 m², taman pribadi, lift pribadi"
+],
+[
+"Vila Pulau Pribadi Wadden",
+"Pulau 5 hektar, dermaga, helipad, vila 1.500 m²"
+]
+],
+"a": [
+[
+"Studio Apartemen Dekat Stasiun Almere",
+"LB 28 m², dekat stasiun kereta dan kawasan kerja, cocok untuk pekerja"
+],
+[
+"Apartemen 1 Kamar Dekat Kampus Utrecht",
+"LB 40 m², dekat kampus dan stasiun, pasar sewa mahasiswa"
+],
+[
+"Apartemen 2 Kamar Amstelveen",
+"LB 75 m², dekat mal dan perkantoran, ada lift dan parkir"
+],
+[
+"Apartemen 2 Kamar Bloemendaal",
+"LB 95 m², fasilitas lengkap, penyewa ekspatriat dan eksekutif"
+],
+[
+"Studio Tepi Air IJburg",
+"LB 45 m², pemandangan danau, dekat pusat kuliner"
+],
+[
+"Apartemen 3 Kamar Zuidas",
+"LB 130 m², di jantung CBD, penyewa eksekutif dan korporat"
+],
+[
+"Residensi Grachtengordel",
+"LB 200 m², privat, lift langsung ke unit, penyewa diplomat"
+],
+[
+"Penthouse Museumkwartier Sky",
+"LB 400 m², dua lantai, teras atap dan pemandangan kota"
+]
+]
+},
+"AU": {
+"d": [
+[
+"Perumahan Pembeli Pertama (Sydney Barat & Melbourne Utara)",
+"Perumahan terjangkau untuk pembeli pertama di pinggiran kota. Termurah, tapi harga naik pelan."
+],
+[
+"Kota Satelit (Parramatta, Penrith, Geelong)",
+"Perumahan keluarga dekat stasiun kereta dan kawasan industri."
+],
+[
+"Chatswood & Box Hill",
+"Kota mandiri dengan kampus, mal, dan kantor. Mulai bergaul dengan pengusaha lokal."
+],
+[
+"Mosman & Toorak",
+"Kawasan mapan Sydney dan Melbourne. Tetangganya pengusaha besar dan eksekutif."
+],
+[
+"Manly, Bondi & St Kilda",
+"Kawasan elit pesisir, pusat bisnis konglomerat properti dan ritel."
+],
+[
+"Point Piper & Vaucluse",
+"Alamat paling bergengsi di Australia. Lingkaran dalam konglomerat dan pejabat."
+],
+[
+"Pulau Pribadi (Great Barrier Reef)",
+"Pulau milik pribadi untuk elite sejati. Hanya terbuka bagi jiwa yang sudah lahir kembali tiga kali."
+]
+],
+"h": [
+[
+"Rumah Starter Tipe Kecil",
+"LB 80 m² / LT 300 m². Bunga subsidi 5% fixed, khusus penghasilan terbatas"
+],
+[
+"Rumah Klaster 3 Kamar",
+"LB 120 m² / LT 350 m², perumahan klaster"
+],
+[
+"Rumah 4 Kamar + Carport",
+"LB 160 m² / LT 450 m², dekat stasiun kereta"
+],
+[
+"Rumah Estate Gated",
+"LB 220 m² / LT 550 m², perumahan gated dan aman"
+],
+[
+"Rumah Dua Lantai Modern",
+"LB 280 m² / LT 600 m², dekat kampus dan mal"
+],
+[
+"Rumah Mewah Dua Lantai",
+"LB 380 m² / LT 700 m², kawasan mapan"
+],
+[
+"Rumah Modern Toorak",
+"LB 480 m² / LT 900 m², taman belakang dan kolam renang"
+],
+[
+"Townhouse Manly",
+"LB 240 m² / LT 150 m², dekat pantai dan pusat kuliner"
+],
+[
+"Rumah Tepi Pantai Bondi",
+"LB 500 m² / LT 600 m², pemandangan laut dan akses pantai"
+],
+[
+"Rumah Heritage Point Piper",
+"LB 650 m² / LT 1.100 m², tepi pelabuhan, taman tua"
+],
+[
+"Mansion Vaucluse",
+"LB 1.000 m² / LT 2.000 m², kolam renang, lift pribadi, dermaga"
+],
+[
+"Vila Pulau Pribadi Great Barrier Reef",
+"Pulau 5 hektar, dermaga, helipad, vila 1.500 m²"
+]
+],
+"a": [
+[
+"Studio Apartemen Dekat Stasiun Parramatta",
+"LB 28 m², dekat stasiun kereta dan kawasan kerja, cocok untuk pekerja"
+],
+[
+"Apartemen 1 Kamar Dekat Kampus Clayton",
+"LB 40 m², dekat kampus dan stasiun, pasar sewa mahasiswa"
+],
+[
+"Apartemen 2 Kamar Chatswood",
+"LB 80 m², dekat mal, kampus, dan perkantoran, ada kolam renang"
+],
+[
+"Apartemen 2 Kamar Mosman",
+"LB 100 m², fasilitas lengkap, penyewa ekspatriat dan eksekutif"
+],
+[
+"Studio Seaview Bondi",
+"LB 45 m², pemandangan laut, dekat pusat kuliner"
+],
+[
+"Apartemen 3 Kamar Sydney CBD",
+"LB 150 m², di jantung CBD, penyewa eksekutif dan korporat"
+],
+[
+"Residensi Point Piper",
+"LB 250 m², privat, lift langsung ke unit, penyewa diplomat"
+],
+[
+"Penthouse Vaucluse Sky",
+"LB 500 m², dua lantai, kolam renang pribadi dan pemandangan pelabuhan"
+]
+]
+},
+"US": {
+"d": [
+[
+"Perumahan Starter FHA (Pinggiran Texas & Ohio)",
+"Perumahan terjangkau dengan pinjaman FHA di pinggiran kota. Termurah, tapi harga naik pelan."
+],
+[
+"Kota Satelit (Plano, Naperville, Mesa)",
+"Perumahan keluarga dekat kawasan industri dan jalur komuter."
+],
+[
+"Irvine & Bellevue",
+"Kota mandiri dengan kampus, mal, dan perkantoran teknologi. Mulai bergaul dengan pengusaha lokal."
+],
+[
+"Scarsdale & Palo Alto",
+"Kawasan mapan. Tetangganya pengusaha besar dan eksekutif."
+],
+[
+"Malibu & Miami Beach",
+"Kawasan elit pesisir, pusat bisnis konglomerat properti dan ritel."
+],
+[
+"Upper East Side & Beverly Hills",
+"Alamat paling bergengsi di Amerika. Lingkaran dalam konglomerat dan pejabat."
+],
+[
+"Pulau Pribadi (Florida Keys)",
+"Pulau milik pribadi untuk elite sejati. Hanya terbuka bagi jiwa yang sudah lahir kembali tiga kali."
+]
+],
+"h": [
+[
+"Rumah Starter 2 Kamar",
+"LB 80 m² / LT 300 m². Bunga subsidi 5% fixed, khusus penghasilan terbatas"
+],
+[
+"Rumah Subdivisi 3 Kamar",
+"LB 130 m² / LT 400 m², perumahan klaster"
+],
+[
+"Rumah 4 Kamar + Garasi",
+"LB 180 m² / LT 500 m², dekat stasiun komuter"
+],
+[
+"Rumah Gated Community",
+"LB 250 m² / LT 600 m², keamanan 24 jam dan klub komunitas"
+],
+[
+"Rumah Dua Lantai Modern",
+"LB 320 m² / LT 700 m², dekat kampus dan mal"
+],
+[
+"Rumah Mewah Dua Lantai",
+"LB 450 m² / LT 900 m², kawasan mapan"
+],
+[
+"Rumah Modern Palo Alto",
+"LB 500 m² / LT 1.000 m², taman belakang luas dan kolam renang"
+],
+[
+"Townhouse Miami Beach",
+"LB 280 m² / LT 160 m², dekat pantai dan pusat kuliner"
+],
+[
+"Rumah Tepi Pantai Malibu",
+"LB 600 m² / LT 800 m², pemandangan laut dan pantai pribadi"
+],
+[
+"Rumah Heritage Upper East Side",
+"LB 700 m² / LT 300 m², brownstone klasik, jalan rindang"
+],
+[
+"Mansion Beverly Hills",
+"LB 1.500 m² / LT 4.000 m², kolam renang, bioskop, lift pribadi"
+],
+[
+"Vila Pulau Pribadi Florida Keys",
+"Pulau 5 hektar, dermaga, helipad, vila 1.500 m²"
+]
+],
+"a": [
+[
+"Studio Apartemen Dekat Stasiun Plano",
+"LB 28 m², dekat stasiun komuter dan kawasan kerja, cocok untuk pekerja"
+],
+[
+"Apartemen 1 Kamar Dekat Kampus",
+"LB 45 m², dekat kampus dan stasiun, pasar sewa mahasiswa"
+],
+[
+"Kondominium 2 Kamar Irvine",
+"LB 90 m², dekat mal dan perkantoran, ada kolam renang"
+],
+[
+"Kondominium 2 Kamar Palo Alto",
+"LB 100 m², fasilitas lengkap, penyewa ekspatriat dan eksekutif"
+],
+[
+"Studio Seaview Malibu",
+"LB 50 m², pemandangan laut, dekat pusat kuliner"
+],
+[
+"Kondominium 3 Kamar Midtown Manhattan",
+"LB 160 m², di jantung CBD, penyewa eksekutif dan korporat"
+],
+[
+"Residensi Upper East Side",
+"LB 280 m², privat, lift langsung ke unit, penyewa diplomat"
+],
+[
+"Penthouse Fifth Avenue Sky",
+"LB 550 m², dua lantai, teras pribadi dan pemandangan kota"
+]
+]
+}
+};
+let lastCty=null;
+function applyCty(){const k=S.cc||'ID',T=CTH[k];
+ DIS.forEach((d,i)=>{const x=T?T.d[i]:[DIS0[i][1],DIS0[i][5]];d[1]=x[0];d[5]=x[1];const m=DIM[d[0]];m.n=x[0];m.ds=x[1]});
+ HSE.forEach((h,i)=>{const x=T?T.h[i]:[HSE0[i][1],HSE0[i][4]];h[1]=x[0];h[4]=x[1]});
+ APT.forEach((h,i)=>{const x=T?T.a[i]:[APT0[i][1],APT0[i][4]];h[1]=x[0];h[4]=x[1]})}
+function chkCty(){const k=S.cc||'ID';if(lastCty!==k){lastCty=k;applyCty()}}
 function invBuy(h,kpr){
  if(!S.inv)S.inv=[];const apt=APT.some(z=>z[0]==h[0]),T=PT[apt?'apart':'rumah'],D=DIM[h[5]];
  if(D.rb>(S.meta.rb||0))return toast('Kawasan ini terbuka di rebirth ke-'+D.rb+'.');
  if(S.sch)return toast('Selesaikan sekolah dulu.');
- if(ab())return toast('Pasar properti di sini hanya melayani properti di Indonesia. Pulanglah untuk membeli.');
  if(S.inv.length>=30)return toast('Maksimal 30 properti sewa.');
  if(h[0]=='sub')return toast('Rumah subsidi hanya untuk hunian pertama, tidak bisa dibeli sebagai investasi.');
  const pr=hPrice(h),fee=Math.round(pr*.06);let loan=null,out=pr+fee,desc='tunai';
@@ -1274,25 +2105,25 @@ $('ngt').onchange=$('ngb').onchange=()=>render();
 buildJobSel();mig();buildList();render();cloud();
 
 /* ---- fitur pindah negara ---- */
-const loc=n=>{const c=cc();return c.x==1?rp(n):c.cu+' '+Math.round(n/c.x).toLocaleString('id-ID')},ccCost=id=>Math.round(CT[id].c*fsz());
+const loc=n=>{const c=cc();return c.x==1?rp(n):c.cu+' '+sh(Math.round(n/c.x))},ccCost=id=>Math.round(CT[id].c*fsz());
 function ccWhy(id){const c=CT[id];if(id==S.cc)return 'Sedang tinggal di sini';if(S.sch)return 'Selesaikan sekolah dulu';if(S.owned||S.mort)return 'Jual rumahmu dulu';if((S.inv||[]).length)return 'Jual semua properti sewamu dulu';if(nb())return 'Jual atau tutup usahamu dulu';if(S.veh.own.some(v=>v.loan))return 'Lunasi cicilan kendaraan dulu';
  if(id!='ID'){if(!S.job)return 'Butuh pekerjaan (visa kerja)';if(S.edu.lv<c.e)return 'Butuh pendidikan min. '+ELV[c.e];if(lvl(S.job)<c.l)return 'Butuh jabatan min. '+TN[c.l]}
  return S.cash<ccCost(id)?'Kas kurang, butuh '+rp(ccCost(id)):''}
 function ccMove(id){const w=ccWhy(id);if(w)return toast(w);const c=CT[id],cost=ccCost(id);let sold=0;S.veh.own.forEach(v=>sold+=vVal(v));S.veh.own=[];S.trn='umum';S.ins.v=0;
- S.cash+=sold-cost;S.cc=id;S.adp=id=='ID'?0:6;if(S.home=='ortu'||S.home=='rumah')S.home='kos';if(id!='ID')S.hap=Math.max(0,S.hap-6);
+ S.cash+=sold-cost;S.cc=id;chkCty();S.adp=id=='ID'?0:6;if(S.home=='ortu'||S.home=='rumah')S.home='kos';if(id!='ID')S.hap=Math.max(0,S.hap-6);
  lg((id=='ID'?'🏠 Pulang ke ':'✈️ Pindah ke ')+c.n+'. Biaya pindah '+sg(-cost)+(sold?', kendaraan dijual '+sg(sold):'')+(id!='ID'?'. Masa adaptasi 6 bulan: penghasilan 75%':''));toast(c.f+' Sekarang tinggal di '+c.n);sv();render()}
 function ccRender(){const c=cc();$('ccl').textContent=c.f+' '+c.n+(ab()?' · ≈ '+loc(val())+(S.adp>0?' · adaptasi '+S.adp+' bln':''):'');if(vw!='cty')return;
  const f=JB(S.job),sal=f?Math.round(pay(f)*pt()):0,ex=outgo();
- let h='<section class="pn"><h2>🌏 Tinggal di '+c.f+' '+c.n+'</h2><div class="split"><div class="box"><span class="mu">Gaji bulanan</span><b>'+rp(sal)+'</b><small>'+(ab()?'≈ '+loc(sal):f?'Rupiah':'Belum bekerja')+'</small></div><div class="box"><span class="mu">Pengeluaran bulanan</span><b>'+rp(ex)+'</b><small>'+(ab()?'≈ '+loc(ex):'Rupiah')+'</small></div></div><div class="mu">Gaji ×'+c.w+' · harga ×'+c.p+' · pajak penghasilan '+(ab()?Math.round(c.t*100)+'%':'progresif Indonesia')+(S.adp>0?' · <b>masa adaptasi '+S.adp+' bulan (penghasilan 75%)</b>':'')+'. Harga rumah, kendaraan, biaya hidup, anak, dan asuransi ikut menyesuaikan. Nominal tetap ditampilkan dalam Rupiah (kurs setara). Properti hanya bisa dibeli di Indonesia, dan Bisnis/usaha dijalankan di Indonesia.</div></section><div class="g2" style="margin-top:12px">';
- h+=Object.keys(CT).filter(k=>k!=S.cc).map(k=>{const z=CT[k],w=ccWhy(k),ok=!w;return'<div class="card"><b>'+z.f+' '+z.n+'</b><div class="mu">Gaji ×'+z.w+' · harga ×'+z.p+' · daya beli ×'+(z.w/z.p).toFixed(2)+'<br>Pajak '+(k=='ID'?'progresif':Math.round(z.t*100)+'%')+' · mata uang '+z.cu+'<br>'+(k=='ID'?'Tanpa syarat visa':'Visa kerja: min. '+ELV[z.e]+', jabatan '+TN[z.l])+'<br>Biaya pindah '+rp(ccCost(k))+' ('+fsz()+' orang)</div><div class="row"><button class="pc" data-c="'+k+'"'+(ok?'':' disabled')+'>'+(k=='ID'?'🏠 Pulang':'✈️ Pindah')+'</button></div>'+(ok?'':'<div class="mu dn">'+w+'</div>')+'</div>'}).join('')+'</div>';
+ let h='<section class="pn"><h2>🌏 Tinggal di '+c.f+' '+c.n+'</h2><div class="split"><div class="box"><span class="mu">Gaji bulanan</span><b>'+rp(sal)+'</b><small>'+(ab()?'≈ '+loc(sal):f?'Rupiah':'Belum bekerja')+'</small></div><div class="box"><span class="mu">Pengeluaran bulanan</span><b>'+rp(ex)+'</b><small>'+(ab()?'≈ '+loc(ex):'Rupiah')+'</small></div></div><div class="mu">Gaji ×'+c.w+' · harga ×'+c.p+' · pajak penghasilan '+(ab()?Math.round(c.t*100)+'%':'progresif Indonesia')+(S.adp>0?' · <b>masa adaptasi '+S.adp+' bulan (penghasilan 75%)</b>':'')+'. Harga rumah, kendaraan, biaya hidup, anak, dan asuransi ikut menyesuaikan. Nominal tetap ditampilkan dalam Rupiah (kurs setara). Properti bisa dibeli di negara tempatmu tinggal (nama, harga, dan bunga KPR menyesuaikan negara) dan harus dijual dulu sebelum pindah. Bisnis/usaha dijalankan di Indonesia.</div></section><div class="g2" style="margin-top:12px">';
+ h+=Object.keys(CT).filter(k=>k!=S.cc).map(k=>{const z=CT[k],w=ccWhy(k),ok=!w;return'<div class="card"><b>'+z.f+' '+z.n+'</b><div class="mu">Gaji ×'+z.w+' · harga ×'+z.p+' · daya beli ×'+(z.w/z.p).toFixed(2)+' · properti ×'+z.hp+' · bunga KPR ±'+(z.mr*100).toFixed(1)+'%'+'<br>Pajak '+(k=='ID'?'progresif':Math.round(z.t*100)+'%')+' · mata uang '+z.cu+'<br>'+(k=='ID'?'Tanpa syarat visa':'Visa kerja: min. '+ELV[z.e]+', jabatan '+TN[z.l])+'<br>Biaya pindah '+rp(ccCost(k))+' ('+fsz()+' orang)</div><div class="row"><button class="pc" data-c="'+k+'"'+(ok?'':' disabled')+'>'+(k=='ID'?'🏠 Pulang':'✈️ Pindah')+'</button></div>'+(ok?'':'<div class="mu dn">'+w+'</div>')+'</div>'}).join('')+'</div>';
  setH($('v-cty'),h)}
 $('v-cty').addEventListener('click',e=>{const b=e.target.closest('[data-c]');if(b&&!b.disabled)ccMove(b.dataset.c)});
-{const _r=render;render=function(){_r();ccRender()}}
+{const _r=render;render=function(){chkCty();_r();ccRender()}}
 {const _m=month;month=function(){if(S.adp>0&&!S.sch)S.adp--;if(ab()&&S.home=='ortu')S.home='kos';_m()}}
 render();
 
 /* ---- sosial: kirim uang, usaha patungan, karyawan (butuh setup_sosial.sql) ---- */
-let SOC={inb:[],users:[],vents:[],emps:[],hist:[],err:''},socBusy=false;
+let SOC={fr:[],inb:[],users:[],vents:[],emps:[],hist:[],err:''},socBusy=false;
 const sx=(f,b)=>ar(f,Object.assign({p_id:ACC,p_hash:ACCT&&ACCT.h},b));
 const SERR={PENERIMA_TIDAK_ADA:'Pemain itu belum pernah membuka tab Sosial.',JUMLAH:'Jumlah tidak valid.',BELUM:'Gaji baru bisa dibayar lagi sebentar lagi.',USAHA_BUBAR:'Usaha sudah tidak ada.',SUDAH:'Permintaan sudah diproses.',PENUH:'Batas usaha/mitra tercapai atau sudah jadi mitra.',BUKAN_PEMILIK:'Hanya pendiri/anggota usaha yang boleh.'};
 const sErr=e=>SERR[e.code]||(/function|PGRST202/.test(e.message||'')?'Jalankan setup_sosial.sql di Supabase dulu.':String(e.message).slice(0,120));
@@ -1303,7 +2134,7 @@ async function socSync(){if(!conn||!ACCT||socBusy)return;socBusy=true;
  try{const r=await sx('x_sync',{p_dn:S.dn||''}),t=await sx('x_take',{});
   if(t.amt>0){S.cash+=t.amt;sv()}
   (t.rows||[]).forEach(w=>{const m=socMsg(w);SOC.hist.unshift(m);lg(m);toast('🔔 '+m)});SOC.hist=SOC.hist.slice(0,25);if((t.rows||[]).length)sv();
-  SOC.inb=(r.inbox||[]).filter(m=>m.kind=='vinv'||m.kind=='job');SOC.users=r.users||[];SOC.vents=r.vents||[];SOC.emps=r.emps||[];SOC.err=''}
+  SOC.fr=(await sx('x_friends',{})).friends||[];SOC.inb=(r.inbox||[]).filter(m=>m.kind=='vinv'||m.kind=='job'||m.kind=='freq');SOC.users=r.users||[];SOC.vents=r.vents||[];SOC.emps=r.emps||[];SOC.err=''}
  catch(e){SOC.err=sErr(e)}
  socBusy=false;socBadge();render()}
 async function socMonth(){if(!conn)return;for(const m of SOC.emps.filter(m=>m.boss==ACC)){if(S.cash<m.sal){lg('⚠️ Kas kurang untuk gaji @'+m.worker);continue}try{await sx('x_pay_sal',{p_emp:m.id});S.cash-=m.sal;lg('💼 Gaji @'+m.worker+' '+sg(-m.sal));sv()}catch(e){}}}
@@ -1324,16 +2155,21 @@ document.addEventListener('click',async e=>{const t=e.target.closest('[data-s]')
    await sx('x_respond',{p_msg:+x,p_yes:yes});if(yes&&m.kind=='vinv'){S.cash-=+m.data.cap;lg('🏭 Bergabung di '+m.data.name+' '+sg(-m.data.cap))}else if(yes)lg('👔 Menerima kerja dari @'+m.from);toast(yes?'Diterima ✓':'Ditolak.')}
   else if(a=='pay'){const m=SOC.emps.find(z=>z.id==x);if(!cash(+m.sal))return;await sx('x_pay_sal',{p_emp:+x});S.cash-=m.sal;lg('💼 Gaji @'+m.worker+' '+sg(-m.sal));toast('Gaji dibayar.')}
   else if(a=='quit'){if(!confirm('Akhiri hubungan kerja?'))return;await sx('x_quit',{p_emp:+x});toast('Hubungan kerja diakhiri.')}
+  else if(a=='fadd'){const u=normId($('sfa').value);if(!u)return toast('Isi username teman.');await sx('x_friend_req',{p_to:u});$('sfa').value='';toast('Permintaan teman terkirim ke @'+u)}
+  else if(a=='frs'){const yes=y=='1';await sx('x_friend_resp',{p_msg:+x,p_yes:yes});toast(yes?'Kalian sekarang berteman 👥':'Ditolak.')}
+  else if(a=='fdel'){if(!confirm('Hapus @'+x+' dari teman?'))return;await sx('x_unfriend',{p_to:x});toast('Dihapus dari teman.')}
+  else if(a=='fgo'){$('sgto').value=x;$('sgam').focus();return}
   else if(a=='lv'){if(!confirm('Keluar/bubarkan usaha? Modal kembali 70%.'))return;await sx('x_vent_leave',{p_vent:+x});toast('Selesai.')}
   sv();await socSync()}catch(er){toast(sErr(er))}});
 function renderSoc(){const U=SOC.users,mine=SOC.vents.filter(v=>v.owner==ACC);
- const uo='<option value="">— pilih pemain —</option>'+U.map(u=>'<option value="'+esc(u.id)+'">@'+esc(u.id)+(u.dn?' · '+esc(u.dn):'')+'</option>').join('');
+ const uo='<option value="">— pilih pemain —</option>'+U.slice().sort((a,b)=>SOC.fr.some(f=>f.id==b.id)-SOC.fr.some(f=>f.id==a.id)).map(u=>'<option value="'+esc(u.id)+'">'+(SOC.fr.some(f=>f.id==u.id)?'⭐ ':'')+'@'+esc(u.id)+(u.dn?' · '+esc(u.dn):'')+'</option>').join('');
  ['sgto','svp','shp'].forEach(i=>setH($(i),uo));
  if(!$('svf').options.length)$('svf').innerHTML=$('cofs').innerHTML;
  setH($('svv'),mine.length?mine.map(v=>'<option value="'+v.id+'">'+esc(v.name)+'</option>').join(''):'<option value="">(belum punya usaha sendiri)</option>');
  setH($('shv'),'<option value="">Tanpa usaha tertentu</option>'+SOC.vents.map(v=>'<option value="'+v.id+'">Untuk '+esc(v.name)+'</option>').join(''));
  $('sst').textContent=!conn?'Masuk ke akun dulu.':SOC.err?'⚠️ '+SOC.err:U.length+' pemain lain terdaftar · sinkron tiap 20 detik';
- setH($('sinb'),SOC.inb.map(m=>{const d=m.data;return'<div class="card" style="margin:6px 0"><b>'+(m.kind=='vinv'?'🏭 Undangan usaha dari @':'👔 Tawaran kerja dari @')+esc(m.from)+'</b><div class="mu">'+(m.kind=='vinv'?esc(d.name)+' ('+esc(fnm(d.field))+') · modalmu '+rp(d.cap)+' · laba dibagi sesuai porsi modal':esc(d.role)+(d.vname?' di '+esc(d.vname):'')+' · gaji '+rp(d.sal)+'/bln')+'</div><div class="row"><button class="pc" data-s="rsp:'+m.id+':1">✅ Terima</button><button class="pc" data-s="rsp:'+m.id+':0">❌ Tolak</button></div></div>'}).join('')||'<div class="mu" style="margin-top:6px">Tidak ada permintaan baru.</div>');
+ setH($('sinb'),SOC.inb.map(m=>{const d=m.data;return'<div class="card" style="margin:6px 0"><b>'+(m.kind=='freq'?'👥 Permintaan teman dari @':m.kind=='vinv'?'🏭 Undangan usaha dari @':'👔 Tawaran kerja dari @')+esc(m.from)+'</b><div class="mu">'+(m.kind=='freq'?'Ingin berteman denganmu':m.kind=='vinv'?esc(d.name)+' ('+esc(fnm(d.field))+') · modalmu '+rp(d.cap)+' · laba dibagi sesuai porsi modal':esc(d.role)+(d.vname?' di '+esc(d.vname):'')+' · gaji '+rp(d.sal)+'/bln')+'</div><div class="row"><button class="pc" data-s="'+(m.kind=='freq'?'frs':'rsp')+':'+m.id+':1">✅ Terima</button><button class="pc" data-s="'+(m.kind=='freq'?'frs':'rsp')+':'+m.id+':0">❌ Tolak</button></div></div>'}).join('')||'<div class="mu" style="margin-top:6px">Tidak ada permintaan baru.</div>');
+ setH($('sfl'),SOC.fr.map(f=>'<div class="card" style="margin-top:8px"><b><span class="'+(f.on?'up':'mu')+'">●</span> @'+esc(f.id)+(f.dn?' · '+esc(f.dn):'')+'</b><div class="mu">'+(f.on?'Online':'Offline')+'</div><div class="row"><button class="pc" data-s="fgo:'+esc(f.id)+'">🎁 Kirim uang</button><button class="pc" data-s="fdel:'+esc(f.id)+'">Hapus</button></div></div>').join('')||'<div class="mu" style="margin-top:8px">Belum punya teman. Tambahkan lewat username.</div>');
  setH($('shist'),SOC.hist.map(h=>'<div>'+esc(h)+'</div>').join('')||'<div>Belum ada.</div>');
  setH($('svl'),SOC.vents.map(v=>{const tot=v.partners.reduce((a,p)=>a+p.cap,0),me=v.partners.find(p=>p.id==ACC),w=SOC.emps.filter(z=>z.vent==v.id).length;
   return'<div class="card" style="margin-top:8px"><b>🏭 '+esc(v.name)+(v.owner==ACC?' (pendiri)':'')+'</b><div class="mu">'+esc(fnm(v.field))+' · total modal '+rp(tot)+' · porsimu '+(me?(me.cap/tot*100).toFixed(1):0)+'% · '+w+' karyawan<br>Mitra: '+v.partners.map(p=>'@'+esc(p.id)+' '+(p.cap/tot*100).toFixed(0)+'%').join(', ')+'</div><div class="row"><button class="pc" data-s="lv:'+v.id+'">'+(v.owner==ACC?'Bubarkan':'Keluar')+'</button></div></div>'}).join(''));
