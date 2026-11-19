@@ -149,6 +149,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 
 <div id="v-love" style="display:none"><section class="pn"><h2>💕 Pasangan</h2><div id="lovec"></div></section><section class="pn" style="margin-top:12px"><h2>👶 Keluarga &amp; anak</h2><div id="famc"></div></section></div>
 <div id="v-acc" style="display:none"><div class="g2">
+<section class="pn"><h2>⏳ Mode AFK</h2><div class="mu">Saat kamu menutup browser, pindah tab, atau meninggalkan game, waktu tetap dihitung begitu kamu kembali (1 detik nyata = 1 langkah, 3 detik = 1 hari game). Kecepatan ⏸ Dijeda tidak dihitung, dan perhitungan berhenti otomatis kalau kas jadi minus.</div><label class="mu" for="afkh">Batas waktu yang dihitung</label><select id="afkh"><option value="0">Nonaktif</option><option value="1">1 jam</option><option value="4">4 jam</option><option value="8">8 jam</option><option value="12">12 jam</option><option value="24">24 jam</option></select><div class="mu" id="afkn"></div></section>
 <section class="pn"><h2>👤 Profil</h2><div class="mu" id="acs"></div>
 <label class="mu" for="dnm">Nama tampilan (muncul di header dan leaderboard)</label><input type="text" id="dnm" maxlength="20" placeholder="mis. Budi si Sultan">
 <label class="mu" style="display:block;margin:4px 0"><input type="checkbox" id="pubp" style="width:auto;display:inline;margin:0 6px 0 0">Tampilkan portofolio saham di profil publik (leaderboard)</label><div class="row"><button class="pc" id="dns">Simpan nama tampilan</button></div><hr class="sep">
@@ -293,12 +294,12 @@ const SB_URL='https://qvjtdyoajpshijfnagys.supabase.co',SB_KEY='sb_publishable_Y
 const rpc=async(f,b,ka)=>{const c=new AbortController(),t=setTimeout(()=>c.abort(),15000);try{const r=await fetch(SB_URL+'/rest/v1/rpc/'+f,{method:'POST',keepalive:!!ka,signal:c.signal,headers:Object.assign({'Content-Type':'application/json',apikey:SB_KEY},SB_KEY.startsWith('sb_')?{}:{Authorization:'Bearer '+SB_KEY}),body:JSON.stringify(b)});if(!r.ok)throw new Error(await r.text());const tx=await r.text();return tx?JSON.parse(tx):null}finally{clearTimeout(t)}};
 const sha=async t=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t)))].map(x=>x.toString(16).padStart(2,'0')).join('');
 function applyLoad(s,h){S=Object.assign(fresh(),JSON.parse(s));delete S.h;mig();if(h){try{S.h=JSON.parse(h)}catch(e){}}initA();buildJobSel();buildList();render();toast('Progres dimuat dari server ('+fd(S.day)+')')}
-let conn=false,rt=0;
+let conn=false,rt=0,CU=0,CUJ=null;
 /* cloud() ada di blok akun di bawah */
 document.addEventListener('visibilitychange',()=>{if(document.hidden){if(DOC&&dirty)flush(false,true)}else if(!conn)cloud()});
-addEventListener('pagehide',()=>{if(DOC&&dirty)flush(false,true)});
+addEventListener('pagehide',()=>{sv();if(DOC)flush(false,true)});
 addEventListener('online',()=>{if(!conn)cloud();else dirty=true});
-function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),3200);return false}
+function toast(t){if(CU)return false;const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),3200);return false}
 /* ---- harga & riwayat ---- */
 function back(a){const o=[];let p=P[a.id];const v=a.t=='nav'?a.s:a.vol*.052,d=(a.t=='nav'?a.r:a.mu)/365;for(let i=0;i<365;i++){o.unshift(p);p=p/Math.exp(d+v*N())}return o}
 function initA(){P={};B={};SER={};if(!S.fv)S.fv={};A.forEach(a=>{P[a.id]=S.sim[a.id]||a.p;B[a.id]=P[a.id];SER[a.id]=[]});if(!S.h)S.h={};A.forEach(a=>{if(!S.h[a.id]||S.h[a.id].length<30)S.h[a.id]=back(a)})}
@@ -308,9 +309,47 @@ function step(){tk++;
  A.forEach(a=>{if(a.t=='stk'){const F=S.fv[a.id]=(S.fv[a.id]||P[a.id])*(1+a.mu*dt);P[a.id]=Math.max(a.p*.03,P[a.id]*(1+a.mu*dt+a.b*(mk+dd)+a.vol*sq*.8*N()+(TP[a.id]||0)+.0015*(F/P[a.id]-1)))}});
  if(tk%DT==0)day();
  A.forEach(a=>{const s=SER[a.id];s.push(P[a.id]);if(s.length>240)s.shift();S.sim[a.id]=P[a.id]});
- if(tk%5==0){chkAch();sv()}
+ if(tk%5==0){if(!CU){chkAch();sv()}}
 }
-setInterval(()=>{for(let q=0;q<SPD;q++)step();render()},1000);
+/* ---- mode AFK: waktu tetap berjalan saat tab tidak aktif atau browser ditutup ---- */
+let AFKH=8,AR=null;try{const v=localStorage.getItem('blafk');if(v!=null&&!isNaN(+v))AFKH=+v}catch(e){}
+const BOOT0=Date.now();
+const afkWait=()=>{try{return !conn&&!guest&&Date.now()-BOOT0<8000&&!!localStorage.getItem('bl7acct')}catch(e){return false}};
+const durTxt=ms=>{const m=Math.round(ms/6e4),h=Math.floor(m/60);return h?h+' jam '+(m%60)+' menit':m+' menit'};
+const daysTxt=d=>{const y=Math.floor(d/360),m=Math.floor(d%360/30);return(y?y+' tahun ':'')+(m||!y?m+' bulan':'')};
+function afkUi(h){let o=$('afkov');if(!o){o=document.createElement('div');o.id='afkov';o.setAttribute('role','dialog');o.style.cssText='position:fixed;inset:0;background:rgba(10,20,25,.62);display:flex;align-items:center;justify-content:center;z-index:30;padding:16px';document.body.appendChild(o)}o.innerHTML='<div class="pn" style="max-width:430px;width:100%">'+h+'</div>';o.style.display='flex'}
+function afkHide(){const o=$('afkov');if(o)o.style.display='none'}
+function afkSummary(){if(!AR||document.hidden)return;const r=AR;AR=null;if(r.steps<60){return}
+ const R3=(a,b,c)=>'<tr><td>'+a+'</td><td>'+b+'</td><td><b>'+c+'</b></td></tr>',w=val();
+ afkUi('<h2>👋 Selamat datang kembali!</h2><div class="mu">Kamu pergi '+durTxt(r.away)+(r.capped?' (dihitung maks. '+AFKH+' jam)':'')+'.'+(r.stop=='cash'?' <b class="dn">Dihentikan lebih awal karena kas jadi minus.</b>':'')+(r.stop=='err'?' <b class="dn">Dihentikan karena terjadi kesalahan.</b>':'')+(r.skip?' Dihentikan atas permintaanmu.':'')+'</div><table style="margin:8px 0"><tbody>'
+  +R3('Waktu game','',' +'+daysTxt(S.day-r.d0))+R3('Kekayaan bersih',rp(r.v0),rp(w)+' ('+sg(w-r.v0)+')')+R3('Kas',rp(r.c0),rp(S.cash))+R3('Kebahagiaan',Math.round(r.h0),Math.round(S.hap))
+  +'</tbody></table><div class="row"><button class="pc" id="afko">Lanjut main</button></div>');$('afko').onclick=afkHide}
+function runCatch(n,away,capped){
+ const s0=S,L0=S.ls;if(!AR)AR={v0:val(),c0:S.cash,d0:S.day,h0:S.hap,steps:0,away:0,capped:false,stop:'',skip:false};
+ AR.away+=away;AR.capped=AR.capped||capped;
+ if(n<=30){CU=1;try{for(let i=0;i<n;i++){step();S.ls=L0+(i+1)*1000}}catch(e){}CU=0;S.ls=Date.now();AR.steps+=n;if(!document.hidden)afkSummary();else sv();return}
+ CU=1;CUJ=1;let done=0,stop='',skip=false;const vis=!document.hidden;
+ if(vis){afkUi('<h2>⏳ Menyusul progres saat kamu pergi</h2><div class="mu">Kamu pergi '+durTxt(away)+(capped?' (dihitung maks. '+AFKH+' jam)':'')+'. Menghitung '+daysTxt(Math.round(n/DT))+' waktu game…</div><div class="gl" style="height:12px"><i id="afkp" style="width:0%"></i></div><div class="mu" id="afkt">0%</div><div class="row"><button class="pc" id="afks">Hentikan di sini</button></div>');$('afks').onclick=()=>{skip=true}}
+ const fin=()=>{CU=0;CUJ=null;S.ls=Date.now();try{chkAch()}catch(e){}AR.steps+=done;AR.stop=stop||AR.stop;AR.skip=skip||AR.skip;
+  lg('⏳ Progres offline '+durTxt(done*1000)+(stop=='cash'?' (berhenti: kas minus)':''));sv();render();afkHide();afkSummary()};
+ const chunk=()=>{
+  if(S!==s0){CU=0;CUJ=null;AR=null;afkHide();return}
+  const lim=performance.now()+(document.hidden?250:30);
+  try{while(done<n&&!skip&&performance.now()<lim){step();done++;S.ls=L0+done*1000;if(S.cash<0&&AR.c0>=0){stop='cash';break}}}catch(e){stop='err'}
+  if(done>=n||skip||stop){fin();return}
+  const e=$('afkp');if(e){const p=Math.round(done/n*100);e.style.width=p+'%';$('afkt').textContent=p+'%'}
+  setTimeout(chunk,0)};
+ setTimeout(chunk,30)}
+document.addEventListener('visibilitychange',()=>{if(!document.hidden&&AR&&!CUJ)afkSummary()});
+setInterval(()=>{
+ if(CUJ||afkWait())return;
+ if(S.pz&&SPD){SPD=0;$('spd').textContent='⏸ Dijeda'}
+ const now=Date.now();if(!S.ls||SPD==0||AFKH<=0)S.ls=now;
+ const away=now-S.ls;
+ if(away>4500){if(S.cash<0){if(away>6e4)toast('Mode AFK tidak berjalan karena kas minus. Perbaiki keuanganmu dulu.');S.ls=now}
+  else{const cap=AFKH*36e5,n=Math.floor(Math.min(away,cap)/1000);if(n>=3){runCatch(n,away,away>cap);return}}}
+ for(let q=0;q<SPD;q++)step();S.ls=now;render()},1000);
+{const a=$('afkh'),n=$('afkn'),u=()=>{n.textContent=AFKH>0?'Aktif: maksimal '+AFKH+' jam waktu nyata ≈ '+daysTxt(AFKH*1200)+' waktu game per sesi.':'Nonaktif: waktu hanya berjalan saat game terbuka dan terlihat.'};a.value=String(AFKH);u();a.onchange=()=>{AFKH=+a.value;try{localStorage.setItem('blafk',AFKH)}catch(e){}u();toast(AFKH>0?'Mode AFK aktif (maks. '+AFKH+' jam).':'Mode AFK dinonaktifkan.')}}
 /* ---- karier ---- */
 const XT=[0,90,280,620,1200,2100,3500],SKR=[0,0,8,20,35,55,75],HR=[0,0,0,35,45,55,65],M=[1,1.7,2.8,4.5,7,10.5,16],TN=['Trainee','Junior','Staf','Senior','Supervisor','Manajer','Direktur'];
 const JOBS=`ret|Retail & Penjualan|Retail|2.5|0
@@ -579,7 +618,7 @@ $('enr').onclick=()=>{const k=$('edus').value,e=EDU[k],ed=S.edu;if(ed.cur)return
 $('gop').onclick=()=>{if(S.sch!='pilih')return;if($('trk').value=='smk'){const j=$('jur').value;S.sch='smk';S.sk[j]=Math.min(100,(S.sk[j]||0)+25);S.xp[j]=(S.xp[j]||0)+60;lg('Masuk SMK jurusan '+JB(j).n+': +25 skill, +60 XP')}else{S.sch='sma';S.sma=1;lg('Masuk SMA: diskon biaya kuliah 20%')}S.sg=1;sv();render()};
 const ABT=()=>{$('abr').textContent='🔢 Angka: '+(ABR==1e6?'≥1M':ABR==1e9?'≥1B':'Penuh')};
 $('abr').onclick=()=>{ABR=ABR==1e6?1e9:ABR==1e9?0:1e6;try{localStorage.setItem('bl7abr',ABR)}catch(e){}ABT();buildList();render()};ABT();
-$('spd').onclick=()=>{SPD=SPD==1?3:SPD==3?10:SPD==10?0:1;$('spd').textContent=SPD?'⏩ Kecepatan ×'+SPD:'⏸ Dijeda'};
+$('spd').onclick=()=>{SPD=SPD==1?3:SPD==3?10:SPD==10?0:1;S.pz=SPD===0?1:0;sv();$('spd').textContent=SPD?'⏩ Kecepatan ×'+SPD:'⏸ Dijeda'};
 /* ---- tampilan ---- */
 const fo=(el,o)=>{$(el).innerHTML=o.map(([k,n,c])=>`<option value="${k}">${n}${c!=null?' ('+(c?rp(c)+'/bln':'gratis')+')':''}</option>`).join('')};
 fo('job',[['','Belum bekerja'],...JOBS.map(j=>[j.id,j.n+' (mulai '+rp(j.b)+', min. '+ELV[reqE(j,0)]+')'])]);fo('jur',JOBS.map(j=>[j.id,j.n]));
