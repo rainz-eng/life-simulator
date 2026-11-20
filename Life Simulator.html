@@ -110,7 +110,7 @@ table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:right;
 
 <div id="v-car" style="display:none"><div id="pilih" class="pn" style="display:none;margin-bottom:12px"><b>🎓 Lulus SMP! Pilih jalurmu</b><div class="mu">SMA: diskon kuliah 20%. SMK: skill +25 dan XP awal di bidang pilihan.</div><div class="row"><select id="trk" style="width:auto"><option value="sma">SMA (umum)</option><option value="smk">SMK (kejuruan)</option></select><select id="jur" style="width:auto"></select><button class="pc" id="gop">Mulai sekolah</button></div></div>
  <div class="g2">
-  <section class="pn"><h2>Pekerjaan</h2><select id="job"></select><div id="jinfo" class="mu"></div><div class="gl"><i id="xpb"></i></div>
+  <section class="pn"><h2>Pekerjaan</h2><select id="job"></select><label class="mu" for="emp" style="display:block;margin-top:8px">Perusahaan tempat bekerja</label><select id="emp"></select><div id="empinfo" class="mu"></div><div id="jinfo" class="mu"></div><div class="gl"><i id="xpb"></i></div>
    <div class="row"><button class="pc" id="crs"></button><button class="pc" id="exm"></button></div><div class="mu" id="exmt"></div></section>
   <section class="pn"><h2>Tangga karier</h2><div class="lad" id="lad"></div></section>
     <section class="pn"><h2>Pendidikan</h2><div id="eduinfo"></div><div class="gl"><i id="eduprog"></i></div><select id="edus"></select><button class="pc" id="enr">Daftar kuliah</button></section>
@@ -267,7 +267,7 @@ const sh=n=>{let a=Math.abs(n),i=0;if(!(ABR>0)||a<ABR||!isFinite(a))return Math.
 const rp=n=>(n<0?'-':'')+'Rp'+sh(n);
 const fp=p=>p>=1000?rp(p):'Rp'+p.toLocaleString('id-ID',{maximumFractionDigits:2});
 const sg=n=>(n>=0?'+':'')+rp(n);
-const fresh=()=>({cash:0,hold:{},cost:{},log:['H1 B1 T1: kamu kelas 1 SD. Terima uang jajan tiap bulan dan belajar berinvestasi sejak dini!'],day:0,sim:{},fv:{},auto:null,job:null,xp:{},home:'ortu',food:'hemat',life:'min',hap:50,owned:0,houseV:0,sch:'sd',sg:1,sy:0,sma:0,trn:'umum',mods:[],nws:[],cpi:1,wage:1,cc:'ID',adp:0,lv:{},sk:{},edu:{lv:0,cur:null,left:0},cool:0,mar:0,glow:null,vcd:0,biz:{},pt:null,cands:[],fcd:0,div:0,ins:{h:'none',v:0,r:0},kids:[],preg:0,veh:{own:[]},ach:{},ttl:null,tman:0,pk:0,nt:0,nv:0,mort:null,hn:'',hp:0,kl:0,fav:{},dr:'',ds:0,dn:'',hd:'',hg:.04,tips:[],cos:[],th:0,pubp:1,bk:{sav:0,dep:[],int:0},cv:{t:[],c:[]},bc:null,of:{q:[],a:[],debt:0,dm:0,st:{ok:0,sc:0,rj:0,lost:0,gain:0}},rent:0,inv:[],iid:0,fi:{mo:0,best:0,ok:0},neg:{j:'',m:0,cd:0,fl:0,w:0},lo:{n:0,pend:null,jk:0,jv:0},meta:{rb:0,pts:0,earn:0,up:{},tal:[],bt:null,bd:'',achc:0,fire:0}});
+const fresh=()=>({cash:0,hold:{},cost:{},log:['H1 B1 T1: kamu kelas 1 SD. Terima uang jajan tiap bulan dan belajar berinvestasi sejak dini!'],day:0,sim:{},fv:{},auto:null,job:null,xp:{},home:'ortu',food:'hemat',life:'min',hap:50,owned:0,houseV:0,sch:'sd',sg:1,sy:0,sma:0,trn:'umum',mods:[],nws:[],cpi:1,wage:1,cc:'ID',adp:0,lv:{},sk:{},edu:{lv:0,cur:null,left:0},cool:0,mar:0,glow:null,vcd:0,biz:{},pt:null,cands:[],fcd:0,div:0,ins:{h:'none',v:0,r:0},kids:[],preg:0,veh:{own:[]},ach:{},ttl:null,tman:0,pk:0,nt:0,nv:0,mort:null,hn:'',hp:0,kl:0,fav:{},dr:'',ds:0,dn:'',hd:'',hg:.04,tips:[],cos:[],th:0,pubp:1,bk:{sav:0,dep:[],int:0},cv:{t:[],c:[]},bc:null,of:{q:[],a:[],debt:0,dm:0,st:{ok:0,sc:0,rj:0,lost:0,gain:0}},rent:0,inv:[],iid:0,fi:{mo:0,best:0,ok:0},em:{},neg:{j:'',m:0,cd:0,fl:0,w:0},lo:{n:0,pend:null,jk:0,jv:0},meta:{rb:0,pts:0,earn:0,up:{},tal:[],bt:null,bd:'',achc:0,fire:0}});
 /* ---- penyimpanan: server (db) + cadangan lokal ---- */
 const PT={rumah:{y:.0034,vac:.08,hold:.0006,gm:1,l:'Rumah'},apart:{y:.0043,vac:.12,hold:.0012,gm:.8,l:'Apartemen'}};
 let ACC='',ACCT=null,S=fresh(),P={},B={},SER={},cur='RDPU',cat='all',tk=0,tf='H',vw='inv',SPD=1,DOC=null,HDOC=null,dirty=false,busy=false,hc=0,mpts=null,hv=-1;
@@ -373,13 +373,80 @@ ene|Energi & Pertambangan|Energi|4.5|2
 prp|Properti & Agen|Properti|2.8|0
 pns|Pemerintahan (ASN)|ASN|3|2`.split('\n').map(l=>{const[id,n,r,b,e]=l.split('|');return{id,n,r,b:+b*1e6,e:+e}});
 const ELV=['SMA/SMK','D3','S1','S2'],EDU={d3:['Diploma 3',1,15e5,6],s1:['Sarjana (S1)',2,25e5,8],s2:['Magister (S2)',3,4e6,5]};
-const JB=id=>JOBS.find(j=>j.id==id),reqE=(f,l)=>Math.min(3,f.e+(l>=3?1:0)+(l>=5&&f.e>=1?1:0)),lvl=id=>S.lv[id]||0,title=(f,l)=>TN[l]+' '+f.r;
+const JB=id=>JOBS.find(j=>j.id==id),reqE=(f,l)=>Math.min(3,f.e+(l>=3?1:0)+(l>=5&&f.e>=1?1:0)),lvl=id=>S.lv[id]||0,title=(f,l)=>(f.t&&f.t[l])||TN[l]+' '+f.r;
+/* ---- jabatan nyata per bidang, gaji per jenjang, dan pilihan perusahaan ---- */
+const LAD={};`ret|Pramuniaga Trainee;Kasir & Pramuniaga;Sales Executive;Senior Sales Executive;Store Manager;Area Manager;Direktur Operasional Ritel|2.9,4.8,7.8,12.8,20.3,31,48.1
+kul|Commis Trainee;Commis Chef;Chef de Partie;Sous Chef;Executive Chef;Food & Beverage Manager;General Manager Hotel & Restoran|2.8,4.6,7.6,12.5,19.8,30.1,48.1
+cs|Customer Service Trainee;Customer Service Officer;Senior Customer Service Officer;Team Leader CS;Customer Service Supervisor;Customer Experience Manager;Direktur Layanan Pelanggan|3.1,4.9,8,12.8,19.8,30.1,46.3
+mkt|Marketing Intern;Junior Marketing Executive;Digital Marketing Specialist;Senior Digital Marketing Specialist;Marketing Manager;Head of Marketing;Chief Marketing Officer (CMO)|3.1,5.3,8.8,14.2,22.3,33.8,51.6
+log|Kurir & Helper Gudang;Staf Admin Logistik;Staf Operasional Logistik;Senior Logistics Officer;Supervisor Logistik;Logistics Manager;Direktur Supply Chain|3.1,5.1,8.4,13.6,21.3,32,49
+mfg|Operator Produksi;Teknisi Produksi;Staf Engineering Produksi;Senior Process Engineer;Supervisor Produksi;Plant Manager;Direktur Operasional Pabrik|3.3,5.3,8.6,14,21.8,32.9,49.8
+it|Software Engineer Intern;Junior Software Developer;Software Developer;Senior Software Developer;Tech Lead;Engineering Manager;Chief Technology Officer (CTO)|3.7,6.6,10.8,17,25.7,37.6,55.2
+dat|Data Analyst Intern;Junior Data Analyst;Data Analyst;Senior Data Analyst;Lead Data Scientist;Head of Data;Chief Data Officer (CDO)|3.7,6.6,10.8,17,25.7,37.6,55.2
+ux|Design Intern;Junior Graphic Designer;UI/UX Designer;Senior UI/UX Designer;Lead Designer;Design Manager;Creative Director|3.1,5.3,8.8,14.2,22.3,33.8,51.6
+fin|Management Trainee (ODP);Teller & Staf Keuangan;Finance Officer;Assistant Vice President;Vice President;Senior Vice President;Direktur Keuangan (CFO)|3.7,6.5,10.6,17,25.7,37.6,56.1
+kes|Asisten Perawat;Perawat Pelaksana;Perawat Ahli;Kepala Ruangan;Manajer Keperawatan;Kepala Bidang Pelayanan Medis;Direktur Rumah Sakit|3.3,5.5,9,14.5,22.8,34.8,53.4
+gur|Guru Honorer;Guru Pertama;Guru Muda;Guru Madya;Wakil Kepala Sekolah;Kepala Sekolah;Kepala Dinas Pendidikan|2.9,4.8,7.8,12.5,19.3,29.1,44.5
+hkm|Legal Intern;Paralegal;Junior Associate;Senior Associate;Legal Manager;Head of Legal;Managing Partner|3.5,6.3,10.4,16.8,25.7,38.5,56.1
+ars|Drafter Trainee;Drafter & Pelaksana Lapangan;Site Engineer;Senior Engineer / Arsitek;Project Manager;Construction Manager;Direktur Proyek|3.3,5.5,9,14.5,22.8,34.8,53.4
+tan|Asisten Kebun;Mandor Kebun;Staf Agronomi;Senior Agronomist;Asisten Manajer Kebun;Estate Manager;Direktur Agribisnis|2.8,4.6,7.4,12.2,19.3,29.1,46.3
+med|Jurnalis Magang;Reporter;Jurnalis Senior;Redaktur;Redaktur Pelaksana;Pemimpin Redaksi;Direktur Media|2.9,4.9,8,12.8,19.8,30.1,46.3
+wis|Front Office Trainee;Tour Guide & Resepsionis;Event Coordinator;Senior Event Planner;Operations Supervisor;Manajer Pariwisata;Direktur Pariwisata & Event|2.9,4.8,7.8,12.8,20.3,31,48.1
+ene|Field Trainee;Operator Lapangan;Teknisi Energi;Engineer Pertambangan & Migas;Superintendent;Mine / Plant Manager;Direktur Operasi|3.7,6.5,10.6,17,26.2,38.5,57
+prp|Property Agent Trainee;Property Agent;Senior Property Agent;Sales Supervisor;Sales Manager;Head of Sales;Marketing Director Properti|2.8,4.8,8.4,14.2,22.8,34.8,53.4
+pns|Calon PNS (CPNS);Staf Pelaksana (Gol. II);Analis Kebijakan Ahli Pertama;Analis Kebijakan Ahli Muda;Kepala Subbagian (Eselon IV);Kepala Bidang (Eselon III);Kepala Dinas (Eselon II)|3.2,5.2,8.6,13.8,21.8,32.9,49.8
+pil|Cadet Pilot;Second Officer;First Officer;Senior First Officer;Captain;Senior Captain & Instruktur;Chief Pilot|5.5,9,14.7,24,35.6,48.9,66.8
+ilm|Asisten Peneliti;Peneliti Ahli Pertama;Peneliti Ahli Muda;Peneliti Ahli Madya;Peneliti Ahli Utama;Kepala Pusat Riset;Direktur Riset|4.6,7.6,12.2,19,28.7,41.4,58.7
+dpl|Calon Diplomat (Atase);Sekretaris Ketiga;Sekretaris Kedua;Sekretaris Pertama;Counsellor;Minister Counsellor;Duta Besar|4.6,7.6,12.2,19,28.7,41.4,58.7`.split('\n').forEach(l=>{const[id,t,s]=l.split('|');LAD[id]={t:t.split(';'),sl:s.split(',').map(x=>+x*1e6)}});
+const jobFix=j=>{const d=LAD[j.id];if(d){j.t=d.t;j.sl=d.sl;j.b=d.sl[0]}else{j.sl=M.map(m=>j.b*m);j.t=TN.map(t=>t+' '+j.r)}};
+JOBS.forEach(jobFix);
+const ETR=[{n:'Usaha lokal / UMKM',h:2,r:.003,sk:0,lv:0},{n:'Perusahaan nasional',h:0,r:0,sk:0,lv:0},{n:'BUMN / instansi / korporasi besar',h:1,r:-.002,sk:10,lv:0},{n:'Multinasional / unicorn / elit',h:-3,r:.002,sk:20,lv:1}];
+const EMPL={};`ret|Toko Lokal & Minimarket Mandiri,0,.85;Matahari Department Store,1,1;Alfamart & Indomaret,1,1.05;Mitra Adiperkasa (MAP),2,1.15;IKEA Indonesia,3,1.38
+kul|Warung & Restoran Lokal,0,.85;Hotel Bintang 3 (Grup Nasional),1,1;Waralaba Restoran Cepat Saji,1,1.05;Hotel Indonesia Natour (BUMN),2,1.15;Marriott / Ritz-Carlton,3,1.4
+cs|Call Center Outsourcing Lokal,0,.85;Perusahaan Multifinance,1,1;Bank Swasta Nasional,1,1.06;Telkomsel (BUMN),2,1.15;Shopee / Gojek,3,1.38
+mkt|Agensi Digital Lokal,0,.85;Startup E-commerce,1,1;Kompas Gramedia,1,1.07;Telkom Indonesia (BUMN),2,1.15;Unilever Indonesia,3,1.4
+log|Ekspedisi Lokal,0,.85;J&T Express / JNE,1,1;SiCepat / AnterAja,1,1.05;Pos Indonesia / Pelindo (BUMN),2,1.15;DHL / Maersk Indonesia,3,1.4
+mfg|Pabrik Lokal Skala Kecil,0,.85;Indofood / Mayora,1,1;Astra Otoparts,1,1.08;Krakatau Steel / Pindad (BUMN),2,1.16;Toyota Motor Manufacturing,3,1.42
+it|Software House Lokal,0,.85;Startup Seri A-B,1,1;Tiket.com / Bukalapak,1,1.1;Telkom Indonesia (BUMN),2,1.15;Google / Microsoft Indonesia,3,1.5
+dat|Konsultan Data Lokal,0,.85;Startup Seri B,1,1;Bank Swasta (Tim Data),1,1.1;Telkomsel (BUMN),2,1.15;Grab / Shopee Indonesia,3,1.45
+ux|Studio Desain Lokal,0,.85;Agensi Kreatif Nasional,1,1;Startup Fintech,1,1.08;Telkom Indonesia (BUMN),2,1.12;Gojek / Grab,3,1.4
+fin|Koperasi & BPR Lokal,0,.85;Perusahaan Sekuritas,1,1;Bank Swasta Nasional (BCA / CIMB),1,1.08;Bank Mandiri / BRI / BNI (BUMN),2,1.16;Citibank / HSBC / Standard Chartered,3,1.42
+kes|Klinik Swasta,0,.85;Rumah Sakit Swasta Nasional,1,1;Rumah Sakit Pemerintah (RSUD / RSUP),2,1.1;Rumah Sakit Internasional,3,1.35
+gur|Sekolah Swasta Kecil & Bimbel,0,.85;Sekolah Swasta Nasional,1,1;Edtech (Ruangguru / Zenius),1,1.08;Sekolah Negeri (ASN),2,1.12;Sekolah Internasional,3,1.4
+hkm|Kantor Notaris Lokal,0,.85;Firma Hukum Nasional,1,1;Divisi Legal BUMN (Pertamina / PLN),2,1.15;Firma Hukum Besar (ABNR / Hadiputranto),3,1.42
+ars|Kontraktor Lokal,0,.85;Konsultan Arsitek Nasional,1,1;Developer (Ciputra / Summarecon),1,1.1;BUMN Karya (Waskita / Wijaya Karya),2,1.15;Konsultan Global (Arup / Aecom),3,1.4
+tan|Kebun Rakyat & Koperasi Tani,0,.85;Perkebunan Swasta Menengah,1,1;PTPN (BUMN Perkebunan),2,1.12;Wilmar / Cargill Indonesia,3,1.35
+med|Media Online Lokal,0,.85;Media Nasional (Detik / Kompas),1,1.05;TVRI / RRI / Antara (Media Publik),2,1.1;Reuters / Bloomberg Indonesia,3,1.35
+wis|Agen Travel Lokal,0,.85;Tour Operator Nasional,1,1;Garuda Indonesia / ITDC (BUMN),2,1.15;Traveloka / Agoda,3,1.38
+ene|Kontraktor Tambang Kecil,0,.85;PT Medco Energi,1,1.05;Adaro / Bukit Asam,1,1.1;Pertamina / PLN (BUMN),2,1.18;Chevron / ExxonMobil Indonesia,3,1.5
+prp|Agen Properti Mandiri,0,.85;Ray White / ERA Indonesia,1,1;Sinar Mas Land / Ciputra,1,1.1;Perumnas / Hutama Karya (BUMN),2,1.12;Colliers / JLL Indonesia,3,1.4
+pns|Pemerintah Desa & Kelurahan,0,.9;Pemerintah Kota / Kabupaten,1,1;Pemerintah Provinsi,1,1.05;Kementerian Pusat,2,1.12;Kemenkeu / Bappenas,3,1.25
+pil|Maskapai Lokal & Charter,0,.85;Citilink / Lion Air,1,1;Batik Air,1,1.07;Garuda Indonesia (BUMN),2,1.15;Singapore Airlines / Emirates,3,1.4
+ilm|Lembaga Riset Swasta,0,.85;Universitas Negeri (Dosen Peneliti),1,1;Lab R&D Korporasi (Kalbe / Astra),1,1.1;BRIN (Badan Riset Nasional),2,1.12;Lembaga Riset Global,3,1.4
+dpl|Biro Kerja Sama Daerah,0,.9;Kementerian Luar Negeri (Pusat),1,1;KBRI Asia & Pasifik,1,1.05;KBRI / KJRI Eropa & Amerika,2,1.12;PBB / ASEAN Secretariat,3,1.3`.split('\n').forEach(l=>{const[id,s]=l.split('|');EMPL[id]=s.split(';').map(x=>{const[n,t,m]=x.split(',');return{n,t:+t,s:+m}})});
+const emIdx=id=>{const e=EMPL[id];if(!e)return -1;const i=(S.em||{})[id];return i>=0&&i<e.length?i:Math.max(0,e.findIndex(x=>x.t==1))};
+const emOf=id=>{const e=EMPL[id],i=emIdx(id);return e&&i>=0?e[i]:null};
+const emM=f=>{const c=emOf(f.id);return c?c.s:1},emNm=f=>{const c=emOf(f.id);return c?' di '+c.n:''},emX=n=>String(n).replace('.',',');
+const emWhy=(id,i)=>{const c=EMPL[id][i],r=ETR[c.t],o=[];if((S.sk[id]||0)<r.sk)o.push('skill min. '+r.sk);if(lvl(id)<r.lv)o.push('jabatan min. '+title(JB(id),r.lv));return o.join(' dan ')};
+const emH=()=>{const f=JB(S.job),c=f&&!S.sch?emOf(f.id):null;return c?ETR[c.t].h:0};
+function renderEm(jf){const el=$('emp'),inf=$('empinfo');
+ if(!jf||S.sch||!EMPL[jf.id]){setH(el,'<option value="">'+(S.sch?'Belum bekerja':'Pilih pekerjaan dulu')+'</option>');el.disabled=true;inf.textContent='';return}
+ const cur=emIdx(jf.id),L=EMPL[jf.id];
+ setH(el,L.map((c,i)=>{const w=emWhy(jf.id,i);return'<option value="'+i+'"'+(w?' disabled':'')+'>'+esc(c.n)+' · gaji ×'+emX(c.s)+(w?' · butuh '+esc(w):'')+'</option>'}).join(''));
+ el.disabled=false;if(el.value!=String(cur))el.value=String(cur);
+ const c=L[cur],r=ETR[c.t];
+ inf.textContent=r.n+' · gaji ×'+emX(c.s)+' dari gaji jabatan · '+(r.h>0?'suasana santai (kebahagiaan +'+r.h+')':r.h<0?'tekanan kerja tinggi (kebahagiaan '+r.h+')':'suasana kerja standar')+' · '+(r.r>0?'risiko PHK sedikit lebih tinggi':r.r<0?'risiko PHK lebih rendah':'risiko PHK standar')+'. Perusahaan besar butuh skill dan jabatan tertentu. Nama dan angka gaji disederhanakan untuk simulasi.'}
+$('emp').onchange=e=>{const f=JB(S.job);if(!f||S.sch)return;const i=+e.target.value,c=(EMPL[f.id]||[])[i];if(!c)return;const cur=emIdx(f.id),w=emWhy(f.id,i);
+ if(w){e.target.value=String(cur);return toast('Belum memenuhi syarat '+c.n+': '+w+'.')}
+ if(i==cur)return;(S.em||(S.em={}))[f.id]=i;const lost=S.neg&&S.neg.j==f.id&&S.neg.m>0;if(lost){S.neg.m=0;S.neg.j=''}
+ lg('🏢 Pindah perusahaan: '+title(f,lvl(f.id))+' di '+c.n+' (gaji ×'+emX(c.s)+')'+(lost?'. Premi hasil negosiasi di perusahaan lama hangus':''));toast('Kamu kini bekerja di '+c.n+'.');sv();render()};
+
 const HOME={ortu:['Numpang orang tua',0],kos:['Kos',8e5],kontrak:['Kontrak rumah',2e6],rumah:['Rumah milik sendiri (beli di tab Properti)',15e4]},FOOD={hemat:['Masak sendiri',9e5],warung:['Makan di warung',15e5],resto:['Restoran & kafe',3e6]},LIFE={min:['Minimalis',0],std:['Standar (hiburan, pulsa)',5e5],mewah:['Mewah (gadget, hobi)',2e6]},TRN={umum:['Angkutan umum / jalan kaki',3e5,0],motor:['Motor (cicilan + bensin)',7e5,2],mobil:['Mobil (cicilan + bensin)',3e6,6]};
 const act=()=>S.mods.filter(m=>m.until>S.day),nb=()=>Object.keys(S.biz).length+(S.cos||[]).length;
-const tgt=()=>Math.min(100,Math.max(0,40+Object.keys(LIFE).indexOf(S.life)*25+Object.keys(FOOD).indexOf(S.food)*5+Object.keys(HOME).indexOf(S.home)*3+vehHap()+(S.pt?pf().h:0)+(S.glow&&S.glow.until>S.day?S.glow.v:0)-Math.min(9,3*nb())+famHap()+netHap()+cc().h+2*UP('hap')));
+const tgt=()=>Math.min(100,Math.max(0,40+Object.keys(LIFE).indexOf(S.life)*25+Object.keys(FOOD).indexOf(S.food)*5+Object.keys(HOME).indexOf(S.home)*3+vehHap()+(S.pt?pf().h:0)+(S.glow&&S.glow.until>S.day?S.glow.v:0)-Math.min(9,3*nb())+famHap()+netHap()+cc().h+emH()+2*UP('hap')));
 const prod=()=>.6+.6*S.hap/100,hb=()=>.85+.3*S.hap/100,pt=()=>(S.adp>0?.75:1)*(S.edu.cur?.6:1)*(S.bc?.8:1)*(1-.04*nb())*(1-.03*Math.min(3,S.kids.filter(k=>kAge(k)<6).length));
 const bills=()=>(HOME[S.home][1]*hMul()+FOOD[S.food][1]+LIFE[S.life][1]+(curVeh()?0:TRN.umum[1]))*CPI()*(S.mar?1.35:1)*(1-kHelp())*pf().b*(1-.04*((S.meta.up||{}).fir||0))*rbBill()*act().reduce((p,m)=>p*(m.fx.b||1),1);
-const pay=f=>f.b*M[lvl(f.id)]*WG()*(1+negM(f.id))*(1+Math.min(100,S.sk[f.id]||0)*.004)*hb()*(1+relB(f.id))*rbPay()*act().reduce((p,m)=>p*(m.fx.s||1)*((m.fx.f&&m.fx.f[f.id])||1),1);
+const pay=f=>f.sl[lvl(f.id)]*emM(f)*WG()*(1+negM(f.id))*(1+Math.min(100,S.sk[f.id]||0)*.004)*hb()*(1+relB(f.id))*rbPay()*act().reduce((p,m)=>p*(m.fx.s||1)*((m.fx.f&&m.fx.f[f.id])||1),1);
 const spouse=()=>S.mar&&S.pt?S.pt.inc*.6*WG()/(S.pt.w||1):S.mar?3e6*WG():0,tax=g=>Math.round((ab()?g*cc().t:Math.max(0,g-4.5e6)*.08+g*.02)*(1-.04*UP('tax')));
 /* ---- dividen, asuransi, keluarga ---- */
 const DIV={BBCA:.025,BBRI:.06,BMRI:.06,BBNI:.05,BRIS:.01,TLKM:.06,EXCL:.02,TOWR:.03,ASII:.07,UNVR:.06,ICBP:.03,INDF:.04,AMRT:.01,CPIN:.025,KLBF:.03,SMGR:.025,ADRO:.08,PGAS:.06,ANTM:.03,ACES:.03,MAPI:.01},DTAX=.1,dOff=id=>[...id].reduce((t,c)=>t+c.charCodeAt(0),0)%6;
@@ -539,7 +606,7 @@ function renderCv(){const jf=JB(S.job),rb=S.meta.rb||0,tp=cvFields(),bx=(l,v)=>'
  let h='<div class="mu">Pengalaman tiap bidang tidak hilang saat kamu pindah kerja: jabatan, XP, dan skill tersimpan sebagai portofolio. Pengalaman di bidang yang berkaitan memberi poin plus di pekerjaan baru (gaji, XP kerja, peluang ujian promosi). Kembali ke bidang lama berarti melanjutkan dari jabatan terakhir.</div>';
  h+='<div class="split">'+bx('Total masa kerja',lamaTxt(tp.reduce((t,x)=>t+x.d,0)))+bx('Bidang digeluti',tp.length)+bx('Sertifikat bootcamp',S.cv.c.length)+bx('Pendidikan',ELV[S.edu.lv])+'</div>';
  if(jf)h+='<div class="mu" style="margin:6px 0">Pekerjaan sekarang: <b>'+esc(jf.n)+'</b> · poin plus dari pengalaman terkait <b>'+relPts(jf.id).toFixed(1)+'</b>: gaji +'+Math.round(relB(jf.id)*100)+'%, XP kerja +'+Math.round(relX(jf.id)*100)+'%, peluang ujian +'+Math.round(relC(jf.id))+'%.</div>';
- h+='<h3>Pengalaman per bidang</h3>'+(tp.length?'<table><thead><tr><th>Bidang</th><th>Jabatan tertinggi</th><th>Lama</th><th>Skill</th><th>Kaitan</th></tr></thead><tbody>'+tp.map(x=>{const f=JB(x.id),w=jf&&jf.id!=x.id&&REL[jf.id]&&REL[jf.id][x.id];return'<tr><td>'+esc(f.n)+(x.id==S.job?' <small>· aktif</small>':'')+'</td><td>'+TN[x.l]+' '+esc(f.r)+'</td><td>'+(x.d>0?lamaTxt(x.d):'magang/vokasi')+'</td><td>'+x.sk+'</td><td>'+(w?'terkait ×'+String(w).replace('.',','):'-')+'</td></tr>'}).join('')+'</tbody></table>':'<div class="mu">Belum ada pengalaman kerja. Pilih pekerjaan untuk mulai membangun CV.</div>');
+ h+='<h3>Pengalaman per bidang</h3>'+(tp.length?'<table><thead><tr><th>Bidang</th><th>Jabatan tertinggi</th><th>Lama</th><th>Skill</th><th>Kaitan</th></tr></thead><tbody>'+tp.map(x=>{const f=JB(x.id),w=jf&&jf.id!=x.id&&REL[jf.id]&&REL[jf.id][x.id];return'<tr><td>'+esc(f.n)+(x.id==S.job?' <small>· aktif</small>':'')+'</td><td>'+esc(title(f,x.l))+'</td><td>'+(x.d>0?lamaTxt(x.d):'magang/vokasi')+'</td><td>'+x.sk+'</td><td>'+(w?'terkait ×'+String(w).replace('.',','):'-')+'</td></tr>'}).join('')+'</tbody></table>':'<div class="mu">Belum ada pengalaman kerja. Pilih pekerjaan untuk mulai membangun CV.</div>');
  if(S.cv.c.length)h+='<h3>Sertifikat</h3>'+S.cv.c.slice().reverse().map(c=>'<div class="mu">🎓 '+esc(JB(c.f).n)+' · bootcamp '+(BCP.find(z=>z[0]==c.k)||[0,''])[1]+' · '+fd(c.d)+'</div>').join('');
  const rw=S.cv.t.slice(-8).reverse();if(rw.length)h+='<h3>Riwayat kerja</h3>'+rw.map(x=>'<div class="mu">'+esc(JB(x.f).n)+' · '+fdS(x.s)+' → '+(x.e==null?'sekarang':fdS(x.e))+' ('+lamaTxt((x.e==null?S.day:x.e)-x.s)+')</div>').join('');
  const rc=JOBS.filter(j=>(!j.rare||rb>=2)&&j.id!=S.job).map(j=>({j,p:relPts(j.id)})).filter(x=>x.p>=1).sort((a,b)=>b.p-a.p).slice(0,5);
@@ -640,14 +707,14 @@ document.addEventListener('click',e=>{const t=e.target.closest('[data-a]');if(!t
  if(a=='bu'){const d=BZ.find(z=>z[0]==x),b=S.biz[x];if(b.l>=5)return;const c=bzUp(d,b.l+1);if(S.cash<c)return toast('Kas kurang dari '+rp(c));S.cash-=c;b.l++;b.inv+=c;lg(d[1]+' naik ke level '+b.l+' '+sg(-c))}
  if(a=='bs'){const d=BZ.find(z=>z[0]==x),v=S.biz[x].inv*.6;if(!confirm('Jual '+d[1]+' seharga '+rp(v)+'?'))return;S.cash+=v;delete S.biz[x];lg('Menjual usaha '+d[1]+' '+sg(v))}
  sv();render()});
-$('job').onchange=e=>{const f=JB(e.target.value);if(f&&S.edu.lv<reqEc(f,0)){e.target.value=S.job||'';return toast('Butuh pendidikan minimal '+ELV[reqEc(f,0)]+' untuk bidang ini.'+(S.edu.lv>=reqE(f,0)-1?' Ikut bootcamp bidang ini untuk membukanya.':''))}S.job=e.target.value||null;cvSwitch(S.job);lg(f?'Bekerja di bidang '+f.n+' sebagai '+title(f,lvl(f.id))+((S.xp[f.id]||0)>0||lvl(f.id)>0?' (melanjutkan progres bidang ini)':'')+relTxt(f.id).replace(' · ',', '):'Berhenti bekerja (progres tiap bidang tetap tersimpan di CV)');sv();render()};
+$('job').onchange=e=>{const f=JB(e.target.value);if(f&&S.edu.lv<reqEc(f,0)){e.target.value=S.job||'';return toast('Butuh pendidikan minimal '+ELV[reqEc(f,0)]+' untuk bidang ini.'+(S.edu.lv>=reqE(f,0)-1?' Ikut bootcamp bidang ini untuk membukanya.':''))}S.job=e.target.value||null;cvSwitch(S.job);lg(f?'Bekerja di bidang '+f.n+' sebagai '+title(f,lvl(f.id))+emNm(f)+((S.xp[f.id]||0)>0||lvl(f.id)>0?' (melanjutkan progres bidang ini)':'')+relTxt(f.id).replace(' · ',', '):'Berhenti bekerja (progres tiap bidang tetap tersimpan di CV)');sv();render()};
 $('home').onchange=e=>{const v=e.target.value;if(v=='rumah'&&!S.owned){e.target.value=S.home;return toast('Beli rumah lewat tab Properti (tunai atau KPR).')}if(v=='rumah'&&S.rent){e.target.value=S.home;return toast('Rumah sedang disewakan. Hentikan sewa di tab Properti.')}S.home=v;sv();render()};
 $('insh').onchange=e=>{if(S.sch){e.target.value=S.ins.h;return}S.ins.h=e.target.value;lg('Asuransi kesehatan: '+INH[S.ins.h][0]);sv();render()};
 $('gdp').onchange=e=>{gdp=+e.target.value;render()};$('gtn').onchange=e=>{gtn=+e.target.value;render()};
 $('food').onchange=e=>{S.food=e.target.value;sv();render()};$('lifes').onchange=e=>{S.life=e.target.value;sv();render()};$('trn').onchange=e=>{S.trn=e.target.value;sv();render()};
 $('crs').onclick=()=>{if(!S.job)return toast('Pilih pekerjaan dulu.');const c=crsCost(lvl(S.job));if(S.cash<c)return toast('Kas kurang dari '+rp(c));S.cash-=c;S.sk[S.job]=Math.min(100,(S.sk[S.job]||0)+10);lg('Ikut kursus: '+sg(-c)+', +10 skill');sv();render()};
 $('exm').onclick=()=>{const id=S.job;if(!id||!elig(id))return;if(S.day<S.cool)return toast('Ujian ulang dalam '+(S.cool-S.day)+' hari.');const l=lvl(id),c0=examCost(l);if(S.cash<c0)return toast('Kas kurang dari '+rp(c0)+' untuk biaya ujian.');S.cash-=c0;const c=chance(id),f=JB(id);
- if(R()*100<c){S.lv[id]=l+1;S.hap=Math.min(100,S.hap+5);lg('Lulus ujian promosi ('+c+'%): '+title(f,l+1)+', gaji dasar '+rp(f.b*M[l+1])+'/bln');toast('Lulus! Kamu naik jabatan.')}else{S.cool=S.day+30;S.hap=Math.max(0,S.hap-8);lg('Gagal ujian promosi (peluang '+c+'%), '+sg(-c0));toast('Gagal. Ujian ulang 30 hari lagi; kursus menaikkan peluang.')}sv();render()};
+ if(R()*100<c){S.lv[id]=l+1;S.hap=Math.min(100,S.hap+5);lg('Lulus ujian promosi ('+c+'%): '+title(f,l+1)+', gaji dasar '+rp(f.sl[l+1]*emM(f))+'/bln');toast('Lulus! Kamu naik jabatan.')}else{S.cool=S.day+30;S.hap=Math.max(0,S.hap-8);lg('Gagal ujian promosi (peluang '+c+'%), '+sg(-c0));toast('Gagal. Ujian ulang 30 hari lagi; kursus menaikkan peluang.')}sv();render()};
 $('enr').onclick=()=>{const k=$('edus').value,e=EDU[k],ed=S.edu;if(ed.cur)return toast('Kamu masih kuliah.');if(e[1]<=ed.lv)return toast('Kamu sudah lulus jenjang ini atau lebih tinggi.');if(k=='s2'&&ed.lv<2)return toast('S2 butuh lulusan S1.');if(S.cash<tui(e))return toast('Kas kurang untuk biaya bulan pertama ('+rp(tui(e))+').');ed.cur=k;ed.left=e[3];lg('Mulai kuliah '+e[0]+' ('+e[3]+' bulan)');toast('Terdaftar. Selama kuliah gaji dan XP kerja jadi 60%.');sv();render()};
 $('gop').onclick=()=>{if(S.sch!='pilih')return;if($('trk').value=='smk'){const j=$('jur').value;S.sch='smk';S.sk[j]=Math.min(100,(S.sk[j]||0)+25);S.xp[j]=(S.xp[j]||0)+60;lg('Masuk SMK jurusan '+JB(j).n+': +25 skill, +60 XP')}else{S.sch='sma';S.sma=1;lg('Masuk SMA: diskon biaya kuliah 20%')}S.sg=1;sv();render()};
 const ABT=()=>{$('abr').textContent='🔢 Angka: '+(ABR==1e6?'≥1M':ABR==1e9?'≥1B':'Penuh')};
@@ -704,7 +771,7 @@ function render(){
  }
  if(vw=='car'){
   renderBc();renderCv();renderNg();$('pilih').style.display=S.sch=='pilih'?'':'none';
-  $('jinfo').textContent=jf?title(jf,jl)+' · gaji '+rp(pay0)+'/bln · XP '+Math.floor(xp)+(jl<6?' / '+XT[jl+1]:' (puncak)')+' · skill '+Math.floor(sk)+relTxt(jf.id):S.sch?'Kamu masih sekolah. Fokus belajar dan kelola uang jajanmu!':'Pilih pekerjaan agar mendapat gaji tiap bulan.';
+  renderEm(jf);$('jinfo').textContent=jf?title(jf,jl)+emNm(jf)+' · gaji '+rp(pay0)+'/bln · XP '+Math.floor(xp)+(jl<6?' / '+XT[jl+1]:' (puncak)')+' · skill '+Math.floor(sk)+relTxt(jf.id):S.sch?'Kamu masih sekolah. Fokus belajar dan kelola uang jajanmu!':'Pilih pekerjaan agar mendapat gaji tiap bulan.';
   $('xpb').style.width=(jf?(jl<6?Math.min(100,(xp-XT[jl])/(XT[jl+1]-XT[jl])*100):100):0)+'%';
   $('crs').textContent='Kursus ('+rp(crsCost(jl))+', +10 skill)';$('exm').textContent='Ujian promosi ('+rp(examCost(jl))+')';
   $('crs').disabled=!!S.sch;$('exm').disabled=!jf||!elig(jf.id)||S.day<S.cool||!!S.sch;
@@ -717,7 +784,7 @@ function render(){
    '<tr class="sum"><td>Sisa bersih per bulan</td><td class="'+(left>=0?'up':'dn')+'">'+sg(left)+'</td></tr></tbody></table><div class="mu" style="margin-top:6px">Belum termasuk THR tahunan, laba usaha, dividen, bunga, dan kejadian acak (sakit, kerusakan, dll).</div>'}
   const nd=jf&&jl<6?need(jf.id):[];
   $('exmt').textContent=!jf?'':jl>=6?'Kamu sudah di jabatan tertinggi.':nd.length?'Syarat naik ke '+title(jf,jl+1)+': '+nd.join(', '):'Peluang lulus ujian '+chance(jf.id)+'%'+(S.day<S.cool?' · ujian ulang '+(S.cool-S.day)+' hari lagi':'');
-  setH($('lad'),jf?TN.map((t,i)=>`<div class="${i==jl?'cur':i<jl?'done':''}"><span>${i<jl?'✓ ':i==jl?'▶ ':''}${t} ${jf.r}</span><span>${rp(jf.b*M[i])} · XP ${XT[i]} · ${ELV[reqEc(jf,i)]}</span></div>`).join(''):'<div class="mu">Pilih pekerjaan untuk melihat tangga karier.</div>');
+  setH($('lad'),jf?jf.t.map((t,i)=>`<div class="${i==jl?'cur':i<jl?'done':''}"><span>${i<jl?'✓ ':i==jl?'▶ ':''}${t}</span><span>${rp(jf.sl[i]*emM(jf))} · XP ${XT[i]} · ${ELV[reqEc(jf,i)]}</span></div>`).join(''):'<div class="mu">Pilih pekerjaan untuk melihat tangga karier.</div>');
   $('eduinfo').textContent=ed.cur?'Kuliah '+EDU[ed.cur][0]+', sisa '+ed.left+' bulan':'Lulusan '+ELV[ed.lv];$('eduprog').style.width=(S.sch?S.sy/12*100:ed.cur?(1-ed.left/EDU[ed.cur][3])*100:0)+'%';
   ['job','edus','enr'].forEach(i=>$(i).disabled=!!S.sch);if($('job').value!=(S.job||''))$('job').value=S.job||'';
  }
@@ -796,7 +863,7 @@ function loveProfile(p){if(p&&p.profile&&p.profile.bio)return p.profile;const co
 function profileLine(p){const q=loveProfile(p);return '<div class="mu" style="margin-top:6px"><b>'+q.flag+' '+((CT[q.country]||CT.ID).n)+' · '+q.role+'</b><br>'+q.bio+'<br><b>Cara komunikasi:</b> '+q.talk+'</div>'}
 function genCand(g0,used,usedPhotos){const g=g0||(R()<.5?'m':'f'),nm=pickName(g,used),f=rnd(JOBS),l=Math.floor(R()*R()*4),tr=[];while(tr.length<2){const t=rnd(Object.keys(LK));if(!tr.includes(t))tr.push(t)}
  const code=S.cc||'ID',profile=loveProfile({cc:code}),pal={ID:0,MY:1,SG:2,JP:0,AE:3,NL:1,AU:2,US:0}[code]||0;
- const taken=usedPhotos||[],photoId=photoForName(nm[0],g,taken);if(!taken.includes(photoId))taken.push(photoId);return{n:nm[0],g,cc:code,photoId,profile,job:title(f,l),inc:Math.round(f.b*M[l]*(.9+R()*.2)*WG()/1e5)*1e5,w:WG(),tr,hb:profile.hobby,av:{sk:SK[pal],hc:HC[(pal+Math.floor(R()*3))%HC.length],sh:SC[(pal+Math.floor(R()*3))%SC.length],hs:g=='m'?rnd(['pendek','pendek','kuncir']):rnd(nm[1]?['panjang','kuncir','hijab','panjang']:['panjang','kuncir','panjang']),g,ac:R()<.3?1:0}}}
+ const taken=usedPhotos||[],photoId=photoForName(nm[0],g,taken);if(!taken.includes(photoId))taken.push(photoId);return{n:nm[0],g,cc:code,photoId,profile,job:title(f,l),inc:Math.round(f.sl[l]*(.9+R()*.2)*WG()/1e5)*1e5,w:WG(),tr,hb:profile.hobby,av:{sk:SK[pal],hc:HC[(pal+Math.floor(R()*3))%HC.length],sh:SC[(pal+Math.floor(R()*3))%SC.length],hs:g=='m'?rnd(['pendek','pendek','kuncir']):rnd(nm[1]?['panjang','kuncir','hijab','panjang']:['panjang','kuncir','panjang']),g,ac:R()<.3?1:0}}}
 function ensurePt(){if(S.mar&&!S.pt)S.pt=Object.assign(genCand(),{st:'menikah',chem:60,since:S.day-200,last:S.day,dates:0,cd:0,w:WG()});if(S.pt&&!LOVE_PHOTOS[S.pt.photoId]){S.pt.photoId=photoForName(S.pt.n||'Partner',S.pt.g||'f',[])}}
 function pf(){const p=S.pt,o={h:0,x:kXp(),b:1};if(!p)return o;const k=p.st=='menikah'?1:p.st=='dekat'?0:.5;p.tr.forEach(t=>{const e=TF[t]||{};o.h+=(e.h||0)*k;o.x+=(e.x||0)*k;if(p.st=='menikah')o.b*=e.b||1});o.h+=(LV[p.st]||0)+p.chem/25;return o}
 function loveMonth(){const p=S.pt;if(!p)return;const gap=S.day-(p.last||0);if(p.st=='menikah'){p.chem=Math.max(CMIN,p.chem-(gap>60?3:1));return}if(gap>30){p.chem-=6;lg(p.n+' merasa kurang diperhatikan (kemistri -6)')}if(p.chem<=5){lg(p.n+' memutuskan menjauh darimu...');S.hap=Math.max(0,S.hap-10);S.pt=null;DLG=null}}
@@ -1062,7 +1129,7 @@ function renderTips(){const ts=tipSrc(),w=ts?ts.w:netw(),d=ts?ts.d:null,on=S.tip
  setH($('tiplist'),h)}
 /* perusahaan sendiri */
 const coUp=l=>Math.round(CO_CAP*.6*l);
-const coProfit=c=>{const f=JB(c.f);return f.b*4*(1+.7*(c.l-1))*(1+.12*Math.max(0,c.t-2))*(S.job==c.f?1.15:1)*WG()};
+const coProfit=c=>{const f=JB(c.f);return f.sl[2]*1.43*(1+.7*(c.l-1))*(1+.12*Math.max(0,c.t-2))*(S.job==c.f?1.15:1)*WG()};
 function coMonth(){if(!(S.cos||[]).length)return;let t=0;
  S.cos.forEach(c=>{let p=coProfit(c)*(1+(R()*2-1)*.3)*(.8+.4*S.hap/100)*act().reduce((q,m)=>q*((m.fx.f&&m.fx.f[c.f])||1),1);
   if(R()<.04){p=-coProfit(c)*1.2;lg(c.n+': krisis perusahaan, rugi')}else p*=.89;t+=p});
@@ -1080,7 +1147,7 @@ function renderCo(){const w=netw(),t=tierN(),n=S.cos.length;
  $('coinfo').textContent=t>=2?'Koneksi '+w.n+' ('+dis().n+') mengizinkan hingga '+w.co+' perusahaan ('+n+' berdiri). Modal '+rp(CO_CAP)+'. Pendiri harus punya pendidikan sesuai bidang. Laba mengikuti gaji bidang dan tingkat koneksi, bonus 15% jika kamu bekerja di bidang yang sama, pajak badan 11%, ada risiko krisis. Dijual 70% dari modal.':'Mendirikan perusahaan butuh koneksi: miliki rumah di BSD City atau kawasan yang lebih elit (tab Properti).'+(n?' Perusahaan yang sudah berdiri tetap berjalan.':'');
  $('cob').disabled=!(t>=2&&n<w.co&&!S.sch);
  setH($('cog'),S.cos.map(c=>{const f=JB(c.f);return'<div class="card"><b>🏢 '+esc(c.n)+'</b><div class="mu">Bidang '+esc(f.n)+' · Level '+c.l+'/5 · koneksi tingkat '+c.t+'<br>Laba rata-rata ±'+rp(coProfit(c)*.89)+'/bln (setelah pajak) · nilai '+rp(c.inv*.7)+(S.job==c.f?'<br>Bonus sinergi dengan pekerjaanmu +15%':'')+'</div><div class="row"><button class="pc" data-a="cou:'+c.u+'" '+(c.l>=5?'disabled':'')+'>'+(c.l>=5?'Level maks':'Upgrade '+rp(coUp(c.l+1)))+'</button><button class="pc" data-a="cos:'+c.u+'">Jual '+rp(c.inv*.7)+'</button></div></div>'}).join('')||'<div class="mu">Belum ada perusahaan.</div>')}
-JOBS.push({id:'pil',n:'Pilot Maskapai',r:'Penerbangan',b:6e6,e:2,rare:1},{id:'ilm',n:'Peneliti & Ilmuwan',r:'Riset',b:5e6,e:3,rare:1},{id:'dpl',n:'Diplomat & Pejabat Tinggi',r:'Diplomasi',b:5.5e6,e:3,rare:1});
+JOBS.push({id:'pil',n:'Pilot Maskapai',r:'Penerbangan',b:6e6,e:2,rare:1},{id:'ilm',n:'Peneliti & Ilmuwan',r:'Riset',b:5e6,e:3,rare:1},{id:'dpl',n:'Diplomat & Pejabat Tinggi',r:'Diplomasi',b:5.5e6,e:3,rare:1});JOBS.forEach(jobFix);
 function buildJobSel(){fo('bcp',BCP.map(q=>[q[0],q[1]+' ('+q[2]+' bulan)']));fo('bdt',BKT.map(q=>[q[0],q[0]+' bulan']));const rb=S.meta.rb||0,L=JOBS.filter(j=>!j.rare||rb>=2);
  fo('job',[['','Belum bekerja'],...L.map(j=>[j.id,j.n+' (mulai '+rp(j.b)+', min. '+ELV[reqE(j,0)]+')'])]);fo('jur',L.map(j=>[j.id,j.n]));fo('cofs',L.map(j=>[j.id,j.n+' (min. '+ELV[reqE(j,0)]+')']));fo('rbt',[['','Pilih bidang bakat'],...L.map(j=>[j.id,j.n])]);fo('bcf',L.map(j=>[j.id,j.n]));$('job').value=S.job||''}
 /* ---- rebirth ---- */
@@ -1169,7 +1236,7 @@ function profHtml(id,p){const n=x=>Math.round(+x)||0,t=(x,l)=>esc(String(x==null
  if(ar2(p.inv)&&p.inv.length)h+='<div class="mu">🏘️ Properti sewa: '+p.inv.slice(0,8).map(x=>t(x.n,30)+' ('+rp(n(x.v))+')').join(', ')+'</div>';
  if(ar2(p.veh)&&p.veh.length)h+='<div class="mu">🚗 '+p.veh.slice(0,6).map(v=>t(v.n,30)+' ('+rp(n(v.v))+')').join(', ')+'</div>';
  if(ar2(p.biz)&&p.biz.length)h+='<div class="mu">🏪 '+p.biz.slice(0,10).map(b=>t(b.n,30)+(b.f?' ['+t(b.f,24)+']':'')+' lv'+n(b.l)).join(', ')+'</div>';
- if(p.cv&&ar2(p.cv.f)&&p.cv.f.length){h+='<h3>CV &amp; pengalaman</h3><div class="mu">'+p.cv.f.slice(0,8).map(x=>t(x.n,30)+' ('+TN[Math.max(0,Math.min(6,n(x.l)))]+', '+lamaTxt(n(x.m)*30)+')').join(' · ')+'</div>';if(ar2(p.cv.c)&&p.cv.c.length)h+='<div class="mu">🎓 '+p.cv.c.slice(0,8).map(c=>t(c.n,30)+' ('+t((BCP.find(z=>z[0]==c.k)||[0,'Bootcamp'])[1],12)+')').join(' · ')+'</div>'}
+ if(p.cv&&ar2(p.cv.f)&&p.cv.f.length){h+='<h3>CV &amp; pengalaman</h3><div class="mu">'+p.cv.f.slice(0,8).map(x=>t(x.n,30)+' ('+((j0,l0)=>j0?title(j0,l0):TN[l0])(JOBS.find(z=>z.n==x.n),Math.max(0,Math.min(6,n(x.l))))+', '+lamaTxt(n(x.m)*30)+')').join(' · ')+'</div>';if(ar2(p.cv.c)&&p.cv.c.length)h+='<div class="mu">🎓 '+p.cv.c.slice(0,8).map(c=>t(c.n,30)+' ('+t((BCP.find(z=>z[0]==c.k)||[0,'Bootcamp'])[1],12)+')').join(' · ')+'</div>'}
   h+='<h3>Portofolio</h3>';
  if(p.priv)h+='<div class="mu">Pemain ini menyembunyikan portofolionya.</div>';
  else if(ar2(p.hold)&&p.hold.length)h+='<table><thead><tr><th>Aset</th><th>Nilai</th><th>P/L</th></tr></thead><tbody>'+p.hold.slice(0,15).map(x=>{const pl=+x.p||0;return'<tr><td>'+t(x.i,12)+'</td><td>'+rp(n(x.v))+'</td><td class="'+(pl>=0?'up':'dn')+'">'+(pl>=0?'+':'')+pl.toFixed(1)+'%</td></tr>'}).join('')+'</tbody></table>';
@@ -2280,6 +2347,7 @@ function loRisk(){if(!S.job||S.sch)return{p:0,f:[]};const id=S.job,f=[],l=lvl(id
  if(S.hap<35){p+=.006;f.push('Kebahagiaan rendah menurunkan kinerja')}
  if((S.sk[id]||0)<SKR[l]){p+=.004;f.push('Skill di bawah standar jabatan')}else if((S.sk[id]||0)>=SKR[l]+15){p-=.002;f.push('Skill di atas standar (risiko turun)')}
  if(S.neg.fl>0){p+=.008;f.push('Atasan kesal karena nego agresif yang gagal')}
+ {const ec=emOf(id);if(ec&&ETR[ec.t].r){p+=ETR[ec.t].r;f.push(ETR[ec.t].r>0?'Perusahaan '+ETR[ec.t].n.toLowerCase()+' lebih ketat dalam efisiensi':'Perusahaan '+ETR[ec.t].n.toLowerCase()+' relatif stabil (risiko turun)')}}
  return{p:clamp(p,.001,.06),f}}
 function loMonth(){const L=S.lo;if(L.pend)sevAct(0);
  if(L.jk>0){const j=Math.round(L.jv*(L.jk>3?.45:.25));S.cash+=j;L.jk--;lg('🏛️ JKP BPJS Ketenagakerjaan '+sg(j))}
@@ -2287,7 +2355,7 @@ function loMonth(){const L=S.lo;if(L.pend)sevAct(0);
  const o=S.cv.t.find(x=>x.e==null),ten=o?S.day-o.s:0;if(ten<90||R()>=loRisk().p)return;
  const f=JB(S.job),sal=Math.round(pay(f)*pt()),y=ten/360,mo=Math.min(9,1+Math.floor(y))+Math.min(6,Math.floor(y/3));
  L.pend={sev:sal*mo,sal,j:S.job,jk:y>=1,mo};L.n++;hp_(-12);lg('📦 PHK! Perusahaan memutus hubunganmu sebagai '+title(f,lvl(f.id))+'. Pesangon standar '+mo+' bulan gaji. Pilih terima atau negosiasi di tab Karier.');toast('📦 Kamu terkena PHK. Cek tab Karier.');
- S.job=null;cvSwitch(null)}
+ if(S.em)delete S.em[S.job];S.job=null;cvSwitch(null)}
 function sevAct(n){const L=S.lo,p=L.pend;if(!p)return;let a=p.sev;
  if(n){const c=clamp(.35+cvScore(p.j)*.02+(S.sk[p.j]||0)*.002,.2,.75);if(R()<c){a*=1.4;lg('🤝 Nego pesangon berhasil ('+Math.round(c*100)+'%): +40%')}else{a*=.85;lg('Nego pesangon ditolak ('+Math.round(c*100)+'%), pesangon dipotong jadi 85%')}}
  a=Math.round(a);S.cash+=a;if(p.jk){L.jk=6;L.jv=p.sal}L.pend=null;lg('📦 Pesangon diterima '+sg(a)+(p.jk?'. Klaim JKP aktif 6 bulan (45% gaji 3 bulan, lalu 25%)':'. Masa kerja < 1 tahun, tidak dapat JKP'))}
